@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.0" width="600" height="340" xmlns="http://www.w3.org/2000/svg">
+
+ <!-- Show that x=y at each integer x -->
+ <path stroke="#bbb" fill="none" stroke-width="1"
+       d="M300,60 H540 V300
+          M300,140 H460 V300
+          M300,220 H380 V300"/>
+
+ <!-- Axes -->
+ <path stroke="#000" stroke-width="1" d="M10,300 H590 M300,300 V10"/>
+
+ <g font-family="Bitstream Vera Sans" font-size="20px">
+  <!-- Labels along y-axis -->
+  <g text-align="end" text-anchor="end">
+   <text x="295" y="227">1</text>
+   <text x="295" y="147">2</text>
+   <text x="295" y="67">3</text>
+  </g>
+
+  <!-- Labels along x-axis -->
+  <g text-align="middle" text-anchor="middle">
+   <text x="60" y="323">−3</text>
+   <text x="140" y="323">−2</text>
+   <text x="220" y="323">−1</text>
+   <text x="300" y="323">0</text>
+   <text x="380" y="323">1</text>
+   <text x="460" y="323">2</text>
+   <text x="540" y="323">3</text>
+  </g>
+ </g>
+
+ <!-- Graph -->
+ <path stroke="#f00" stroke-width="3" fill="none"
+       d="M10,300 L300,300 L590,10"/>
+
+</svg>

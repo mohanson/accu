@@ -1,0 +1,199 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.0/vue.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid" id="cb">
+        <div v-bind:style="{'padding-top': grid.y + 'px'}">
+            <div class="center-block" v-bind:style="{'width': x * (grid.x + grid.d) + 'px'}">
+                <svg v-bind:width="x * (grid.x + grid.d)" v-bind:height="y * (grid.y + grid.d)">
+                    <g v-for="ix in x">
+                        <rect v-bind:width="grid.x" v-bind:height="grid.y" v-bind:x="(ix - 1) * (grid.x + grid.d)" v-bind:y="(iy - 1) * (grid.y + grid.d)"
+                            v-bind:fill="get((ix - 1), (iy - 1))?color.positive:color.negative" v-for="iy in y" v-on:click="set(ix-1, iy-1, 1 - get((ix - 1), (iy - 1)))"></rect>
+                    </g>
+                </svg>
+                <hr/>
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default" v-bind:class="{'btn-primary': isRunning}" v-on:click="start">开始</button>
+                        <button type="button" class="btn btn-default" v-on:click="pause">暂停</button>
+                        <button type="button" class="btn btn-default" v-on:click="clear">清空</button>
+                    </div>
+                    <div class="input-group" style="float:inherit">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" v-on:click="drawPrimevalSoup(primevalSoupRate / 100)">随机</button>
+                        </span>
+                        <input type="text" class="form-control" v-model="primevalSoupRate" placeholder="37.5">
+                        <span class="input-group-addon" id="basic-addon2">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var cb = new Vue({
+            el: '#cb',
+            data: {
+                x: 20,
+                y: 20,
+                grid: {
+                    x: 14,
+                    y: 14,
+                    d: 2,
+                },
+                color: {
+                    positive: "#cf6fc1",
+                    negative: "#ebedf0"
+                },
+                pix: [],
+                isRunning: false,
+                primevalSoupRate: 37.5
+            },
+            methods: {
+                c: function (x, y) {
+                    return this.x * x + y
+                },
+                set: function (x, y, v) {
+                    Vue.set(this.pix, this.c(x, y), v)
+                },
+                get: function (x, y) {
+                    return this.pix[this.c(x, y)]
+                },
+                init: function () {
+                    for (ix = 0; ix < this.x; ix++) {
+                        for (iy = 0; iy < this.y; iy++) {
+                            this.set(ix, iy, 0)
+                        }
+                    }
+                },
+                bias: function (x, y, dx, dy) {
+                    ax = (x + dx) % this.x
+                    if (ax < 0) {
+                        ax += this.x
+                    }
+                    ay = (y + dy) % this.y
+                    if (ay < 0) {
+                        ay += this.y
+                    }
+                    return [ax, ay]
+                },
+                sum: function (x, y) {
+                    var sum = 0
+                    for (dx = -1; dx <= 1; dx++) {
+                        for (dy = -1; dy <= 1; dy++) {
+                            if (dx == dy && dy == 0) {
+                                continue
+                            }
+                            r = this.bias(x, y, dx, dy)
+                            px = r[0]
+                            py = r[1]
+                            sum += this.pix[this.c(px, py)]
+                        }
+                    }
+                    return sum
+                },
+                next: function () {
+                    npix = this.pix.slice(0)
+                    for (iy = 0; iy < this.y; iy++) {
+                        for (ix = 0; ix < this.x; ix++) {
+                            sum = this.sum(ix, iy)
+                            if (sum > 3) {
+                                npix[this.c(ix, iy)] = 0
+                            } else if (sum == 3) {
+                                npix[this.c(ix, iy)] = 1
+                            } else if (sum < 2) {
+                                npix[this.c(ix, iy)] = 0
+                            }
+                        }
+                    }
+                    this.pix = npix
+                },
+                start: function () {
+                    if (this.isRunning) {
+                        return
+                    }
+                    this.isRunning = true
+                    this.ticker = setInterval(this.next, 200)
+                },
+                pause: function () {
+                    this.isRunning = false
+                    clearInterval(this.ticker)
+                },
+                clear: function () {
+                    this.pause()
+                    for (i = 0; i < this.x * this.y; i++) {
+                        Vue.set(this.pix, i, 0)
+                    }
+                },
+                drawPrimevalSoup: function (p) {
+                    this.clear()
+                    for (ix = 0; ix < this.x; ix++) {
+                        for (iy = 0; iy < this.y; iy++) {
+                            if (Math.random() < p) {
+                                this.set(ix, iy, 1)
+                            } else {
+                                this.set(ix, iy, 0)
+                            }
+                        }
+                    }
+                },
+                drawGlider: function () {
+                    this.clear()
+                    this.set(0, 2, 1)
+                    this.set(1, 2, 1)
+                    this.set(2, 2, 1)
+                    this.set(2, 1, 1)
+                    this.set(1, 0, 1)
+                },
+                drawLightweightSpaceship: function () {
+                    this.clear()
+                    this.set(3, 7, 1)
+                    this.set(4, 7, 1)
+                    this.set(2, 8, 1)
+                    this.set(3, 8, 1)
+                    this.set(4, 8, 1)
+                    this.set(5, 8, 1)
+                    this.set(2, 9, 1)
+                    this.set(3, 9, 1)
+                    this.set(5, 9, 1)
+                    this.set(6, 9, 1)
+                    this.set(4, 10, 1)
+                    this.set(5, 10, 1)
+                },
+                drawPentadecathlon: function () {
+                    this.clear()
+                    for (y = 6; y < 14; y++) {
+                        for (x = 8; x < 11; x++) {
+                            this.set(x, y, 1)
+                        }
+                    }
+                    this.set(9, 7, 0)
+                    this.set(9, 12, 0)
+                }
+            }
+        })
+
+        if (document.body.clientWidth < 640) {
+            cb.grid.x = (document.body.clientWidth - 30 - cb.grid.d * (cb.x + 1)) / cb.x
+            cb.grid.y = cb.grid.x
+        }
+        cb.init()
+        p = Math.random()
+        if (p < 0.33) {
+            cb.drawGlider()
+        } else if (p < 0.66) {
+            cb.drawLightweightSpaceship()
+        } else {
+            cb.drawPentadecathlon()
+        }
+        cb.start()
+    </script>
+</body>
+
+</html>
