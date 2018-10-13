@@ -94,7 +94,7 @@ go build foo.go           # 生成 foo 可执行文件
 
 # 代码下载
 
-这篇文章中使用的代码均可于 [https://github.com/mohanson/cgo_example](https://github.com/mohanson/cgo_example) 下载. 该项目中还包括如果在 Go 中调用 C++ 代码的例子, 可作为本章的补充.
+这篇文章中使用的代码均可于 [https://github.com/mohanson/cgo_example](https://github.com/mohanson/cgo_example) 下载. 该项目中还包括如何在 Go 中调用 C++ 代码的例子, 可作为本章的补充.
 
 如果你对更加复杂 Cgo 项目感兴趣, 可以参考 [https://github.com/mohanson/FaceDetectionServer](https://github.com/mohanson/FaceDetectionServer),  该项目使用 Go 进行人脸识别, 而人脸识别源码是纯 C++ 编写的, 中间使用 Cgo 作为胶水.
 
