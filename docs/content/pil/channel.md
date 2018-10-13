@@ -12,9 +12,9 @@ import scipy.misc
 mat = scipy.misc.imread('/img/jp.jpg')
 print(mat.shape)
 
-# (540, 960, 4)
+# (540, 960, 3)
 ```
-说明这个图像有 540 行, 960 列, 以及在色彩上有 4 个分量.
+说明这个图像有 540 行, 960 列, 以及在色彩上有 3 个分量.
 
 进一步分解该图片得到 R, G, B 三个通道分量:
 
@@ -22,7 +22,7 @@ print(mat.shape)
 import PIL.Image
 
 im = PIL.Image.open('/img/jp.jpg')
-r, g, b, _ = im.split()
+r, g, b = im.split()
 
 r.show()
 g.show()
@@ -44,7 +44,7 @@ b.show()
 import PIL.Image
 
 im = PIL.Image.open('/img/jp.jpg')
-r, g, b, _ = im.split()
+r, g, b = im.split()
 im = PIL.Image.merge('RGB', (b, g, r))
 im.show()
 ```
@@ -57,9 +57,9 @@ im.show()
 import PIL.Image
 
 im = PIL.Image.open('/img/jp.jpg')
-_, g, b, _ = im.split()
+_, g, b = im.split()
 # 创建一个新的 r 通道分量, 注意 mode 值为 'L'
-r = PIL.Image.new('L', (960, 540), color=255)
+r = PIL.Image.new('L', im.size, color=255)
 
 im = PIL.Image.merge('RGB', (r, g, b))
 im.show()
