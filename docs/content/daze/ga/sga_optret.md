@@ -114,14 +114,15 @@ ax.plot(x, ga.f(x))
 sca1 = ax.scatter([], [], s=200, c='#CF6FC1', alpha=0.5)
 sca2 = ax.scatter([], [], s=300, c='#ED8826', alpha=0.5)
 
+
 def update(*args):
     pop, _ = next(gaiter)
     fx = ga.decode(pop)
     fv = ga.f(fx)
     i = np.argmax(fv)
-    sca1.set_offsets(np.dstack((fx, fv)))
-    sca2.set_offsets(np.dstack(([fx[i]], fv[i])))
-    plt.savefig(f'/tmp/img/{args[0]+1:0>2}.png')
+    sca1.set_offsets(np.column_stack((fx, fv)))
+    sca2.set_offsets(np.column_stack(([fx[i]], fv[i])))
+    # plt.savefig(f'/tmp/img/{args[0]+1:0>2}.png')
 
 
 ani = matplotlib.animation.FuncAnimation(fig, update, interval=200, repeat=False)

@@ -62,6 +62,8 @@ class GA:
         self.pm = 0.008
 
         control_im = skimage.io.imread(control_im_path)
+        if control_im.shape[2] == 4:
+            control_im = skimage.color.rgba2rgb(control_im)
         self.control_im = skimage.transform.resize(
             control_im, (128, 128), mode='reflect', preserve_range=True).astype(np.float64)
 
