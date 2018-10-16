@@ -57,13 +57,16 @@ class GA:
     def __init__(self):
         self.pop_size = 80
         self.dna_size = 100
-        self.max_iter = 12000
+        self.max_iter = 3000
         self.pc = 0.6
         self.pm = 0.008
 
-        control_im = skimage.io.imread(control_im_path)
+        im = skimage.io.imread(control_im_path)
+        if im.shape[2] == 4:
+            im = skimage.color.rgba2rgb(im)
+            im = (255 * im).astype(np.uint8)
         self.control_im = skimage.transform.resize(
-            control_im, (128, 128), mode='reflect', preserve_range=True).astype(np.float64)
+            im, (128, 128), mode='reflect', preserve_range=True).astype(np.uint8)
 
     def decode(self, per):
         im = np.ones(self.control_im.shape, dtype=np.uint8) * 255

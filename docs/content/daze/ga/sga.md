@@ -161,7 +161,8 @@ def update(*args):
     pop, _ = next(gaiter)
     fx = ga.decode(pop)
     fv = ga.f(fx)
-    sca.set_offsets(np.dstack((fx, fv)))
+    sca.set_offsets(np.column_stack((fx, fv)))
+    # plt.savefig(f'/tmp/img/{args[0]+1:0>2}.png')
 
 
 ani = matplotlib.animation.FuncAnimation(fig, update, interval=200, repeat=False)
