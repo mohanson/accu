@@ -12,7 +12,7 @@ extra_css:
         - css/accu.css
 extra_javascript:
         - js/accu.js
-pages:
+nav:
 - 主页: index.md
 - 履历: content/resume.md
 - 数字图像处理:

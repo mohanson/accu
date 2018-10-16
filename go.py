@@ -19,7 +19,7 @@ def main():
 
     def repl(x):
         src = x.group('src')
-        if src.startswith('http'):
+        if src.startswith('//'):
             return src
         return 'http://cdn.accu.cc/{0}'.format(src.strip('./'))
 
