@@ -19,11 +19,11 @@ def main():
 
     def repl(x):
         src = x.group('src')
-        if src.startswith('//'):
+        if src.startswith('//') or src.startswith('http'):
             return src
         return 'http://cdn.accu.cc/{0}'.format(src.strip('./'))
 
-    for entry in glob.glob('./site/**/*.html', recursive=True):
+    for entry in glob.glob('./site/**/index.html', recursive=True):
         print(entry)
         with open(entry, 'r+', encoding='utf-8') as f:
             content = f.read()
