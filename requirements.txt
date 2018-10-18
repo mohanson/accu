@@ -1,2 +1,3 @@
-mkdocs
-asciimathml
+asciimathml==0.9.5.1
+Markdown==2.6.11
+mkdocs==1.0.4

@@ -1,7 +1,7 @@
 Mohanson's Blog [http://accu.cc](http://accu.cc)
 
 ```sh
-$ pip install mkdocs asciimathml
+$ pip install -r requirements.txt
 $ mkdocs serve
 ```
 
