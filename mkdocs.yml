@@ -60,7 +60,7 @@ nav:
         - Dlib-人脸识别: content/daze/dlib/face_recognition.md
         - Dlib-人脸聚类: content/daze/dlib/face_clustering.md
         - 加密算法-RC4-概览: content/daze/rc4/overview.md
-        - 加密算法-RC4-优化: content/daze/rc4/optimize.md
+        - 加密算法-RC4-性能测试: content/daze/rc4/performance_testing.md
         - 生命游戏: content/daze/game_of_life/overview.md
         - sklearn-概览: content/daze/sklearn/overview.md
         - sklearn-线性模型-概览: content/daze/sklearn/liner_model/overview.md

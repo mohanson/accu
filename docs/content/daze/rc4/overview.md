@@ -65,8 +65,7 @@ class Cipher:
     def __str__(self):
         return f'rc4.Cipher(key={self.key})'
 
-    def crypto(self, src):
-        dst = list(range(len(src)))
+    def crypto(self, src, dst):
         i, j = self.i, self.j
         for k, v in enumerate(src):
             i = (i + 1) % 256
@@ -74,14 +73,24 @@ class Cipher:
             self.s[i], self.s[j] = self.s[j], self.s[i]
             dst[k] = v ^ self.s[(self.s[i] + self.s[j]) % 256] % 256
         self.i, self.j = i, j
-        return bytes(dst)
 
+    def stream(self, src, dst):
+        c = 8192
+        buf = list(range(c))
+        while True:
+            ctx = src.read(c)
+            if not ctx:
+                break
+            n = len(ctx)
+            self.crypto(ctx, buf)
+            dst.write(bytes(buf[:n]))
 
 if __name__ == '__main__':
     c = Cipher(b'secret')
     src = b'The quick brown fox jumps over the lazy dog'
-    dst = c.crypto(src)
-    print(dst)
+    dst = list(range(len(src)))
+    c.crypto(src, dst)
+    print(bytes(dst))
 ```
 
 # 参考
