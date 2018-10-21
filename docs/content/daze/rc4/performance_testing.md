@@ -83,11 +83,12 @@ fn main() {
     let mut f_src = File::open(src).unwrap();
     let mut f_dst = File::create(dst).unwrap();
     let mut cipher = crypto::rc4::Rc4::new(k.as_bytes());
-    let mut b_src = [0; 8192];
-    let mut b_dst = [0; 8192];
+    let mut b_src = [0; 4096];
+    let mut b_dst = [0; 4096];
+    let mut n: usize;
 
     loop {
-        let n = f_src.read(&mut b_src[..]).unwrap();
+        n = f_src.read(&mut b_src[..]).unwrap();
         if n == 0 {
             break;
         }
