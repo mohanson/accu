@@ -47,7 +47,7 @@ func main() {
 		log.Fatalln(err)
 	}
 	defer r.Close()
-	w, err := os.OpenFile(dst, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
+	w, err := os.OpenFile(dst, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 	if err != nil {
 		log.Fatalln(err)
 	}
