@@ -35,6 +35,7 @@ nav:
         - 数字图像处理-频域滤波-带阻和带通滤波: content/pil/frequency_filter_br_bp.md
         - 数字图像处理-噪声: content/pil/noise.md
         - 数字图像处理-安全色: content/pil/safe_color.md
+        - 数字图像处理-马卡龙色: content/pil/macaron_color.md
         - 数字图像处理-补色和反色: content/pil/complementary_and_invert_color.md
         - 数字图像处理-水印: content/pil/watermark.md
         - 数字图像处理-缩放-最近邻插值法: content/pil/resize_nearst.md
