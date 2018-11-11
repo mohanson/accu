@@ -105,9 +105,12 @@ nav:
         - AHK-实现屏幕取色器: content/ahk/color.md
         - AHK-长按: content/ahk/longpress.md
         - AHK-按行读取文件: content/ahk/loopread.md
-- 系统:
-        - Linux-Supervisor: content/os/supervisor.md
+        - Rust-概览: content/rust/overview.md
+        - Rust-文件读取: content/rust/io.md
+        - Rust-HTTP: content/rust/http.md
+        - Rust-并发: content/rust/concurrent.md
 - 沙箱:
+        - Linux-Supervisor: content/os/supervisor.md
         - Linux-常用软件安装与配置: content/os_install.md
         # - Linux-ssr: content/os_ssr.md
         - 机器学习-图像风格转移: content/ml_neural_style_transfer.md
