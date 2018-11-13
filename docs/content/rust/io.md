@@ -48,6 +48,7 @@ fn main() {
     let reader = BufReader::new(f);
     for line in reader.lines() {
         // line 是 std::result::Result<std::string::String, std::io::Error> 类型
+        // line 不包含换行符
         let line = line.unwrap();
         println!("{}", line);
     }
