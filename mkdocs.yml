@@ -4,7 +4,7 @@ site_url: http://accu.cc
 site_author: Mohanson
 theme: readthedocs
 repo_url: https://github.com/mohanson/accu
-dev_addr: 0.0.0.0:80
+dev_addr: 127.0.0.1:80
 markdown_extensions:
         - asciimathml
 plugins: []
