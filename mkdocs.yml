@@ -100,6 +100,7 @@ nav:
         - ETH-交易: content/eth/transaction.md
         - ETH-订阅通知: content/eth/pubsub.md
         - ETH-智能合约: content/eth/contract.md
+        - ETH-重写EVM-EVM简介: content/eth/evm_overview.md
         - AHK-概览: content/ahk/overview.md
         - AHK-实现鼠标连点器: content/ahk/clicker.md
         - AHK-实现屏幕取色器: content/ahk/color.md

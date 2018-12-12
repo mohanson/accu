@@ -13,4 +13,5 @@ extra_css:
 extra_javascript:
         - js/accu.js
 nav:
+- 主页: index.md
 - 沙盒: sandbox.md
