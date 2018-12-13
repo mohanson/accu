@@ -14,7 +14,7 @@ extra_javascript:
         - js/accu.js
 nav:
 - 主页: index.md
-- 履历: content/resume.md
+# - 履历: content/resume.md
 - 数字图像处理:
         - 数字图像处理-通道: content/pil/channel.md
         - 数字图像处理-均值: content/pil/mean.md
