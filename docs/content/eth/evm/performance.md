@@ -4,9 +4,9 @@
 
 测试用例: [https://github.com/ethereum/tests/tree/develop/VMTests/vmPerformance](https://github.com/ethereum/tests/tree/develop/VMTests/vmPerformance)
 
-![img](./sep1.png)
+![img](/img/eth/evm/performance/sep1.png)
 
-![img](./sep2.png)
+![img](/img/eth/evm/performance/sep2.png)
 
 # 测试步骤
 

@@ -1,8 +1,8 @@
-由于入职新公司, 要忙的事情比较多, 接近三个月没有更新文章. 趁最近一点空闲时间分享一下这几个月的工作. 我们[秘猿](https://www.cryptape.com/#/)使用 Rust 重写了 EVM! 当前还在持续开发中, 除了代码啥都没有~
+由于入职新公司, 要忙的事情比较多, 接近三个月没有更新文章. 趁最近一点空闲时间分享一下这几个月的工作. 我们[秘猿](https://www.cryptape.com/#/)使用 Rust 重写了 EVM!
 
 项目地址: [https://github.com/cryptape/cita-vm](https://github.com/cryptape/cita-vm).
 
-第一篇文章是在某高校分享的稿件整理. 由 Leader 授权后公开.
+第一篇文章是与某高校分享的稿件整理. 由 Leader 授权后公开.
 
 # EVM 介绍
 
