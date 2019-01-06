@@ -14,7 +14,6 @@ extra_javascript:
         - js/accu.js
 nav:
 - 主页: index.md
-# - 履历: content/resume.md
 - 数字图像处理:
         - 数字图像处理-通道: content/pil/channel.md
         - 数字图像处理-均值: content/pil/mean.md
@@ -103,6 +102,7 @@ nav:
         - ETH-重写EVM-EVM简介: content/eth/evm/overview.md
         - ETH-重写EVM-性能测试: content/eth/evm/performance.md
         - ETH-重写EVM-指令集: content/eth/evm/instruction.md
+        - ETH-重写EVM-燃气: content/eth/evm/fee.md
         - AHK-概览: content/ahk/overview.md
         - AHK-实现鼠标连点器: content/ahk/clicker.md
         - AHK-实现屏幕取色器: content/ahk/color.md
