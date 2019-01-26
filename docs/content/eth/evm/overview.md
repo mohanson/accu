@@ -2,7 +2,7 @@
 
 项目地址: [https://github.com/cryptape/cita-vm](https://github.com/cryptape/cita-vm).
 
-第一篇文章是与某高校分享的稿件整理. 由 Leader 授权后公开.
+第一篇文章是给北大课题组分享的稿件整理. 由 Leader 授权后公开.
 
 # EVM 介绍
 
@@ -262,6 +262,8 @@ Return  = 37
 - 仅支持 256 位整数, 现行 32/64 位 CPU 无法直接处理 EVM code. 256 位整数同时造成大量的数据冗余, 这体现在内存寻址, Gas 计算, EVM Code 跳转等地方(你几乎不可能用到 2^256 的内存寻址).
 
 - Gas 模型上的经济问题. EVM 鼓励低 Gas 消耗的代码, 而不鼓励高效率的代码, 这导致以太坊区块链上存在大量性能低效, 冗余但 Gas 高效的代码. 比如为了对抗溢出而编写的 SafeMath 代码, 这一小段代码被开发者复制了无数次并部署到以太坊上.
+
+- JUMP/JUMPI 指令的设计使 EVM 字节码几乎无法被静态分析. 参看 [EIP-615](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-615.md).
 
 # 参考文献
 
