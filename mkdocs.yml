@@ -115,6 +115,7 @@ nav:
         - ETH-重写EVM-性能测试: content/eth/evm/performance.md
         - ETH-重写EVM-指令集: content/eth/evm/instruction.md
         - ETH-重写EVM-燃气: content/eth/evm/fee.md
+        - Substrate-wasm: content/eth/evm/substrate_wasm_runtime.md
 - 未分类:
         - Linux-Supervisor: content/os/supervisor.md
         - Linux-常用软件安装与配置: content/os_install.md
