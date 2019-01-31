@@ -93,16 +93,6 @@ nav:
         - Go-流量限制: content/go/token_bucket.md
         - Go-目录监听: content/go/fswatch.md
         - Go-Cgo: content/go/cgo.md
-        - ETH-前言: content/eth/prefix.md
-        - ETH-概览: content/eth/overview.md
-        - ETH-账号: content/eth/account.md
-        - ETH-交易: content/eth/transaction.md
-        - ETH-订阅通知: content/eth/pubsub.md
-        - ETH-智能合约: content/eth/contract.md
-        - ETH-重写EVM-EVM简介: content/eth/evm/overview.md
-        - ETH-重写EVM-性能测试: content/eth/evm/performance.md
-        - ETH-重写EVM-指令集: content/eth/evm/instruction.md
-        - ETH-重写EVM-燃气: content/eth/evm/fee.md
         - AHK-概览: content/ahk/overview.md
         - AHK-实现鼠标连点器: content/ahk/clicker.md
         - AHK-实现屏幕取色器: content/ahk/color.md
@@ -114,7 +104,18 @@ nav:
         - Rust-并发: content/rust/concurrent.md
         - Rust-TCP: content/rust/tcp.md
         - Rust-JSON: content/rust/json.md
-- 沙箱:
+- 区块链:
+        - ETH-前言: content/eth/prefix.md
+        - ETH-概览: content/eth/overview.md
+        - ETH-账号: content/eth/account.md
+        - ETH-交易: content/eth/transaction.md
+        - ETH-订阅通知: content/eth/pubsub.md
+        - ETH-智能合约: content/eth/contract.md
+        - ETH-重写EVM-EVM简介: content/eth/evm/overview.md
+        - ETH-重写EVM-性能测试: content/eth/evm/performance.md
+        - ETH-重写EVM-指令集: content/eth/evm/instruction.md
+        - ETH-重写EVM-燃气: content/eth/evm/fee.md
+- 未分类:
         - Linux-Supervisor: content/os/supervisor.md
         - Linux-常用软件安装与配置: content/os_install.md
         # - Linux-ssr: content/os_ssr.md
