@@ -105,17 +105,17 @@ nav:
         - Rust-TCP: content/rust/tcp.md
         - Rust-JSON: content/rust/json.md
 - 区块链:
-        - ETH-前言: content/eth/prefix.md
-        - ETH-概览: content/eth/overview.md
-        - ETH-账号: content/eth/account.md
-        - ETH-交易: content/eth/transaction.md
-        - ETH-订阅通知: content/eth/pubsub.md
-        - ETH-智能合约: content/eth/contract.md
-        - ETH-重写EVM-EVM简介: content/eth/evm/overview.md
-        - ETH-重写EVM-性能测试: content/eth/evm/performance.md
-        - ETH-重写EVM-指令集: content/eth/evm/instruction.md
-        - ETH-重写EVM-燃气: content/eth/evm/fee.md
-        - Substrate-wasm: content/eth/evm/substrate_wasm_runtime.md
+        - ETH-前言: content/bc/eth/prefix.md
+        - ETH-概览: content/bc/eth/overview.md
+        - ETH-账号: content/bc/eth/account.md
+        - ETH-交易: content/bc/eth/transaction.md
+        - ETH-订阅通知: content/bc/eth/pubsub.md
+        - ETH-智能合约: content/bc/eth/contract.md
+        - ETH-重写EVM-EVM简介: content/bc/eth/evm/overview.md
+        - ETH-重写EVM-性能测试: content/bc/eth/evm/performance.md
+        - ETH-重写EVM-指令集: content/bc/eth/evm/instruction.md
+        - ETH-重写EVM-燃气: content/bc/eth/evm/fee.md
+        - Substrate-wasm: content/bc/substrate_wasm_runtime.md
 - 未分类:
         - Linux-Supervisor: content/os/supervisor.md
         - Linux-常用软件安装与配置: content/os_install.md
