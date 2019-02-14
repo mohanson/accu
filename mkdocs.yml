@@ -115,6 +115,7 @@ nav:
         - ETH-重写EVM-性能测试: content/bc/eth/evm/performance.md
         - ETH-重写EVM-指令集: content/bc/eth/evm/instruction.md
         - ETH-重写EVM-燃气: content/bc/eth/evm/fee.md
+        - ETH-重写EVM-消息调用: content/bc/eth/evm/message_call.md
         - Substrate-wasm: content/bc/substrate_wasm_runtime.md
 - 未分类:
         - Linux-Supervisor: content/os/supervisor.md
