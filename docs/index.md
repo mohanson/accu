@@ -13,3 +13,7 @@ mail: mohanson@outlook.com.
 # 小额赞助
 
 ![img](/img/wx_qrcode.jpg)
+
+# 许可协议
+
+CC BY 3.0. 除非特别声明, 在显示标明来源的情况下, 您可以自由复制, 修改本站所有内容.
