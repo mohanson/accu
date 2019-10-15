@@ -117,6 +117,8 @@ nav:
         - ETH-重写EVM-燃气: content/bc/eth/evm/fee.md
         - ETH-重写EVM-消息调用: content/bc/eth/evm/message_call.md
         - Substrate-wasm: content/bc/substrate_wasm_runtime.md
+- 日记:
+        - Y2019: content/diary/2019.md
 - 未分类:
         - Linux-Supervisor: content/os/supervisor.md
         - Linux-常用软件安装与配置: content/os_install.md
