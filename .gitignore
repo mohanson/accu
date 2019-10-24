@@ -1,0 +1,7 @@
+__pycache__
+*.py[cod]
+.cache
+
+/site/
+/docs/sandbox.md
+/mkdocs-dev.yml

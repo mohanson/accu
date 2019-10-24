@@ -1,0 +1,129 @@
+site_name: Mohanson
+site_description: Mohanson, 数字图像处理, 深度学习, Python, Go
+site_url: http://accu.cc
+site_author: Mohanson
+theme: readthedocs
+repo_url: https://github.com/mohanson/accu
+dev_addr: 127.0.0.1:80
+markdown_extensions:
+        - asciimathml
+plugins: []
+extra_css:
+        - css/accu.css
+extra_javascript:
+        - js/accu.js
+nav:
+- 主页: index.md
+- 数字图像处理:
+        - 数字图像处理-通道: content/pil/channel.md
+        - 数字图像处理-均值: content/pil/mean.md
+        - 数字图像处理-对比增强: content/pil/contrast.md
+        - 数字图像处理-对比拉伸: content/pil/contrast_tensile.md
+        - 数字图像处理-位图切割: content/pil/bit.md
+        - 数字图像处理-直方图均衡化: content/pil/histogram_equalization.md
+        - 数字图像处理-图像减法: content/pil/sub.md
+        - 数字图像处理-加性高斯白噪声与去噪: content/pil/agwn.md
+        - 数字图像处理-空间滤波基础: content/pil/spatial_filter.md
+        - 数字图像处理-空间滤波-均值滤波: content/pil/spatial_filter_mean.md
+        - 数字图像处理-空间滤波-中值滤波: content/pil/spatial_filter_medium.md
+        - 数字图像处理-空间滤波-锐化滤波: content/pil/spatial_filter_sharpening.md
+        - 数字图像处理-空间滤波-高斯滤波: content/pil/spatial_filter_gaussian_blur.md
+        - 数字图像处理-频域滤波基础: content/pil/frequency_filter.md
+        - 数字图像处理-频域滤波-低通滤波: content/pil/frequency_filter_lpf.md
+        - 数字图像处理-频域滤波-高通滤波: content/pil/frequency_filter_hpf.md
+        - 数字图像处理-频域滤波-带阻和带通滤波: content/pil/frequency_filter_br_bp.md
+        - 数字图像处理-噪声: content/pil/noise.md
+        - 数字图像处理-安全色: content/pil/safe_color.md
+        - 数字图像处理-马卡龙色: content/pil/macaron_color.md
+        - 数字图像处理-补色和反色: content/pil/complementary_and_invert_color.md
+        - 数字图像处理-水印: content/pil/watermark.md
+        - 数字图像处理-缩放-最近邻插值法: content/pil/resize_nearst.md
+        - 数字图像处理-缩放-最近邻插值法的幽灵事件: content/pil/resize_nearst_ghost.md
+        - 数字图像处理-缩放-双线性算法: content/pil/resize_bilinear.md
+        - 数字图像处理-缩放-双三次插值法: content/pil/resize_bicubic.md
+        - 数字图像处理-字符画: content/pil/ascii.md
+        - Python-PIL-概览: content/pil/pil_tutorial_overview.md
+        - Python-PIL-Image: content/pil/pil_image.md
+        - Python-PIL-ImageChops: content/pil/pil_imagechops.md
+        - Python-PIL-ImageColor: content/pil/pil_imagecolor.md
+        - Python-PIL-ImageDraw: content/pil/pil_imagedraw.md
+        - Python-PIL-ImageEnhance: content/pil/pil_imageenhance.md
+        - Python-PIL-ImageOps: content/pil/pil_imageops.md
+- 算法:
+        - 遗传算法-简单遗传算法: content/daze/ga/sga.md
+        - 遗传算法-最优保留策略: content/daze/ga/sga_optret.md
+        - 遗传算法-生物进化模拟: content/daze/ga/evolve.md
+        - 遗传算法-愚弄神经网络: content/daze/ga/fooled_nn.md
+        - Dlib-安装: content/daze/dlib/install.md
+        - Dlib-人脸检测: content/daze/dlib/face_detect.md
+        - Dlib-人脸标注: content/daze/dlib/face_landmark.md
+        - Dlib-人脸识别: content/daze/dlib/face_recognition.md
+        - Dlib-人脸聚类: content/daze/dlib/face_clustering.md
+        - 加密算法-RC4-概览: content/daze/rc4/overview.md
+        - 加密算法-RC4-性能测试: content/daze/rc4/performance_testing.md
+        - 生命游戏: content/daze/game_of_life/overview.md
+        - sklearn-概览: content/daze/sklearn/overview.md
+        - sklearn-线性模型-概览: content/daze/sklearn/liner_model/overview.md
+        - sklearn-线性模型-普通最小二乘法: content/daze/sklearn/liner_model/linear_regression.md
+        - sklearn-线性模型-岭回归: content/daze/sklearn/liner_model/ridge.md
+        - sklearn-线性模型-逻辑回归: content/daze/sklearn/liner_model/logistic_regression.md
+        - sklearn-决策树: content/daze/sklearn/tree.md
+        - sklearn-贝叶斯分类器: content/daze/sklearn/bayes.md
+        - sklearn-kNN: content/daze/sklearn/knn.md
+        - sklearn-聚类: content/daze/sklearn/cluster.md
+        - sklearn-SVM: content/daze/sklearn/svm.md
+        - sklearn-流形学习: content/daze/sklearn/manifold.md
+        - sklearn-评估: content/daze/sklearn/evaluation.md
+        - 机器学习-图像风格转移: content/daze/ml/neural_style_transfer.md
+        - 机器学习-快速文本分类: content/daze/ml/fasttext.md
+        - 机器学习-HOG: content/daze/ml/hog.md
+        - Math-霍夫曼编码: content/daze/math/huffman.md
+        - Math-方差与标准差: content/daze/math/variance_and_sd.md
+        - Math-正态分布: content/daze/math/normal_distribution.md
+        - Math-凯利公式: content/daze/math/kelly_formula.md
+- 语言:
+        - Python-np-分割与合并: content/py/np/split.md
+        - Python-matplotlib-折线图: content/py/plt/line.md
+        - Python-matplotlib-散点图: content/py/plt/scatter.md
+        - Python-matplotlib-柱状图: content/py/plt/bar.md
+        - Python-matplotlib-饼图: content/py/plt/pie.md
+        - Python-f-string: content/py/f_string.md
+        - Python-windows编程-概览: content/py/ctypes/overview.md
+        - Python-windows编程-删除文件至回收站: content/py/ctypes/recycle.md
+        - Python-打包并发布代码至 PyPI: content/py/setup.md
+        - Go-按行读取文件: content/go/read_file.md
+        - Go-socket: content/go/socket.md
+        - Go-tls: content/go/tls.md
+        - Go-socks-version-5: content/go/socks5.md
+        - Go-交叉编译: content/go/cross_compiling.md
+        - Go-时间尽头: content/go/end_of_time.md
+        - Go-流量限制: content/go/token_bucket.md
+        - Go-目录监听: content/go/fswatch.md
+        - Go-Cgo: content/go/cgo.md
+        - AHK-概览: content/ahk/overview.md
+        - AHK-实现鼠标连点器: content/ahk/clicker.md
+        - AHK-实现屏幕取色器: content/ahk/color.md
+        - AHK-长按: content/ahk/longpress.md
+        - AHK-按行读取文件: content/ahk/loopread.md
+        - Rust-概览: content/rust/overview.md
+        - Rust-文件读取: content/rust/io.md
+        - Rust-HTTP: content/rust/http.md
+        - Rust-并发: content/rust/concurrent.md
+        - Rust-TCP: content/rust/tcp.md
+        - Rust-JSON: content/rust/json.md
+- 区块链:
+        - ETH-前言: content/blockchain/eth/prefix.md
+        - ETH-概览: content/blockchain/eth/overview.md
+        - ETH-账号: content/blockchain/eth/account.md
+        - ETH-交易: content/blockchain/eth/transaction.md
+        - ETH-订阅通知: content/blockchain/eth/pubsub.md
+        - ETH-智能合约: content/blockchain/eth/contract.md
+        - ETH-重写EVM-EVM简介: content/blockchain/eth/evm/overview.md
+        - ETH-重写EVM-性能测试: content/blockchain/eth/evm/performance.md
+        - ETH-重写EVM-指令集: content/blockchain/eth/evm/instruction.md
+        - ETH-重写EVM-燃气: content/blockchain/eth/evm/fee.md
+        - ETH-重写EVM-消息调用: content/blockchain/eth/evm/message_call.md
+- 日记:
+        - Y2019: content/diary/2019.md
+- 演讲: 
+        - 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md
