@@ -61,10 +61,10 @@ var c= "10" + 1;
 
 "I miss the wonderful you"
 
-"I": 主语
-"miss": 谓语
-"the wonderful you": 宾语
-"the wonderful": 定语, 用来修饰 "you"
+- "I": 主语
+- "miss": 谓语
+- "the wonderful you": 宾语
+- "the wonderful": 定语, 用来修饰 "you"
 
 因此可以构建出一颗树(局部树)如下所示:
 
