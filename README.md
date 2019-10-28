@@ -1,7 +1,7 @@
 Mohanson's Blog [http://accu.cc](http://accu.cc)
 
 ```sh
-$ pip install -r requirements.txt
+$ pip3 install mkdocs
 $ mkdocs serve
 ```
 

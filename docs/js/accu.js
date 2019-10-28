@@ -1,13 +1,17 @@
 $(document).ready(function () {
-    if (document.body.getElementsByTagNameNS("http://www.w3.org/1998/Math/MathML", "math")[0]) {
-        if (navigator.userAgent.indexOf("Firefox") > -1) {
-
-        } else {
-            a = document.createElement("script"),
-                a.src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=MML_HTMLorMML",
-                document.head.appendChild(a)
+    $(function () {
+        MathJax = {
+            tex: { inlineMath: [['$', '$']] },
+            svg: { 
+                fontCache: 'global' ,
+                displayAlign: 'left',
+            },
         };
-    }
+
+        a = document.createElement('script');
+        a.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+        document.head.appendChild(a);
+    })
 
     $(function () {
         $.fn.isFullyWithinViewport = function () {
