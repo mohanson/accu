@@ -17,7 +17,7 @@ import skimage.io
 im = skimage.color.rgb2gray(skimage.io.imread('/img/jp.jpg'))
 gy, gx = [np.ascontiguousarray(g) for g in np.gradient(im)]
 ```
-3. 计算梯度幅值 $$g$$ 和方向 $$theta$$
+3. 计算梯度幅值 $g$ 和方向 $\theta$
 ```py
 g = np.sqrt(gy**2 + gx**2)
 t = np.arctan2(gy, gx)
