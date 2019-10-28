@@ -1,6 +1,6 @@
 # 加性高斯白噪声
 
-加性高斯白噪声(Additive white Gaussian noise，AWGN)在通信领域中指的是一种功率谱函数是常数(即白噪声), 且幅度服从[高斯分布](/content/math_normal_distribution/)的噪声信号. 这类噪声通常来自感光元件, 且无法避免.
+加性高斯白噪声(Additive white Gaussian noise，AWGN)在通信领域中指的是一种功率谱函数是常数(即白噪声), 且幅度服从[高斯分布](/content/daze/math/normal_distribution/)的噪声信号. 这类噪声通常来自感光元件, 且无法避免.
 
 # 加噪
 

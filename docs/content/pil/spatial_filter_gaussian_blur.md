@@ -154,5 +154,5 @@ im.show()
 
 # 相关链接
 
-- [数学-方差与标准差](/content/math_variance_and_sd/)
-- [数学-正态分布](/content/math_normal_distribution/)
+- [数学-方差与标准差](/content/daze/math/variance_and_sd/)
+- [数学-正态分布](/content/daze/math/normal_distribution/)
