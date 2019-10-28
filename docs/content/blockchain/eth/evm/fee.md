@@ -4,70 +4,72 @@
 
 | Name                    | Value | Description                           |
 |-------------------------|-------|---------------------------------------|
-| $$G_("zero")$$          | 0     | 位于 $$W_("zero")$$ 集合内的操作码费用           |
-| $$G_("base")$$          | 2     | 位于 $$W_("base")$$ 集合内的操作码费用           |
-| $$G_("verylow")$$       | 3     | 位于 $$W_("verylow")$$ 集合内的操作码费用        |
-| $$G_("low")$$           | 5     | 位于 $$W_("low")$$ 集合内的操作码费用            |
-| $$G_("mid")$$           | 8     | 位于 $$W_("mid")$$ 集合内的操作码费用            |
-| $$G_("high")$$          | 10    | 位于 $$W_("high")$$ 集合内的操作码费用           |
-| $$G_("extcode")$$       | 700   | 位于 $$W_("extcode")$$ 集合内的操作码费用        |
-| $$G_("balance")$$       | 400   | BALANCE 操作码的费用                        |
-| $$G_("sload")$$         | 200   | SLOAD 操作码的费用                          |
-| $$G_("jumpdest")$$      | 1     | JUMPDEST 操作码的费用                       |
-| $$G_("sset")$$          | 20000 | SSTORE 操作码的费用, 当存储从零值设置为非零值的时候        |
-| $$G_("sreset")$$        | 5000  | SSTORE 操作码的费用, 当存储从任意值设置为零值的时候        |
-| $$R_("sclear")$$        | 15000 | 退费, 当存储从非零值设置为零值的时候                   |
-| $$R_("selfdestruct")$$  | 24000 | 退费, SELFDESTRUCT 操作码                  |
-| $$G_("selfdestruct")$$  | 5000  | SELFDESTRUCT 操作码的费用                   |
-| $$G_("create")$$        | 32000 | CREATE 操作码的费用                         |
-| $$G_("codedeposit")$$   | 200   | CREATE 操作码将代码存入世界状态需要为每字节支付的费用        |
-| $$G_("call")$$          | 700   | CALL 操作码的费用                           |
-| $$G_("callvalue")$$     | 9000  | 作为 CALL 操作的一部分, 支付非零值传输               |
-| $$G_("callstipend")$$   | 2300  | 对于非零值转移，从 $$G_("call")$$ 值中减去被调用合约的津贴 |
-| $$G_("newaccount")$$    | 25000 | CALL 或 SELFDESTRUCT 操作码创建新账号的费用       |
-| $$G_("exp")$$           | 10    | EXP 操作码的费用                            |
-| $$G_("expbyte")$$       | 50    | EXP 操作码指数部分每有效 bit 的费用                |
-| $$G_("memory")$$        | 3     | 扩容内存的费用, 按 word 计算                    |
-| $$G_("txcreate")$$      | 32000 | 创建合约的花费, 在 Homestead 阶段之后             |
-| $$G_("txdatazero")$$    | 4     | 交易中每一个零字节的费用                          |
-| $$G_("txdatanonzero")$$ | 68    | 交易中每一个非零字节的费用                         |
-| $$G_("transaction")$$   | 21000 | 每个交易的费用.                              |
-| $$G_("log")$$           | 375   | LOG 操作码的费用                            |
-| $$G_("logdata")$$       | 8     | LOG 操作码为每一个字节数据的费用                    |
-| $$G_("logtopic")$$      | 375   | LOG 操作码为每一个 Topic 的费用                 |
-| $$G_("sha3")$$          | 30    | SHA3 操作码的费用                           |
-| $$G_("sha3word")$$      | 6     | SHA3 操作码的费用, 按 word 的计算               |
-| $$G_("copy")$$          | 3     | COPY 操作码的费用, 按 word 计算                |
-| $$G_("blockhash")$$     | 20    | BLOCKHASH 操作码的费用                      |
-| $$G_("quaddivisor")$$   | 100   | 指数模数预编译契约的输入大小的二次系数                   |
+| $G_{\text zero}$          | 0     | 位于 $W_{\text zero}$ 集合内的操作码费用           |
+| $G_{\text base}$          | 2     | 位于 $W_{\text base}$ 集合内的操作码费用           |
+| $G_{\text verylow}$       | 3     | 位于 $W_{\text verylow}$ 集合内的操作码费用        |
+| $G_{\text low}$           | 5     | 位于 $W_{\text low}$ 集合内的操作码费用            |
+| $G_{\text mid}$           | 8     | 位于 $W_{\text mid}$ 集合内的操作码费用            |
+| $G_{\text high}$          | 10    | 位于 $W_{\text high}$ 集合内的操作码费用           |
+| $G_{\text extcode}$       | 700   | 位于 $W_{\text extcode}$ 集合内的操作码费用        |
+| $G_{\text balance}$       | 400   | BALANCE 操作码的费用                        |
+| $G_{\text sload}$         | 200   | SLOAD 操作码的费用                          |
+| $G_{\text jumpdest}$      | 1     | JUMPDEST 操作码的费用                       |
+| $G_{\text sset}$          | 20000 | SSTORE 操作码的费用, 当存储从零值设置为非零值的时候        |
+| $G_{\text sreset}$        | 5000  | SSTORE 操作码的费用, 当存储从任意值设置为零值的时候        |
+| $R_{\text sclear}$        | 15000 | 退费, 当存储从非零值设置为零值的时候                   |
+| $R_{\text selfdestruct}$  | 24000 | 退费, SELFDESTRUCT 操作码                  |
+| $G_{\text selfdestruct}$  | 5000  | SELFDESTRUCT 操作码的费用                   |
+| $G_{\text create}$        | 32000 | CREATE 操作码的费用                         |
+| $G_{\text codedeposit}$   | 200   | CREATE 操作码将代码存入世界状态需要为每字节支付的费用        |
+| $G_{\text call}$          | 700   | CALL 操作码的费用                           |
+| $G_{\text callvalue}$     | 9000  | 作为 CALL 操作的一部分, 支付非零值传输               |
+| $G_{\text callstipend}$   | 2300  | 对于非零值转移，从 $G_{\text call}$ 值中减去被调用合约的津贴 |
+| $G_{\text newaccount}$    | 25000 | CALL 或 SELFDESTRUCT 操作码创建新账号的费用       |
+| $G_{\text exp}$           | 10    | EXP 操作码的费用                            |
+| $G_{\text expbyte}$       | 50    | EXP 操作码指数部分每有效 bit 的费用                |
+| $G_{\text memory}$        | 3     | 扩容内存的费用, 按 word 计算                    |
+| $G_{\text txcreate}$      | 32000 | 创建合约的花费, 在 Homestead 阶段之后             |
+| $G_{\text txdatazero}$    | 4     | 交易中每一个零字节的费用                          |
+| $G_{\text txdatanonzero}$ | 68    | 交易中每一个非零字节的费用                         |
+| $G_{\text transaction}$   | 21000 | 每个交易的费用.                              |
+| $G_{\text log}$           | 375   | LOG 操作码的费用                            |
+| $G_{\text logdata}$       | 8     | LOG 操作码为每一个字节数据的费用                    |
+| $G_{\text logtopic}$      | 375   | LOG 操作码为每一个 Topic 的费用                 |
+| $G_{\text sha3}$          | 30    | SHA3 操作码的费用                           |
+| $G_{\text sha3word}$      | 6     | SHA3 操作码的费用, 按 word 的计算               |
+| $G_{\text copy}$          | 3     | COPY 操作码的费用, 按 word 计算                |
+| $G_{\text blockhash}$     | 20    | BLOCKHASH 操作码的费用                      |
+| $G_{\text quaddivisor}$   | 100   | 指数模数预编译契约的输入大小的二次系数                   |
 
 其中:
 
-- $$W_("zero")$$ = {STOP, RETURN, REVERT}
-- $$W_("base")$$ = {ADDRESS, ORIGIN, CALLER, CALLVALUE, CALLDATASIZE, CODESIZE, GASPRICE, COINBASE, TIMESTAMP, NUMBER, DIFFICULTY, GASLIMIT, RETURNDATASIZE, POP, PC, MSIZE, GAS}
-- $$W_("verylow")$$ = {ADD, SUB, NOT, LT, GT, SLT, SGT, EQ, ISZERO, AND, OR, XOR, BYTE, CALLDATALOAD, MLOAD, MSTORE, MSTORE8, PUSH*, DUP*, SWAP*}
-- $$W_("low")$$ = {MUL, DIV, SDIV, MOD, SMOD, SIGNEXTEND}
-- $$W_("mid")$$ = {ADDMOD, MULMOD, JUMP}
-- $$W_("high")$$ = {JUMPI}
-- $$W_("extcode")$$ = {EXTCODESIZE}
+- $W_{\text zero}$ = {STOP, RETURN, REVERT}
+- $W_{\text base}$ = {ADDRESS, ORIGIN, CALLER, CALLVALUE, CALLDATASIZE, CODESIZE, GASPRICE, COINBASE, TIMESTAMP, NUMBER, DIFFICULTY, GASLIMIT, RETURNDATASIZE, POP, PC, MSIZE, GAS}
+- $W_{\text verylow}$ = {ADD, SUB, NOT, LT, GT, SLT, SGT, EQ, ISZERO, AND, OR, XOR, BYTE, CALLDATALOAD, MLOAD, MSTORE, MSTORE8, PUSH*, DUP*, SWAP*}
+- $W_{\text low}$ = {MUL, DIV, SDIV, MOD, SMOD, SIGNEXTEND}
+- $W_{\text mid}$ = {ADDMOD, MULMOD, JUMP}
+- $W_{\text high}$ = {JUMPI}
+- $W_{\text extcode}$ = {EXTCODESIZE}
 
 内存的花费比较有意思, EVM 中内存花费是指数上升的, 也就是说你使用 1024 字节的内存和 1024 * 1024 字节的内存花费并不是 1024 倍, 而是一个指数倍关系.
 
 $$
-C_("mem")(a) -= G_("memory") * a + frac{a^2}{512}
+C_{\text mem}(a) = G_{\text memory} * a + \frac{a^2}{512}
 $$
 
 其中 a 是以 word 计算的内存大小. 假设一个操作码的执行过程中对内存进行了扩容, 则它实际需要花费的 Gas 是:
 
 $$
-G_("mem") = C_("mem")^' - C_("mem")
+G_{\text mem} = C_{\text mem}^\prime - C_{\text mem}
 $$
 
 # 举个栗子
 
 **例(1)**: 假设当前内存消耗为 16 word, 使用 MSTORE 操作码对内存扩容为 32 word, 求该步需要消耗的 Gas.
 
-$$G = G_("verylow") + C_("mem")(32) - C_("mem")(16) = 3 + 98 - 48 = 53$$
+$$
+G = G_{\text verylow} + C_{\text mem}(32) - C_{\text mem}(16) = 3 + 98 - 48 = 53
+$$
 
 **例(2)**: 求执行 EVM 字节码 "0x601060005260206000f3" 所消耗的 Gas.
 
