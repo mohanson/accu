@@ -1,4 +1,4 @@
-# 补色<small>[wiki](https://en.wikipedia.org/wiki/Complementary_colors)</small>
+# 补色
 
 ```py
 import numpy as np

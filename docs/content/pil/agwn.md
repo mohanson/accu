@@ -1,6 +1,6 @@
 # 加性高斯白噪声
 
-加性高斯白噪声(Additive white Gaussian noise，AWGN)在通信领域中指的是一种功率谱函数是常数(即白噪声), 且幅度服从[高斯分布](/content/math_normal_distribution/)的噪声信号. 这类噪声通常来自感光元件, 且无法避免.
+加性高斯白噪声(Additive white Gaussian noise，AWGN)在通信领域中指的是一种功率谱函数是常数(即白噪声), 且幅度服从[高斯分布](/content/daze/math/normal_distribution/)的噪声信号. 这类噪声通常来自感光元件, 且无法避免.
 
 # 加噪
 
@@ -63,22 +63,22 @@ im_converted.show()
 
 # 去噪
 
-考虑一幅将噪声 $$eta(x, y)$$ 加入到原始图像 $$f(x, y)$$ 形成的带有噪声的图像 g(x, y), 即:
+考虑一幅将噪声 $\eta(x, y)$ 加入到原始图像 $f(x, y)$ 形成的带有噪声的图像 $g(x, y)$, 即:
 
 $$
-g(x, y) = f(x, y) + eta(x, y)
+g(x, y) = f(x, y) + \eta(x, y)
 $$
 
-这里假设每个坐标点 $$(x, y)$$ 上的噪声都不相关且均值为 0. 我们处理的目标就是通过人为加入一系列噪声图像 $$g_i(x, y)$$ 来减少噪声.如果对 K 幅带有不同噪声的图像取平均值, 即
+这里假设每个坐标点 $(x, y)$ 上的噪声都不相关且均值为 0. 我们处理的目标就是通过人为加入一系列噪声图像 $g_i(x, y)$ 来减少噪声.如果对 K 幅带有不同噪声的图像取平均值, 即
 
 $$
-bar g(x, y) = frac{1}{K}sum_{i=1}^Kg_i(x, y) = f(x, y) + frac{1}{K}sum_{i=1}^Keta_i(x, y)
+\bar g(x, y) = \frac{1}{K}\sum_{i=1}^Kg_i(x, y) = f(x, y) + \frac{1}{K}\sum_{i=1}^K\eta_i(x, y)
 $$
 
-当 K 足够大时, $$frac{1}{K}sum_{i=1}^Keta_i(x, y)$$ 趋向于 0, 因此
+当 K 足够大时, $\frac{1}{K}\sum_{i=1}^K\eta_i(x, y)$ 趋向于 0, 因此
 
 $$
-bar g(x, y) = f(x, y)
+\bar g(x, y) = f(x, y)
 $$
 
 下面尝试对上述图片取 K=128 进行去噪
