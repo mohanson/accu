@@ -12,7 +12,7 @@ ax.plot(x, np.sin(x))
 plt.show()
 ```
 
-![img](/img/py/plt/line/line-1.png)
+![img](/img/py/plt/line/line_1.png)
 
 # 折线样式
 
@@ -78,7 +78,7 @@ ax.plot(x, np.sin(x), color='pink', linewidth=2, linestyle='--')
 plt.show()
 ```
 
-![img](/img/py/plt/line/line-2.png)
+![img](/img/py/plt/line/line_2.png)
 
 # 坐标范围
 
@@ -96,7 +96,7 @@ ax.set_xlim(x.min(), x.max())
 plt.show()
 ```
 
-![img](/img/py/plt/line/line-3.png)
+![img](/img/py/plt/line/line_3.png)
 
 # 填充曲线
 
@@ -117,7 +117,7 @@ ax.fill_between(x, 0, np.sin(x - np.pi / 4), alpha=0.5)
 plt.show()
 ```
 
-![img](/img/py/plt/line/line-4.png)
+![img](/img/py/plt/line/line_4.png)
 
 # 坐标位置与坐标样式
 
@@ -141,7 +141,7 @@ ax.spines['left'].set_position(('data', 0))
 plt.show()
 ```
 
-![img](/img/py/plt/line/line-5.png)
+![img](/img/py/plt/line/line_5.png)
 
 # 坐标刻度
 
@@ -160,7 +160,7 @@ ax.set_yticks([])
 plt.show()
 ```
 
-![img](/img/py/plt/line/line-6.png)
+![img](/img/py/plt/line/line_6.png)
 
 # 函数名称
 
@@ -178,4 +178,4 @@ ax.legend(loc='lower right')
 plt.show()
 ```
 
-![img](/img/py/plt/line/line-7.png)
+![img](/img/py/plt/line/line_7.png)
