@@ -19,17 +19,17 @@ EVM 指令集按照功能分类, 可分为如下几个部分:
 描述一个指令最少需要以下几个部分:
 
 | Value | Mnemonic | $\delta$ | $\alpha$ | Description |
-|-------|----------|-------------|-------------|-------------|
-| 值     | 助记词      | 出栈数         | 入栈数         | 描述          |
+|-------|----------|----------|----------|-------------|
+| 值 | 助记词 | 出栈数 | 入栈数 | 描述 |
 
 以四则运算指令为例:
 
-| Value | Mnemonic | $\delta$ | $\alpha$ | Description                                                     |
-|-------|----------|-------------|-------------|-----------------------------------------------------------------|
-| 0x01  | ADD      | 2           | 1           | Addition operation. $\mu_s^\prime[0] -= \mu_s[0] + \mu_s[1]$          |
-| 0x02  | MUL      | 2           | 1           | Multiplication operation. $\mu_s^\prime[0] -= \mu_s[0] * \mu_s[1]$    |
-| 0x03  | SUB      | 2           | 1           | Subtraction operation. $\mu_s^\prime[0] -= \mu_s[0] - \mu_s[1]$       |
-| 0x04  | DIV      | 2           | 1           | Integer division operation. $\mu_s^\prime[0] -= \mu_s[0] / \mu_s[1]$ |
+| Value | Mnemonic | $\delta$ | $\alpha$ | Description |
+|-------|----------|----------|----------|-------------|
+| 0x01  | ADD | 2 | 1 | Addition operation. $\mu_s^\prime[0] \equiv \mu_s[0] + \mu_s[1]$ |
+| 0x02  | MUL | 2 | 1 | Multiplication operation. $\mu_s^\prime[0] \equiv \mu_s[0] * \mu_s[1]$ |
+| 0x03  | SUB | 2 | 1 | Subtraction operation. $\mu_s^\prime[0] \equiv \mu_s[0] - \mu_s[1]$ |
+| 0x04  | DIV | 2 | 1 | Integer division operation. $\mu_s^\prime[0] \equiv \mu_s[0] / \mu_s[1]$ |
 
 
 > $\mu$ 表示当前栈, $\mu^\prime$ 表示执行之后的栈

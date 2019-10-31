@@ -141,31 +141,31 @@ x_tsne = tsne.fit_transform(x)
 plot_embedding(x_tsne, 't-SNE embedding')
 ```
 
-![img](/img/daze/sklearn/manifold/Selection_from_digits.png)
+![img](/img/daze/sklearn/manifold/selection_from_digits.png)
 
-![img](/img/daze/sklearn/manifold/Random_Projection.png)
+![img](/img/daze/sklearn/manifold/random_projection.png)
 
-![img](/img/daze/sklearn/manifold/Principal_Components_projection.png)
+![img](/img/daze/sklearn/manifold/principal_components_projection.png)
 
-![img](/img/daze/sklearn/manifold/Linear_Discriminant_projection.png)
+![img](/img/daze/sklearn/manifold/linear_discriminant_projection.png)
 
-![img](/img/daze/sklearn/manifold/Isomap_projection.png)
+![img](/img/daze/sklearn/manifold/isomap_projection.png)
 
-![img](/img/daze/sklearn/manifold/Locally_Linear_Embedding.png)
+![img](/img/daze/sklearn/manifold/locally_linear_embedding.png)
 
-![img](/img/daze/sklearn/manifold/Modified_Locally_Linear_Embedding.png)
+![img](/img/daze/sklearn/manifold/modified_locally_linear_embedding.png)
 
-![img](/img/daze/sklearn/manifold/Hessian_Locally_Linear_Embedding.png)
+![img](/img/daze/sklearn/manifold/hessian_locally_linear_embedding.png)
 
-![img](/img/daze/sklearn/manifold/Local_Tangent_Space_Alignment.png)
+![img](/img/daze/sklearn/manifold/local_tangent_space_alignment.png)
 
-![img](/img/daze/sklearn/manifold/MDS_embedding.png)
+![img](/img/daze/sklearn/manifold/mds_embedding.png)
 
-![img](/img/daze/sklearn/manifold/Random_forest_embedding.png)
+![img](/img/daze/sklearn/manifold/random_forest_embedding.png)
 
-![img](/img/daze/sklearn/manifold/Spectral_embedding.png)
+![img](/img/daze/sklearn/manifold/spectral_embedding.png)
 
-![img](/img/daze/sklearn/manifold/t-SNE_embedding.png)
+![img](/img/daze/sklearn/manifold/t_sne_embedding.png)
 
 # 关于维度
 
