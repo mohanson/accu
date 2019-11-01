@@ -17,7 +17,7 @@ for x, y in zip(X, Y):
 plt.show()
 ```
 
-![img](/img/py/plt/bar/bar-1.png)
+![img](/img/py/plt/bar/bar_1.png)
 
 # 颜色
 
@@ -27,7 +27,7 @@ axes.bar 函数的 color 参数可以设置颜色; color 可以接受一个颜�
 ax.bar(X, Y, tick_label=['I', 'II', 'III', 'IV', 'V'], color=['pink', 'purple'])
 ```
 
-![img](/img/py/plt/bar/bar-2.png)
+![img](/img/py/plt/bar/bar_2.png)
 
 # 填充
 
@@ -37,7 +37,7 @@ axes.bar 函数的 hatch 参数可以填充样式, 可取值为: `/`, `\`, `|`, 
 ax.bar(X, Y, tick_label=['I', 'II', 'III', 'IV', 'V'], hatch='/')
 ```
 
-![img](/img/py/plt/bar/bar-3.png)
+![img](/img/py/plt/bar/bar_3.png)
 
 # 堆叠柱状图
 
@@ -60,7 +60,7 @@ plt.legend()
 plt.show()
 ```
 
-![img](/img/py/plt/bar/bar-4.png)
+![img](/img/py/plt/bar/bar_4.png)
 
 # 柱状图并列
 
@@ -84,7 +84,7 @@ plt.xticks(X1+bar_width / 2, ['I', 'II', 'III', 'IV', 'V'])
 plt.show()
 ```
 
-![img](/img/py/plt/bar/bar-5.png)
+![img](/img/py/plt/bar/bar_5.png)
 
 # 条状图
 
@@ -106,4 +106,4 @@ ax.set_yticklabels(['I', 'II', 'III', 'IV', 'V'])
 plt.show()
 ```
 
-![img](/img/py/plt/bar/bar-6.png)
+![img](/img/py/plt/bar/bar_6.png)
