@@ -7,10 +7,6 @@ $(document).ready(function () {
                 displayAlign: 'left',
             },
         };
-
-        a = document.createElement('script');
-        a.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
-        document.head.appendChild(a);
     })
 
     $(function () {
