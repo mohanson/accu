@@ -23,7 +23,6 @@ def make():
         f.write('Pem1L7uAVI')
     with open('./site/google9b75b4b4147e247b.html', 'w') as f:
         f.write('google-site-verification: google9b75b4b4147e247b.html')
-    call('haze ln /src/rule.ls/rule.ls ./site/content/rule.ls')
 
 
 def main():
