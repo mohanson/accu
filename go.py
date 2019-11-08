@@ -23,6 +23,8 @@ def make():
         f.write('Pem1L7uAVI')
     with open('./site/google9b75b4b4147e247b.html', 'w') as f:
         f.write('google-site-verification: google9b75b4b4147e247b.html')
+    with open('./site/ads.txt', 'w') as f:
+        f.write('google.com, pub-5236818090688638, DIRECT, f08c47fec0942fa0')
 
 
 def main():
