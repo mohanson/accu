@@ -2,7 +2,9 @@ site_name: Mohanson
 site_description: Mohanson, 数字图像处理, 深度学习, Python, Go
 site_url: http://accu.cc
 site_author: Mohanson
-theme: readthedocs
+theme: 
+        name: readthedocs
+        custom_dir: custom_theme/
 repo_url: https://github.com/mohanson/accu
 dev_addr: 127.0.0.1:80
 extra_css:
