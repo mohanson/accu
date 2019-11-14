@@ -21,24 +21,24 @@ VGG-16: VGG-16 又称为 OxfordNet，是由牛津视觉几何组(Visual Geometry
 
 为了使用如上的代码, 首先需要安装 keras:
 
-```
-pip install keras
+```no-highlight
+$ pip install keras
 ```
 
 如果安装出现了问题, 建议前往 [keras 中文文档-安装](https://keras-cn.readthedocs.io/en/latest/#_2) 寻找答案.
 
 现在, 准备两张图片, 一张 "内容", 一张 "风格", 运行如下命令:
 
-```
-python neural_style_transfer.py path_to_your_base_image.jpg path_to_your_reference.jpg prefix_for_results
+```no-highlight
+$ python neural_style_transfer.py path_to_your_base_image.jpg path_to_your_reference.jpg prefix_for_results
 ```
 
 在寡人的 GTX 1070 GPU 上, 这只需要花费 80 秒左右的时间, 而在 xeon CPU 上, 可能需要花费整整一天的时间. 运行正常的话, 默认 10 次迭代后将得到总共 10 张从 "风格" 不断接近 "内容" 的图片.
 
 如果安装有 `ffmpeg`, 可以将生成的 10 张图片打包成一张 gif
 
-```sh
-ffmpeg -r 8 -i prefix_for_results_%d.jpg out.gif
+```no-highlight
+$ ffmpeg -r 8 -i prefix_for_results_%d.jpg out.gif
 ```
 
 这样就能得到本站主页上那张炫酷的 GIF 图片了.
