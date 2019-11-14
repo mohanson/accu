@@ -25,7 +25,7 @@ VGG-16: VGG-16 又称为 OxfordNet，是由牛津视觉几何组(Visual Geometry
 $ pip install keras
 ```
 
-如果安装出现了问题, 建议前往 [keras 中文文档-安装](https://keras-cn.readthedocs.io/en/latest/#_2) 寻找答案.
+如果安装出现了问题, 建议前往[keras 中文文档-安装](https://keras-cn.readthedocs.io/en/latest/#_2)寻找答案.
 
 现在, 准备两张图片, 一张"内容", 一张"风格", 运行如下命令:
 
