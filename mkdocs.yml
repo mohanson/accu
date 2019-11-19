@@ -2,7 +2,7 @@ site_name: Mohanson
 site_description: Mohanson, 数字图像处理, 深度学习, Python, Go
 site_url: http://accu.cc
 site_author: Mohanson
-theme: 
+theme:
         name: readthedocs
         custom_dir: custom_theme/
 repo_url: https://github.com/mohanson/accu
@@ -115,7 +115,6 @@ nav:
         - ETH-概览: content/blockchain/eth/overview.md
         - ETH-账号: content/blockchain/eth/account.md
         - ETH-交易: content/blockchain/eth/transaction.md
-        - ETH-订阅通知: content/blockchain/eth/pubsub.md
         - ETH-智能合约: content/blockchain/eth/contract.md
         - ETH-重写EVM-EVM简介: content/blockchain/eth/evm/overview.md
         - ETH-重写EVM-性能测试: content/blockchain/eth/evm/performance.md
@@ -124,5 +123,5 @@ nav:
         - ETH-重写EVM-消息调用: content/blockchain/eth/evm/message_call.md
 - 日记:
         - Y2019: content/diary/2019.md
-- 演讲: 
+- 演讲:
         - 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md

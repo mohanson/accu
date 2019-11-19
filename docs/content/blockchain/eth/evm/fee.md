@@ -1,45 +1,8 @@
 # Gas/燃气/费用
 
-相信许多人都对 "以太坊虚拟机每一步执行都要扣除 Gas 费用" 有所耳闻, 但鲜少有人能确切的说出具体扣费规则是如何的. EVM 按照不同的操作码预估消耗的计算机资源成本进行对应的 Gas 扣费, 并且其是先扣费, 后执行的预付费机制.
+相信许多人都对"以太坊虚拟机每一步执行都要扣除 Gas 费用"有所耳闻, 但鲜少有人能确切的说出具体扣费规则是如何的. EVM 按照不同的操作码预估消耗的计算机资源成本进行对应的 Gas 扣费, 并且其是先扣费, 后执行的预付费机制.
 
-| Name                    | Value | Description                           |
-|-------------------------|-------|---------------------------------------|
-| $G_{\text zero}$          | 0     | 位于 $W_{\text zero}$ 集合内的操作码费用           |
-| $G_{\text base}$          | 2     | 位于 $W_{\text base}$ 集合内的操作码费用           |
-| $G_{\text verylow}$       | 3     | 位于 $W_{\text verylow}$ 集合内的操作码费用        |
-| $G_{\text low}$           | 5     | 位于 $W_{\text low}$ 集合内的操作码费用            |
-| $G_{\text mid}$           | 8     | 位于 $W_{\text mid}$ 集合内的操作码费用            |
-| $G_{\text high}$          | 10    | 位于 $W_{\text high}$ 集合内的操作码费用           |
-| $G_{\text extcode}$       | 700   | 位于 $W_{\text extcode}$ 集合内的操作码费用        |
-| $G_{\text balance}$       | 400   | BALANCE 操作码的费用                        |
-| $G_{\text sload}$         | 200   | SLOAD 操作码的费用                          |
-| $G_{\text jumpdest}$      | 1     | JUMPDEST 操作码的费用                       |
-| $G_{\text sset}$          | 20000 | SSTORE 操作码的费用, 当存储从零值设置为非零值的时候        |
-| $G_{\text sreset}$        | 5000  | SSTORE 操作码的费用, 当存储从任意值设置为零值的时候        |
-| $R_{\text sclear}$        | 15000 | 退费, 当存储从非零值设置为零值的时候                   |
-| $R_{\text selfdestruct}$  | 24000 | 退费, SELFDESTRUCT 操作码                  |
-| $G_{\text selfdestruct}$  | 5000  | SELFDESTRUCT 操作码的费用                   |
-| $G_{\text create}$        | 32000 | CREATE 操作码的费用                         |
-| $G_{\text codedeposit}$   | 200   | CREATE 操作码将代码存入世界状态需要为每字节支付的费用        |
-| $G_{\text call}$          | 700   | CALL 操作码的费用                           |
-| $G_{\text callvalue}$     | 9000  | 作为 CALL 操作的一部分, 支付非零值传输               |
-| $G_{\text callstipend}$   | 2300  | 对于非零值转移，从 $G_{\text call}$ 值中减去被调用合约的津贴 |
-| $G_{\text newaccount}$    | 25000 | CALL 或 SELFDESTRUCT 操作码创建新账号的费用       |
-| $G_{\text exp}$           | 10    | EXP 操作码的费用                            |
-| $G_{\text expbyte}$       | 50    | EXP 操作码指数部分每有效 bit 的费用                |
-| $G_{\text memory}$        | 3     | 扩容内存的费用, 按 word 计算                    |
-| $G_{\text txcreate}$      | 32000 | 创建合约的花费, 在 Homestead 阶段之后             |
-| $G_{\text txdatazero}$    | 4     | 交易中每一个零字节的费用                          |
-| $G_{\text txdatanonzero}$ | 68    | 交易中每一个非零字节的费用                         |
-| $G_{\text transaction}$   | 21000 | 每个交易的费用.                              |
-| $G_{\text log}$           | 375   | LOG 操作码的费用                            |
-| $G_{\text logdata}$       | 8     | LOG 操作码为每一个字节数据的费用                    |
-| $G_{\text logtopic}$      | 375   | LOG 操作码为每一个 Topic 的费用                 |
-| $G_{\text sha3}$          | 30    | SHA3 操作码的费用                           |
-| $G_{\text sha3word}$      | 6     | SHA3 操作码的费用, 按 word 的计算               |
-| $G_{\text copy}$          | 3     | COPY 操作码的费用, 按 word 计算                |
-| $G_{\text blockhash}$     | 20    | BLOCKHASH 操作码的费用                      |
-| $G_{\text quaddivisor}$   | 100   | 指数模数预编译契约的输入大小的二次系数                   |
+![img](/img/blockchain/eth/evm/fee/fee_schedule.png)
 
 其中:
 
@@ -85,5 +48,3 @@ RETURN          pc=00000009 cost=0
 ```
 
 因此消耗的 Gas 为 18.
-
-

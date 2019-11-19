@@ -12,7 +12,7 @@
 
 **cita-vm**
 
-```
+```sh
 $ git checkout evmbin
 $ cd evmbin && cargo build --release && cd ..
 $ ./target/release/evmbin /VMTests/vmPerformance/
@@ -41,7 +41,7 @@ vmPerformance/manyFunctions100.json::manyFunctions100 487
 
 **parity-ethereum**
 
-```
+```sh
 $ cargo build --release -p evmbin
 $ ./target/release/parity-evm stats-jsontests-vm /VMTests/vmPerformance/${filename}
 ```
@@ -95,7 +95,7 @@ func TestVM(t *testing.T) {
 }
 ```
 
-```
+```sh
 $ cd tests && go test --test.run=TestVM
 ```
 
