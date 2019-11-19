@@ -1,6 +1,6 @@
 # 人脸标注
 
-dlib 自带人脸标注模块, 其 python 脚本位于 `/python_examples/face_landmark_detection.py`.
+dlib 自带人脸标注模块, 其 python 脚本位于 /python_examples/face_landmark_detection.py.
 
 ```py
 import sys
@@ -37,10 +37,10 @@ skimage.io.imsave(save_name, img)
 
 ```sh
 # 在使用该脚本前, 需要先下载预训练权重
-wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
-bunzip2 shape_predictor_68_face_landmarks.dat.bz2
+$ wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
+$ bunzip2 shape_predictor_68_face_landmarks.dat.bz2
 # 执行脚本, 保存结果至 obama_landmark.jpg
-python3 face_landmark_detection.py obama.jpg obama_landmark.jpg
+$ python3 face_landmark_detection.py obama.jpg obama_landmark.jpg
 ```
 
 ![img](/img/daze/dlib/face_landmark/obama_landmark.jpg)

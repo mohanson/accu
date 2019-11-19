@@ -1,10 +1,10 @@
 # 人脸识别
 
-dlib 自带人脸识别模块, 其 python 脚本位于 `/python_examples/face_recognition.py`.
+dlib 自带人脸识别模块, 其 python 脚本位于 /python_examples/face_recognition.py.
 
-在上一篇中已经从图像中提取到人脸特征点, 人脸识别的基本的步骤为**将特征点编码为特征矩阵, 并计算两个特征矩阵之间的欧几里得距离, 当距离小于指定阈值时, 则认为是同一个人**.
+在上一篇中已经从图像中提取到人脸特征点, 人脸识别的基本的步骤为: 将特征点编码为特征矩阵, 并计算两个特征矩阵之间的欧几里得距离, 当距离小于指定阈值时, 则认为是同一个人.
 
-dlib 中的一些注释解释了这一切(大致是将人脸特征点编码为 128 维向量, 如果两特征向量的欧几里得距离 < 0.6 则认为是同一个人):
+dlib 中的一些注释解释了这一切(大致是将人脸特征点编码为 128 维向量, 如果两特征向量的欧几里得距离 < 0.6 则认为是同一个人).
 
 ```python
 #   This example shows how to use dlib's face recognition tool.  This tool maps
@@ -29,8 +29,8 @@ dlib 中的一些注释解释了这一切(大致是将人脸特征点编码为 1
 下面来测试下, 下载预训练权重并编写如下代码
 
 ```sh
-wget http://dlib.net/files/dlib_face_recognition_resnet_model_v1.dat.bz2
-bunzip2 dlib_face_recognition_resnet_model_v1.dat.bz2
+$ wget http://dlib.net/files/dlib_face_recognition_resnet_model_v1.dat.bz2
+$ bunzip2 dlib_face_recognition_resnet_model_v1.dat.bz2
 ```
 
 ```python
@@ -74,7 +74,7 @@ print('distance', d)
 
 ![img](/img/daze/dlib/face_recognition/godness_d.png)
 
-结果是 `0.333517042672`, 是同一个人没错(长舒一口气).
+结果是 0.333517042672, 是同一个人没错(长舒一口气).
 
 # 参考
 
