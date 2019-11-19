@@ -55,7 +55,8 @@ for e in face_results:
 ```
 
 **执行结果**
-```
+
+```sh
 $ python3 run.py face_tests/
 
 Processing file: face_tests/crystal_01.jpg

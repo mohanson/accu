@@ -6,7 +6,7 @@ dlib 自带人脸识别模块, 其 python 脚本位于 /python_examples/face_rec
 
 dlib 中的一些注释解释了这一切(大致是将人脸特征点编码为 128 维向量, 如果两特征向量的欧几里得距离 < 0.6 则认为是同一个人).
 
-```python
+```py
 #   This example shows how to use dlib's face recognition tool.  This tool maps
 #   an image of a human face to a 128 dimensional vector space where images of
 #   the same person are near to each other and images from different people are
@@ -33,7 +33,7 @@ $ wget http://dlib.net/files/dlib_face_recognition_resnet_model_v1.dat.bz2
 $ bunzip2 dlib_face_recognition_resnet_model_v1.dat.bz2
 ```
 
-```python
+```py
 import sys
 
 import dlib

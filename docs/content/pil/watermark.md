@@ -8,7 +8,7 @@ $$
 
 其中 $\alpha$ 控制水印和衬底的相对可见性, $f$ 为衬底, $w$ 为水印图片. 特别的, 当 $w$ 为 RGBA 模式时, 参与计算的 $\alpha$ 需要乘以水印的 A 通道与 255 的比值.
 
-```python
+```py
 import PIL.Image
 import scipy.misc
 
@@ -38,7 +38,7 @@ $$
 
 上述公式将原图使用无符号整数除以 4 并乘以 4, 来置最低两个比特位为 0, 并用 64 除 $w$, 将 $w$ 的两个最高比特位移到衬底的最低比特位上.
 
-```python
+```py
 import PIL.Image
 import numpy as np
 import scipy.misc
