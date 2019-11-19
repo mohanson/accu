@@ -14,7 +14,7 @@ $$
 
 # 代码实现
 
-```python
+```py
 import PIL.Image
 
 im = PIL.Image.open('/img/jp.jpg')

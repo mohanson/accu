@@ -1,6 +1,6 @@
 # 人脸检测
 
-dlib 自带人脸检测模块, 其 python 脚本位于 `/python_examples/face_detector.py`. 由于机器没有 GUI 界面, 因此我简单修改了下, 可以将检测结果保存在本地.
+dlib 自带人脸检测模块, 其 python 脚本位于 /python_examples/face_detector.py. 由于机器没有 GUI 界面, 因此我简单修改了下, 可以将检测结果保存在本地.
 
 ```py
 import sys
@@ -30,7 +30,7 @@ skimage.io.imsave(save_name, img)
 
 ```sh
 # 执行脚本
-python3 face_detector.py obama.jpg obama_face.jpg
+$ python3 face_detector.py obama.jpg obama_face.jpg
 ```
 
 原图:

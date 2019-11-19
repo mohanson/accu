@@ -22,7 +22,7 @@ $ truffle init
 
 一切顺利的话, 你将看到 truffle 为你生成了以下目录结构:
 
-```
+```no-highlight
 drwxr-xr-x 1 mohan 197609   0 Jul  4 10:27 contracts
 drwxr-xr-x 1 mohan 197609   0 Jul  4 10:27 migrations
 drwxr-xr-x 1 mohan 197609   0 Jul  4 10:27 test
@@ -32,7 +32,7 @@ drwxr-xr-x 1 mohan 197609   0 Jul  4 10:27 test
 
 # Solidity
 
-Solidity 是一门面向合约的, 为实现智能合约而创建的高级编程语言. 这门语言受到了 C++, Python 和 Javascript 语言的影响, 设计的目的是能在以太坊虚拟机(EVM)上运行.
+Solidity 是一门面向合约的, 为实现智能合约而创建的高级编程语言. 这门语言受到了 C++, Python 和 Javascript 语言的影响, 设计的目的是能在 EVM(以太坊虚拟机) 上运行.
 
 文档: [http://solidity.readthedocs.io/en/v0.4.24/](http://solidity.readthedocs.io/en/v0.4.24/)
 
@@ -42,7 +42,7 @@ Solidity 是一门面向合约的, 为实现智能合约而创建的高级编程
 
 首先在 contracts/ 目录下新建一个 Storage.sol 文件, 并键入以下内容
 
-```
+```no-highlight
 pragma solidity ^0.4.0;
 
 contract Storage {
@@ -58,7 +58,7 @@ contract Storage {
 }
 ```
 
-注意到在代码首行我们使用 `pragma solidity ^0.4.0;` 声明编译该份代码需要的 solidity 编译器版本必须 >= 0.4.0. 随后定义了一个 `Storage` 合约, 合约内部有一个 `storedData` 属性和两个方法(`set` 和 `get`).
+注意到在代码首行我们使用 `pragma solidity ^0.4.0;` 声明编译该份代码需要的 solidity 编译器版本必须 >= 0.4.0. 随后定义了一个 Storage 合约, 合约内部有一个 storedData 属性和两个方法.
 
 在 /migrations 目录下新建 2_deploy_contracts.js, 并键入以下内容
 
@@ -88,7 +88,7 @@ module.exports = {
 };
 ```
 
-注意到这里我们使用了 `truffle-privatekey-provider` 依赖, 并且你需要在 HDWalletProvider 中填入自己的私钥, 在 from 中填入自己的地址. 确保该地址下有足够的以太完成合约发布.
+注意到这里我们使用了 truffle-privatekey-provider 依赖, 并且你需要在 HDWalletProvider 中填入自己的私钥, 在 from 中填入自己的地址. 确保该地址下有足够的以太完成合约发布.
 
 # 发布合约
 
@@ -100,7 +100,7 @@ $ truffle migrate --network ropsten
 
 发布日志
 
-```
+```no-highlight
 Using network 'ropsten'.
 
 Running migration: 1_initial_migration.js

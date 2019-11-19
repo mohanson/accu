@@ -2,7 +2,7 @@
 
 在 PIL 中, 使用如下方式获取图像均值:
 
-```python
+```py
 import PIL.Image
 import PIL.ImageStat
 
