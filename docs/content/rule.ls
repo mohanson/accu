@@ -30,6 +30,8 @@ R googlevideo.com *.googlevideo.com
 
 R rust-lang.org *.rust-lang.org
 
+R steam-chat.com *.steam-chat.com
+
 R stackoverflow.com *.stackoverflow.com
 
 R ts-ast-viewer.com *.ts-ast-viewer.com
