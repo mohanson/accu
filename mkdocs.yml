@@ -123,5 +123,6 @@ nav:
         - ETH-重写EVM-消息调用: content/blockchain/eth/evm/message_call.md
 - 日记:
         - Y2019: content/diary/2019.md
+        - Y2020: content/diary/2020.md
 - 演讲:
         - 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md
