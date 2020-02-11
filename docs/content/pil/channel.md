@@ -30,8 +30,16 @@ b.show()
 ```
 得到如下三张图片, 每个分量单独拿出来都是一个 [270, 480, 1] 的矩阵
 
+R 通道的灰度图像:
+
 ![img](/img/pil/channel/jp_r.jpg)
+
+G 通道的灰度图像:
+
 ![img](/img/pil/channel/jp_g.jpg)
+
+B 通道的灰度图像:
+
 ![img](/img/pil/channel/jp_b.jpg)
 
 **如你所见, 它们并不是彩色的，而是一幅灰度图像**

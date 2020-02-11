@@ -16,4 +16,8 @@ mail: mohanson@outlook.com.
 
 # 许可协议
 
-CC BY 3.0. 除非特别声明, 在显示标明来源的情况下, 您可以自由复制, 修改本站所有内容.
+CC BY-NC-SA (署名-相同方式共享-非商业性使用).
+
+# 尾巴
+
+[浙ICP备17002200号](http://www.beian.miit.gov.cn)

@@ -48,6 +48,8 @@ nav:
         - Python-PIL-ImageDraw: content/pil/pil_imagedraw.md
         - Python-PIL-ImageEnhance: content/pil/pil_imageenhance.md
         - Python-PIL-ImageOps: content/pil/pil_imageops.md
+- 自己动手写 Game Boy 仿真器:
+        - GB-前言: content/gameboy/preface.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
         - 遗传算法-最优保留策略: content/daze/ga/sga_optret.md
@@ -123,5 +125,6 @@ nav:
         - ETH-重写EVM-消息调用: content/blockchain/eth/evm/message_call.md
 - 日记:
         - Y2019: content/diary/2019.md
+        - Y2020: content/diary/2020.md
 - 演讲:
         - 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md
