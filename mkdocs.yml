@@ -52,6 +52,7 @@ nav:
         - GB-前言: content/gameboy/preface.md
         - GB-虚拟机发展史-硬件仿真器: content/gameboy/history/emulator.md
         - GB-虚拟机发展史-程序虚拟机: content/gameboy/history/runtime.md
+        - GB-虚拟机发展史-软件模拟器: content/gameboy/history/simulator.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
         - 遗传算法-最优保留策略: content/daze/ga/sga_optret.md
