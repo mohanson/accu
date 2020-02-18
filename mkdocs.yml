@@ -53,6 +53,7 @@ nav:
         - GB-虚拟机发展史-硬件仿真器: content/gameboy/history/emulator.md
         - GB-虚拟机发展史-程序虚拟机: content/gameboy/history/runtime.md
         - GB-虚拟机发展史-软件模拟器: content/gameboy/history/simulator.md
+        - GB-游戏卡带-漫谈卡带: content/gameboy/cartridge/about_cartridge.md
         - GB-未完待续: content/gameboy/next.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
