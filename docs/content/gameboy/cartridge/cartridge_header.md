@@ -212,7 +212,7 @@ cart[0x014E/SEGSIZE][0x014E%SEGSIZE] = (chk>>8)&0xFF;
 cart[0x014F/SEGSIZE][0x014F%SEGSIZE] = chk&0xFF;
 ```
 
-其中变量 chk(checksum) 为一个 unsigned long 类型, 在开始计算全局校验和之前, 首先设置 0x014e 与 0x014f 为 0, 然后逐字节读取 cartridge 中的数据并与 chk 相加. 循环结束后, ckh 的值被保存在地址 0x014e 与 0x014f 中.
+其中变量 chk(checksum) 为一个 unsigned long 类型, 在开始计算全局校验和之前, 首先设置 0x014e 与 0x014f 为 0, 然后逐字节读取 cartridge 中的数据并与 chk 相加. 循环结束后, chk 的值被保存在地址 0x014e 与 0x014f 中.
 
 # 示例代码
 
