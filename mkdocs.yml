@@ -50,6 +50,12 @@ nav:
         - Python-PIL-ImageOps: content/pil/pil_imageops.md
 - 自己动手写 Game Boy 仿真器:
         - GB-前言: content/gameboy/preface.md
+        - GB-虚拟机发展史-硬件仿真器: content/gameboy/history/emulator.md
+        - GB-虚拟机发展史-程序虚拟机: content/gameboy/history/runtime.md
+        - GB-虚拟机发展史-软件模拟器: content/gameboy/history/simulator.md
+        - GB-游戏卡带-漫谈卡带: content/gameboy/cartridge/about_cartridge.md
+        - GB-游戏卡带-Header: content/gameboy/cartridge/cartridge_header.md
+        - GB-未完待续: content/gameboy/next.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
         - 遗传算法-最优保留策略: content/daze/ga/sga_optret.md
@@ -128,3 +134,4 @@ nav:
         - Y2020: content/diary/2020.md
 - 演讲:
         - 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md
+        - 区块链隐私保护密码技术介绍: content/speech/blockchain_privacy_protection.md
