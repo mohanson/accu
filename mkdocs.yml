@@ -134,3 +134,4 @@ nav:
         - Y2020: content/diary/2020.md
 - 演讲:
         - 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md
+        - 区块链隐私保护密码技术介绍: content/speech/blockchain_privacy_protection.md
