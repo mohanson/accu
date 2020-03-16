@@ -1,9 +1,3 @@
-由于入职新公司, 要忙的事情比较多, 接近三个月没有更新文章. 趁最近一点空闲时间分享一下这几个月的工作. 我们[秘猿](https://www.cryptape.com/#/)使用 Rust 重写了 EVM!
-
-项目地址: [https://github.com/cryptape/cita-vm](https://github.com/cryptape/cita-vm).
-
-第一篇文章是给北大课题组分享的稿件整理. 由 Leader 授权后公开.
-
 # EVM 介绍
 
 - Ethereum Vitual Machine(EVM) 是以太坊执行模块的重要组成部分, 其职责是执行 EVM Code. EVM 使用了 `256` 位长度的机器码, 是一种基于堆栈的虚拟机.
