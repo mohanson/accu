@@ -121,7 +121,7 @@ nav:
 - 区块链:
         - EVM: content/blockchain/evm.md
         - "Merkle Tree": content/blockchain/merkle_tree.md
-- 日记:
+- 竹书纪年:
         - Y2019: content/diary/2019.md
         - Y2020: content/diary/2020.md
 - 演讲:
