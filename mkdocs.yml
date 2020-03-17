@@ -55,6 +55,7 @@ nav:
         - GB-虚拟机发展史-软件模拟器: content/gameboy/history/simulator.md
         - GB-游戏卡带-漫谈卡带: content/gameboy/cartridge/about_cartridge.md
         - GB-游戏卡带-Header: content/gameboy/cartridge/cartridge_header.md
+        - GB-游戏卡带-Memory Bank Controller: content/gameboy/cartridge/memory_bank_controller.md
         - GB-未完待续: content/gameboy/next.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
@@ -119,19 +120,11 @@ nav:
         - Rust-TCP: content/rust/tcp.md
         - Rust-JSON: content/rust/json.md
 - 区块链:
-        - ETH-前言: content/blockchain/eth/prefix.md
-        - ETH-概览: content/blockchain/eth/overview.md
-        - ETH-账号: content/blockchain/eth/account.md
-        - ETH-交易: content/blockchain/eth/transaction.md
-        - ETH-智能合约: content/blockchain/eth/contract.md
-        - ETH-重写EVM-EVM简介: content/blockchain/eth/evm/overview.md
-        - ETH-重写EVM-性能测试: content/blockchain/eth/evm/performance.md
-        - ETH-重写EVM-指令集: content/blockchain/eth/evm/instruction.md
-        - ETH-重写EVM-燃气: content/blockchain/eth/evm/fee.md
-        - ETH-重写EVM-消息调用: content/blockchain/eth/evm/message_call.md
-- 日记:
+        - EVM: content/blockchain/evm.md
+        - Merkle Tree: content/blockchain/merkle_tree.md
+- 竹书纪年:
         - Y2019: content/diary/2019.md
         - Y2020: content/diary/2020.md
 - 演讲:
-        - 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md
+        - minits, 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md
         - 区块链隐私保护密码技术介绍: content/speech/blockchain_privacy_protection.md
