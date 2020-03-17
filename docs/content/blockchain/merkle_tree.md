@@ -122,27 +122,27 @@ hashG:    [ <35>, 'coin' ]
 **相关讨论**
 
 - [https://ethereum.stackexchange.com/questions/57761/eli5-sparse-merkle-trees-on-sharding](https://ethereum.stackexchange.com/questions/57761/eli5-sparse-merkle-trees-on-sharding)
-  - SMT 几乎可以在使用(或计划使用) Merkle Patricia Tries 的任何地方实现替换
-  - 以太坊的 MPT 的实施和使用都非常复杂, SMT 方式更简单, 效率也差不多
+    - SMT 几乎可以在使用(或计划使用) Merkle Patricia Tries 的任何地方实现替换
+    - 以太坊的 MPT 的实施和使用都非常复杂, SMT 方式更简单, 效率也差不多
 - [https://ethresear.ch/t/data-availability-proof-friendly-state-tree-transitions/1453](https://ethresear.ch/t/data-availability-proof-friendly-state-tree-transitions/1453)
-  - 文中指出默克尔树的一个问题, 即一个恶意矿工可以创建带有欺诈性 state root 的区块链, 该状态树根与该区块中的交易进行的状态转换不匹配, 因此没有人能够找到证明该树中包含任何状态的证据, 或者证明树中包含欺诈性的状态, 因为他们没有相关数据. 虽然可以通过提供整个状态树的数据可用性证明来防止这种情况, 但是, 这要求节点在每个块中广播系统的整个状态, 这当然不是很有效. 解决办法是在 Block Header 中包含多个中间 state root 而非一个最终的 state root.
-  - SMT 的优化的解决方案: [https://www.links.org/files/RevocationTransparency.pdf](https://www.links.org/files/RevocationTransparency.pdf), [https://eprint.iacr.org/2016/683.pdf](https://eprint.iacr.org/2016/683.pdf), 简单来说就是提前存储 Hash(Null), Hash(Hash(Null) + Hash(Null) ... ) ...
-  - SMT 的一个状态转换时间复杂度永远固定是 O(log(n)), 且 "Sparse merkle trees are used because they do not have to be rebalanced".
-  - Vitalik 在评论做了分析, 认为:
-    - Proof 证明的大小应该与 MPT 相当
-    - 从概念上, SMT 与 MPT 所能实现的功能几乎完全一样, 但胜在实现简单, 有**巨大**优势.
+    - 文中指出默克尔树的一个问题, 即一个恶意矿工可以创建带有欺诈性 state root 的区块链, 该状态树根与该区块中的交易进行的状态转换不匹配, 因此没有人能够找到证明该树中包含任何状态的证据, 或者证明树中包含欺诈性的状态, 因为他们没有相关数据. 虽然可以通过提供整个状态树的数据可用性证明来防止这种情况, 但是, 这要求节点在每个块中广播系统的整个状态, 这当然不是很有效. 解决办法是在 Block Header 中包含多个中间 state root 而非一个最终的 state root.
+    - SMT 的优化的解决方案: [https://www.links.org/files/RevocationTransparency.pdf](https://www.links.org/files/RevocationTransparency.pdf), [https://eprint.iacr.org/2016/683.pdf](https://eprint.iacr.org/2016/683.pdf), 简单来说就是提前存储 Hash(Null), Hash(Hash(Null) + Hash(Null) ... ) ...
+    - SMT 的一个状态转换时间复杂度永远固定是 O(log(n)), 且 "Sparse merkle trees are used because they do not have to be rebalanced".
+    - Vitalik 在评论做了分析, 认为:
+        - Proof 证明的大小应该与 MPT 相当
+        - 从概念上, SMT 与 MPT 所能实现的功能几乎完全一样, 但胜在实现简单, 有**巨大**优势.
 - [https://www.deadalnix.me/2016/09/24/introducing-merklix-tree-as-an-unordered-merkle-tree-on-steroid/](https://www.deadalnix.me/2016/09/24/introducing-merklix-tree-as-an-unordered-merkle-tree-on-steroid/)
-  - MPT 在集合的中间插入或删除一个元素将需要大量的运算, 如果需要 2 个包含相同元素的集合, 但是以不同的顺序插入将产生 2 个根本不同的树.
-  - 同一组元素总是会产生同样的根, 这对于很难维护一致性的系统非常重要, 这在分布式系统中很常见. 无论它们如何到达, 系统的节点最终都将收敛到相同的集合和相同的根.
+    - MPT 在集合的中间插入或删除一个元素将需要大量的运算, 如果需要 2 个包含相同元素的集合, 但是以不同的顺序插入将产生 2 个根本不同的树.
+    - 同一组元素总是会产生同样的根, 这对于很难维护一致性的系统非常重要, 这在分布式系统中很常见. 无论它们如何到达, 系统的节点最终都将收敛到相同的集合和相同的根.
 - [https://medium.com/@ouvrard.pierre.alain/sparse-merkle-tree-86e6e2fc26da](https://medium.com/@ouvrard.pierre.alain/sparse-merkle-tree-86e6e2fc26da)
-  - SMT 可以并发更新键值. "The keys should be sorted in an array, and the corresponding values should be at the same index in a separate array",  相关代码实现在 [https://github.com/aergoio/SMT](https://github.com/aergoio/SMT).
+    - SMT 可以并发更新键值. "The keys should be sorted in an array, and the corresponding values should be at the same index in a separate array",  相关代码实现在 [https://github.com/aergoio/SMT](https://github.com/aergoio/SMT).
 - [https://ethresear.ch/t/optimizing-sparse-merkle-trees/3751](https://ethresear.ch/t/optimizing-sparse-merkle-trees/3751), SMT 的优化技巧
-  - zero branch 的预计算
-  - 如果有一个只有一个元素的子树, 我们可以简单地存储一条记录, 该记录说明值是什么, 键是什么以及哈希是什么(以避免必须重新计算). 它可以将 db read 操作次数降低至和 MPT 一样.
-  - 使用 Hex 作为键而非二叉树, 可以使 db read 次数降低 3-4 倍
-  - plasma 团队已经实现了该文章提高的全部优化
-  - Does the further design you describe require changing the on-chain verifier? No. The consensus rules are 100% the same, the hashes are 100% the same, the proofs are 100% the same, it’s a purely voluntary client-side change that different clients can implement differently. This is precisely why this is interesting.
-  - 如果约定 H(0, 0) = 0, 则是一个巨大的性能优化!
+    - zero branch 的预计算
+    - 如果有一个只有一个元素的子树, 我们可以简单地存储一条记录, 该记录说明值是什么, 键是什么以及哈希是什么(以避免必须重新计算). 它可以将 db read 操作次数降低至和 MPT 一样.
+    - 使用 Hex 作为键而非二叉树, 可以使 db read 次数降低 3-4 倍
+    - plasma 团队已经实现了该文章提高的全部优化
+    - Does the further design you describe require changing the on-chain verifier? No. The consensus rules are 100% the same, the hashes are 100% the same, the proofs are 100% the same, it’s a purely voluntary client-side change that different clients can implement differently. This is precisely why this is interesting.
+    - 如果约定 H(0, 0) = 0, 则是一个巨大的性能优化!
 - [https://github.com/ethereum/eth2.0-specs/issues/1472](https://github.com/ethereum/eth2.0-specs/issues/1472)
 
 # SMT 在 Libra 中的实现
