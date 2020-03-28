@@ -56,6 +56,8 @@ nav:
         - GB-游戏卡带-漫谈卡带: content/gameboy/cartridge/about_cartridge.md
         - GB-游戏卡带-Header: content/gameboy/cartridge/cartridge_header.md
         - GB-游戏卡带-Memory Bank Controller: content/gameboy/cartridge/memory_bank_controller.md
+        - GB-游戏卡带-ROM only: content/gameboy/cartridge/rom_only.md
+        - GB-游戏卡带-MBC1: content/gameboy/cartridge/mbc1.md
         - GB-未完待续: content/gameboy/next.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
