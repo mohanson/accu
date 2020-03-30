@@ -107,6 +107,7 @@ nav:
         - Python-打包并发布代码至 PyPI: content/py/setup.md
         - Go-按行读取文件: content/go/read_file.md
         - Go-socket: content/go/socket.md
+        - Go-socket-假如服务端不调用 Accept: content/go/socket_not_accept.md
         - Go-tls: content/go/tls.md
         - Go-socks-version-5: content/go/socks5.md
         - Go-交叉编译: content/go/cross_compiling.md
