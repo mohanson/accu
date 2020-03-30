@@ -83,6 +83,7 @@ tcp        5      0 127.0.0.1:8080          127.0.0.1:56428         CLOSE_WAIT  
 阅读操作系统的 Accept 函数文档: [http://man7.org/linux/man-pages/man2/accept.2.html](http://man7.org/linux/man-pages/man2/accept.2.html), 在第一段落中有如下描述:
 
 > It extracts the first connection request on the queue of pending connections for the listening socket, sockfd, creates a new connected socket, and returns a new file descriptor referring to that socket.
+>
 > 翻译: 它从 connections 队列中取出第一个 connection, 并返回引用该 connection 的一个新的文件描述符.
 
 验证了我的想法, 无论是否调用 Accept, connection 都已经建立起来了, Accept 只是将该 connection 包装成一个文件描述符, 供程序 Read, Write 和 Close. 那么关于第二步为什么客户端能 Write 成功就很容易解释了, 因为 connection 早已被建立(数据应该被暂存在服务端的接受缓冲区).
