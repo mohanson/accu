@@ -37,8 +37,11 @@ setuptools.setup(
 ```
 
 ## 打包并发布
+
 ```sh
-python setup.py sdist upload
+$ python setup.py sdist bdist_wheel
+$ python -m pip install --upgrade twine
+$ python -m twine upload dist/*
 ```
 
 ## 提示

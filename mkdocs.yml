@@ -58,6 +58,10 @@ nav:
         - GB-游戏卡带-Memory Bank Controller: content/gameboy/cartridge/memory_bank_controller.md
         - GB-游戏卡带-ROM only: content/gameboy/cartridge/rom_only.md
         - GB-游戏卡带-MBC1: content/gameboy/cartridge/mbc1.md
+        - GB-游戏卡带-MBC2: content/gameboy/cartridge/mbc2.md
+        - GB-游戏卡带-MBC3: content/gameboy/cartridge/mbc3.md
+        - GB-游戏卡带-MBC5: content/gameboy/cartridge/mbc5.md
+        - GB-游戏卡带-Cartridge 模块完整代码: content/gameboy/cartridge/others.md
         - GB-未完待续: content/gameboy/next.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
@@ -103,6 +107,7 @@ nav:
         - Python-打包并发布代码至 PyPI: content/py/setup.md
         - Go-按行读取文件: content/go/read_file.md
         - Go-socket: content/go/socket.md
+        - Go-socket-假如服务端不调用 Accept: content/go/socket_not_accept.md
         - Go-tls: content/go/tls.md
         - Go-socks-version-5: content/go/socks5.md
         - Go-交叉编译: content/go/cross_compiling.md
