@@ -65,6 +65,7 @@ nav:
         - GB-中央处理器-概览: content/gameboy/cpu/overview.md
         - GB-中央处理器-算术逻辑单元: content/gameboy/cpu/alu.md
         - GB-中央处理器-寄存器与存储系统: content/gameboy/cpu/register.md
+        - GB-中央处理器-指令与指令集: content/gameboy/cpu/isa.md
         - GB-未完待续: content/gameboy/next.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
