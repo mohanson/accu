@@ -69,6 +69,9 @@ nav:
         - GB-中央处理器-流水线: content/gameboy/cpu/pipeline.md
         - GB-中央处理器-LR35902标准指令集: content/gameboy/cpu/lr35902_standard.md
         - GB-中央处理器-LR35902扩展指令集: content/gameboy/cpu/lr35902_extension.md
+        - GB-中央处理器-LR35902时钟周期与频率仿真: content/gameboy/cpu/cycles.md
+        - GB-中央处理器-LR35902中断: content/gameboy/cpu/interrupts.md
+        - GB-中央处理器-内存管理单元与主板: content/gameboy/cpu/mmu.md
         - GB-未完待续: content/gameboy/next.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
