@@ -62,6 +62,8 @@ nav:
         - GB-游戏卡带-MBC3: content/gameboy/cartridge/mbc3.md
         - GB-游戏卡带-MBC5: content/gameboy/cartridge/mbc5.md
         - GB-游戏卡带-Cartridge 模块完整代码: content/gameboy/cartridge/others.md
+        - GB-中央处理器-概览: content/gameboy/cpu/overview.md
+        - GB-中央处理器-算术逻辑单元: content/gameboy/cpu/alu.md
         - GB-未完待续: content/gameboy/next.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
