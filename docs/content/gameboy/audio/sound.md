@@ -29,3 +29,58 @@
 ![img](/img/gameboy/audio/sound/fig3.jpg)
 
 即使频率与振幅都相同的声波, 因为所加入的谐波不同, 所表现出来的音色也不同.
+
+# 关于如何绘制波形图
+
+本节的图片均由 Python 的 Matplotlib 库生成. Matplotlib 是一个非常经典的绘图库, 常常用于大数据分析与机器学习场景.
+
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use('seaborn')
+plt.rcParams.update({'font.size': 22})
+
+ax = plt.subplot()
+
+x = np.linspace(-5*np.pi, 5*np.pi, 256)
+ax.plot(x, np.sin(x), label='f(x) = sin(x)')
+
+x = np.linspace(-5*np.pi, 5*np.pi, 256)
+ax.plot(x, 0.5 * np.sin(x), label='f(x) = sin(x) * 0.5')
+
+ax.legend(loc='lower right')
+plt.show()
+```
+
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use('seaborn')
+plt.rcParams.update({'font.size': 22})
+
+ax = plt.subplot()
+
+x = np.linspace(-3*np.pi, 3*np.pi, 256)
+ax.plot(x, np.sin(x), label='f(x) = sin(x)')
+
+x = np.linspace(-3*np.pi, 3*np.pi, 256)
+ax.plot(x, np.sin(3 * x), label='f(x) = sin(3x)')
+
+ax.legend(loc='lower right')
+plt.show()
+```
+
+```py
+import numpy as np
+import matplotlib.pyplot as plt
+plt.style.use('seaborn')
+plt.rcParams.update({'font.size': 22})
+
+ax = plt.subplot()
+
+x = np.linspace(-5*np.pi, 5*np.pi, 256)
+ax.plot(x, np.sin(x) + np.cos(0.5 * x), label='f(x) = sin(x) + cos(0.5x')
+
+ax.legend(loc='lower right')
+plt.show()
+```
