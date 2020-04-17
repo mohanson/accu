@@ -79,6 +79,7 @@ nav:
         - GB-视频-Game Boy 图像显示系统: content/gameboy/video/system.md
         - GB-视频-GPU 寄存器与内存结构: content/gameboy/video/gpu.md
         - GB-视频-代码实现: content/gameboy/video/code.md
+        - GB-音频-概览: content/gameboy/audio/overview.md
         - GB-未完待续: content/gameboy/next.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
