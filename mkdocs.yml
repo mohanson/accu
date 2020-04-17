@@ -99,6 +99,7 @@ nav:
         - GB-其他-定时器: content/gameboy/other/timer.md
         - GB-其他-硬件初始化工作: content/gameboy/other/init.md
         - GB-其他-测试: content/gameboy/other/test.md
+        - GB-后记: content/gameboy/foot.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
         - 遗传算法-最优保留策略: content/daze/ga/sga_optret.md
