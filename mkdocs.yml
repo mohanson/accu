@@ -62,27 +62,27 @@ nav:
         - GB-游戏卡带-MBC3: content/gameboy/cartridge/mbc3.md
         - GB-游戏卡带-MBC5: content/gameboy/cartridge/mbc5.md
         - GB-游戏卡带-Cartridge 模块完整代码: content/gameboy/cartridge/others.md
-        - GB-中央处理器-概览: content/gameboy/cpu/overview.md
-        - GB-中央处理器-算术逻辑单元: content/gameboy/cpu/alu.md
-        - GB-中央处理器-寄存器与存储系统: content/gameboy/cpu/register.md
-        - GB-中央处理器-指令与指令集: content/gameboy/cpu/isa.md
-        - GB-中央处理器-流水线: content/gameboy/cpu/pipeline.md
-        - GB-中央处理器-LR35902标准指令集: content/gameboy/cpu/lr35902_standard.md
-        - GB-中央处理器-LR35902扩展指令集: content/gameboy/cpu/lr35902_extension.md
-        - GB-中央处理器-LR35902时钟周期与频率仿真: content/gameboy/cpu/cycles.md
-        - GB-中央处理器-LR35902中断: content/gameboy/cpu/interrupts.md
-        - GB-中央处理器-内存管理单元与主板: content/gameboy/cpu/mmu.md
+        - GB-CPU-概览: content/gameboy/cpu/overview.md
+        - GB-CPU-算术逻辑单元: content/gameboy/cpu/alu.md
+        - GB-CPU-寄存器与存储系统: content/gameboy/cpu/register.md
+        - GB-CPU-指令与指令集: content/gameboy/cpu/isa.md
+        - GB-CPU-流水线: content/gameboy/cpu/pipeline.md
+        - GB-CPU-LR35902标准指令集: content/gameboy/cpu/lr35902_standard.md
+        - GB-CPU-LR35902扩展指令集: content/gameboy/cpu/lr35902_extension.md
+        - GB-CPU-LR35902时钟周期与频率仿真: content/gameboy/cpu/cycles.md
+        - GB-CPU-LR35902中断: content/gameboy/cpu/interrupts.md
+        - GB-CPU-内存管理单元与主板: content/gameboy/cpu/mmu.md
         - GB-视频-概览: content/gameboy/video/overview.md
         - GB-视频-点阵图: content/gameboy/video/dot_matrix.md
         - GB-视频-显示输出: content/gameboy/video/show.md
         - GB-视频-光栅成像原理与概念: content/gameboy/video/crt.md
-        - GB-视频-Game Boy 图像显示系统: content/gameboy/video/system.md
+        - GB-视频-图像显示系统: content/gameboy/video/system.md
         - GB-视频-GPU 寄存器与内存结构: content/gameboy/video/gpu.md
         - GB-视频-代码实现: content/gameboy/video/code.md
         - GB-音频-概览: content/gameboy/audio/overview.md
         - GB-音频-声音的构成: content/gameboy/audio/sound.md
         - GB-音频-Rust Cpal 库介绍: content/gameboy/audio/cpal.md
-        - GB-音频-Game Boy 音频系统概念简介: content/gameboy/audio/concept.md
+        - GB-音频-音频系统概念简介: content/gameboy/audio/concept.md
         - GB-音频-寄存器: content/gameboy/audio/register.md
         - GB-音频-512 Hz 时钟信号: content/gameboy/audio/timer.md
         - GB-音频-序列发生器: content/gameboy/audio/frame_sequence.md
