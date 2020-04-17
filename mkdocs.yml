@@ -64,6 +64,21 @@ nav:
         - GB-游戏卡带-Cartridge 模块完整代码: content/gameboy/cartridge/others.md
         - GB-中央处理器-概览: content/gameboy/cpu/overview.md
         - GB-中央处理器-算术逻辑单元: content/gameboy/cpu/alu.md
+        - GB-中央处理器-寄存器与存储系统: content/gameboy/cpu/register.md
+        - GB-中央处理器-指令与指令集: content/gameboy/cpu/isa.md
+        - GB-中央处理器-流水线: content/gameboy/cpu/pipeline.md
+        - GB-中央处理器-LR35902标准指令集: content/gameboy/cpu/lr35902_standard.md
+        - GB-中央处理器-LR35902扩展指令集: content/gameboy/cpu/lr35902_extension.md
+        - GB-中央处理器-LR35902时钟周期与频率仿真: content/gameboy/cpu/cycles.md
+        - GB-中央处理器-LR35902中断: content/gameboy/cpu/interrupts.md
+        - GB-中央处理器-内存管理单元与主板: content/gameboy/cpu/mmu.md
+        - GB-视频-概览: content/gameboy/video/overview.md
+        - GB-视频-点阵图: content/gameboy/video/dot_matrix.md
+        - GB-视频-显示输出: content/gameboy/video/show.md
+        - GB-视频-光栅成像原理与概念: content/gameboy/video/crt.md
+        - GB-视频-Game Boy 图像显示系统: content/gameboy/video/system.md
+        - GB-视频-GPU 寄存器与内存结构: content/gameboy/video/gpu.md
+        - GB-视频-代码实现: content/gameboy/video/code.md
         - GB-未完待续: content/gameboy/next.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
