@@ -80,7 +80,20 @@ nav:
         - GB-视频-GPU 寄存器与内存结构: content/gameboy/video/gpu.md
         - GB-视频-代码实现: content/gameboy/video/code.md
         - GB-音频-概览: content/gameboy/audio/overview.md
-        - GB-未完待续: content/gameboy/next.md
+        - GB-音频-声音的构成: content/gameboy/audio/sound.md
+        # - GB-音频-Rust Cpal 库介绍: content/gameboy/audio/cpal.md
+        # - GB-音频-Game Boy 音频系统概念简介: content/gameboy/audio/overview.md
+        # - GB-音频-寄存器: content/gameboy/audio/register.md
+        # - GB-音频-512 Hz 时钟信号: content/gameboy/audio/timer.md
+        # - GB-音频-序列发生器: content/gameboy/audio/frame_sequence.md
+        # - GB-音频-长度计数器: content/gameboy/audio/length_counter.md
+        # - GB-音频-音量包络: content/gameboy/audio/vol.md
+        # - GB-音频-频率扫描器: content/gameboy/audio/frequency_sweep.md
+        # - GB-音频-方波通道 1 & 2: content/gameboy/audio/square.md
+        # - GB-音频-可编程波形通道: content/gameboy/audio/wave.md
+        # - GB-音频-白噪音通道: content/gameboy/audio/noise.md
+        # - GB-音频-混频器: content/gameboy/audio/mixer.md
+        # - GB-音频-在计算机上播放: content/gameboy/audio/play.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
         - 遗传算法-最优保留策略: content/daze/ga/sga_optret.md
