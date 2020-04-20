@@ -61,7 +61,7 @@ nav:
         - GB-游戏卡带-MBC2: content/gameboy/cartridge/mbc2.md
         - GB-游戏卡带-MBC3: content/gameboy/cartridge/mbc3.md
         - GB-游戏卡带-MBC5: content/gameboy/cartridge/mbc5.md
-        - GB-游戏卡带-Cartridge 模块完整代码: content/gameboy/cartridge/others.md
+        - GB-游戏卡带-完整代码: content/gameboy/cartridge/others.md
         - GB-CPU-概览: content/gameboy/cpu/overview.md
         - GB-CPU-算术逻辑单元: content/gameboy/cpu/alu.md
         - GB-CPU-寄存器与存储系统: content/gameboy/cpu/register.md
@@ -142,6 +142,7 @@ nav:
         - Python-windows编程-概览: content/py/ctypes/overview.md
         - Python-windows编程-删除文件至回收站: content/py/ctypes/recycle.md
         - Python-打包并发布代码至 PyPI: content/py/setup.md
+        - Python-pywasm-美味尝鲜: content/py/pywasm/overview.md
         - Go-按行读取文件: content/go/read_file.md
         - Go-socket: content/go/socket.md
         - Go-socket-假如服务端不调用 Accept: content/go/socket_not_accept.md
