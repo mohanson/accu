@@ -144,6 +144,7 @@ nav:
         - Python-打包并发布代码至 PyPI: content/py/setup.md
         - Python-pywasm-美味尝鲜: content/py/pywasm/overview.md
         - Python-pywasm-LEB128: content/py/pywasm/leb128.md
+        - Python-pywasm-1.0 版本发布: content/py/pywasm/version_1.0_released.md
         - Go-按行读取文件: content/go/read_file.md
         - Go-socket: content/go/socket.md
         - Go-socket-假如服务端不调用 Accept: content/go/socket_not_accept.md
