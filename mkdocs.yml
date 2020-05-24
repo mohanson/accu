@@ -148,6 +148,7 @@ nav:
         - Python-pywasm-wasm 二进制文件格式解析: content/py/pywasm/binary.md
         - Python-pywasm-JIT 原理简述(一): content/py/pywasm/jit_brief_principle_1.md
         - Python-pywasm-JIT 原理简述(二): content/py/pywasm/jit_brief_principle_2.md
+        - Python-pywasm-JIT 原理简述(三): content/py/pywasm/jit_brief_principle_3.md
         - Go-按行读取文件: content/go/read_file.md
         - Go-socket: content/go/socket.md
         - Go-socket-假如服务端不调用 Accept: content/go/socket_not_accept.md
