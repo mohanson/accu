@@ -107,20 +107,20 @@ fn interpret() -> Result<(), Box<dyn std::error::Error>> {
 
 ```rs
 [
-    ADD,    ADD,    ADD,    ADD,    ADD,    ADD,    ADD,    ADD,
-    ADD,    ADD,    LB,     SHR,    ADD,    ADD,    ADD,    ADD,
-    ADD,    ADD,    ADD,    SHR,    ADD,    ADD,    ADD,    ADD,
-    ADD,    ADD,    ADD,    ADD,    ADD,    ADD,    SHR,    ADD,
-    ADD,    ADD,    SHR,    ADD,    SHL,    SHL,    SHL,    SHL,
-    SUB,    RB,     SHR,    ADD,    ADD,    PUTCHAR,SHR,    ADD,
-    PUTCHAR,ADD,    ADD,    ADD,    ADD,    ADD,    ADD,    ADD,
-    PUTCHAR,PUTCHAR,ADD,    ADD,    ADD,    PUTCHAR,SHR,    ADD,
-    ADD,    PUTCHAR,SHL,    SHL,    ADD,    ADD,    ADD,    ADD,
-    ADD,    ADD,    ADD,    ADD,    ADD,    ADD,    ADD,    ADD,
-    ADD,    ADD,    ADD,    PUTCHAR,SHR,    PUTCHAR,ADD,    ADD,
-    ADD,    PUTCHAR,SUB,    SUB,    SUB,    SUB,    SUB,    SUB,
-    PUTCHAR,SUB,    SUB,    SUB,    SUB,    SUB,    SUB,    SUB,
-    SUB,    PUTCHAR,SHR,    ADD,    PUTCHAR,SHR,    PUTCHAR,
+    ADD,     ADD,     ADD,     ADD,     ADD,     ADD,     ADD,     ADD,
+    ADD,     ADD,     LB,      SHR,     ADD,     ADD,     ADD,     ADD,
+    ADD,     ADD,     ADD,     SHR,     ADD,     ADD,     ADD,     ADD,
+    ADD,     ADD,     ADD,     ADD,     ADD,     ADD,     SHR,     ADD,
+    ADD,     ADD,     SHR,     ADD,     SHL,     SHL,     SHL,     SHL,
+    SUB,     RB,      SHR,     ADD,     ADD,     PUTCHAR, SHR,     ADD,
+    PUTCHAR, ADD,     ADD,     ADD,     ADD,     ADD,     ADD,     ADD,
+    PUTCHAR, PUTCHAR, ADD,     ADD,     ADD,     PUTCHAR, SHR,     ADD,
+    ADD,     PUTCHAR, SHL,     SHL,     ADD,     ADD,     ADD,     ADD,
+    ADD,     ADD,     ADD,     ADD,     ADD,     ADD,     ADD,     ADD,
+    ADD,     ADD,     ADD,     PUTCHAR, SHR,     PUTCHAR, ADD,     ADD,
+    ADD,     PUTCHAR, SUB,     SUB,     SUB,     SUB,     SUB,     SUB,
+    PUTCHAR, SUB,     SUB,     SUB,     SUB,     SUB,     SUB,     SUB,
+    SUB,     PUTCHAR, SHR,     ADD,     PUTCHAR, SHR,     PUTCHAR,
 ]
 ```
 
@@ -129,15 +129,15 @@ fn interpret() -> Result<(), Box<dyn std::error::Error>> {
 > 中间语言(英语: Intermediate Language, IR), 在计算机科学中, 是指一种应用于抽象机器(abstract machine)的编程语言, 它设计的目的, 是用来帮助我们分析计算机程序. 这个术语源自于编译器, 在编译器将源代码编译为目的码的过程中, 会先将源代码转换为一个或多个的中间表述, 以方便编译器进行最佳化, 并产生出目的机器的机器语言.
 
 ```rs
-pub enum IR {
+enum IR {
     SHR(u32),
     SHL(u32),
     ADD(u8),
     SUB(u8),
     PUTCHAR,
     GETCHAR,
-    JIZ(u32),
-    JNZ(u32),
+    JIZ(u32), // Jump if zero, alias of "["
+    JNZ(u32), // Jump if not zero, alias of "]"
 }
 ```
 
@@ -154,11 +154,11 @@ pub enum IR {
 ]
 ```
 
-之后我们可以针对此中间语言编写解释器(相信你应该已经知道该怎么做了). 在测试中, 基于中间语言的解释器大概要比原始解释器快 5 倍左右. 真棒! 但请记住本文设计的 IR 并非最优化的, 其仍然有优化空间.
+之后我们可以针对此中间语言编写解释器(相信你应该已经知道该怎么做了!). 在测试中, 基于中间语言的解释器大概要比原始解释器快 5 倍左右. 真棒! 但请记住本文设计的 IR 并非最优化的, 其仍然有优化空间.
 
 下一篇文章将会介绍如何针对该中间语言编写 JIT 编译器. 稍微透露一下: **将中间语言翻译为语义等价的汇编代码**.
 
 # 参考
 
 - [1] 中间语言, 维基百科, [https://zh.wikipedia.org/zh-hans/中間語言](https://zh.wikipedia.org/zh-hans/中間語言)
-- [2] 邱奇-图灵论题, 维基百科, [https://zh.wikipedia.org/wiki/邱奇%EF%BC%8D图灵论题](https://zh.wikipedia.org/wiki/邱奇%EF%BC%8D图灵论题
+- [2] 邱奇-图灵论题, 维基百科, [https://en.wikipedia.org/wiki/Church–Turing_thesis](https://en.wikipedia.org/wiki/Church–Turing_thesis)
