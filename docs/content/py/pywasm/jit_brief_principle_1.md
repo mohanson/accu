@@ -13,7 +13,7 @@
 
 # Hello, JIT World: The Joy of Simple JITs
 
-事不宜迟, 让我们跳进我们的第一个 JIT 程序. 该代码是特定于 64 位 Unix 的, 因为它使用了 mmap(). 因此读者需要拥有支持该代码的处理器和操作系统. 笔者已经测试了它可以在 Ubuntu 和 Mac OS X 上运行.
+事不宜迟, 让我们跳进我们的第一个 JIT 程序. 该代码是特定于 64 位 Unix 的, 因为它使用了 `mmap()`. 鉴于此读者需要拥有支持该代码的处理器和操作系统. 笔者已经测试了它可以在 Ubuntu 和 Mac OS X 上运行.
 
 ```c
 #include <stdio.h>
