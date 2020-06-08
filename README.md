@@ -1,7 +1,7 @@
 Mohanson's Blog [http://accu.cc](http://accu.cc)
 
 ```sh
-$ pip3 install mkdocs
+$ pip3 install mkdocs==1.0.4
 $ mkdocs serve
 ```
 
