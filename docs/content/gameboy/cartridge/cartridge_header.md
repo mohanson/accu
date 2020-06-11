@@ -257,7 +257,7 @@ fn main() -> Result<(),  Box<std::error::Error>> {
 }
 ```
 
-运行上述代码, 此游戏的标题被成功打印至标准输出. 同时, 注意到代码中使用了一个 asset 语言来对标题校验和进行断言.
+运行上述代码, 此游戏的标题被成功打印至标准输出. 同时, 注意到代码中使用了一个 assert 语言来对标题校验和进行断言.
 
 ![img](/img/gameboy/cartridge/cartridge_header/output.png)
 
