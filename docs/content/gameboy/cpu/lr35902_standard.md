@@ -424,7 +424,7 @@ fn ex(&mut self) -> u32 {
 
 Instruction | Parameters | Opcode | Cycles
 ----------- | ---------- | ------ | ------
-LD          | A, (HL+)   | 22     | 8
+LD          | A, (HL+)   | 2a     | 8
 
 4) 代码实现
 
@@ -456,7 +456,7 @@ fn ex(&mut self) -> u32 {
 
 Instruction | Parameters | Opcode | Cycles
 ----------- | ---------- | ------ | ------
-LD          | A, (HL-)   | 22     | 8
+LD          | A, (HL-)   | 3a     | 8
 
 4) 代码实现
 
