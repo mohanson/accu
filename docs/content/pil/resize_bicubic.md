@@ -77,7 +77,7 @@ def get_w(x):
 
 
 im = PIL.Image.open('/img/jp.jpg')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 im_mat_resized = np.empty((270, 480, im_mat.shape[2]), dtype=np.uint8)
 
 for r in range(im_mat_resized.shape[0]):

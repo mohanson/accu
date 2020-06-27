@@ -42,7 +42,7 @@ def convert_2d(r):
 
 im = PIL.Image.open('/img/jp.jpg')
 im = im.convert('L')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 
 # 显示输入直方图
 plt.hist(im_mat.reshape([im_mat.size]), 256, normed=1)

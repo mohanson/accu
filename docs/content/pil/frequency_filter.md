@@ -40,7 +40,7 @@ import matplotlib.pyplot as plt
 
 im = PIL.Image.open('/img/jp.jpg')
 im = im.convert('L')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 rows, cols = im_mat.shape
 
 # 扩展 M * N 图像到 2M * 2N

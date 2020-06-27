@@ -50,11 +50,10 @@ def convert_3d(r):
 
 im = PIL.Image.open('/img/jp.jpg')
 im = im.convert('RGB')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 im_converted_mat = convert_3d(im_mat)
 im_converted = PIL.Image.fromarray(im_converted_mat)
 im_converted.show()
-
 ```
 
 **加噪后的图像**
@@ -112,7 +111,7 @@ def convert_3d(r):
 
 
 im = PIL.Image.open('/img/jp.jpg')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 
 k = 128
 

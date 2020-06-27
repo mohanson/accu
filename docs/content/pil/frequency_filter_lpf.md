@@ -9,7 +9,7 @@
 在以原点为圆心, $D_0$ 为半径的圆内, 无衰减的通过所有频率, 而在该圆外阻断所有频率的滤波器称为理想低通滤波器(ILPF). 它由下面的函数所决定:
 
 $$
-H(u, v) = 
+H(u, v) =
 \begin{cases}
 1 & D(u, v) < D_0 \\\
 0 & D(u, v) >= D_0
@@ -70,7 +70,7 @@ def convert_3d(r):
 
 
 im = PIL.Image.open('/img/jp.jpg')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 im_converted_mat = convert_3d(im_mat)
 im_converted = PIL.Image.fromarray(im_converted_mat)
 im_converted.show()

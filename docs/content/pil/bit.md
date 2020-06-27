@@ -25,7 +25,7 @@ def convert_2d(r):
 
 im = PIL.Image.open('/img/jp.jpg')
 im = im.convert('L')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 im_conveted_mat = convert_2d(im_mat)
 
 im_conveted = PIL.Image.fromarray(im_conveted_mat)
