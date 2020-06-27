@@ -30,8 +30,8 @@ $$
 
 $$
 \begin{bmatrix}
-0 & 1 & 0 \\\ 
-1 & -4 & 1\\\ 
+0 & 1 & 0 \\\
+1 & -4 & 1\\\
 0 & 1 & 0
 \end{bmatrix}
 $$
@@ -81,7 +81,7 @@ $$
 g(x, y) = f(x, y) - \bigtriangledown ^2f(x, y) = 5f(x, y) - [f(x+1, y) + f(x-1, y) + f(x, y+1) + f(x, y-1)]
 $$
 
-因此, $g(x, y)$ 可以视为 $f(x, y)$ 经过 
+因此, $g(x, y)$ 可以视为 $f(x, y)$ 经过
 
 $$
 \begin{bmatrix}
@@ -127,7 +127,7 @@ def convert_3d(r):
 
 
 im = PIL.Image.open('/img/jp.jpg')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 im_converted_mat = convert_3d(im_mat)
 im_converted = PIL.Image.fromarray(im_converted_mat)
 im_converted.show()

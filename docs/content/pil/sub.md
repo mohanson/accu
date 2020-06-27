@@ -47,7 +47,7 @@ def convert_3d(r, h):
 
 im = PIL.Image.open('/img/jp.jpg')
 im = im.convert('RGB')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 # 高斯模糊
 im_converted = im.filter(PIL.ImageFilter.GaussianBlur(radius=2))
 im_converted_mat = scipy.misc.fromimage(im_converted)

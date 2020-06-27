@@ -7,7 +7,7 @@ import scipy.misc
 
 im = PIL.Image.open('/img/jp.jpg')
 im = im.convert('RGB')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 
 im_converted_mat = np.zeros_like(im_mat, dtype=np.uint8)
 for x in range(im_mat.shape[0]):
@@ -32,7 +32,7 @@ import scipy.misc
 
 im = PIL.Image.open('/img/jp.jpg')
 im = im.convert('RGB')
-im_mat = scipy.misc.fromimage(im)
+im_mat = np.asarray(im)
 # 反色的公式是 [255, 255, 255] - [r, g, b]
 im_converted_mat = np.ones_like(im_mat) * 255 - im_mat
 im_converted = PIL.Image.fromarray(im_converted_mat)
