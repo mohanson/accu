@@ -5,7 +5,7 @@
 # 转换函数
 
 $$
-T(x) = (x - r_{min})(r_{max} - r_{min}) \cdot 255
+T(x) = (x - r_{min}) / (r_{max} - r_{min}) \cdot 255
 $$
 
 该函数将原图像 $[r_{min}, r_{max}]$ 的像素取值范围拉伸至 $[0, 255]$.
