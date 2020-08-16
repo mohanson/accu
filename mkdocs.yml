@@ -1,0 +1,189 @@
+site_name: Mohanson
+site_description: Mohanson, 数字图像处理, 深度学习, Python, Go
+site_url: http://accu.cc
+site_author: Mohanson
+theme:
+        name: readthedocs
+        custom_dir: custom_theme/
+repo_url: https://github.com/mohanson/accu
+dev_addr: 127.0.0.1:80
+extra_css:
+        - css/accu.css
+extra_javascript:
+        - js/accu.js
+nav:
+- 主页: index.md
+- 数字图像处理:
+        - 数字图像处理-通道: content/pil/channel.md
+        - 数字图像处理-均值: content/pil/mean.md
+        - 数字图像处理-对比增强: content/pil/contrast.md
+        - 数字图像处理-对比拉伸: content/pil/contrast_tensile.md
+        - 数字图像处理-位图切割: content/pil/bit.md
+        - 数字图像处理-直方图均衡化: content/pil/histogram_equalization.md
+        - 数字图像处理-图像减法: content/pil/sub.md
+        - 数字图像处理-加性高斯白噪声与去噪: content/pil/agwn.md
+        - 数字图像处理-空间滤波基础: content/pil/spatial_filter.md
+        - 数字图像处理-空间滤波-均值滤波: content/pil/spatial_filter_mean.md
+        - 数字图像处理-空间滤波-中值滤波: content/pil/spatial_filter_medium.md
+        - 数字图像处理-空间滤波-锐化滤波: content/pil/spatial_filter_sharpening.md
+        - 数字图像处理-空间滤波-高斯滤波: content/pil/spatial_filter_gaussian_blur.md
+        - 数字图像处理-频域滤波基础: content/pil/frequency_filter.md
+        - 数字图像处理-频域滤波-低通滤波: content/pil/frequency_filter_lpf.md
+        - 数字图像处理-频域滤波-高通滤波: content/pil/frequency_filter_hpf.md
+        - 数字图像处理-频域滤波-带阻和带通滤波: content/pil/frequency_filter_br_bp.md
+        - 数字图像处理-噪声: content/pil/noise.md
+        - 数字图像处理-安全色: content/pil/safe_color.md
+        - 数字图像处理-马卡龙色: content/pil/macaron_color.md
+        - 数字图像处理-补色和反色: content/pil/complementary_and_invert_color.md
+        - 数字图像处理-水印: content/pil/watermark.md
+        - 数字图像处理-缩放-最近邻插值法: content/pil/resize_nearst.md
+        - 数字图像处理-缩放-最近邻插值法的幽灵事件: content/pil/resize_nearst_ghost.md
+        - 数字图像处理-缩放-双线性算法: content/pil/resize_bilinear.md
+        - 数字图像处理-缩放-双三次插值法: content/pil/resize_bicubic.md
+        - 数字图像处理-字符画: content/pil/ascii.md
+        - Python-PIL-概览: content/pil/pil_tutorial_overview.md
+        - Python-PIL-Image: content/pil/pil_image.md
+        - Python-PIL-ImageChops: content/pil/pil_imagechops.md
+        - Python-PIL-ImageColor: content/pil/pil_imagecolor.md
+        - Python-PIL-ImageDraw: content/pil/pil_imagedraw.md
+        - Python-PIL-ImageEnhance: content/pil/pil_imageenhance.md
+        - Python-PIL-ImageOps: content/pil/pil_imageops.md
+- 自己动手写 Game Boy 仿真器:
+        - GB-前言: content/gameboy/preface.md
+        - GB-虚拟机发展史-硬件仿真器: content/gameboy/history/emulator.md
+        - GB-虚拟机发展史-程序虚拟机: content/gameboy/history/runtime.md
+        - GB-虚拟机发展史-软件模拟器: content/gameboy/history/simulator.md
+        - GB-游戏卡带-漫谈卡带: content/gameboy/cartridge/about_cartridge.md
+        - GB-游戏卡带-Header: content/gameboy/cartridge/cartridge_header.md
+        - GB-游戏卡带-Memory Bank Controller: content/gameboy/cartridge/memory_bank_controller.md
+        - GB-游戏卡带-ROM only: content/gameboy/cartridge/rom_only.md
+        - GB-游戏卡带-MBC1: content/gameboy/cartridge/mbc1.md
+        - GB-游戏卡带-MBC2: content/gameboy/cartridge/mbc2.md
+        - GB-游戏卡带-MBC3: content/gameboy/cartridge/mbc3.md
+        - GB-游戏卡带-MBC5: content/gameboy/cartridge/mbc5.md
+        - GB-游戏卡带-完整代码: content/gameboy/cartridge/others.md
+        - GB-CPU-概览: content/gameboy/cpu/overview.md
+        - GB-CPU-算术逻辑单元: content/gameboy/cpu/alu.md
+        - GB-CPU-寄存器与存储系统: content/gameboy/cpu/register.md
+        - GB-CPU-指令与指令集: content/gameboy/cpu/isa.md
+        - GB-CPU-流水线: content/gameboy/cpu/pipeline.md
+        - GB-CPU-LR35902标准指令集: content/gameboy/cpu/lr35902_standard.md
+        - GB-CPU-LR35902扩展指令集: content/gameboy/cpu/lr35902_extension.md
+        - GB-CPU-LR35902时钟周期与频率仿真: content/gameboy/cpu/cycles.md
+        - GB-CPU-LR35902中断: content/gameboy/cpu/interrupts.md
+        - GB-CPU-内存管理单元与主板: content/gameboy/cpu/mmu.md
+        - GB-视频-概览: content/gameboy/video/overview.md
+        - GB-视频-点阵图: content/gameboy/video/dot_matrix.md
+        - GB-视频-显示输出: content/gameboy/video/show.md
+        - GB-视频-光栅成像原理与概念: content/gameboy/video/crt.md
+        - GB-视频-图像显示系统: content/gameboy/video/system.md
+        - GB-视频-GPU 寄存器与内存结构: content/gameboy/video/gpu.md
+        - GB-视频-代码实现: content/gameboy/video/code.md
+        - GB-音频-概览: content/gameboy/audio/overview.md
+        - GB-音频-声音的构成: content/gameboy/audio/sound.md
+        - GB-音频-Rust Cpal 库介绍: content/gameboy/audio/cpal.md
+        - GB-音频-音频系统概念简介: content/gameboy/audio/concept.md
+        - GB-音频-寄存器: content/gameboy/audio/register.md
+        - GB-音频-512 Hz 时钟信号: content/gameboy/audio/timer.md
+        - GB-音频-序列发生器: content/gameboy/audio/frame_sequence.md
+        - GB-音频-长度计数器: content/gameboy/audio/length_counter.md
+        - GB-音频-音量包络: content/gameboy/audio/vol.md
+        - GB-音频-频率扫描器: content/gameboy/audio/frequency_sweep.md
+        - GB-音频-方波通道 1 & 2: content/gameboy/audio/square.md
+        - GB-音频-可编程波形通道: content/gameboy/audio/wave.md
+        - GB-音频-白噪音通道: content/gameboy/audio/noise.md
+        - GB-音频-混频器: content/gameboy/audio/mixer.md
+        - GB-音频-在计算机上播放: content/gameboy/audio/play.md
+        - GB-其他-游戏手柄: content/gameboy/other/joypad.md
+        - GB-其他-串行通行接口: content/gameboy/other/serial.md
+        - GB-其他-定时器: content/gameboy/other/timer.md
+        - GB-其他-硬件初始化工作: content/gameboy/other/init.md
+        - GB-其他-测试: content/gameboy/other/test.md
+        - GB-后记: content/gameboy/foot.md
+- Linux x64 汇编:
+        - 入门-Hello World: content/asm/linux_x64_part1.md
+        - 入门-术语和概念: content/asm/linux_x64_part2.md
+        - 入门-堆栈: content/asm/linux_x64_part3.md
+        - 入门-宏: content/asm/linux_x64_part4.md
+        - 入门-AT&T: content/asm/linux_x64_part5.md
+        - 入门-汇编与 C: content/asm/linux_x64_part6.md
+- 算法:
+        - 遗传算法-简单遗传算法: content/daze/ga/sga.md
+        - 遗传算法-最优保留策略: content/daze/ga/sga_optret.md
+        - 遗传算法-生物进化模拟: content/daze/ga/evolve.md
+        - 遗传算法-愚弄神经网络: content/daze/ga/fooled_nn.md
+        - Dlib-安装: content/daze/dlib/install.md
+        - Dlib-人脸检测: content/daze/dlib/face_detect.md
+        - Dlib-人脸标注: content/daze/dlib/face_landmark.md
+        - Dlib-人脸识别: content/daze/dlib/face_recognition.md
+        - Dlib-人脸聚类: content/daze/dlib/face_clustering.md
+        - 加密算法-RC4-概览: content/daze/rc4/overview.md
+        - 加密算法-RC4-性能测试: content/daze/rc4/performance_testing.md
+        - 生命游戏: content/daze/game_of_life/overview.md
+        - sklearn-概览: content/daze/sklearn/overview.md
+        - sklearn-线性模型-概览: content/daze/sklearn/liner_model/overview.md
+        - sklearn-线性模型-普通最小二乘法: content/daze/sklearn/liner_model/linear_regression.md
+        - sklearn-线性模型-岭回归: content/daze/sklearn/liner_model/ridge.md
+        - sklearn-线性模型-逻辑回归: content/daze/sklearn/liner_model/logistic_regression.md
+        - sklearn-决策树: content/daze/sklearn/tree.md
+        - sklearn-贝叶斯分类器: content/daze/sklearn/bayes.md
+        - sklearn-kNN: content/daze/sklearn/knn.md
+        - sklearn-聚类: content/daze/sklearn/cluster.md
+        - sklearn-SVM: content/daze/sklearn/svm.md
+        - sklearn-流形学习: content/daze/sklearn/manifold.md
+        - sklearn-评估: content/daze/sklearn/evaluation.md
+        - 机器学习-图像风格转移: content/daze/ml/neural_style_transfer.md
+        - 机器学习-快速文本分类: content/daze/ml/fasttext.md
+        - 机器学习-HOG: content/daze/ml/hog.md
+        - Math-霍夫曼编码: content/daze/math/huffman.md
+        - Math-方差与标准差: content/daze/math/variance_and_sd.md
+        - Math-正态分布: content/daze/math/normal_distribution.md
+        - Math-凯利公式: content/daze/math/kelly_formula.md
+- 语言:
+        - Python-np-分割与合并: content/py/np/split.md
+        - Python-matplotlib-折线图: content/py/plt/line.md
+        - Python-matplotlib-散点图: content/py/plt/scatter.md
+        - Python-matplotlib-柱状图: content/py/plt/bar.md
+        - Python-matplotlib-饼图: content/py/plt/pie.md
+        - Python-f-string: content/py/f_string.md
+        - Python-windows编程-概览: content/py/ctypes/overview.md
+        - Python-windows编程-删除文件至回收站: content/py/ctypes/recycle.md
+        - Python-打包并发布代码至 PyPI: content/py/setup.md
+        - Python-pywasm-美味尝鲜: content/py/pywasm/overview.md
+        - Python-pywasm-LEB128: content/py/pywasm/leb128.md
+        - Python-pywasm-1.0 版本发布: content/py/pywasm/version_1.0_released.md
+        - Python-pywasm-wasm 二进制文件格式解析: content/py/pywasm/binary.md
+        - Python-pywasm-JIT 原理简述(一): content/py/pywasm/jit_brief_principle_1.md
+        - Python-pywasm-JIT 原理简述(二): content/py/pywasm/jit_brief_principle_2.md
+        - Python-pywasm-JIT 原理简述(三): content/py/pywasm/jit_brief_principle_3.md
+        - Go-按行读取文件: content/go/read_file.md
+        - Go-socket: content/go/socket.md
+        - Go-socket-假如服务端不调用 Accept: content/go/socket_not_accept.md
+        - Go-tls: content/go/tls.md
+        - Go-socks-version-5: content/go/socks5.md
+        - Go-交叉编译: content/go/cross_compiling.md
+        - Go-时间尽头: content/go/end_of_time.md
+        - Go-流量限制: content/go/token_bucket.md
+        - Go-目录监听: content/go/fswatch.md
+        - Go-Cgo: content/go/cgo.md
+        - AHK-概览: content/ahk/overview.md
+        - AHK-实现鼠标连点器: content/ahk/clicker.md
+        - AHK-实现屏幕取色器: content/ahk/color.md
+        - AHK-长按: content/ahk/longpress.md
+        - AHK-按行读取文件: content/ahk/loopread.md
+        - Rust-概览: content/rust/overview.md
+        - Rust-文件读取: content/rust/io.md
+        - Rust-HTTP: content/rust/http.md
+        - Rust-并发: content/rust/concurrent.md
+        - Rust-TCP: content/rust/tcp.md
+        - Rust-JSON: content/rust/json.md
+- 区块链:
+        - EVM: content/blockchain/evm.md
+        - Merkle Tree: content/blockchain/merkle_tree.md
+- 竹书纪年:
+        - Y2019: content/diary/2019.md
+        - Y2020: content/diary/2020.md
+- 演讲:
+        - minits, 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md
+        - WASC, WebAssembly 到 RISC-V 的 AOT 编译器: content/speech/wasc.md
+        - 区块链隐私保护密码技术介绍: content/speech/blockchain_privacy_protection.md
