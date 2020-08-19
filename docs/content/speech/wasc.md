@@ -1,8 +1,21 @@
 # WASC: WebAssembly 到 RISC-V 的 AOT 编译器
 
+项目地址: [https://github.com/mohanson/wasc](https://github.com/mohanson/wasc).
+
+第一场
+
 - 时间: 2020-07-26
 - 地点: RISC-V 基金会 OSDT Meetup
 - 主讲: 自己
+- 稿件: [https://github.com/hellogcc/OSDT-Slides/blob/master/20200726-OSDT-Meetup/wasc.pdf](https://github.com/hellogcc/OSDT-Slides/blob/master/20200726-OSDT-Meetup/wasc.pdf)
+- 视频: [https://www.bilibili.com/video/av668938952/](https://www.bilibili.com/video/av668938952/)
+
+第二场
+
+- 时间: 2020-08-29
+- 地点: W3C WebAssembly 线上研讨会
+- 主讲: 自己
+- 活动: [https://github.com/w3c/chinese-ig/blob/master/meetings/2020-08-29.md](https://github.com/w3c/chinese-ig/blob/master/meetings/2020-08-29.md)
 
 OSDT 的各位周末快乐, 我是 mohanson, 目前在 nervos 做虚拟机和编译器相关的工作. 今天我要分享的内容是: "WASC: 一个 WebAssembly 到 RISC-V 的 AOT 编译器".
 
