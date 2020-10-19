@@ -176,7 +176,9 @@ pub fn power_up(path: impl AsRef<Path>) -> Box<dyn Cartridge> {
 }
 ```
 
-在 Game Boy 平台上曾诞生了无数的游戏, 虽然不敢保证, 但绝大多数游戏卡带的信息都能在 [https://ladecadence.net/trastero/listado%20juegos%20gameboy.html](https://ladecadence.net/trastero/listado%20juegos%20gameboy.html) 网站上找到. 该网站上总共拥有 6000 余个 Game Boy 游戏卡带的详细信息, 这些信息包括: 游戏名称, ROM 大小, RAM 大小, MBC 类型等.
+至此, 任何合法的 Game Boy ROM 都可以通过以上的函数成功读取.
+
+在 Game Boy 平台上曾诞生了无数的游戏, 虽然不敢保证, 但绝大多数游戏卡带的信息都能在 [https://ladecadence.net/trastero/listado%20juegos%20gameboy.html](https://ladecadence.net/trastero/listado%20juegos%20gameboy.html) 网站上找到. 该网站上总共拥有 6000 余个 Game Boy 游戏卡带的详细信息, 这些信息包括: 游戏名称, ROM 大小, RAM 大小, MBC 类型等, 如图所示.
 
 ![img](/img/gameboy/cartridge/others/ladecadence.png)
 

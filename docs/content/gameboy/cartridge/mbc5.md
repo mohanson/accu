@@ -4,15 +4,15 @@ MBC5 是在 Game Boy 游戏卡带技术发展末期推出的游戏卡带类型. 
 
 # MBC5 地址空间划分
 
-MBC5 芯片将 Game Boy 分配给游戏卡带的系统地址空间 0x0000...0x7fff 和 0xa000...0xbfff 划分为以下几个独立区间, 详细介绍如下.
+MBC5 芯片将 Game Boy 分配给游戏卡带的系统地址空间 0x0000...0x7FFF 和 0xA000...0xBFFF 划分为以下几个独立区间, 详细介绍如下.
 
 1) 0000-3FFF ROM 存储体 00
 
-只读区域. 该区域总是映射到 ROM 的前 16KB 字节物理存储.
+只读区域. 该区域总是映射到 ROM 的前 16 KB 字节物理存储.
 
 2) 4000-7FFF ROM 存储体 00-1FF
 
-只读区域. 该区域可以映射为第 0x01 到 0x01ff 编号的 ROM 存储体.
+只读区域. 该区域可以映射为第 0x01 到 0x01FF 编号的 ROM 存储体.
 
 3) A000-BFFF RAM 存储体 00-0F
 
@@ -36,8 +36,6 @@ MBC5 芯片将 Game Boy 分配给游戏卡带的系统地址空间 0x0000...0x7f
 
 # 代码实现
 
-事实上 MBC5 的代码整体结构与其它 MBC 类型同样没有多大区别. 定义 MBC5 结构体, 其成员包括 ROM, RAM, 各个前文介绍的寄存器和 sav_path.
-
 ```rs
 pub struct Mbc5 {
     rom: Vec<u8>,
@@ -60,11 +58,7 @@ impl Mbc5 {
         }
     }
 }
-```
 
-为 MBC5 实现 Memory 泛型, 使得 CPU 可以通过内存地址读写这个对象. 读写规则可参照前文"MBC5 地址空间划分"一节.
-
-```rs
 impl Memory for Mbc5 {
     fn get(&self, a: u16) -> u8 {
         match a {
@@ -103,11 +97,7 @@ impl Memory for Mbc5 {
         }
     }
 }
-```
 
-最后, 为 MBC5 实现 Stable 泛型. 当调用 sav 函数时, 如果 sav_path 路径下已经存在数据文件, 则覆盖旧的文件; 否则新建一个文件. 被保存的数据则是整个 RAM 中存储的内容.
-
-```rs
 impl Stable for Mbc5 {
     fn sav(&self) {
         rog::debugln!("Ram is being persisted");
