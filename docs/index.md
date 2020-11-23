@@ -1,4 +1,5 @@
-![img](/img/cover.gif)
+<!-- ![img](/img/cover.gif) -->
+![img](https://pic4.zhimg.com/80/v2-675f0a267be54da7aadd28c713c879ee_720w.gif)
 
 # 关于作者
 
