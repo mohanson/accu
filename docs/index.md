@@ -9,7 +9,7 @@ Mohanson 只是一个不存在的人.
 
 mail: mohanson@outlook.com.
 
-如果有任何问题, 请联系我, 我会尽可能回复.
+repo: [https://github.com/mohanson/accu](https://github.com/mohanson/accu)
 
 # 小额赞助
 
