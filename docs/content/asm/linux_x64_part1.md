@@ -64,7 +64,7 @@ MOV COUNT, 48 ; Put value 48 in the COUNT variable
 
 ```nasm
 section .data
-    msg db "Hello, World!"
+    msg db "Hello World!", 0x0A
 
 section .text
     global _start
@@ -79,7 +79,7 @@ _start:
     syscall
 ```
 
-是的, 它看起来一点都不像 `printf("Hello world")`. 让我们尝试了解它是什么以及它如何工作. 首先看第一和第二行, 我们定义了数据部分, 并将 msg 常量与 "Hello, World!" 值放在一起. 现在, 我们可以在代码中使用此常量. 接下来是声明文本部分和程序的入口. 程序将从 7 行开始执行. 现在开始最有趣的部分, 我们已经知道 mov 指令是什么, 它获得 2 个操作数, 并将第二个的值放在第一位. 但是这些 rax, rdi 等是什么? 正如我们在 Wikipedia 中可以看到的:
+是的, 它看起来一点都不像 `printf("Hello World!\n")`. 让我们尝试了解它是什么以及它如何工作. 首先看第一和第二行, 我们定义了数据部分, 并将 msg 常量与 "Hello, World!" 值放在一起. 现在, 我们可以在代码中使用此常量. 接下来是声明文本部分和程序的入口. 程序将从 7 行开始执行. 现在开始最有趣的部分, 我们已经知道 mov 指令是什么, 它获得 2 个操作数, 并将第二个的值放在第一位. 但是这些 rax, rdi 等是什么? 正如我们在 Wikipedia 中可以看到的:
 
 > 中央处理器(CPU)是计算机中的硬件, 它通过执行系统的基本算术, 逻辑和输入/输出操作来执行计算机程序的指令.
 

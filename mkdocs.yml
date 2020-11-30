@@ -108,6 +108,9 @@ nav:
         - 入门-宏: content/asm/linux_x64_part4.md
         - 入门-AT&T: content/asm/linux_x64_part5.md
         - 入门-汇编与 C: content/asm/linux_x64_part6.md
+- 算法心得, 高效算法的奥秘:
+        - 概览: content/hackers_delight/overview.md
+        - 基础知识: content/hackers_delight/basic_knowledge.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
         - 遗传算法-最优保留策略: content/daze/ga/sga_optret.md
