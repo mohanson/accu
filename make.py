@@ -12,7 +12,9 @@ def call(command):
 
 def make():
     os.chdir(os.path.dirname(os.path.realpath(__file__)))
-    call('mkdocs build --dirty')
+    call('mkdocs build -d site_build')
+    call('rm -rf site')
+    call('mv site_build site')
 
     with open('site/baidu_verify_Pem1L7uAVI.html', 'w') as f:
         f.write('Pem1L7uAVI')
