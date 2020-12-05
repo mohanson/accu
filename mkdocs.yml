@@ -178,6 +178,7 @@ nav:
         - AHK-按行读取文件: content/ahk/loopread.md
         - Rust-概览: content/rust/overview.md
         - Rust-开发环境搭建: content/rust/env.md
+        - Rust-变量与可变性: content/rust/variables_and_mutability.md
         - Rust-文件读取: content/rust/io.md
         - Rust-HTTP: content/rust/http.md
         - Rust-并发: content/rust/concurrent.md
