@@ -112,6 +112,7 @@ nav:
         - 概览: content/hackers_delight/overview.md
         - 基础知识: content/hackers_delight/basic_knowledge.md
         - 2 的幂边界: content/hackers_delight/power_of_2_boundaries.md
+        - 位计数: content/hackers_delight/counting_bits.md
 - 算法:
         - 遗传算法-简单遗传算法: content/daze/ga/sga.md
         - 遗传算法-最优保留策略: content/daze/ga/sga_optret.md
