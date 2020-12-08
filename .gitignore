@@ -1,6 +1,2 @@
-__pycache__
-*.py[cod]
-.cache
-
 /site/
 /site_build/
