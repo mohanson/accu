@@ -181,6 +181,8 @@ nav:
         - Rust-开发环境搭建: content/rust/env.md
         - Rust-变量与可变性: content/rust/variables_and_mutability.md
         - Rust-数据类型: content/rust/data_type.md
+        - Rust-流程控制: content/rust/control_flow.md
+        - Rust-结构体, 函数与方法: content/rust/structs.md
         - Rust-文件读取: content/rust/io.md
         - Rust-HTTP: content/rust/http.md
         - Rust-并发: content/rust/concurrent.md
