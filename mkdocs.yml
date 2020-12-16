@@ -145,6 +145,20 @@ nav:
         - Math-方差与标准差: content/daze/math/variance_and_sd.md
         - Math-正态分布: content/daze/math/normal_distribution.md
         - Math-凯利公式: content/daze/math/kelly_formula.md
+- Rust 速成课堂:
+        - Rust-概览: content/rust/overview.md
+        - Rust-开发环境搭建: content/rust/env.md
+        - Rust-变量与可变性: content/rust/variables_and_mutability.md
+        - Rust-数据类型: content/rust/data_type.md
+        - Rust-流程控制: content/rust/control_flow.md
+        - Rust-结构体, 函数与方法: content/rust/structs.md
+        - Rust-泛型类型: content/rust/trait.md
+        - Rust-所有权: content/rust/ownership.md
+        # - Rust-文件读取: content/rust/io.md
+        # - Rust-HTTP: content/rust/http.md
+        # - Rust-并发: content/rust/concurrent.md
+        # - Rust-TCP: content/rust/tcp.md
+        # - Rust-JSON: content/rust/json.md
 - 语言:
         - Python-np-分割与合并: content/py/np/split.md
         - Python-matplotlib-折线图: content/py/plt/line.md
@@ -177,17 +191,6 @@ nav:
         - AHK-实现屏幕取色器: content/ahk/color.md
         - AHK-长按: content/ahk/longpress.md
         - AHK-按行读取文件: content/ahk/loopread.md
-        - Rust-概览: content/rust/overview.md
-        - Rust-开发环境搭建: content/rust/env.md
-        - Rust-变量与可变性: content/rust/variables_and_mutability.md
-        - Rust-数据类型: content/rust/data_type.md
-        - Rust-流程控制: content/rust/control_flow.md
-        - Rust-结构体, 函数与方法: content/rust/structs.md
-        - Rust-文件读取: content/rust/io.md
-        - Rust-HTTP: content/rust/http.md
-        - Rust-并发: content/rust/concurrent.md
-        - Rust-TCP: content/rust/tcp.md
-        - Rust-JSON: content/rust/json.md
 - 区块链:
         - EVM: content/blockchain/evm.md
         - Merkle Tree: content/blockchain/merkle_tree.md
