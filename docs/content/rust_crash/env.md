@@ -1,4 +1,4 @@
-# Rust 安装
+# Rust 速成课/开发环境搭建
 
 各位 Rust 的朋友们大家好, 我是 Yeah 老师. 这次我们将约定俗成的用 Rust 写出 Hello World! 代码. 当然啦, 首先我们应该做的是下载并安装 Rust. 正如你在视频前看到的, 我现在正在使用 Windows 操作系统录制这次课程, 但我平常更加常用的开发系统是 Linux. 所以我将先打开 [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install) 这个网页, 如果你想在 Windows 上安装 Rust, 那么可以直接点击页面上的 "DOWNLOAD RUSTUP-INIT.EXE (64-BIT)" 按钮下载. 或者你和我一样在使用 Linux, 那么点击 "Other Installation Methods", 找到页面上的 `curl https://sh.rustup.rs -sSf | sh -s -- --help`, 将它敲入你的 shell 中.
 
@@ -11,11 +11,11 @@ rustc 1.45.0 (5c1f21c3b 2020-07-13)
 
 如您所见, 我已经安装好了 Rust.
 
-# Rust 开发环境
+## Rust 开发环境
 
 我相信每个人都有自己习惯的开发环境, 在很久之前, 我曾经习惯使用 IDE, 之后我又切换成了 Vim, 至于现在, 我更加习惯使用 vscode. 因此, 我会向您介绍我目前的开发环境, 作为一个可选的参考. 首先你得安装 vscode, 这是没什么用的废话, 然后在它插件市场中搜索 Rust, 您会看到有两个插件排在最前面, 一个是加了小星星的 Rust, 另一个是 rust-analyzer. 我建议是安装第二个啦, 因为第一个插件的性能实在是不好, 它在打开大型项目时需要很长时间构建索引, 后者则快得多.
 
-# Hello World!
+## Hello World!
 
 OK, 接下来我们来创建一个 Rust 项目, 我使用的命令是
 

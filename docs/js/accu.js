@@ -2,8 +2,8 @@ $(document).ready(function () {
     $(function () {
         MathJax = {
             tex: { inlineMath: [['$', '$']] },
-            svg: { 
-                fontCache: 'global' ,
+            svg: {
+                fontCache: 'global',
                 displayAlign: 'left',
             },
         };
