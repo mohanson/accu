@@ -1,4 +1,4 @@
-# 频率扫描器
+# GB/音频/频率扫描器
 
 方波通道 1 具有一个频率扫描单元, 由寄存器 NR10 控制. 扫频器有一个定时器, 内部启用/禁用标志和影子寄存器(用于存储当前通道的频率). 扫频器的作用是定期向上或向下调整方波通道 1 的频率.
 
@@ -26,7 +26,7 @@
 - get_sweep_period(): 获取当前的扫频器的频率
 - get_shift(): 获取当期的扫频器的移位值
 
-# 代码实现
+## 代码实现
 
 ```rs
 // The first square channel has a frequency sweep unit, controlled by NR10. This has a timer, internal enabled flag,

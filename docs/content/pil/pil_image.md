@@ -1,3 +1,5 @@
+# 数字图像处理/PIL/Image
+
 ## 合并图像
 
 合并图像可以使用 `PIL.Image.alpha_composite`, `PIL.Image.blend` 和 `PIL.Image.composite`, 这里简单演示下第一种方式:

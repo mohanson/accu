@@ -1,8 +1,10 @@
-# 双线性算法
+# 数字图像处理/缩放/双线性算法
 
 双线性插值法与最近邻插值法类似, 不同点是取原图像中距离目标像素点最近的 4 个点, 并对这 4 个点与其对应权值的乘积求和, 获得最终像素值.
 
-如下图:
+## 转换函数
+
+首先见下图:
 
 ![img](/img/pil/resize_bilinear/bilinear_interpolation.jpg)
 
@@ -12,7 +14,7 @@ $$
 P = Q_{11} \times S_{22} + Q_{12} \times S_{21} + Q_{21} \times S_{12} + Q_{22} \times S_{11}
 $$
 
-# 代码实现
+## 代码实现
 
 为了方便计算, 下述程序将图像转换为矩阵进行操作.
 
@@ -64,6 +66,3 @@ for r in range(im_mat_resized.shape[0]):
 im_resized = PIL.Image.fromarray(im_mat_resized)
 im_resized.show()
 ```
-
-# 优化
-详见 [https://en.wikipedia.org/wiki/Bilinear_interpolation](https://en.wikipedia.org/wiki/Bilinear_interpolation)

@@ -1,3 +1,5 @@
+# 数字图像处理/PIL/ImageChops
+
 `PIL.ImageChops` 包含一系列的图像算术操作.
 
 ## 加法

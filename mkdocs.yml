@@ -15,99 +15,109 @@ nav:
 - 主页: index.md
 - 个人信息: content/resume.md
 - 数字图像处理:
-        - 数字图像处理-通道: content/pil/channel.md
-        - 数字图像处理-均值: content/pil/mean.md
-        - 数字图像处理-对比增强: content/pil/contrast.md
-        - 数字图像处理-对比拉伸: content/pil/contrast_tensile.md
-        - 数字图像处理-位图切割: content/pil/bit.md
-        - 数字图像处理-直方图均衡化: content/pil/histogram_equalization.md
-        - 数字图像处理-图像减法: content/pil/sub.md
-        - 数字图像处理-加性高斯白噪声与去噪: content/pil/agwn.md
-        - 数字图像处理-空间滤波基础: content/pil/spatial_filter.md
-        - 数字图像处理-空间滤波-均值滤波: content/pil/spatial_filter_mean.md
-        - 数字图像处理-空间滤波-中值滤波: content/pil/spatial_filter_medium.md
-        - 数字图像处理-空间滤波-锐化滤波: content/pil/spatial_filter_sharpening.md
-        - 数字图像处理-空间滤波-高斯滤波: content/pil/spatial_filter_gaussian_blur.md
-        - 数字图像处理-频域滤波基础: content/pil/frequency_filter.md
-        - 数字图像处理-频域滤波-低通滤波: content/pil/frequency_filter_lpf.md
-        - 数字图像处理-频域滤波-高通滤波: content/pil/frequency_filter_hpf.md
-        - 数字图像处理-频域滤波-带阻和带通滤波: content/pil/frequency_filter_br_bp.md
-        - 数字图像处理-噪声: content/pil/noise.md
-        - 数字图像处理-安全色: content/pil/safe_color.md
-        - 数字图像处理-马卡龙色: content/pil/macaron_color.md
-        - 数字图像处理-补色和反色: content/pil/complementary_and_invert_color.md
-        - 数字图像处理-水印: content/pil/watermark.md
-        - 数字图像处理-缩放-最近邻插值法: content/pil/resize_nearst.md
-        - 数字图像处理-缩放-最近邻插值法的幽灵事件: content/pil/resize_nearst_ghost.md
-        - 数字图像处理-缩放-双线性算法: content/pil/resize_bilinear.md
-        - 数字图像处理-缩放-双三次插值法: content/pil/resize_bicubic.md
-        - 数字图像处理-字符画: content/pil/ascii.md
-        - Python-PIL-概览: content/pil/pil_tutorial_overview.md
-        - Python-PIL-Image: content/pil/pil_image.md
-        - Python-PIL-ImageChops: content/pil/pil_imagechops.md
-        - Python-PIL-ImageColor: content/pil/pil_imagecolor.md
-        - Python-PIL-ImageDraw: content/pil/pil_imagedraw.md
-        - Python-PIL-ImageEnhance: content/pil/pil_imageenhance.md
-        - Python-PIL-ImageOps: content/pil/pil_imageops.md
-- 自己动手写 Game Boy 仿真器:
-        - GB-前言: content/gameboy/preface.md
-        - GB-虚拟机发展史-硬件仿真器: content/gameboy/history/emulator.md
-        - GB-虚拟机发展史-程序虚拟机: content/gameboy/history/runtime.md
-        - GB-虚拟机发展史-软件模拟器: content/gameboy/history/simulator.md
-        - GB-游戏卡带-漫谈卡带: content/gameboy/cartridge/about_cartridge.md
-        - GB-游戏卡带-Header: content/gameboy/cartridge/cartridge_header.md
-        - GB-游戏卡带-Memory Bank Controller: content/gameboy/cartridge/memory_bank_controller.md
-        - GB-游戏卡带-ROM only: content/gameboy/cartridge/rom_only.md
-        - GB-游戏卡带-MBC1: content/gameboy/cartridge/mbc1.md
-        - GB-游戏卡带-MBC2: content/gameboy/cartridge/mbc2.md
-        - GB-游戏卡带-MBC3: content/gameboy/cartridge/mbc3.md
-        - GB-游戏卡带-MBC5: content/gameboy/cartridge/mbc5.md
-        - GB-游戏卡带-完整代码: content/gameboy/cartridge/others.md
-        - GB-CPU-概览: content/gameboy/cpu/overview.md
-        - GB-CPU-算术逻辑单元: content/gameboy/cpu/alu.md
-        - GB-CPU-寄存器与存储系统: content/gameboy/cpu/register.md
-        - GB-CPU-指令与指令集: content/gameboy/cpu/isa.md
-        - GB-CPU-流水线: content/gameboy/cpu/pipeline.md
-        - GB-CPU-LR35902标准指令集: content/gameboy/cpu/lr35902_standard.md
-        - GB-CPU-LR35902扩展指令集: content/gameboy/cpu/lr35902_extension.md
-        - GB-CPU-LR35902时钟周期与频率仿真: content/gameboy/cpu/cycles.md
-        - GB-CPU-LR35902中断: content/gameboy/cpu/interrupts.md
-        - GB-CPU-内存管理单元与主板: content/gameboy/cpu/mmu.md
-        - GB-视频-概览: content/gameboy/video/overview.md
-        - GB-视频-点阵图: content/gameboy/video/dot_matrix.md
-        - GB-视频-显示输出: content/gameboy/video/show.md
-        - GB-视频-光栅成像原理与概念: content/gameboy/video/crt.md
-        - GB-视频-图像显示系统: content/gameboy/video/system.md
-        - GB-视频-GPU 寄存器与内存结构: content/gameboy/video/gpu.md
-        - GB-视频-代码实现: content/gameboy/video/code.md
-        - GB-音频-概览: content/gameboy/audio/overview.md
-        - GB-音频-声音的构成: content/gameboy/audio/sound.md
-        - GB-音频-Rust Cpal 库介绍: content/gameboy/audio/cpal.md
-        - GB-音频-音频系统概念简介: content/gameboy/audio/concept.md
-        - GB-音频-寄存器: content/gameboy/audio/register.md
-        - GB-音频-512 Hz 时钟信号: content/gameboy/audio/timer.md
-        - GB-音频-序列发生器: content/gameboy/audio/frame_sequence.md
-        - GB-音频-长度计数器: content/gameboy/audio/length_counter.md
-        - GB-音频-音量包络: content/gameboy/audio/vol.md
-        - GB-音频-频率扫描器: content/gameboy/audio/frequency_sweep.md
-        - GB-音频-方波通道 1 & 2: content/gameboy/audio/square.md
-        - GB-音频-可编程波形通道: content/gameboy/audio/wave.md
-        - GB-音频-白噪音通道: content/gameboy/audio/noise.md
-        - GB-音频-混频器: content/gameboy/audio/mixer.md
-        - GB-音频-在计算机上播放: content/gameboy/audio/play.md
-        - GB-其他-游戏手柄: content/gameboy/other/joypad.md
-        - GB-其他-串行通行接口: content/gameboy/other/serial.md
-        - GB-其他-定时器: content/gameboy/other/timer.md
-        - GB-其他-硬件初始化工作: content/gameboy/other/init.md
-        - GB-其他-测试: content/gameboy/other/test.md
-        - GB-后记: content/gameboy/foot.md
+        - 数字图像处理/通道: content/pil/channel.md
+        - 数字图像处理/均值: content/pil/mean.md
+        - 数字图像处理/对比增强: content/pil/contrast.md
+        - 数字图像处理/对比拉伸: content/pil/contrast_tensile.md
+        - 数字图像处理/位图切割: content/pil/bit.md
+        - 数字图像处理/直方图均衡化: content/pil/histogram_equalization.md
+        - 数字图像处理/图像减法: content/pil/sub.md
+        - 数字图像处理/加性高斯白噪声与去噪: content/pil/agwn.md
+        - 数字图像处理/空间滤波基础: content/pil/spatial_filter.md
+        - 数字图像处理/空间滤波/均值滤波: content/pil/spatial_filter_mean.md
+        - 数字图像处理/空间滤波/中值滤波: content/pil/spatial_filter_medium.md
+        - 数字图像处理/空间滤波/锐化滤波: content/pil/spatial_filter_sharpening.md
+        - 数字图像处理/空间滤波/高斯滤波: content/pil/spatial_filter_gaussian_blur.md
+        - 数字图像处理/频域滤波基础: content/pil/frequency_filter.md
+        - 数字图像处理/频域滤波/低通滤波: content/pil/frequency_filter_lpf.md
+        - 数字图像处理/频域滤波/高通滤波: content/pil/frequency_filter_hpf.md
+        - 数字图像处理/频域滤波/带阻和带通滤波: content/pil/frequency_filter_br_bp.md
+        - 数字图像处理/噪声: content/pil/noise.md
+        - 数字图像处理/安全色: content/pil/safe_color.md
+        - 数字图像处理/马卡龙色: content/pil/macaron_color.md
+        - 数字图像处理/补色和反色: content/pil/complementary_and_invert_color.md
+        - 数字图像处理/水印: content/pil/watermark.md
+        - 数字图像处理/缩放/最近邻插值法: content/pil/resize_nearst.md
+        - 数字图像处理/缩放/最近邻插值法的幽灵事件: content/pil/resize_nearst_ghost.md
+        - 数字图像处理/缩放/双线性算法: content/pil/resize_bilinear.md
+        - 数字图像处理/缩放/双三次插值法: content/pil/resize_bicubic.md
+        - 数字图像处理/字符画: content/pil/ascii.md
+        - 数字图像处理/PIL/概览: content/pil/pil_tutorial_overview.md
+        - 数字图像处理/PIL/Image: content/pil/pil_image.md
+        - 数字图像处理/PIL/ImageChops: content/pil/pil_imagechops.md
+        - 数字图像处理/PIL/ImageColor: content/pil/pil_imagecolor.md
+        - 数字图像处理/PIL/ImageDraw: content/pil/pil_imagedraw.md
+        - 数字图像处理/PIL/ImageEnhance: content/pil/pil_imageenhance.md
+        - 数字图像处理/PIL/ImageOps: content/pil/pil_imageops.md
+- GameBoy 仿真器:
+        - GB/前言: content/gameboy/preface.md
+        - GB/虚拟机发展史/硬件仿真器: content/gameboy/history/emulator.md
+        - GB/虚拟机发展史/程序虚拟机: content/gameboy/history/runtime.md
+        - GB/虚拟机发展史/软件模拟器: content/gameboy/history/simulator.md
+        - GB/游戏卡带/漫谈卡带: content/gameboy/cartridge/about_cartridge.md
+        - GB/游戏卡带/Header: content/gameboy/cartridge/cartridge_header.md
+        - GB/游戏卡带/Memory Bank Controller: content/gameboy/cartridge/memory_bank_controller.md
+        - GB/游戏卡带/ROM only: content/gameboy/cartridge/rom_only.md
+        - GB/游戏卡带/MBC1: content/gameboy/cartridge/mbc1.md
+        - GB/游戏卡带/MBC2: content/gameboy/cartridge/mbc2.md
+        - GB/游戏卡带/MBC3: content/gameboy/cartridge/mbc3.md
+        - GB/游戏卡带/MBC5: content/gameboy/cartridge/mbc5.md
+        - GB/游戏卡带/完整代码: content/gameboy/cartridge/others.md
+        - GB/CPU/概览: content/gameboy/cpu/overview.md
+        - GB/CPU/算术逻辑单元: content/gameboy/cpu/alu.md
+        - GB/CPU/寄存器与存储系统: content/gameboy/cpu/register.md
+        - GB/CPU/指令与指令集: content/gameboy/cpu/isa.md
+        - GB/CPU/流水线: content/gameboy/cpu/pipeline.md
+        - GB/CPU/LR35902 标准指令集: content/gameboy/cpu/lr35902_standard.md
+        - GB/CPU/LR35902 扩展指令集: content/gameboy/cpu/lr35902_extension.md
+        - GB/CPU/LR35902 时钟周期与频率仿真: content/gameboy/cpu/cycles.md
+        - GB/CPU/LR35902 中断: content/gameboy/cpu/interrupts.md
+        - GB/CPU/内存管理单元与主板: content/gameboy/cpu/mmu.md
+        - GB/视频/概览: content/gameboy/video/overview.md
+        - GB/视频/点阵图: content/gameboy/video/dot_matrix.md
+        - GB/视频/显示输出: content/gameboy/video/show.md
+        - GB/视频/光栅成像原理与概念: content/gameboy/video/crt.md
+        - GB/视频/图像显示系统: content/gameboy/video/system.md
+        - GB/视频/GPU 寄存器与内存结构: content/gameboy/video/gpu.md
+        - GB/视频/代码实现: content/gameboy/video/code.md
+        - GB/音频/概览: content/gameboy/audio/overview.md
+        - GB/音频/声音的构成: content/gameboy/audio/sound.md
+        - GB/音频/Rust Cpal 库介绍: content/gameboy/audio/cpal.md
+        - GB/音频/音频系统概念简介: content/gameboy/audio/concept.md
+        - GB/音频/寄存器: content/gameboy/audio/register.md
+        - GB/音频/512 Hz 时钟信号: content/gameboy/audio/timer.md
+        - GB/音频/序列发生器: content/gameboy/audio/frame_sequence.md
+        - GB/音频/长度计数器: content/gameboy/audio/length_counter.md
+        - GB/音频/音量包络: content/gameboy/audio/vol.md
+        - GB/音频/频率扫描器: content/gameboy/audio/frequency_sweep.md
+        - GB/音频/方波通道: content/gameboy/audio/square.md
+        - GB/音频/可编程波形通道: content/gameboy/audio/wave.md
+        - GB/音频/白噪音通道: content/gameboy/audio/noise.md
+        - GB/音频/混频器: content/gameboy/audio/mixer.md
+        - GB/音频/在计算机上播放: content/gameboy/audio/play.md
+        - GB/其它/游戏手柄: content/gameboy/other/joypad.md
+        - GB/其它/串行通行接口: content/gameboy/other/serial.md
+        - GB/其它/定时器: content/gameboy/other/timer.md
+        - GB/其它/硬件初始化工作: content/gameboy/other/init.md
+        - GB/其它/测试: content/gameboy/other/test.md
+        - GB/后记: content/gameboy/foot.md
 - Linux x64 汇编:
-        - 入门-Hello World: content/asm/linux_x64_part1.md
-        - 入门-术语和概念: content/asm/linux_x64_part2.md
-        - 入门-堆栈: content/asm/linux_x64_part3.md
-        - 入门-宏: content/asm/linux_x64_part4.md
-        - 入门-AT&T: content/asm/linux_x64_part5.md
-        - 入门-汇编与 C: content/asm/linux_x64_part6.md
+        - Linux x64 汇编/Hello World: content/linux_x64_asm/linux_x64_part1.md
+        - Linux x64 汇编/术语和概念: content/linux_x64_asm/linux_x64_part2.md
+        - Linux x64 汇编/堆栈: content/linux_x64_asm/linux_x64_part3.md
+        - Linux x64 汇编/宏: content/linux_x64_asm/linux_x64_part4.md
+        - Linux x64 汇编/AT&T: content/linux_x64_asm/linux_x64_part5.md
+        - Linux x64 汇编/汇编与 C: content/linux_x64_asm/linux_x64_part6.md
+- Rust 速成课:
+        - Rust 速成课/概览: content/rust_crash/overview.md
+        - Rust 速成课/开发环境搭建: content/rust_crash/env.md
+        - Rust 速成课/变量与可变性: content/rust_crash/variables_and_mutability.md
+        - Rust 速成课/数据类型: content/rust_crash/data_type.md
+        - Rust 速成课/流程控制: content/rust_crash/control_flow.md
+        - Rust 速成课/结构体, 函数与方法: content/rust_crash/structs.md
+        - Rust 速成课/泛型类型: content/rust_crash/trait.md
+        - Rust 速成课/所有权: content/rust_crash/ownership.md
+        - Rust 速成课/引用与借用: content/rust_crash/borrow.md
 - 算法心得, 高效算法的奥秘:
         - 概览: content/hackers_delight/overview.md
         - 基础知识: content/hackers_delight/basic_knowledge.md
@@ -145,16 +155,6 @@ nav:
         - Math-方差与标准差: content/daze/math/variance_and_sd.md
         - Math-正态分布: content/daze/math/normal_distribution.md
         - Math-凯利公式: content/daze/math/kelly_formula.md
-- Rust 速成课:
-        - Rust 速成课/概览: content/rust_crash/overview.md
-        - Rust 速成课/开发环境搭建: content/rust_crash/env.md
-        - Rust 速成课/变量与可变性: content/rust_crash/variables_and_mutability.md
-        - Rust 速成课/数据类型: content/rust_crash/data_type.md
-        - Rust 速成课/流程控制: content/rust_crash/control_flow.md
-        - Rust 速成课/结构体, 函数与方法: content/rust_crash/structs.md
-        - Rust 速成课/泛型类型: content/rust_crash/trait.md
-        - Rust 速成课/所有权: content/rust_crash/ownership.md
-        - Rust 速成课/引用与借用: content/rust_crash/borrow.md
 - 语言:
         - Python-np-分割与合并: content/py/np/split.md
         - Python-matplotlib-折线图: content/py/plt/line.md

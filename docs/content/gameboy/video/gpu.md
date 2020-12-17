@@ -1,4 +1,4 @@
-# GPU 寄存器与内存结构
+# GB/视频/GPU 寄存器与内存结构
 
 GPU 在图像渲染中需要管理一些额外的状态数据, 比如在光栅成像过程中记录当前已经渲染了到第几行第几列. 这些数据均保存在 GPU 寄存器之内, CPU 可以通过修改寄存器来控制 GPU 的行为. GPU 所拥有的寄存器数量较多, 本节将对此进行一一解释.
 
@@ -29,7 +29,7 @@ GPU 寄存器总览:
 | New DMA Length/Mode/Start(HDMA5)    | 0xff55 | 用于启动从 ROM 或 RAM 到 VRAM 的 DMA 传输                   |
 | VRAM Bank(VBK)                      | 0xff4f | VRAM Bank Number                                            |
 
-# LCDC
+## LCDC
 
 LCDC 是主要的 LCD 控制寄存器. 它控制画面上的对象是否显示以及如何显示.
 
@@ -120,7 +120,7 @@ impl Lcdc {
 }
 ```
 
-# LCD Status Register
+## LCD Status Register
 
 LCD Status Register 寄存器控制 LCD 当前的显示状态.
 
@@ -190,32 +190,32 @@ impl Stat {
 }
 ```
 
-# LCD Interrupts
+## LCD Interrupts
 
 LCD 可以产生两种不同类型的中断, 它们分别是 INT 40 和 INT 48.
 
 - INT 40 - V-Blank Interrupt: V-Blank 中断每秒可固定产生约 60 次, 该中断发生在 V-Blank 期间(LY == 144 时). 在此期间, Game Boy 硬件不会使用 VRAM, 因此 CPU 可以自由访问它. 该时间段持续大约 1.1 毫秒.
 - INT 48 - LCDC Status Interrupt: 如 STAT 寄存器(0xff40)所述, 有多种原因可以导致此中断发生. 一个非常普遍的原因是向用户指示 Game Boy 的 GPU 硬件何时将重画给定的 LCD scanline. 这对于动态控制 SCX/SCY 寄存器(0xff43/0xff42)来执行特殊的视频效果很有用.
 
-# Scroll Y, Scroll X
+## Scroll Y, Scroll X
 
 SCY(Scroll Y), SCX(Scroll X) 指定要显示在 LCD 上的图像在 256 * 256 BG 中的位置(左上角). 当绘图大小超过 BG 地图区域的右下边界时, 视频控制器自动回绕到 BG 地图中的左上位置. 在上一小节《图像显示系统简介》有详细介绍.
 
-# LCDC Y-Coordinate
+## LCDC Y-Coordinate
 
 LY(LCDC Y-Coordinate) 表示当前正在绘制 LCD 屏幕的第几行. LY 可以取 0 到 153 之间的任何值, 其中 144 和 153 之间的值表示正处于 V-Blank 周期.
 
-# LYC
+## LYC
 
 LYC(LY Compare) 是一个特殊的值, Game Boy 永久地比较 LYC 和 LY 寄存器的值. 当两个值相同时, LCD Status Register 中的 Coincidence Flag 被置位, 并且请求 STAT 中断(如果允许的话).
 
-# Window Y, Window X
+## Window Y, Window X
 
 用于表示指定 Window 区域的左上位置. Window 是一个可以在正常背景上方显示的备用背景区域, Sprite 可能仍然显示在窗口的上方或后方, 就像正常的 BG 一样. 一个比较形象的例子是, 当游戏任务在大地图上与 NPC 交谈时, 对话框通常就是一个窗口. Window 在上一小节《图像显示系统简介》有详细介绍.
 
 当位置设置在范围 0 <= WX <= 166, 0 <= WY <= 143 时, 窗口变为可见(如果 LCDC 寄存器允许显示窗口的话). 注意: WX = 7, WY = 0 的位置将使窗口位于 LCD 的左上角(完全覆盖正常背景).
 
-# BGP
+## BGP
 
 BGP(BG Palette Data) 为 BG 和 Window Tile 的颜色编号指定对应灰度. 只在非 CGB 模式(非彩色 Game Boy 或彩色 Game Boy 以黑白模式运行)下有效.
 
@@ -237,15 +237,15 @@ BGP(BG Palette Data) 为 BG 和 Window Tile 的颜色编号指定对应灰度. �
 
 对于 CGB 来说, Palettes 数据取自 CGB Palettes Memory, 后文将会介绍.
 
-# OBP0
+## OBP0
 
 OBP0(Object Palette 0 Data) 为 Sprite Palettes 0 指定灰度. 它与 BGP(0xff47)完全相同, 只是因为 Sprite 的颜色数据 00 是透明的, 所以不使用低两位.
 
-# OBP1
+## OBP1
 
 OBP1(Object Palette 1 Data) 为 Sprite Palettes 1 指定灰度. 它与 BGP(0xff47)完全相同, 只是因为 Sprite 的颜色数据 00 是透明的, 所以不使用低两位.
 
-# BCPS/BGPI
+## BCPS/BGPI
 
 BGPI(Background Palette Index) 用于寻址 BG Palettes 存储器中的一个字节. 该存储器中的每两个字节定义一个颜色值. 前 8 个字节定义 Palette 0(BGP0) 的 Color 0-3, 以此类推 BGP 1-7.
 
@@ -295,7 +295,7 @@ impl Bgpi {
 }
 ```
 
-# BCPD/BGPD
+## BCPD/BGPD
 
 BGPD(Background Palette Data) 寄存器允许读取或写入通过寄存器 0xff68 寻址的 BG Palettes 的数据. 每种颜色由两个字节定义.
 
@@ -307,17 +307,17 @@ BGPD(Background Palette Data) 寄存器允许读取或写入通过寄存器 0xff
 
 与 VRAM 极为相似, 在从 LCD 控制器读取调色板内存期间, 无法读取/写入调色板内存中的数据(即当 STAT 寄存器指示模式 3 时).
 
-# OCPS/OBPI
+## OCPS/OBPI
 
 OBPI(Sprite Palette Index) 寄存器与 BGPI 寄存器描述的几乎完全一样, 但区别在于其初始化 Sprite Palettes OBP 0-7.
 
-# OCPD/OBPD
+## OCPD/OBPD
 
 OBPD(Sprite Palette Data) 寄存器与 BGPD 寄存器描述的几乎完全一样, 但区别在于其初始化 Sprite Palettes OBP 0-7. 请注意, 虽然可以为每个 OBP Palettes 定义四种颜色, 但是只能显示每个 Sprite Palette 的 Color 1-3, 而 Color 0 始终是透明的, 并且可以初始化为无关值或从不初始化.
 
 注意：所有 Sprite 的颜色都不会由引导 ROM 初始化.
 
-# 仿真器开发过程中的 RGB 色彩转换
+## 仿真器开发过程中的 RGB 色彩转换
 
 与现在常用的 8 位 RGB 色彩模式不同, Game Boy 只使用 4 位表示一种颜色通道, 每种色彩通道的范围使 0x00 到 0x1f. 在 PC 上显示图像颜色时, 需要进行一次对比拉伸, 即拉伸到 0x00 到 0xff 范围. 但是要注意这种转换并不是线性的, 目前尝试下来比较合理的拉伸算法如下所示:
 
@@ -343,7 +343,7 @@ Gray = R*0.299 + G*0.587 + B*0.114
 
 该公式同样是人为挑选出来的.
 
-# DMA
+## DMA
 
 写入 DMA(DMA Transfer and Start Address) 寄存器会启动从 ROM 或 RAM 到 OAM 存储器的 DMA 传输(传输的数据是 Sprite 属性表). 写入的值会除以 0x0100 后作为数据源地址的高两位地址, 数据源与数据目的地如下所示:
 
@@ -354,17 +354,17 @@ Destination: FE00-FE9F
 
 传输需要 160 个机器周期, 约 152 微秒. 在此期间, CPU 只能访问 HRAM 内存区间(0xff80-0xfffe).
 
-# HDMA1, HDMA2
+## HDMA1, HDMA2
 
 两个寄存器共同组成了 New DMA Source. New DMA Source 的行为同 DMA 类似, 这两个寄存器指定传输源的地址, 通常, 这应该是 ROM, SRAM 或 WRAM 中的一个地址, 因此在 0x0000-0x7ff0 或 0xa000-0xdff0 范围内.
 
 该地址的低 4 位将被忽略并视为 0.
 
-# HDMA3, HDMA4
+## HDMA3, HDMA4
 
 两个寄存器共同组成了 New DMA Destination. New DMA Destination 只有中间的第 12-4 位有效, 且低 4 位被忽略视为 0. 因此 New DMA Destination 的范围是 0x8000-0x9ff0.
 
-# HDMA5
+## HDMA5
 
 HDMA5(New DMA Length/Mode/Start) 用于启动从 ROM 或 RAM 到 VRAM 的 DMA 传输. 源起始地址为 New DMA Source, 目标地址为 New DMA Destination.
 
@@ -373,7 +373,7 @@ HDMA5(New DMA Length/Mode/Start) 用于启动从 ROM 或 RAM 到 VRAM 的 DMA �
 - Bit7=0 时, 使用 General Purpose DMA. 使用此传输方法时, 将立即传输所有数据. 程序的执行将暂停, 直到传输完成. 请注意, 即使 LCD 控制器当前正在访问 VRAM, DMA 也会尝试复制数据. 因此, 仅当显示器被禁用时, 或者在 V-Blank 期间, 或者(对于相当短的块长度)在 H-Blank 期间, 才应使用通用 DMA. 传输完成后程序的执行继续, 并向 0xff55 写入值 0xff.
 - Bit7=1 时, 使用 H-Blank DMA. H-Blank DMA 在每个 H-Blank 期间传输 0x10 字节的数据(即 LY = 0-143 时). 在 V-Blank 期间不会传输数据(即 LY = 144-153) 时. 寄存器 0xff55 的低 7 位存储剩余待传输数据的大小(注意需要使用上述公式进行转换). 值 0xff 表示当前传输已完成. 通过将 0 写入 0xff55 的最高位, 也可以终止当前的 H-Blank DMA 传输.
 
-# DMA 代码实现
+## DMA 代码实现
 
 ```rs
 pub struct Hdma {
@@ -434,7 +434,7 @@ impl Gpu {
 }
 ```
 
-# VRAM Tile Data
+## VRAM Tile Data
 
 Tile 数据存储在 VRAM 中的地址 0x8000-0x97ff 区间内, 其中一个 Tile 为 16 字节大, 该区域总共定义了 384 个 Tile 的数据. 在 CGB 模式下, 由于有两个 VRAM 库, 因此它加倍至 768 个 Tile.
 
@@ -467,7 +467,7 @@ Tile 中的每个像素的低位保持在一个字节中, 而高位在另一个�
 
 因此, 每个像素的色数范围为 0-3. 根据当前调色板, 颜色编号被转换为真实颜色(或灰色阴影).
 
-# VRAM Background Maps
+## VRAM Background Maps
 
 Game Boy 在地址 0x9800-0x9bff 和 0x9c00-0x9fff 的 VRAM 中包含两个大小为 32x32 的 Tile 映射. 每个映射关系都可用于显示 BG 或 Window 的背景.
 
@@ -490,7 +490,7 @@ SCY 和 SCX 寄存器可用于滚动 BG, 其允许在总 256x256 像素 BG 图�
 
 除了 BG, 还有一个覆盖 BG 的 Windos. Windos 不可滚动, 也就是说, 它始终从左上角开始显示. 可以通过 WX 和 WY 寄存器调整屏幕上窗口的位置. 注意窗口左上角的屏幕坐标为 (WX-7, WY). 窗口与 BG 共享相同的 Tile 数据表. 背景和窗口都可以通过 LCDC 寄存器中的特定位单独禁用或启用.
 
-# VBK
+## VBK
 
 由于 CGB 拥有两倍的 VRAM, 因此需要一个 Bank Number 用于指定当前的 VRAM Bank. 可以向 VBK(VRAM Banks) 写入以更改 VRAM Bank, 只有位 0 有意义, 所有其他位都被忽略.
 
@@ -498,7 +498,7 @@ VRAM Bank 1 像 VRAM Bank 0 一样被分割为不同区域. 0x8000-0x97ff 还存
 
 从该寄存器读取将返回位 0 中当前加载的 VRAM 存储区的编号, 并且所有其他位将设置为 1.
 
-# VRAM Sprite Attribute Table (OAM)
+## VRAM Sprite Attribute Table (OAM)
 
 Game Boy 视频控制器最多可以显示 40 个 8x8 或 8x16 像素的 Sprite. 由于硬件的限制, 每条 Scanline 只能显示 10 个 Sprite. Sprite Tile 与 BG Tile 数据格式相同, 但它们取自位于 0x8000-0x8fff 的 Sprite Pattern Table. OAM 中的一个元素占用 4 个字节大小.
 

@@ -1,6 +1,6 @@
-![img](/img/pil/macaron_color/macaron_color.jpg)
+# 数字图像处理/马卡龙色
 
-# 马卡龙色
+![img](/img/pil/macaron_color/macaron_color.jpg)
 
 让人看了非常舒服的 10 种颜色, 据说来自马卡龙. 收藏记录一下以备不时之需, 这十种颜色分别是:
 

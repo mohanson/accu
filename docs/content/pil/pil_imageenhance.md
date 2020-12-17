@@ -1,6 +1,8 @@
+# 数字图像处理/PIL/ImageEnhance
+
 `PIL.ImageEnhance` 包含一系列的图像增强算法.
 
-# 色彩平衡度
+## 色彩平衡度
 
 `PIL.ImageEnhance.Color`
 
@@ -17,7 +19,7 @@ for i in range(11):
 
 ![img](/img/pil/pil_imageenhance/color.gif)
 
-# 对比度
+## 对比度
 
 `PIL.ImageEnhance.Contrast`
 
@@ -31,7 +33,7 @@ enhancer.enhance(0.5).show()
 enhancer.enhance(2.0).show()
 ```
 
-# 亮度
+## 亮度
 
 `PIL.ImageEnhance.Brightness`
 
@@ -45,7 +47,7 @@ enhancer.enhance(0.5).show()
 enhancer.enhance(2.0).show()
 ```
 
-# 锐化
+## 锐化
 
 `PIL.ImageEnhance.Sharpness`
 

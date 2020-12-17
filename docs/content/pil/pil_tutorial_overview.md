@@ -1,6 +1,6 @@
-# PIL 库概览
+# 数字图像处理/PIL/概览
 
-**PIL库教程**系列大部分翻译自官方文档: [https://pillow.readthedocs.io](https://pillow.readthedocs.io), 使用的 PIL 版本号为 **4.3.x**.
+PIL 库系列文章大部分翻译自官方文档: [https://pillow.readthedocs.io](https://pillow.readthedocs.io), 使用的 PIL 版本号为 **4.3.x**. 这是个人的笔记记录.
 
 ## 使用 Image 对象
 

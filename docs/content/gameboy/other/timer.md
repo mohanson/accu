@@ -1,4 +1,4 @@
-# 定时器
+# GB/其它/定时器
 
 当计算机诞生后, 人们除了期望它计算加减乘除外, 还希望做一些更复杂的事: 比如按照某固定频率刷新画面以显示动态画面, 当外接键盘时可以识别键盘按钮的长按或短按, 计算一个计算机程序的执行时间等. 这一切都需要根据定时器进行协调操作. 定时器的目的是允许事情在给定时刻或以特定速率发生.
 
@@ -8,7 +8,7 @@
 
 定时器的工作流程是以特定频率使定时器计数器(TIMA)递增, 当它溢出时, 产生一个 CPU 中断, 然后加载 Timer Modulo(TMA) 的内容. 具体而言, 它具有以下几个寄存器.
 
-# 寄存器描述
+## 寄存器描述
 
 
 | 名称 |  地址  |                                                                        描述                                                                        |
@@ -34,7 +34,7 @@ TAC(Timer Control) 寄存器被区分为两段数据:
 | 10     | CPU Clock / 64   (DMG, CGB:  65536 Hz, SGB:  ~67110 Hz) |
 | 11     | CPU Clock / 256  (DMG, CGB:  16384 Hz, SGB:  ~16780 Hz) |
 
-# 代码实现
+## 代码实现
 
 ```rs
 // Sometimes it's useful to have a timer that interrupts at regular intervals for routines that require periodic or

@@ -1,3 +1,5 @@
+# 数字图像处理/PIL/ImageColor
+
 `PIL.ImageColor` 包含两个将字符串转换为颜色值的函数 `getrgb()` 与 `getcolor()`.
 
 ```py

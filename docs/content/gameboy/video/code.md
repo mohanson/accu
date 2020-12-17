@@ -1,4 +1,4 @@
-# 代码实现
+# GB/视频/代码实现
 
 视频模块部分的完整代码实现比较复杂, 比较合理的代码阅读顺序是从 `draw_bg` 和 `draw_sprites` 两个函数入手, 如果在任何地方有疑惑, 随时翻阅前几节内容, 或阅读该技术文档: [http://gbdev.gg8.se/wiki/articles/Video_Display](http://gbdev.gg8.se/wiki/articles/Video_Display).
 

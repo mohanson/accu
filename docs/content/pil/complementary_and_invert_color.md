@@ -1,4 +1,6 @@
-# 补色
+# 数字图像处理/补色和反色
+
+## 补色
 
 ```py
 import numpy as np
@@ -23,7 +25,7 @@ im_converted.show()
 
 ![img](/img/pil/complementary_and_invert_color/complementary_color.jpg)
 
-# 反色
+## 反色
 
 ```py
 import numpy as np

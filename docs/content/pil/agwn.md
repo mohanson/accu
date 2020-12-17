@@ -1,8 +1,8 @@
-# 加性高斯白噪声
+# 数字图像处理/加性高斯白噪声与去噪
 
 加性高斯白噪声(Additive white Gaussian noise，AWGN)在通信领域中指的是一种功率谱函数是常数(即白噪声), 且幅度服从[高斯分布](/content/daze/math/normal_distribution/)的噪声信号. 这类噪声通常来自感光元件, 且无法避免.
 
-# 加噪
+## 加噪
 
 numpy 中使用 `numpy.random.normal()` 函数生成正态分布数据.
 
@@ -56,11 +56,11 @@ im_converted = PIL.Image.fromarray(im_converted_mat)
 im_converted.show()
 ```
 
-**加噪后的图像**
+加噪后的图像
 
 ![img](/img/pil/agwn/jp_agwn.jpg)
 
-# 去噪
+## 去噪
 
 考虑一幅将噪声 $\eta(x, y)$ 加入到原始图像 $f(x, y)$ 形成的带有噪声的图像 $g(x, y)$, 即:
 
@@ -128,7 +128,7 @@ im_converted = PIL.Image.fromarray(im_converted_mat)
 im_converted.show()
 ```
 
-**去噪后的图像**
+去噪后的图像
 
 ![img](/img/pil/agwn/jp_denoise.jpg)
 

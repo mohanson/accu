@@ -1,6 +1,8 @@
+# 数字图像处理/PIL/ImageDraw
+
 `PIL.ImageDraw` 提供简单的 2D 绘图功能. 你可以使用它创建新的图像或修改已有的图像.
 
-# 绘制线段
+## 绘制线段
 
 ```py
 import PIL.Image
@@ -21,7 +23,7 @@ im.show()
 draw.point([(x1, y1), (x2, y2), (x3, y3)...], fill='#FFFFFF')
 ```
 
-# 绘制圆弧
+## 绘制圆弧
 
 `PIL.ImageDraw.Draw.arc` 方法可以在给定的矩形选框内绘制一段(内切)圆弧. 绘制起点为 3 点钟位置.
 
