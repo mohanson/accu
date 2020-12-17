@@ -48,7 +48,7 @@ _start:
 
 注释以符号 `;` 开头. 每条 NASM 源代码行都包含以下四个字段的某种组合:
 
-```no-highlight
+```text
 [label:] instruction [operands] [; comment]
 ```
 

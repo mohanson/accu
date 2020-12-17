@@ -4,6 +4,7 @@ site_url: http://accu.cc
 site_author: Mohanson
 theme:
         name: readthedocs
+        highlightjs: true
         custom_dir: custom_theme/
 repo_url: https://github.com/mohanson/accu
 plugins: []

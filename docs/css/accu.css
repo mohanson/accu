@@ -5,6 +5,10 @@ blockquote {
     border-left: 0.25em solid #dfe2e5;
 }
 
+code {
+    color: #333333;
+}
+
 .wy-menu {
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.20);
 }

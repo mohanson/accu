@@ -8,7 +8,7 @@
 
 内存地址与其初始化的值:
 
-```no-highlight
+```text
 AF=0x01b0-GB/SGB, 0xffb0-GBP, 0x11b0-GBC
 BC=0x0013
 DE=0x00d8

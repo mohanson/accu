@@ -4,7 +4,7 @@
 
 通常情况下, 我们只需要一直按 Enter 键. 如果一切顺利的话, 只需要打开 shell, 输入 `rustc --version`, 这会打印出当前的 Rust 版本, 我这里显示的是
 
-```no-highlight
+```text
 $ rustc --version
 rustc 1.45.0 (5c1f21c3b 2020-07-13)
 ```
@@ -19,13 +19,13 @@ rustc 1.45.0 (5c1f21c3b 2020-07-13)
 
 OK, 接下来我们来创建一个 Rust 项目, 我使用的命令是
 
-```no-highlight
+```text
 $ cargo new hello
 ```
 
 这会在文档中创建一个名叫 hello 的文件夹, 我们用 vscode 打开这个项目. 基本上这个命令的作用是创建一个最小型的 Rust 应用程序, 它里面的结构还可以. 当前的结构中你将看到 `Cargo.toml` 和 `src` 两个文件和文件夹.
 
-```no-highlight
+```text
 .
 ├── Cargo.toml
 └── src
@@ -36,7 +36,7 @@ $ cargo new hello
 
 稍等一下, 我们保存它, 然后编译这个项目. 这里我使用的命令是
 
-```no-highlight
+```text
 $ cargo build
 ```
 

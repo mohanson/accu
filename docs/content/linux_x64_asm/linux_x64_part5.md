@@ -15,7 +15,7 @@ int main(void) {
 $ gcc -o main.S -S main.c
 ```
 
-```no-highlight
+```text
 	.file	"main.c"
 	.text
 	.section	.rodata

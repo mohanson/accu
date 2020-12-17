@@ -23,7 +23,7 @@ fn main() {
 
 但是当我们试图编译这份代码时, 却遇到了如下的编译错误
 
-```no-highlight
+```text
 println!("{} {}", s1, s2);
                   ^^ value borrowed here after move
 ```
@@ -72,7 +72,7 @@ fn main() {
 
 编译并运行它, 你将能看到字符串如愿以偿的带上了感叹号.
 
-```no-highlight
+```text
 any string!
 ```
 

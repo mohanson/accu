@@ -31,7 +31,7 @@ Game Boy 的串行接口实现并不在本书预定的内容之中. 因为要实
 
 在非 CGB 模式下, Game Boy 仅提供 8192Hz 的内部时钟(每秒传输大约 1KB). 在 CGB 模式下, 根据 SC 寄存器的第 1 位以及是否使用 CGB 倍速模式, 可以使用四个内部时钟速率:
 
-```no-highlight
+```text
   8192Hz -  1KB/s - Bit 1 cleared, Normal
  16384Hz -  2KB/s - Bit 1 cleared, Double Speed Mode
 262144Hz - 32KB/s - Bit 1 set,     Normal

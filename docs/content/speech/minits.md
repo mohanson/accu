@@ -66,7 +66,7 @@ var c= "10" + 1;
 
 递归下降的基本算法是为每一个非终结符构建一个 `parse` 函数, 伪代码可以表示为如下形式:
 
-```no-highlight
+```text
 parse_statement()
     parse_statement_variable_declare()
     parse_statement_if()

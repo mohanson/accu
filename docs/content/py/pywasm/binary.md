@@ -37,7 +37,7 @@ int add(int a, int b) {
 
 对应的 wasm 汇编代码为:
 
-```no-highlight
+```text
 (module
  (export "add" (func $add))
  (func $add (; 0 ;) (param $0 i32) (param $1 i32) (result i32)
@@ -76,7 +76,7 @@ section_data = [0x01, 0x07, 0x01, 0x60, 0x02, 0x7f, 0x7f, 0x01, 0x7f]
 
 我们取得的第一个字节是 `0x01`, 这意味着后面更着的是一个 type section. 下一步的目的获得 section size, 它是一个 u32, 并采用 leb128 编码. 您可以往回翻看 leb128 解码的过程, 但此处我便直接告诉你 section size 是 0x07. type section 内存储着模块内所有函数的签名, 在 section size 后跟着的内容是函数签名的数量, 字节为 `[0x01]`, 因此数量是 1. 每一个函数签名都以固定的 `0x60` 开头, 后面依次跟着函数的参数个数, 参数类型, 返回值个数和返回值类型, 它们是 `[0x02, 0x7f, 0x7f, 0x01, 0x7f]`, 翻译为便于阅读的函数签名格式, 则是
 
-```no-highlight
+```text
 func(i32, i32) -> i32
 ```
 
@@ -103,7 +103,7 @@ section_data = [0x07, 0x07, 0x01, 0x03, 0x61, 0x64, 0x64, 0x00, 0x00]
 
 很好, 现在我们知道模块中大概保存了这样一个函数:
 
-```no-highlight
+```text
 pub func add(i32, i32) -> i32
 ```
 
@@ -115,7 +115,7 @@ section_data = [0x0a, 0x09, 0x01, 0x07, 0x00, 0x20, 0x01, 0x20, 0x00, 0x6a, 0x0b
 
 代码分段保存着函数的实现. 我不想再重复介绍, 让我们直接忽略前 4 个字节吧. `add` 函数的实现被保存为 `[0x00, 0x20, 0x01, 0x20, 0x00, 0x6a, 0x0b]`, 直接翻译为流水账式的汇编代码如下:
 
-```no-highlight
+```text
 local.get 1
 local.get 0
 i32.add
@@ -137,7 +137,7 @@ pywasm.load('add.wasm')
 
 由于开启了 debug 模式, 其 section 信息将被打印至标准输出, 如下所示.
 
-```no-highlight
+```text
 2020/05/08 23:58:12 type_section([function_type(result_type([i32, i32]), result_type([i32]))])
 2020/05/08 23:58:12 function_section([type_index(0)])
 2020/05/08 23:58:12 table_section([table(table_type(funcref, limits(0, 0)))])

@@ -39,7 +39,7 @@ Game Boy 的噪声通道产生的是均匀噪声.
 
 Game Boy 最终播放出的声音是 4 个音频通道的输出的叠加. 每个音频通道都有一个定时器, 为波形发生器计时. 在最终送入混频器之前, 4 个音频通道的波形的振幅将通过一个音量调节器进行调节. 混频器将每个通道的波形转换为电信号, 并将其输出到 Game Boy 的左/右声道. 最后, 主音量包络将调节左右声道的输出音量. 从总体上来看, 4 个音频通道具有以下从左到右连接的单元:
 
-```no-highlight
+```text
 Square 1: Sweep -> Timer -> Duty -> Length Counter -> Envelope -> Mixer
 Square 2:          Timer -> Duty -> Length Counter -> Envelope -> Mixer
 Wave:              Timer -> Wave -> Length Counter -> Volume   -> Mixer

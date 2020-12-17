@@ -4,7 +4,7 @@
 
 序列器发生器在不同时间分片下触发不同的硬件单元:
 
-```no-highlight
+```text
 Step   Length Ctr  Vol Env     Sweep
 ---------------------------------------
 0      Clock       -           -

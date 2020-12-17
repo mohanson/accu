@@ -19,7 +19,7 @@ Cartridge 保存了游戏的汇编代码与全部二进制数据(图像, 音乐�
 
 其等价汇编表示为:
 
-```no-highlight
+```text
 nop
 jp  0x0150
 ```
@@ -28,7 +28,7 @@ jp  0x0150
 
 该地址区域存储了任天堂的 Logo 图标. 当 Game Boy 开机的时候, 首先会显示这部分内容, 之后验证该图像的内容. 如果这部分内容的字节不正确, 则会锁定自身并拒绝继续运行. 这部分内容的 16 进制格式如下所示.
 
-```no-highlight
+```text
 CE ED 66 66 CC 0D 00 0B 03 73 00 83 00 0C 00 0D
 00 08 11 1F 88 89 00 0E DC CC 6E E6 DD DD D9 99
 BB BB 67 63 6E 0E EC CC DD DC 99 9F BB B9 33 3E
@@ -61,7 +61,7 @@ BB BB 67 63 6E 0E EC CC DD DC 99 9F BB B9 33 3E
 
 使用两个字节存储许可协议的代码, 这些代码和游戏公司或发布者相关. 一些典型的例子如下:
 
-```no-highlight
+```text
 00  none                01  Nintendo R&D1   08  Capcom
 13  Electronic Arts     18  Hudson Soft     19  b-ai
 20  kss                 22  pow             24  PCM Complete
@@ -107,7 +107,7 @@ A4  Konami (Yu-Gi-Oh!)
 
 值与其含义的对照如下所示:
 
-```no-highlight
+```text
 0x00  ROM ONLY                 0x19  MBC5
 0x01  MBC1                     0x1A  MBC5+RAM
 0x02  MBC1+RAM                 0x1B  MBC5+RAM+BATTERY
@@ -130,7 +130,7 @@ A4  Konami (Yu-Gi-Oh!)
 
 该字节标明该卡带的 ROM 大小. 通常是 32KB 的整数倍. 常用的值与其实际表示的容量大小对应如下:
 
-```no-highlight
+```text
 0x00 -  32KByte (no ROM banking)
 0x01 -  64KByte (4 banks)
 0x02 - 128KByte (8 banks)
@@ -164,7 +164,7 @@ A4  Konami (Yu-Gi-Oh!)
 
 该字节标明该卡带是否在非日本地区销售. 只有两个可选值:
 
-```no-highlight
+```text
 0x00 - Japanese
 0x01 - Non-Japanese
 ```
@@ -175,7 +175,7 @@ A4  Konami (Yu-Gi-Oh!)
 
 该字节包含卡带标题(地址区间 0x0134-0x014C)的 8 位校验和. 校验和计算伪代码如下:
 
-```no-highlight
+```text
 x=0:FOR i=0134h TO 014Ch:x=x-MEM[i]-1:NEXT
 ```
 

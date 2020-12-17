@@ -9,7 +9,7 @@ import PIL.Image
 import scipy.misc
 import numpy as np
 
-
+# 获取第 n 个位平面
 flat = 7
 
 

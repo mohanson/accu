@@ -32,7 +32,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/boost/lib
 
 **记录二: 内存过小导致编译失败**
 
-```no-highlight
+```text
 c++: internal compiler error: Killed (program cc1plus)
 Please submit a full bug report,
 with preprocessed source if appropriate.

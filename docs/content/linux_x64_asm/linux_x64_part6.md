@@ -57,7 +57,7 @@ $ ./main
 
 可以在 C 源代码中直接使用汇编代码, 为此需要一种特殊的语法:
 
-```no-highlight
+```text
 asm [volatile] ("assembly code" : output operand : input operand : clobbers);
 ```
 

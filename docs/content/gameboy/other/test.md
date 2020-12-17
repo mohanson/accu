@@ -67,14 +67,14 @@ The factorial of 3 is 12548672
 
 之后运行 `gdb a.out` 设置断点, 语法是 break line_number. 这里设置断点为第十行, 即 break 10.
 
-```no-highlight
+```text
 Breakpoint 1, main () at factorial.c:10
 10          j=j*i;
 ```
 
 此时便可以打印变量的值, 语法是 print variable_name.
 
-```no-highlight
+```text
 (gdb) p i
 $1 = 1
 (gdb) p j

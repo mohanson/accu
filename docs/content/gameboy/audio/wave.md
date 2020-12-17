@@ -45,7 +45,7 @@
 
 频率用来设置音频通道内部计数器的值, 其公式是
 
-```no-highlight
+```text
 Peroid = (2048 - Frequency) * 2
 ```
 
