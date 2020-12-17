@@ -28,7 +28,6 @@ nav:
         - 数字图像处理/频域滤波基础: content/pil/frequency_filter.md
         - 数字图像处理/频域滤波/低通滤波: content/pil/frequency_filter_lpf.md
         - 数字图像处理/频域滤波/高通滤波: content/pil/frequency_filter_hpf.md
-        - 数字图像处理/频域滤波/带阻和带通滤波: content/pil/frequency_filter_br_bp.md
         - 数字图像处理/噪声: content/pil/noise.md
         - 数字图像处理/安全色: content/pil/safe_color.md
         - 数字图像处理/马卡龙色: content/pil/macaron_color.md
@@ -120,6 +119,7 @@ nav:
         - Rust 速成课/泛型类型: content/rust_crash/trait.md
         - Rust 速成课/所有权: content/rust_crash/ownership.md
         - Rust 速成课/引用与借用: content/rust_crash/borrow.md
+        - Rust 速成课/二叉树: content/rust_crash/binary_tree.md
 - 算法心得, 高效算法的奥秘:
         - 高效算法/概览: content/hackers_delight/overview.md
         - 高效算法/基础知识: content/hackers_delight/basic_knowledge.md

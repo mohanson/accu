@@ -6,17 +6,14 @@
 
 ## 理想低通滤波器
 
-在以原点为圆心, $D_0$ 为半径的圆内, 无衰减的通过所有频率, 而在该圆外阻断所有频率的滤波器称为理想低通滤波器(ILPF). 它由下面的函数所决定:
+在以原点为圆心, D0 为半径的圆内, 无衰减的通过所有频率, 而在该圆外阻断所有频率的滤波器称为理想低通滤波器(ILPF). 它由下面的函数所决定:
 
-$$
-H(u, v) =
-\begin{cases}
-1 & D(u, v) < D_0 \\\
-0 & D(u, v) >= D_0
-\end{cases}
-$$
+```text
+H(u, v) = 1; D(u, v) <  D0
+        = 0; D(u, v) <= D0
+```
 
-其中, $D_0$ 为一个正常数(称为截止频率), D(u, v) 是频率域中心点 (u, v) 与频率矩形中心的距离.
+其中, D0 为一个正常数(称为截止频率), D(u, v) 是频率域中心点 (u, v) 与频率矩形中心的距离.
 
 ![img](/img/pil/frequency_filter_lpf/ilpf.jpg)
 
@@ -82,11 +79,9 @@ im_converted.show()
 
 ## 巴特沃斯低通滤波器
 
-截止频率位于距原点 $D_0$ 处的 n 阶巴特沃斯低通滤波器(BLPF)的传递函数为
+截止频率位于距原点 D0 处的 n 阶巴特沃斯低通滤波器(BLPF)的传递函数为
 
-$$
-H(u, v) = \frac{1}{1 + [D(u, v) / D_0]^{2n}}
-$$
+![img](/img/pil/frequency_filter_lpf/blpf.svg)
 
 ![img](/img/pil/frequency_filter_lpf/blpf.jpg)
 
@@ -136,11 +131,9 @@ def convert_2d(r):
 
 高斯低通滤波器(GLPF)的传递函数为
 
-$$
-H(u, v) = e^{-D^2(u, v) / 2D_0^2}
-$$
+![img](/img/pil/frequency_filter_lpf/glpf.svg)
 
-其中, $D_0$ 是截止频率, 当 $D(u, v) = D_0$ 时候, GLPF 下降到最大值的 0.607 处.
+其中, D0 是截止频率, 当 D(u, v) = D0 时候, GLPF 下降到最大值的 0.607 处.
 
 ![img](/img/pil/frequency_filter_lpf/glpf.jpg)
 
