@@ -1,14 +1,12 @@
-$(document).ready(function () {
-    $(function () {
-        MathJax = {
-            tex: { inlineMath: [['$', '$']] },
-            svg: {
-                fontCache: 'global',
-                displayAlign: 'left',
-            },
-        };
-    })
+MathJax = {
+    tex: { inlineMath: [['$', '$']] },
+    svg: {
+        fontCache: 'global',
+        displayAlign: 'left',
+    },
+};
 
+$(document).ready(function () {
     $(function () {
         $.fn.isFullyWithinViewport = function () {
             var viewport = {};

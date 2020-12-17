@@ -6,10 +6,6 @@ theme:
         name: readthedocs
         custom_dir: custom_theme/
 repo_url: https://github.com/mohanson/accu
-extra_css:
-        - css/accu.css
-extra_javascript:
-        - js/accu.js
 plugins: []
 nav:
 - 主页: index.md
@@ -101,6 +97,11 @@ nav:
         - GB/其它/硬件初始化工作: content/gameboy/other/init.md
         - GB/其它/测试: content/gameboy/other/test.md
         - GB/后记: content/gameboy/foot.md
+- 遗传算法:
+        - 遗传算法/简单遗传算法: content/ga/sga.md
+        - 遗传算法/最优保留策略: content/ga/sga_optret.md
+        - 遗传算法/生物进化模拟: content/ga/evolve.md
+        - 遗传算法/愚弄神经网络: content/ga/fooled_nn.md
 - Linux x64 汇编:
         - Linux x64 汇编/Hello World: content/linux_x64_asm/linux_x64_part1.md
         - Linux x64 汇编/术语和概念: content/linux_x64_asm/linux_x64_part2.md
@@ -119,15 +120,11 @@ nav:
         - Rust 速成课/所有权: content/rust_crash/ownership.md
         - Rust 速成课/引用与借用: content/rust_crash/borrow.md
 - 算法心得, 高效算法的奥秘:
-        - 概览: content/hackers_delight/overview.md
-        - 基础知识: content/hackers_delight/basic_knowledge.md
-        - 2 的幂边界: content/hackers_delight/power_of_2_boundaries.md
-        - 位计数: content/hackers_delight/counting_bits.md
+        - 高效算法/概览: content/hackers_delight/overview.md
+        - 高效算法/基础知识: content/hackers_delight/basic_knowledge.md
+        - 高效算法/2 的幂边界: content/hackers_delight/power_of_2_boundaries.md
+        - 高效算法/位计数: content/hackers_delight/counting_bits.md
 - 算法:
-        - 遗传算法-简单遗传算法: content/daze/ga/sga.md
-        - 遗传算法-最优保留策略: content/daze/ga/sga_optret.md
-        - 遗传算法-生物进化模拟: content/daze/ga/evolve.md
-        - 遗传算法-愚弄神经网络: content/daze/ga/fooled_nn.md
         - Dlib-安装: content/daze/dlib/install.md
         - Dlib-人脸检测: content/daze/dlib/face_detect.md
         - Dlib-人脸标注: content/daze/dlib/face_landmark.md

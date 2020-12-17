@@ -1,4 +1,4 @@
-# 最优保留策略
+# 遗传算法/最优保留策略
 
 最优保留策略指**将群体中最优的一部分个体不经过选择, 交叉和变异操作, 直接进入下一代**, 以避免优秀个体损失.
 
@@ -8,7 +8,7 @@
 2. 若当前群体中最优个体比历史最优个体适应度还高, 则以当前群体最优个体作为历史最优个体; 否则使用历史最优个体替换当前群体最差个体
 3. 执行后续遗传算子(选择, 交叉, 变异等)
 
-# 代码实现
+## 代码实现
 
 - 复制上节代码, 增加作用于 evolve 函数的 optret 装饰器
 - 调整种群大小为 4, 变异概率为 0.5
@@ -129,4 +129,4 @@ ani = matplotlib.animation.FuncAnimation(fig, update, interval=200, repeat=False
 plt.show()
 ```
 
-![img](/img/daze/ga/sga_optret/opt.gif)
+![img](/img/ga/sga_optret/opt.gif)
