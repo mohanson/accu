@@ -34,13 +34,13 @@ $ apt install nasm
 
 数据部分用于声明常量, 此数据在运行时不会更改. 声明数据部分的语法为:
 
-```nasm
+```text
 section .data
 ```
 
 文本部分用于代码. 该部分必须以全局声明 _start 开头, 该声明告诉内核程序从何处开始执行.
 
-```nasm
+```text
 section .text
 global _start
 _start:
@@ -54,15 +54,15 @@ _start:
 
 方括号中的字段是可选的. 基本的 NASM 指令由两部分组成, 第一部分是要执行的指令的名称, 第二部分是该命令的操作数. 例如:
 
-```nasm
-MOV COUNT, 48 ; Put value 48 in the COUNT variable
+```text
+mov rax, 48 ; put value 48 in the rax register
 ```
 
 ## Hello World!
 
 让我们用 NASM 编写第一个程序. 当然, 这将是传统的 Hello World! 程序. 这是它的代码:
 
-```nasm
+```text
 section .data
     msg db "Hello World!", 0x0A
 
@@ -92,7 +92,7 @@ _start:
 - rsi, 用于将第 2 个参数传递给函数
 - rdx, 用于将第 3 个参数传递给函数
 
-换句话说, 我们只是在调用 `sys_write` syscall. 看看 `sys_write`:
+换句话说, 我们只是在调用 `sys_write` syscall. 看看 `sys_write` 的定义:
 
 ```c
 size_t sys_write(unsigned int fd, const char * buf, size_t count);
