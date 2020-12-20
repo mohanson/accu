@@ -105,7 +105,7 @@ nav:
 - Linux x64 汇编:
         - Linux x64 汇编/Hello World: content/linux_x64_asm/linux_x64_part1.md
         - Linux x64 汇编/术语和概念: content/linux_x64_asm/linux_x64_part2.md
-        - Linux x64 汇编/堆栈: content/linux_x64_asm/linux_x64_part3.md
+        - Linux x64 汇编/栈: content/linux_x64_asm/linux_x64_part3.md
         - Linux x64 汇编/宏: content/linux_x64_asm/linux_x64_part4.md
         - Linux x64 汇编/AT&T: content/linux_x64_asm/linux_x64_part5.md
         - Linux x64 汇编/汇编与 C: content/linux_x64_asm/linux_x64_part6.md

@@ -1,95 +1,141 @@
 # Linux x64 汇编/AT&T
 
-我们将介绍 AT&T 汇编语法. 之前的文章中, 我们都使用了 nasm 汇编器, 但是还有一些其他汇编器, 它们使用了不同的语法. gcc 使用 GNU 汇编器, 尝试看看将一个 C 代码编译到汇编输出.
+在 x64 汇编语法的领域内分成两个流派: NASM 和 AT&T. 大多数国人可能更为熟悉 NASM 语法, 因为它源自 8086 CPU, 许多大学都会开设 8086 CPU 的实验课, 我也是在那是第一次接触 NASM. 后者则流行于 Unix/Linux 平台上, 是目前更为主流的语法.
+
+对我而言, 我更为喜欢 NASM 语法, 不过 AT&T 与 NASM 区别也不大, 确切的说, 它们在本质上没有区别. 在两种语法之间切换并不困难. 我们先来看下典型的 AT&T 语法的样子. 我们编译如下的 C 代码:
 
 ```c
-#include <unistd.h>
-
-int main(void) {
-	write(1, "Hello World\n", 15);
-	return 0;
+int main() {
+    return 0;
 }
 ```
 
 ```sh
-$ gcc -o main.S -S main.c
+$ gcc -S -o main.s main.c
 ```
+
+`-S` 命令表示 gcc 在生成汇编代码后停止后续工作. 打开 main.s, 内容如下:
 
 ```text
-	.file	"main.c"
-	.text
-	.section	.rodata
-.LC0:
-	.string	"Hello World\n"
-	.text
-	.globl	main
-	.type	main, @function
+        .file   "main.c"
+        .text
+        .globl  main
+        .type   main, @function
 main:
 .LFB0:
-	.cfi_startproc
-	pushq	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.cfi_def_cfa_register 6
-	movl	$15, %edx
-	leaq	.LC0(%rip), %rsi
-	movl	$1, %edi
-	call	write@PLT
-	movl	$0, %eax
-	popq	%rbp
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
+        .cfi_startproc
+        pushq   %rbp
+        .cfi_def_cfa_offset 16
+        .cfi_offset 6, -16
+        movq    %rsp, %rbp
+        .cfi_def_cfa_register 6
+        movl    $0, %eax
+        popq    %rbp
+        .cfi_def_cfa 7, 8
+        ret
+        .cfi_endproc
 .LFE0:
-	.size	main, .-main
-	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
-	.section	.note.GNU-stack,"",@progbits
+        .size   main, .-main
+        .ident  "GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
+        .section        .note.GNU-stack,"",@progbits
 ```
 
-它看起来与 NASM 有很大的不同.
+## AT&T vs NASM
 
-## 区别
+```text
+AT&T vs. NASM
 
-在 AT&T 汇编格式中, 寄存器名要加上 % 作为前缀; 而在 Intel 汇编格式中, 寄存器名不需要加前缀.
+There are two main forms of assembly syntax:AT&T and Intel.
+AT&T syntax is used by the GNU Assembler(gas), contained in the gcc compiler suite, and is often used by Linux developers.
+Of the Intel syntax assemblers, the Netwide Assembler(NASM) is the most commonly used.
+The NSAM format is used by many windows assemblers and debuggers.
+The two formats yield exactly the same machine language; however, there are a few differences in style and format:
 
-|  AT&T 格式   | Intel 格式 |
-| ------------ | ---------- |
-| `pushl %eax` | `push eax` |
+The source and destination operands are reversed, and different symbols are used to mark the beginning of a comment:
+    NASM format CMD <dest>, <source><comment>
+    AT&T format CMD <source>, <dest><#comment>
+    AT&T format uses a % before registers; NASM does not
+    AT&T format uses a $ before literal values; NASM does not
+    AT&T handles memory reference differnetly than NASM
 
-在 AT&T 汇编格式中, 用 $ 前缀表示一个立即操作数; 而在 Intel 汇编格式中, 立即数的表示不用带任何前缀.
+mov
+The mov command copies data from the source to the destination. The value is not removed from the source location.
+    NASM Syntax          NASM Example            AT&T Example
+    mov<dest>,<source>   mov eax, 51h;comment    movl $51, %eax#comment
 
-| AT&T 格式  | Intel 格式 |
-| ---------- | ---------- |
-| `pushl $1` | `push 1`   |
+Data cannot be moved directly from memory to a segment register. Instead, you must use a general purpose register as an intermediate step;
 
-AT&T 和 Intel 格式中的源操作数和目标操作数的位置正好相反. 在 Intel 汇编格式中, 目标操作数在源操作数的左边; 而在 AT&T 汇编格式中, 目标操作数在源操作数的右边.
+mov eax, 1234h; sotre the value 1234 (hex) into EAX
+mov cs, ax; then copy the value of AX into CS.
 
-|    AT&T 格式    |  Intel 格式  |
-| --------------- | ------------ |
-| `addl $1, %eax` | `add eax, 1` |
+add and sub
+The add command adds the source to the destination and stores the result in the destination.
+The sub command subtracts the source form the destionation and stores the result in the destination
+    NASM Syntax               NASM Example        AT&T Example
+    add <dest>, <source>      add eax, 51h        addl $51h, %eax
+    sub <dest>, <source>      sub eax, 51h        subl $51h, %eax
 
-在 AT&T 汇编格式中, 操作数的字长由操作符的最后一个字母决定, 后缀 b, w, l 分别表示操作数为字节, 字和双字; 而在 Intel 汇编格式中, 操作数的字长是用 byte ptr 和 word ptr 等前缀来表示的.
+push and pop
+The push and pop commands push and pop items from the stack
+    NASM Syntax        NASM Example         AT&T Example
+    push <value>       push eax             pushl %eax
+    pop <dest>         pop eax              popl %eax
 
-|    AT&T 格式    |       Intel 格式       |
-| --------------- | ---------------------- |
-| `movb val, %al` | `mov al, byte ptr val` |
+xor
+The xor command conduts a bitwise logical "exclusive or" (XOR) function. XOR value, value to zero out or clear a register or memory location
+    NASM Syntax            NASM Example      AT&T Example
+    xor <dest>, <source>   xor eax, eax      xor %eax, %eax
 
-在 AT&T 汇编格式中, 绝对转移和调用指令(jump/call)的操作数前要加上 \* 作为前缀, 而在 Intel 格式中则不需要. 远程转移指令和远程子调用指令的操作码, 在 AT&T 汇编格式中为 ljump 和 lcall, 而在 Intel 汇编格式中则为 jmp far 和 call far, 即:
+The jne, je, jz, and jmp commands branch the flow of the program to another location based on the value of the eflag "zero flag."
+jne/jnz jumps if the "zero flag"=0; je/jz jumps if the "zero flag"=1; and jmp always jumps.
+    NASM Example              NASM Example      AT&T Example
+    jnz <dest> / jne <dest>   jne start         jne start
+    jz <dest> / je <dest>     jz loop           jz loop
+    jmp <dest>                jmp end           jmp end
 
-|         AT&T 格式         |        Intel 格式         |
-| ------------------------- | ------------------------- |
-| `ljump $section, $offset` | `jmp far section:offset`  |
-| `lcall $section, $offset` | `call far section:offset` |
+call and ret
+The call command calls a procedure (not jumps to a label). The ret command is used at the end of a procedure to return the flow to the command after the call.
+    NASM Example       NASM Example        AT&T Example
+    call <dest>        call subroutine1    call subroutine1
+    ret                ret                 ret
 
-与之相应的远程返回指令则为:
+inc and dec
+The inc and dec commands increment or decrement the destination, respectively.
+    NASM Example        NASM Example       AT&T Example
+    inc <dest>          inc eax            incl %eax
+    dec <dest>          dec eax            decl %eax
 
-|      AT&T 格式       |       Intel 格式       |
-| -------------------- | ---------------------- |
-| `lret $stack_adjust` | `ret far stack_adjust` |
+lea
+The lea command loads the effective address of the source into the destination
+    NASM Example            NASM Example        AT&T Example
+    lea <dest>, <source>    lea eax, [dsi+4]    leal 4(%dsi), %eax
 
-内存操作数的寻址方式不同
+int
+The int command throws asystem interrupt signal to the processor. The common interrupt you will use is 0x80, which signals a system call to the kernel.
+    NASM Syntax      NASM Example    AT&T Example
+    int <val>        int 0x80        int $0x80
 
-|             AT&T 格式              |              Intel 格式               |
-| ---------------------------------- | ------------------------------------- |
-| `section:disp(base, index, scale)` | `section:[base + index*scale + disp]` |
+Addressing Modes
+In assembly, several methods can be used to accomplish the same thing.
+In particular, there are many ways to indicate the effective address to manipulate in memory.
+These options are called addressing modes.
+
+Register: Registers hold the data to be manipulated / No memory interaction / Both registers must be the same size
+    NASM Example: mov ebx, edx / add al, ch
+Immediate: The source operand is a numerical value / Decimal is assumed; use h for hex
+    NASM Example: mov eax, 1234h / mov dx, 301
+Direct: The first operand is the address of memory to manipulate / It's marked with brackets.
+    NASM Example: mov bh, 100 / mov [4321h], bh
+Register Indirect: The first operand is a regsiter in brackets that holds the address to be manipulated
+    NASM Example: mov [di], ecx
+Based Relative: The effective address to be manipulated is calculated by using ebx or ebp plus an offset value
+    NASM Example: mov edx, 20[ebx]
+Indexed Relative: Same as Based Relative, but edi and esi are used to hold the offset
+    NASM Example: mov ecx, 20[esi]
+Based Indexed-Relative: The effective address is found by combining Based and Indexed Relative modes
+    NASM Example: mov ax, [bx][si]+1
+```
+
+## 参考
+
+- [1] Gray Hat Hacking the Ethical Hacker's Handbook

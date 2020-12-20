@@ -14,6 +14,6 @@ code {
 }
 
 .section p, .section ul {
-    letter-spacing: .15px;
+    letter-spacing: .25px;
     line-height: 1.8 !important;
 }

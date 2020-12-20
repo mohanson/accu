@@ -109,7 +109,7 @@ zerobuf:        times 64 db 0
 
 汇编中有一些算数运算指令用于进行算数运算, 例如如下汇编代码计算了 0 + 8 - 3 的值:
 
-```rs
+```text
 section .text
 global _start
 _start:
@@ -124,7 +124,7 @@ _start:
 
 通常, 编程语言可以更改程序的执行顺序(如 if 语句, switch-case 语句, goto 等), 汇编语言当然也可以. cmp 指令用于在两个值之间执行比较, 它可与条件跳转指令一起用于流程控制, 例如:
 
-```nasm
+```text
 cmp rax, 50
 ```
 
