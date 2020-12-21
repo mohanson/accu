@@ -109,6 +109,10 @@ nav:
         - Linux x64 汇编/宏: content/linux_x64_asm/linux_x64_part4.md
         - Linux x64 汇编/AT&T: content/linux_x64_asm/linux_x64_part5.md
         - Linux x64 汇编/汇编与 C: content/linux_x64_asm/linux_x64_part6.md
+- JIT 编译器原理简述:
+        - JIT 编译器原理简述/原理简述: content/jit_tour/principle.md
+        - JIT 编译器原理简述/实现 Brainfuck 解释器与 IR 优化: content/jit_tour/brainfuck_interpreter.md
+        - JIT 编译器原理简述/实现 Brainfuck JIT 编译器: content/jit_tour/brainfuck_jit.md
 - Rust 速成课:
         - Rust 速成课/概览: content/rust_crash/overview.md
         - Rust 速成课/开发环境搭建: content/rust_crash/env.md
@@ -167,9 +171,6 @@ nav:
         - Python-pywasm-LEB128: content/py/pywasm/leb128.md
         - Python-pywasm-1.0 版本发布: content/py/pywasm/version_1.0_released.md
         - Python-pywasm-wasm 二进制文件格式解析: content/py/pywasm/binary.md
-        - Python-pywasm-JIT 原理简述(一): content/py/pywasm/jit_brief_principle_1.md
-        - Python-pywasm-JIT 原理简述(二): content/py/pywasm/jit_brief_principle_2.md
-        - Python-pywasm-JIT 原理简述(三): content/py/pywasm/jit_brief_principle_3.md
         - Go-按行读取文件: content/go/read_file.md
         - Go-socket: content/go/socket.md
         - Go-socket-假如服务端不调用 Accept: content/go/socket_not_accept.md
