@@ -124,12 +124,12 @@ nav:
         - Rust 速成课/所有权: content/rust_crash/ownership.md
         - Rust 速成课/引用与借用: content/rust_crash/borrow.md
         - Rust 速成课/二叉树: content/rust_crash/binary_tree.md
-- 算法心得, 高效算法的奥秘:
-        - 高效算法/概览: content/hackers_delight/overview.md
-        - 高效算法/基础知识: content/hackers_delight/basic_knowledge.md
-        - 高效算法/2 的幂边界: content/hackers_delight/power_of_2_boundaries.md
-        - 高效算法/位计数: content/hackers_delight/counting_bits.md
-- 算法:
+- 算法心得:
+        - 算法心得/概览: content/hackers_delight/overview.md
+        - 算法心得/基础知识: content/hackers_delight/basic_knowledge.md
+        - 算法心得/2 的幂边界: content/hackers_delight/power_of_2_boundaries.md
+        - 算法心得/位计数: content/hackers_delight/counting_bits.md
+- 随便记记:
         - Dlib-安装: content/daze/dlib/install.md
         - Dlib-人脸检测: content/daze/dlib/face_detect.md
         - Dlib-人脸标注: content/daze/dlib/face_landmark.md
@@ -157,7 +157,6 @@ nav:
         - Math-方差与标准差: content/daze/math/variance_and_sd.md
         - Math-正态分布: content/daze/math/normal_distribution.md
         - Math-凯利公式: content/daze/math/kelly_formula.md
-- 语言:
         - Python-np-分割与合并: content/py/np/split.md
         - Python-matplotlib-折线图: content/py/plt/line.md
         - Python-matplotlib-散点图: content/py/plt/scatter.md
@@ -191,7 +190,6 @@ nav:
         - AHK-实现屏幕取色器: content/ahk/color.md
         - AHK-长按: content/ahk/longpress.md
         - AHK-按行读取文件: content/ahk/loopread.md
-- 区块链:
         - EVM: content/blockchain/evm.md
         - Merkle Tree: content/blockchain/merkle_tree.md
 - 竹书纪年:

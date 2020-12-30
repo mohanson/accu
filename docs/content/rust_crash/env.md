@@ -1,6 +1,6 @@
 # Rust 速成课/开发环境搭建
 
-各位 Rust 的朋友们大家好, 我是 Yeah 老师. 这次我们将约定俗成的用 Rust 写出 Hello World! 代码. 当然啦, 首先我们应该做的是下载并安装 Rust. 正如你在视频前看到的, 我现在正在使用 Windows 操作系统录制这次课程, 但我平常更加常用的开发系统是 Linux. 所以我将先打开 [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install) 这个网页, 如果你想在 Windows 上安装 Rust, 那么可以直接点击页面上的 "DOWNLOAD RUSTUP-INIT.EXE (64-BIT)" 按钮下载. 或者你和我一样在使用 Linux, 那么点击 "Other Installation Methods", 找到页面上的 `curl https://sh.rustup.rs -sSf | sh -s -- --help`, 将它敲入你的 shell 中.
+这次我们将约定俗成的用 Rust 写出 Hello World! 代码. 当然啦, 首先我们应该做的是下载并安装 Rust. 正如你在视频前看到的, 我现在正在使用 Windows 操作系统录制这次课程, 但我平常更加常用的开发系统是 Linux. 所以我将先打开 [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install) 这个网页, 如果你想在 Windows 上安装 Rust, 那么可以直接点击页面上的 "DOWNLOAD RUSTUP-INIT.EXE (64-BIT)" 按钮下载. 或者你和我一样在使用 Linux, 那么点击 "Other Installation Methods", 找到页面上的 `curl https://sh.rustup.rs -sSf | sh -s -- --help`, 将它敲入你的 shell 中.
 
 通常情况下, 我们只需要一直按 Enter 键. 如果一切顺利的话, 只需要打开 shell, 输入 `rustc --version`, 这会打印出当前的 Rust 版本, 我这里显示的是
 
