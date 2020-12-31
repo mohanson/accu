@@ -124,11 +124,6 @@ nav:
         - Rust 速成课/所有权: content/rust_crash/ownership.md
         - Rust 速成课/引用与借用: content/rust_crash/borrow.md
         - Rust 速成课/二叉树: content/rust_crash/binary_tree.md
-- 算法心得:
-        - 算法心得/概览: content/hackers_delight/overview.md
-        - 算法心得/基础知识: content/hackers_delight/basic_knowledge.md
-        - 算法心得/2 的幂边界: content/hackers_delight/power_of_2_boundaries.md
-        - 算法心得/位计数: content/hackers_delight/counting_bits.md
 - 随便记记:
         - Dlib-安装: content/daze/dlib/install.md
         - Dlib-人脸检测: content/daze/dlib/face_detect.md
@@ -192,9 +187,14 @@ nav:
         - AHK-按行读取文件: content/ahk/loopread.md
         - EVM: content/blockchain/evm.md
         - Merkle Tree: content/blockchain/merkle_tree.md
+        - 算法心得/概览: content/hackers_delight/overview.md
+        - 算法心得/基础知识: content/hackers_delight/basic_knowledge.md
+        - 算法心得/2 的幂边界: content/hackers_delight/power_of_2_boundaries.md
+        - 算法心得/位计数: content/hackers_delight/counting_bits.md
 - 竹书纪年:
         - Y2019: content/diary/2019.md
         - Y2020: content/diary/2020.md
+        - Y2021: content/diary/2021.md
 - 演讲:
         - minits, 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md
         - WASC, WebAssembly 到 RISC-V 的 AOT 编译器(中文): content/speech/wasc_cn.md
