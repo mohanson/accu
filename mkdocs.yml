@@ -126,9 +126,8 @@ nav:
         - Rust 速成课/二叉树: content/rust_crash/binary_tree.md
 - 随便记记:
         - 随便记记/Dlib 人脸识别: content/misc/dlib.md
-        - 加密算法-RC4-概览: content/daze/rc4/overview.md
-        - 加密算法-RC4-性能测试: content/daze/rc4/performance_testing.md
-        - 生命游戏: content/daze/game_of_life/overview.md
+        - 随便记记/RC4: content/misc/rc4.md
+        - 随便记记/生命游戏: content/misc/game_of_life/overview.md
         - sklearn-概览: content/daze/sklearn/overview.md
         - sklearn-线性模型-概览: content/daze/sklearn/liner_model/overview.md
         - sklearn-线性模型-普通最小二乘法: content/daze/sklearn/liner_model/linear_regression.md
