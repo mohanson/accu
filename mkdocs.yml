@@ -125,11 +125,7 @@ nav:
         - Rust 速成课/引用与借用: content/rust_crash/borrow.md
         - Rust 速成课/二叉树: content/rust_crash/binary_tree.md
 - 随便记记:
-        - Dlib-安装: content/daze/dlib/install.md
-        - Dlib-人脸检测: content/daze/dlib/face_detect.md
-        - Dlib-人脸标注: content/daze/dlib/face_landmark.md
-        - Dlib-人脸识别: content/daze/dlib/face_recognition.md
-        - Dlib-人脸聚类: content/daze/dlib/face_clustering.md
+        - 随便记记/Dlib 人脸识别: content/misc/dlib.md
         - 加密算法-RC4-概览: content/daze/rc4/overview.md
         - 加密算法-RC4-性能测试: content/daze/rc4/performance_testing.md
         - 生命游戏: content/daze/game_of_life/overview.md
