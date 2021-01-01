@@ -1,19 +1,17 @@
-# Neural Style Transfer
+# 杂项/图像风格转移
 
-Neural style 是让机器模仿已有画作的绘画风格来把一张图片重新绘制的算法. 艺术家可能需要用毕生的心血才能创造出惊人的艺术作品, 而通过机器学习便可以用很短的时间将普通图片创造出富有大师风格的画作.
+Neural Style Transfer 是让机器模仿已有画作的绘画风格来把一张图片重新绘制的算法. 艺术家可能需要用毕生的心血才能创造出惊人的艺术作品, 而通过机器学习便可以用很短的时间将普通图片创造出富有大师风格的画作.
 
-效果展示:
-
-![img](/img/daze/ml/neural_style_transfer/jp.jpg)
-![img](/img/daze/ml/neural_style_transfer/jp_maplewood.jpg)
-![img](/img/daze/ml/neural_style_transfer/jp_starry_night.jpg)
-![img](/img/daze/ml/neural_style_transfer/jp_greyrain.jpg)
+![img](/img/misc/neural_style_transfer/jp.jpg)
+![img](/img/misc/neural_style_transfer/jp_maplewood.jpg)
+![img](/img/misc/neural_style_transfer/jp_starry_night.jpg)
+![img](/img/misc/neural_style_transfer/jp_greyrain.jpg)
 
 风格转移算法可生成一张具有原图"内容"与另一张图片"风格"的新的图片. 比如, 可以很容易将梵高的"星月夜"的绘画风格转移到自己的图片上. 这里, 我们使用 keras 深度学习框架与 VGG-16 模型来完成这个功能.
 
 VGG-16: VGG-16 又称为 OxfordNet，是由牛津视觉几何组(Visual Geometry Group)开发的卷积神经网络结构. 该网络赢得了 ILSVR(ImageNet)2014 的冠军. 时至今日, VGG 仍然被认为是一个杰出的视觉模型--尽管它的性能实际上已经被后来的 Inception 和 ResNet 超过了.
 
-# 执行
+## 使用方式
 
 风格转移算法已经被包含在 keras 的官方例子里面了:
 
@@ -21,7 +19,7 @@ VGG-16: VGG-16 又称为 OxfordNet，是由牛津视觉几何组(Visual Geometry
 
 为了使用如上的代码, 首先需要安装 keras:
 
-```text
+```sh
 $ pip install keras
 ```
 
@@ -37,7 +35,7 @@ $ python neural_style_transfer.py path_to_your_base_image.jpg path_to_your_refer
 
 如果安装有 ffmpeg 工具, 可以将生成的 10 张图片打包成一张 gif 动态图:
 
-```text
+```sh
 $ ffmpeg -r 8 -i prefix_for_results_%d.jpg out.gif
 ```
 

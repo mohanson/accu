@@ -132,30 +132,9 @@ nav:
         - 杂项/EVM: content/misc/evm.md
         - 杂项/Merkle Tree: content/misc/merkle_tree.md
         - 杂项/AHK: content/misc/ahk.md
-        - sklearn-概览: content/daze/sklearn/overview.md
-        - sklearn-线性模型-概览: content/daze/sklearn/liner_model/overview.md
-        - sklearn-线性模型-普通最小二乘法: content/daze/sklearn/liner_model/linear_regression.md
-        - sklearn-线性模型-岭回归: content/daze/sklearn/liner_model/ridge.md
-        - sklearn-线性模型-逻辑回归: content/daze/sklearn/liner_model/logistic_regression.md
-        - sklearn-决策树: content/daze/sklearn/tree.md
-        - sklearn-贝叶斯分类器: content/daze/sklearn/bayes.md
-        - sklearn-kNN: content/daze/sklearn/knn.md
-        - sklearn-聚类: content/daze/sklearn/cluster.md
-        - sklearn-SVM: content/daze/sklearn/svm.md
-        - sklearn-流形学习: content/daze/sklearn/manifold.md
-        - sklearn-评估: content/daze/sklearn/evaluation.md
-        - 机器学习-图像风格转移: content/daze/ml/neural_style_transfer.md
-        - 机器学习-快速文本分类: content/daze/ml/fasttext.md
-        - 机器学习-HOG: content/daze/ml/hog.md
-        - Math-霍夫曼编码: content/daze/math/huffman.md
-        - Math-方差与标准差: content/daze/math/variance_and_sd.md
-        - Math-正态分布: content/daze/math/normal_distribution.md
-        - Math-凯利公式: content/daze/math/kelly_formula.md
-        - Python-np-分割与合并: content/py/np/split.md
-        - Python-matplotlib-折线图: content/py/plt/line.md
-        - Python-matplotlib-散点图: content/py/plt/scatter.md
-        - Python-matplotlib-柱状图: content/py/plt/bar.md
-        - Python-matplotlib-饼图: content/py/plt/pie.md
+        - 杂项/图像风格转移: content/misc/neural_style_transfer.md
+        - 杂项/霍夫曼编码: content/misc/huffman.md
+        - 杂项/Matplotlib: content/misc/matplotlib.md
         - Python-f-string: content/py/f_string.md
         - Python-windows编程-概览: content/py/ctypes/overview.md
         - Python-windows编程-删除文件至回收站: content/py/ctypes/recycle.md
