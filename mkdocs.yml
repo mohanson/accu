@@ -124,10 +124,10 @@ nav:
         - Rust 速成课/所有权: content/rust_crash/ownership.md
         - Rust 速成课/引用与借用: content/rust_crash/borrow.md
         - Rust 速成课/二叉树: content/rust_crash/binary_tree.md
-- 随便记记:
-        - 随便记记/Dlib 人脸识别: content/misc/dlib.md
-        - 随便记记/RC4: content/misc/rc4.md
-        - 随便记记/生命游戏: content/misc/game_of_life/overview.md
+- 杂项:
+        - 杂项/Dlib 人脸识别: content/misc/dlib.md
+        - 杂项/RC4: content/misc/rc4.md
+        - 杂项/生命游戏: content/misc/game_of_life/overview.md
         - sklearn-概览: content/daze/sklearn/overview.md
         - sklearn-线性模型-概览: content/daze/sklearn/liner_model/overview.md
         - sklearn-线性模型-普通最小二乘法: content/daze/sklearn/liner_model/linear_regression.md
