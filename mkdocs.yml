@@ -131,6 +131,7 @@ nav:
         - 杂项/算法心得笔记: content/misc/hackers_delight.md
         - 杂项/EVM: content/misc/evm.md
         - 杂项/Merkle Tree: content/misc/merkle_tree.md
+        - 杂项/AHK: content/misc/ahk.md
         - sklearn-概览: content/daze/sklearn/overview.md
         - sklearn-线性模型-概览: content/daze/sklearn/liner_model/overview.md
         - sklearn-线性模型-普通最小二乘法: content/daze/sklearn/liner_model/linear_regression.md
@@ -178,11 +179,6 @@ nav:
         - Rust-并发: content/rust/concurrent.md
         - Rust-TCP: content/rust/tcp.md
         - Rust-JSON: content/rust/json.md
-        - AHK-概览: content/ahk/overview.md
-        - AHK-实现鼠标连点器: content/ahk/clicker.md
-        - AHK-实现屏幕取色器: content/ahk/color.md
-        - AHK-长按: content/ahk/longpress.md
-        - AHK-按行读取文件: content/ahk/loopread.md
 - 竹书纪年:
         - Y2019: content/diary/2019.md
         - Y2020: content/diary/2020.md
