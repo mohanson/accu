@@ -135,29 +135,17 @@ nav:
         - 杂项/图像风格转移: content/misc/neural_style_transfer.md
         - 杂项/霍夫曼编码: content/misc/huffman.md
         - 杂项/Matplotlib: content/misc/matplotlib.md
-        - Python-f-string: content/py/f_string.md
-        - Python-windows编程-概览: content/py/ctypes/overview.md
-        - Python-windows编程-删除文件至回收站: content/py/ctypes/recycle.md
-        - Python-打包并发布代码至 PyPI: content/py/setup.md
-        - Python-pywasm-美味尝鲜: content/py/pywasm/overview.md
-        - Python-pywasm-LEB128: content/py/pywasm/leb128.md
-        - Python-pywasm-1.0 版本发布: content/py/pywasm/version_1.0_released.md
-        - Python-pywasm-wasm 二进制文件格式解析: content/py/pywasm/binary.md
-        - Go-按行读取文件: content/go/read_file.md
-        - Go-socket: content/go/socket.md
-        - Go-socket-假如服务端不调用 Accept: content/go/socket_not_accept.md
-        - Go-tls: content/go/tls.md
-        - Go-socks-version-5: content/go/socks5.md
-        - Go-交叉编译: content/go/cross_compiling.md
-        - Go-时间尽头: content/go/end_of_time.md
-        - Go-流量限制: content/go/token_bucket.md
-        - Go-目录监听: content/go/fswatch.md
-        - Go-Cgo: content/go/cgo.md
-        - Rust-文件读取: content/rust/io.md
-        - Rust-HTTP: content/rust/http.md
-        - Rust-并发: content/rust/concurrent.md
-        - Rust-TCP: content/rust/tcp.md
-        - Rust-JSON: content/rust/json.md
+        - 杂项/时间的终结: content/misc/end_of_time.md
+        - 杂项/令牌桶算法限流: content/misc/token_bucket.md
+        - 杂项/Python f-strings: content/misc/python_f_strings.md
+        - 杂项/Python Windows 编程: content/misc/python_windows.md
+        - 杂项/Python Pypi: content/misc/python_pypi.md
+        - 杂项/Go 按行读取文件: content/misc/go_read_line.md
+        - 杂项/Go Socket 编程: content/misc/go_socket.md
+        - 杂项/Go Socket 假如服务端不调用 Accept: content/misc/go_socket_not_accept.md
+        - 杂项/Go TLS: content/misc/go_tls.md
+        - 杂项/Go 目录监听: content/misc/go_fswatch.md
+        - 杂项/Go Cgo: content/misc/go_cgo.md
 - 竹书纪年:
         - Y2019: content/diary/2019.md
         - Y2020: content/diary/2020.md

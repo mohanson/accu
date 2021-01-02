@@ -1,10 +1,6 @@
-# 在 python3.6 体验新的 f-string
+# 杂项/Python f-strings
 
-`f-string` 是 python3.6 新增的功能. 这里简要摘录一下 f-string 语法避免遗忘.
-
-# 语法
-
-f-string 的标准语法非常简单, 理解为待格式化字符串的 `{}` 将会被当作 python 代码求值即可.
+f-strings 是 Python 3.6 新增的功能. 这里简要摘录一下 f-strings 语法避免遗忘.它的标准语法非常简单, 理解为待格式化字符串的 `{}` 将会被当作 Python 代码求值即可.
 
 ```py
 name = 'mohanson'
@@ -24,6 +20,6 @@ print(f'pi: {pi:.1f}')             # pi: 3.1
 print(f'name: {name!r}')           # name: 'mohanson'
 ```
 
-# 参考
+## 参考
 
 - [1] Eric V.Smith: PEP 498 -- Literal String Interpolation [https://www.python.org/dev/peps/pep-0498/](https://www.python.org/dev/peps/pep-0498/)

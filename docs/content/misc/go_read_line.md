@@ -1,4 +1,4 @@
-# Go 按行读取文件
+# 杂项/Go 按行读取文件
 
 Go 中按行读取文件方法还是比较多的, 但最简单也是最优雅的方式是使用 `bufio.Scanner`. 我平时很少用 Go 去按行处理文件, 基本上有这方面需求也是上 python, 恰巧今天遇到, 所以记录以下
 
@@ -29,7 +29,3 @@ func main() {
 	}
 }
 ```
-
-# 参考
-
-- [1] Go: bufio.Scanner [https://golang.org/pkg/bufio/#Scanner](https://golang.org/pkg/bufio/#Scanner)

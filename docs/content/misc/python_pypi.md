@@ -1,3 +1,5 @@
+# 杂项/Python Pypi
+
 官方教程: [https://packaging.python.org/tutorials/distributing-packages/](https://packaging.python.org/tutorials/distributing-packages/)
 
 示例项目: [https://github.com/pypa/sampleproject](https://github.com/pypa/sampleproject)
@@ -39,8 +41,9 @@ setuptools.setup(
 ## 打包并发布
 
 ```sh
-$ python setup.py sdist bdist_wheel
 $ python -m pip install --upgrade twine
+
+$ python setup.py sdist
 $ python -m twine upload dist/*
 ```
 

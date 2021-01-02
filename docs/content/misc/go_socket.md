@@ -1,8 +1,8 @@
-# Socket
+# 杂项/Go Socket 编程
 
 Socket 是一种操作系统提供的进程间通信机制. 在操作系统中, 通常会为应用程序提供一组应用程序接口, 称为套接字接口(Socket API). 注意的是, Socket API 本身不负责通信, 它仅提供基础函数供应用层调用, 底层通信一般由 TCP, Unix 或 UDP 实现.
 
-# TCP
+## TCP
 
 以下是一个简单的 TCP 服务与其配套客户端实现.
 
@@ -86,13 +86,13 @@ func main() {
 }
 ```
 
-# UNIX
+## UNIX
 
 Unix Socket 是 POSIX 操作系统里的一种组件. 它通过文件系统来实现 Socket 通信. 常见的 Unix Socket 文件有 mysql.sock, supervisor.sock 等, 它们均位于 `/var/run/` 目录下.
 
 Go 中使用 Unix Socket 与 TCP Socket 的方法完全相同, 唯一区别是在 Listen 与 Dial 时, 参数 network 为 "unix", address 为文件路径, 如 "/var/run/accu.sock"
 
-# UDP
+## UDP
 
 ```go
 // server
