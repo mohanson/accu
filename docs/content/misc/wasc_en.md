@@ -1,4 +1,4 @@
-# WASC: an efficient WebAssembly to RISC-V AOT compiler
+# 杂项/演讲 WASC, WebAssembly 到 RISC-V 的 AOT 编译器(英文)
 
 ---
 

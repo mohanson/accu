@@ -1,4 +1,4 @@
-# WASC: WebAssembly 到 RISC-V 的 AOT 编译器
+# 杂项/演讲 WASC, WebAssembly 到 RISC-V 的 AOT 编译器(中文)
 
 项目地址: [https://github.com/mohanson/wasc](https://github.com/mohanson/wasc).
 
@@ -21,7 +21,7 @@ OSDT 的各位周末快乐, 我是 mohanson, 目前在 nervos 做虚拟机和编
 
 在过去的几个月时间里, 我投入了大量时间在这个项目上. 它已经拥有不错的完成度, 并且很高兴的可以在此时向大家分享这一项目. 我先来介绍一下这个项目成立时的背景.
 
-# 背景介绍
+## 背景介绍
 
 在区块链世界的链上虚拟机中, 流行着几种不同的指令集, 包括 WebAssembly, RISC-V, 与即将完成历史使命退休的 EVM. 它们运行在大致相同的抽象层级上. 每一个指令集都有它们各自的特点, EVM 已经持续运行了 5 年, 它运行的很好, 但其实它本身的设计非常糟糕, 它的设计缺陷太多了, 以至于以太坊决定抛弃它. WebAssembly 是正在备受关注的一个技术, 许多明星项目都采用的它, 比如以太坊2.0, substrate, EOS 等, WebAssembly 目前处在快速演进状态, 但快速的变化可以是一个好事, 也可以是一个坏事, 看你从哪方面看待它. RISC-V 在区块链行业是一个比较新的技术, 我们团队主要是使用的 RISC-V. 也有一些比较冷门的项目在用 JVM 做, 不过这个时候 Oracle 会投来善意的目光, Java API 的版权在 Oracle 手里, 注定无法走的太远.
 
@@ -30,9 +30,9 @@ OSDT 的各位周末快乐, 我是 mohanson, 目前在 nervos 做虚拟机和编
 
 我认识到区块链虚拟机领域的各种指令集的转换是一个切实存在的需求, 同时我注意到, 目前区块链领域缺少好用的从 WebAssembly 到 RISC-V 的编译器的相关工具的研究, 因此我决定填补这一工作. 我相信如果存在这一工具的话, 会对 RISC-V 在区块链上的发展带来很多好处.
 
-# 原理
+## 原理
 
-![img](/img/speech/wasc/wasc.png)
+![img](/img/misc/wasc_cn/wasc.png)
 
 WASC 这个项目的名字来自 WebAssembly 和 RISC-V 的组合. 它可以将 WebAssembly 规范的 WebAssembly 字节码(.wasm)或 S 表达式(.wat)文件编译为 ELF 格式的可执行文件, 目前经过测试的有两个平台, x86 和 RISC-V.
 
@@ -70,7 +70,7 @@ WASC 内部有一个示例项目 echo, 它是一个使用 WebAssembly 实现的�
 
 WASC 的大体流程就是如此, 但是在实际实现的细节中会比上面介绍的复杂很多, 比如我们不得不采用一些汇编代码和 Linker Script 来完成一部分难以实现的功能.
 
-# AssemblyScript, syscall 与 RISC-V
+## AssemblyScript, syscall 与 RISC-V
 
 接下来看看 WASC 在实际项目中的应用. 我们公司的许多项目都使用的 CKB-VM, CKB-VM 是一个 RISC-V 虚拟机, 支持解释执行, JIT 或 AOT 执行 RISC-V 可执行文件, 它本身实现了 RISC-V 中的 IMC 三种指令集合.
 
@@ -88,7 +88,7 @@ RISC-V 里面有一条叫做 ECALL 的指令负责发起系统调用. 这条指�
 
 但事实上它是不工作的. 比如我们要在 syscall 中传递一个字符串, 在 C 语言的实现中, 可以传递字符串的地址和字符串的长度, 然后便可以重新从内存还原出原字符串. 当我在 AssemblyScript 也这样做的时候, 我发现一个问题, 那就是在 AssemblyScript 中取得的地址并非程序运行地址, 而是 WebAssembly 内存地址的偏移值. 正确的做法是在偏移地址前加上 WebAssembly 内存的首地址.
 
-# 吐槽
+## 吐槽
 
 有许多区块链直接采用 WebAssembly, 比如 Substrate, EOS, 以及未来的以太坊 2.0. 但它们的使用方式存在问题: 比如 EOS, 它只支持使用 C++ 来编写合约代码; Substrate 只支持使用 Rust + 宏的方式来编写合约代码, 以太坊 2.0 则使用预编译的合约来扩展 WebAssembly. 它们的实现是互不兼容的, 抛弃了 WebAssembly 最大的优点即通用性. WASC 设计的 WebAssembly on RISC-V 方案由于与宿主环境只有 syscall 一种交互方式, 使得可以在 CKB-VM 上运行任何支持 WebAssembly 后端的语言. 另外相比起 C/C++ 与 Rust, AssemblyScript 等语言更加易学和使用.
 

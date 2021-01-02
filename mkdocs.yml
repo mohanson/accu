@@ -125,6 +125,9 @@ nav:
         - Rust 速成课/引用与借用: content/rust_crash/borrow.md
         - Rust 速成课/二叉树: content/rust_crash/binary_tree.md
 - 杂项:
+        - 杂项/演讲 minits, 以 LLVM 为后端的 TypeScript 静态编译器: content/misc/minits.md
+        - 杂项/演讲 WASC, WebAssembly 到 RISC-V 的 AOT 编译器(中文): content/misc/wasc_cn.md
+        - 杂项/演讲 WASC, WebAssembly 到 RISC-V 的 AOT 编译器(英文): content/misc/wasc_en.md
         - 杂项/Dlib 人脸识别: content/misc/dlib.md
         - 杂项/RC4: content/misc/rc4.md
         - 杂项/生命游戏: content/misc/game_of_life/overview.md
@@ -150,8 +153,3 @@ nav:
         - Y2019: content/diary/2019.md
         - Y2020: content/diary/2020.md
         - Y2021: content/diary/2021.md
-- 演讲:
-        - minits, 以 LLVM 为后端的 TypeScript 静态编译器: content/speech/minits.md
-        - WASC, WebAssembly 到 RISC-V 的 AOT 编译器(中文): content/speech/wasc_cn.md
-        - WASC, WebAssembly 到 RISC-V 的 AOT 编译器(英文): content/speech/wasc_en.md
-        - 区块链隐私保护密码技术介绍: content/speech/blockchain_privacy_protection.md
