@@ -13,7 +13,7 @@ code {
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.20);
 }
 
-.section p, .section ul {
+.section p, .section ul, .section ol {
     letter-spacing: .25px;
     line-height: 1.8 !important;
 }
