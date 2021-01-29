@@ -11,8 +11,8 @@
 
 ## 代码实现
 
-- 复制上节代码, 增加作用于 evolve 函数的 optret 装饰器
-- 调整种群大小为 4, 变异概率为 0.5
+- 复制首节例子代码, 增加作用于 evolve 函数的 optret 装饰器.
+- 为了方便观察, 调整种群大小为 4, 变异概率为 0.5.
 
 ```py
 import matplotlib.animation
