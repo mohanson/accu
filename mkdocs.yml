@@ -99,8 +99,9 @@ nav:
         - GB/后记: content/gameboy/foot.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
-        - 遗传算法/二进制编码与格雷码: content/ga/graycode.md
-        - 遗传算法/最优保留策略: content/ga/sga_optret.md
+        - 遗传算法/格雷码: content/ga/graycode.md
+        - 遗传算法/俄罗斯轮盘赌: content/ga/russian_roulette.md
+        - 遗传算法/最优保留策略: content/ga/maintain_the_best_solution.md
         - 遗传算法/生物进化模拟: content/ga/evolve.md
         - 遗传算法/愚弄神经网络: content/ga/fooled_nn.md
 - Linux x64 汇编:
