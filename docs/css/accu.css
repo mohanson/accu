@@ -1,0 +1,23 @@
+blockquote {
+    margin-left: 0px !important;
+    padding: 0 1em;
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
+}
+
+code {
+    color: #333333;
+}
+
+.wy-menu {
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.20);
+}
+
+.wy-side-scroll {
+    opacity: 0.0;
+}
+
+.section p, .section ul, .section ol {
+    letter-spacing: .25px;
+    line-height: 1.8 !important;
+}

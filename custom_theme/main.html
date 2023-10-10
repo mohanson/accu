@@ -1,0 +1,42 @@
+<!-- https://squidfunk.github.io/mkdocs-material/customization/#overriding-blocks -->
+
+{% extends "base.html" %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="/css/accu.css">
+{% endblock %}
+
+{% block libs %}
+    {{ super() }}
+    <script data-ad-client="ca-pub-5236818090688638" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+{% endblock %}
+
+{% block extrahead %}
+    {{ super() }}
+    <meta name="baidu_union_verify" content="399f2ea30598ef9a698e0d9467178aea">
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+{% endblock %}
+
+{% block footer %}
+    <hr />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- 横向 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5236818090688638"
+        data-ad-slot="3460446284"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <hr />
+    {{ super() }}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="/js/accu.js" defer></script>
+{% endblock %}
