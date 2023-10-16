@@ -239,7 +239,7 @@ use alloc::string::String;
 use alloc::vec::Vec;
 ```
 
-重构 `main` 函数. 在 main 函数的启示处, 我们首先需要初始化 `ALLOC`. 然后, 就可以在代码中使用 `Vec` 和 `String` 了.
+重构 `main` 函数. 在 main 函数的起始处, 我们首先需要初始化 `ALLOC`. 然后, 就可以在代码中使用 `Vec` 和 `String` 了.
 
 ```rs
 #[no_mangle]
