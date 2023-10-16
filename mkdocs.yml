@@ -152,6 +152,7 @@ nav:
         - 人工智能/Stable Diffusion 安装和简单使用: content/ai/stable_diffusion.md
         - 人工智能/Stable Diffusion 面容修复: content/ai/stable_diffusion_face_restoration.md
         - 人工智能/Stable Diffusion API: content/ai/stable_diffusion_api.md
+        - 人工智能/Stable Diffusion 超分辨率放大: content/ai/stable_diffusion_upscale.md
         - 人工智能/Audiocraft 文字生成音乐: content/ai/audiocraft.md
 - CKB:
         - CKB/Neuron 钱包: content/ckb/neuron.md
