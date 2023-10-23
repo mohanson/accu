@@ -56,7 +56,7 @@ $ echo $?
 由于我们在编译工具链的时候添加了 `--enable-llvm` 参数, 所以也可以使用 Clang 编译:
 
 ```sh
-$ clang --target=riscv64-unknown-elf
+$ clang --target=riscv64
         -march=rv64imac_zba_zbb_zbc_zbs
         --sysroot=/home/ubuntu/app/riscv/riscv64-unknown-elf
         -o main main.c
@@ -65,7 +65,7 @@ $ clang --target=riscv64-unknown-elf
 注意, 如果你没有添加 `--enable-llvm` 参数, 而是自行安装了 Clang, 也是可以进行编译的. 假如使用 LLVM 的官方安装脚本 `https://apt.llvm.org/llvm.sh` 进行安装, 那么编译命令要额外加上 `--gcc-toolchain=/home/ubuntu/app/riscv`.
 
 ```sh
-$ clang --target=riscv64-unknown-elf
+$ clang --target=riscv64
         -march=rv64imac_zba_zbb_zbc_zbs
         --sysroot=/home/ubuntu/app/riscv/riscv64-unknown-elf
         --gcc-toolchain=/home/ubuntu/app/riscv
