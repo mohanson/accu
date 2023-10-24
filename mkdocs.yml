@@ -170,6 +170,7 @@ nav:
         - CKB/EVM 简介: content/ckb/evm.md
         - CKB/将 LLVM compiler-rt builtins 编译为 RISC-V 静态库: content/ckb/llvm_compiler_rt_builtins.md
         - CKB/使用 Rust 编写 RISC-V 程序: content/ckb/rust_riscv_bytes.md
+        - CKB/使用 printf 函数进行代码调试: content/ckb/printf.md
         - CKB/以太坊 RPC 接口使用: content/ckb/eth_rpc.md
 - Python:
         - Python/f-strings: content/python/f_strings.md
