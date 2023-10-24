@@ -116,16 +116,14 @@ func main() {
 	rawClient := doa.Try(rpc.DialHTTP("https://mainnet.infura.io/v3/5c17ecf14e0d4756aa81b6a1154dc599"))
 	ethClient := ethclient.NewClient(rawClient)
 	blockNumber := doa.Try(ethClient.BlockNumber(context.Background()))
-
-	usdtContractAddr := common.HexToAddress("0xdAC17F958D2ee523a2206206994597C13D831ec7")
+	contract := common.HexToAddress("0xdAC17F958D2ee523a2206206994597C13D831ec7")
 	ret := doa.Try(ethClient.CallContract(context.Background(), ethereum.CallMsg{
-		To:   &usdtContractAddr,
+		To:   &contract,
 		Data: doa.Try(hex.DecodeString("70a08231000000000000000000000000F977814e90dA44bFA03b6295A0616a897441aceC")),
 	}, big.NewInt(int64(blockNumber))))
-
 	balance := big.Int{}
 	balance.SetBytes(ret)
-	n, _ := balance.Float64()
-	log.Println(n / 1e6)
+	data, _ := balance.Float64()
+	log.Println(data / 1e6)
 }
 ```
