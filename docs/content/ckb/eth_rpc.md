@@ -89,3 +89,43 @@ func main() {
 	}
 }
 ```
+
+## 查询 USDT 余额
+
+我们还是以 USDT 合约为例, 我们的目标是查询 `F977814e90dA44bFA03b6295A0616a897441aceC` 这个地址的余额. 通过 USDT 合约代码可知, 有一个 `balanceOf(address)` 函数可以取得任意地址的余额, 因此我们只需要想办法调用这个函数即可.
+
+要调用函数, 首先要获取函数的签名. 以 `balanceOf(address)` 为例, 其函数签名为 `70a08231`, 签名计算方式为 `sha3("balanceOf(address)")` 的前 4 个 Byte 的 Hex 值. 之后构建函数调用, 其构造方式为函数签名 + 参数. 注意所有参数都需要以 uint256 表示, 因此结果为 `70a08231000000000000000000000000F977814e90dA44bFA03b6295A0616a897441aceC`.
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/hex"
+	"log"
+	"math/big"
+
+	"github.com/ethereum/go-ethereum"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/godump/doa"
+)
+
+func main() {
+	rawClient := doa.Try(rpc.DialHTTP("https://mainnet.infura.io/v3/5c17ecf14e0d4756aa81b6a1154dc599"))
+	ethClient := ethclient.NewClient(rawClient)
+	blockNumber := doa.Try(ethClient.BlockNumber(context.Background()))
+
+	usdtContractAddr := common.HexToAddress("0xdAC17F958D2ee523a2206206994597C13D831ec7")
+	ret := doa.Try(ethClient.CallContract(context.Background(), ethereum.CallMsg{
+		To:   &usdtContractAddr,
+		Data: doa.Try(hex.DecodeString("70a08231000000000000000000000000F977814e90dA44bFA03b6295A0616a897441aceC")),
+	}, big.NewInt(int64(blockNumber))))
+
+	balance := big.Int{}
+	balance.SetBytes(ret)
+	n, _ := balance.Float64()
+	log.Println(n / 1e6)
+}
+```
