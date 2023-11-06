@@ -82,6 +82,35 @@ outputs/txt2img-images/2023-10-01/
 └── 00031-1296436483.png
 ```
 
+## 接口启动失败问题排查
+
+使用 Stable Diffusion API 时遇到一个很奇怪的问题, 在我一直使用它的 API 的情况下, 突然有一次再也无法访问它的 API 了. 我回想了前后的差别, 隐约记得之前使用 Stable Diffusion API 时它会自动打开浏览器访问 `127.0.0.1:7860`, 在 API 出现问题后它就不会再自动打开浏览器了.
+
+经过简单的排查, 定位到是 `webui.py` 中下面这个函数卡住了, 导致没有注册后续的 API 接口. 而该函数卡住的原因是依赖库 `gradio` 中的 `Gradio.Blocks.launch` 函数会试图打开浏览器, 而因为一些原因导致浏览器无法打开而卡死.
+
+```py
+app, local_url, share_url = shared.demo.launch(
+    share=cmd_opts.share,
+    server_name=initialize_util.gradio_server_name(),
+    server_port=cmd_opts.port,
+    ssl_keyfile=cmd_opts.tls_keyfile,
+    ssl_certfile=cmd_opts.tls_certfile,
+    ssl_verify=cmd_opts.disable_tls_verify,
+    debug=cmd_opts.gradio_debug,
+    auth=gradio_auth_creds,
+    inbrowser=auto_launch_browser,
+    prevent_thread_lock=True,
+    allowed_paths=cmd_opts.gradio_allowed_path,
+    app_kwargs={
+        "docs_url": "/docs",
+        "redoc_url": "/redoc",
+    },
+    root_path=f"/{cmd_opts.subpath}" if cmd_opts.subpath else "",
+)
+```
+
+将参数 `inbrowser=auto_launch_browser` 修改为 `inbrowser=False` 解决问题.
+
 ## 参考
 
 - [0] [Kilvoctu, API](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/API)
