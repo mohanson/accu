@@ -1,6 +1,6 @@
 # Cryptography/比特币地址生成详细步骤
 
-比特币地址用来发送和接收比特币，就像传统的银行帐号一样. 比特币经过长年的发展, 现在拥有多种不同类型的地址格式, 这一点常常造成一些人的困扰. 许多人在钱包中导入比特币私钥后, 发现余额为零而大惊失色, 其实很多情况下是在导入私钥后不小心选择了错误的地址格式.
+比特币地址用来发送和接收比特币, 就像传统的银行帐号一样. 比特币经过长年的发展, 现在拥有多种不同类型的地址格式, 这一点常常造成一些人的困扰. 许多人在钱包中导入比特币私钥后, 发现余额为零而大惊失色, 其实很多情况下是在导入私钥后不小心选择了错误的地址格式.
 
 ## P2PKH
 
@@ -74,7 +74,7 @@ ADDRESS: 1AsSgrcaWWTdmJBufJiGWB87dmwUf2PLMZ
 ```py
 import base58
 import hashlib
-import ripemd.ripemd160
+import ripemd.ripemd160 # pip install ripemd-hash
 
 ripemd160 = ripemd.ripemd160.ripemd160
 sha256 = lambda x: hashlib.sha256(x).digest()
@@ -129,3 +129,30 @@ print(address)
 ```
 
 最终计算得到地址: `1Bfbi4fi8hfKMAsbTvbSjiqaqutfVs3PUK`
+
+## Nested Segwit Address
+
+Nested Segwit Address 是隔离见证(Segwit) 地址中的一种. Segwit 地址有好几种, 一种是以 3 开头的隔离见证兼容地址(Nested Segwit Address), 从该地址上无法区分到底是多签地址还是隔离见证兼容地址, 好处是钱包程序不用修改, 可直接付款到该地址. 另一种是原生隔离见证地址(Native Segwit Address), 即以 bc 开头的地址, 它本质上就是一种新的编码方式.
+
+Imtoken 钱包目前只支持 Nested Segwit Address, 因此我们来看一下如何从公钥推导出它. 此处公钥我们选择压缩公钥表示方法. 简单来说, 当我们求出公钥哈希之后, 将公钥哈希封装为 redeem script, 再对 redeem script 求哈希并带入之后的步骤就可以了. redeem script 可表示为 `0x00 + 0x14 + pubkey_hash`, redeem_hash 为 `ripemd160(sha256(0x00 + 0x14 + pubkey_hash))`.
+
+```py
+import base58
+import hashlib
+import ripemd.ripemd160
+
+ripemd160 = ripemd.ripemd160.ripemd160
+sha256 = lambda x: hashlib.sha256(x).digest()
+
+pubkey = bytes.fromhex(''.join([
+    '02',
+    'fb95541bf75e809625f860758a1bc38ac3c1cf120d899096194b94a5e700e891',
+]))
+
+pubkey_hash = ripemd160(sha256(pubkey))
+redeem_hash = ripemd160(sha256(b'\x00\x14' + pubkey_hash))
+version = b'\x05'
+checksum = sha256(sha256(version + redeem_hash))
+address = base58.b58encode(version + redeem_hash + checksum[:4])
+print(address)
+```
