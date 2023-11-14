@@ -59,24 +59,33 @@ $ python-3.9.18/bin/python3 demos/musicgen_app.py
 使用 UI 界面一次只能生成一首音乐, 用脚本控制的话就方便多了. 例如以下脚本就可以批量生成时长 60 秒的悲伤风格的三味线曲.
 
 ```py
+import os
+import subprocess
+
 import audiocraft.data.audio
 import audiocraft.models
 
-model = audiocraft.models.MusicGen.get_pretrained('facebook/musicgen-small')
+savedir = '/home/ubuntu/src/aava/res/ac'
+model = audiocraft.models.MusicGen.get_pretrained('facebook/musicgen-medium')
 model.set_generation_params(
     use_sampling=True,
     top_k=250,
-    duration=60
+    duration=120
 )
 
 for i in range(1 << 10):
     resp = model.generate(
-        descriptions=['shamisen, sadness'],
+        descriptions=['shamisen, sexy, sadness'],
         progress=True, return_tokens=False
     )
     resp = resp.detach().cpu().float()
-    audiocraft.data.audio.audio_write(f'{i:0>4}.wav', resp[0], model.sample_rate, strategy='loudness',
-                                      loudness_headroom_db=16, loudness_compressor=True, add_suffix=False)
+    pathWav = os.path.join(savedir, f'{i:0>4}.wav')
+    pathMp3 = os.path.join(savedir, f'{i:0>4}.mp3')
+    audiocraft.data.audio.audio_write(
+        pathWav, resp[0], model.sample_rate, strategy='loudness', loudness_headroom_db=16, loudness_compressor=True,
+        add_suffix=False,
+    )
+    subprocess.run(f'ffmpeg -i {pathWav} {pathMp3}', check=True, shell=True)
 ```
 
 当前 Audiocraft 支持 4 种不同的模型, 分别是 `facebook/musicgen-small`, `facebook/musicgen-medium`, `facebook/musicgen-melody` 和 `facebook/musicgen-large`, 效果最好的自然是 large 模型, 但是缺点就是过于耗时了.
