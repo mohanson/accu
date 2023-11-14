@@ -78,3 +78,5 @@ for i in range(1 << 10):
     audiocraft.data.audio.audio_write(f'{i:0>4}.wav', resp[0], model.sample_rate, strategy='loudness',
                                       loudness_headroom_db=16, loudness_compressor=True, add_suffix=False)
 ```
+
+当前 Audiocraft 支持 4 种不同的模型, 分别是 `facebook/musicgen-small`, `facebook/musicgen-medium`, `facebook/musicgen-melody` 和 `facebook/musicgen-large`, 效果最好的自然是 large 模型, 但是缺点就是过于耗时了.
