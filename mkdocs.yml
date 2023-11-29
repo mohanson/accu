@@ -159,6 +159,7 @@ nav:
         - CKB/开发网络: content/ckb/dev.md
         - CKB/RISC-V 工具链安装: content/ckb/riscv_toolchains.md
         - CKB/部署脚本: content/ckb/deploy.md
+        - CKB/DAO: content/ckb/dao.md
         - CKB/CKB-VM B 扩展指令集: content/ckb/ckb_vm_b_extension.md
         - CKB/CKB-VM 宏指令融合技术(MOP): content/ckb/ckb_vm_mop.md
         - CKB/CKB-VM 模糊测试实践: content/ckb/ckb_vm_fuzzing.md
