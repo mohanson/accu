@@ -93,3 +93,12 @@ $ ckb miner
 # 查询余额
 $ ckb-cli wallet get-capacity --lock-arg 0x75178f34549c5fe9cd1a0c57aebd01e7ddf9249e
 ```
+
+## 转账
+
+现在我们将从账号 A 转账一笔钱给账号 B. 需要使用到的命令是 `wallet transfer`.
+
+```sh
+# 交易转账
+$ ckb-cli wallet transfer --from-account 0x75178f34549c5fe9cd1a0c57aebd01e7ddf9249e --to-address ckt1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa50xwsqdrcaufs8qeu8wvvy0myyedek4vqad9qeq3gc4cf --capacity 520
+```
