@@ -154,6 +154,7 @@ nav:
         - 人工智能/Stable Diffusion API: content/ai/stable_diffusion_api.md
         - 人工智能/Stable Diffusion 超分辨率放大: content/ai/stable_diffusion_upscale.md
         - 人工智能/Stable Diffusion 真人照片转动漫风格: content/ai/stable_diffusion_r2a.md
+        - 人工智能/Stable Diffusion 镜头控制: content/ai/stable_diffusion_lens.md
         - 人工智能/Audiocraft 文字生成音乐: content/ai/audiocraft.md
 - CKB:
         - CKB/Neuron 钱包: content/ckb/neuron.md
