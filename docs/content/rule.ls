@@ -40,6 +40,9 @@ R *.huobi.com
 R   nervos.org
 R *.nervos.org
 
+R   okx.com
+R *.okx.com
+
 R   reddit.com
 R *.reddit.com
 R   redd.it
