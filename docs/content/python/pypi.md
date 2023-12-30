@@ -9,33 +9,33 @@
 在 $HOME 下写入以下内容至 .pypirc
 
 ```ini
-[distutils]
-index-servers =
-    pypi
-
 [pypi]
-username = username
-password = password
+username = __token__
+password = pypi-xxxx
 ```
 
-## 创建 setup.py
+注意, 目前 pypi 已经不允许使用用户名和密码进行包发布, 只允许使用 API Token. 要获得 API Token, 请访问: [https://pypi.org/manage/account/](https://pypi.org/manage/account/)
+
+## 创建 pyproject.toml
 
 ```py
-import setuptools
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
-setuptools.setup(
-    name='sample',
-    version='1.2.0',
-    url='https://github.com/pypa/sampleproject',
-    license='MIT',
-    author='The Python Packaging Authority',
-    author_email='pypa-dev@googlegroups.com',
-    description='A sample Python project',
-    packages=['sample'],
-    install_requires=[
-        'peppercorn',
-    ]
-)
+[project]
+name = "sample"
+version = "1.2.0"
+authors = [
+  { name="The Python Packaging Authority", email="pypa-dev@googlegroups.com" },
+]
+description = "A sample Python project"
+readme = "README.md"
+license = { file = "LICENSE" }
+dependencies = ["peppercorn"]
+
+[project.urls]
+homepage = "https://github.com/pypa/sampleproject"
 ```
 
 ## 打包并发布
@@ -43,24 +43,14 @@ setuptools.setup(
 ```sh
 $ python -m pip install --upgrade twine
 
-$ python setup.py sdist
+$ python -m build
 $ python -m twine upload dist/*
 ```
 
-## 提示
+## 本地开发
 
-**发布模块与文件**
+在本地开发的时候, 会希望源代码改变后, 会立即在其它项目中生效, 此时可以使用如下方式安装:
 
-在 setup.py 中, 使用 `packages=['sample']` 会发布 sample 目录(包), 而使用 `py_modules=['sample']` 会发布 sample.py 文件. 大多数情况下, 你可以使用 `packages=setuptools.find_packages()` 自动发现代替手动填写.
-
-
-**生成命令行程序**
-
-```py
-entry_points={
-    'console_scripts': [
-        'sample=sample:main',
-    ],
-}
+```sh
+$ python -m pip install --editable .
 ```
-在 setup.py 中配置以上代码, 一个名为 sample 的命令行程序将在安装此模块后生成.
