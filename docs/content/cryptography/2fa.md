@@ -40,7 +40,7 @@ func main() {
 
 ## TOTP: Time-Based One-Time Password
 
-TOTP 是 HOTP 的简单简单扩展, 其定义在 [RFC6238](https://datatracker.ietf.org/doc/html/rfc6238). 简单来说, TOTP 使用当前的时间步长来替换自增的 C. TOTP 解决了以下几个问题:
+TOTP 是 HOTP 的简单扩展, 其定义在 [RFC6238](https://datatracker.ietf.org/doc/html/rfc6238). 简单来说, TOTP 使用当前的时间步长来替换自增的 C. TOTP 解决了以下几个问题:
 
 0. HOTP 两步验证码基于自增的 C, 它在生成两步验证码后除非被使用, 否则永远有效.
 0. 服务端与客户端需要维护自增的 C 且始终保持一致: 这很难做到, 需要实现一种同步协议处理双方的 C 值不一致的情况.
