@@ -193,6 +193,7 @@ nav:
         - Go/Cgo: content/go/cgo.md
         - Go/令牌桶算法限流: content/go/token_bucket.md
         - Go/时间的终结: content/go/end_of_time.md
+        - Go/Github 用户名可用性并发检测: content/go/github_signup_name.md
 - 圣杯:
         - 圣杯/追寻之路: content/sangreal/overview.md
         - 圣杯/网格交易: content/sangreal/grid.md
