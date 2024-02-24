@@ -137,6 +137,7 @@ package main
 
 import (
 	"context"
+	"encoding/hex"
 	"log"
 	"math/big"
 
@@ -154,7 +155,7 @@ func main() {
 		pub := pri.PublicKey
 		adr := crypto.PubkeyToAddress(pub)
 		val := doa.Try(ethClient.BalanceAt(context.Background(), adr, nil))
-		log.Println(pri, adr, val)
+		log.Println("0x"+hex.EncodeToString(crypto.FromECDSA(pri)), adr, val)
 		if val.Cmp(big.NewInt(0)) != 0 {
 			break
 		}
