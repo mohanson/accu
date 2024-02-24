@@ -154,7 +154,11 @@ func main() {
 		pri := doa.Try(crypto.GenerateKey())
 		pub := pri.PublicKey
 		adr := crypto.PubkeyToAddress(pub)
-		val := doa.Try(ethClient.BalanceAt(context.Background(), adr, nil))
+		val, err := ethClient.BalanceAt(context.Background(), adr, nil)
+		if err != nil {
+			log.Println(err)
+			continue
+		}
 		log.Println("0x"+hex.EncodeToString(crypto.FromECDSA(pri)), adr, val)
 		if val.Cmp(big.NewInt(0)) != 0 {
 			break
