@@ -139,10 +139,10 @@ import (
 	"context"
 	"log"
 	"math/big"
-	"net/rpc"
 
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/godump/doa"
 )
 
