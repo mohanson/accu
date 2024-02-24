@@ -154,7 +154,7 @@ func main() {
 		pub := pri.PublicKey
 		adr := crypto.PubkeyToAddress(pub)
 		val := doa.Try(ethClient.BalanceAt(context.Background(), adr, nil))
-		log.Println(adr, val)
+		log.Println(pri, adr, val)
 		if val.Cmp(big.NewInt(0)) != 0 {
 			break
 		}
