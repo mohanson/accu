@@ -127,3 +127,37 @@ func main() {
 	log.Println(data / 1e6)
 }
 ```
+
+## 生成随机账号并查询账号余额
+
+现在让我们来写一个彩票程序. 随机生成新的私钥, 并查询该私钥对应的地址的余额. 如果我们运气棒棒哒, 说不定能碰撞出一个有币的私钥捏~
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"math/big"
+	"net/rpc"
+
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/godump/doa"
+)
+
+func main() {
+	rawClient := doa.Try(rpc.DialHTTP("https://mainnet.infura.io/v3/5c17ecf14e0d4756aa81b6a1154dc599"))
+	ethClient := ethclient.NewClient(rawClient)
+	for {
+		pri := doa.Try(crypto.GenerateKey())
+		pub := pri.PublicKey
+		adr := crypto.PubkeyToAddress(pub)
+		val := doa.Try(ethClient.BalanceAt(context.Background(), adr, nil))
+		log.Println(adr, val)
+		if val.Cmp(big.NewInt(0)) != 0 {
+			break
+		}
+	}
+}
+```
