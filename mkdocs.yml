@@ -175,6 +175,7 @@ nav:
         - CKB/使用 Rust 编写 RISC-V 程序: content/ckb/rust_riscv_bytes.md
         - CKB/使用 printf 函数进行代码调试: content/ckb/printf.md
         - CKB/以太坊 RPC 接口使用: content/ckb/eth_rpc.md
+        - CKB/Pyckb 简介: content/ckb/pyckb.md
 - Python:
         - Python/f-strings: content/python/f_strings.md
         - Python/Windows 编程: content/python/windows.md
