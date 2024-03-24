@@ -166,3 +166,42 @@ func main() {
 	}
 }
 ```
+
+## 交易转账
+
+进行一笔转账交易. 下面的代码会向测试地址转账 1 ETH.
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"math/big"
+
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/ethereum/go-ethereum/ethclient"
+	"github.com/godump/doa"
+)
+
+func main() {
+	client := doa.Try(ethclient.Dial("https://mainnet.infura.io/v3/5c17ecf14e0d4756aa81b6a1154dc599"))
+	prikey := doa.Try(crypto.HexToECDSA("")) // private key without 0x-prefix
+	pubkey := prikey.PublicKey
+
+	nonce := doa.Try(client.PendingNonceAt(context.Background(), crypto.PubkeyToAddress(pubkey)))
+	value := big.NewInt(1000000000000000000) // in wei (1 eth)
+	gasLimit := uint64(23000)                // in units
+	gasPrice := doa.Try(client.SuggestGasPrice(context.Background()))
+	recv := common.HexToAddress("0x3172B76d2aBD88D87f46662e4588a02d8Cf2BC59")
+	data := []byte{}
+
+	id := doa.Try(client.NetworkID(context.Background()))
+	tx := types.NewTransaction(nonce, recv, value, gasLimit, gasPrice, data)
+	txSign := doa.Try(types.SignTx(tx, types.NewEIP155Signer(id), prikey))
+	doa.Nil(client.SendTransaction(context.Background(), txSign))
+	fmt.Println(txSign.Hash().Hex())
+}
+```
