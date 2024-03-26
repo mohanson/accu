@@ -205,3 +205,45 @@ func main() {
 	fmt.Println(txSign.Hash().Hex())
 }
 ```
+
+## 签名验签
+
+以下示例代码使用 secp256k1 对任意数据的哈希进行签名和验签.
+
+```go
+package main
+
+import (
+	"crypto/rand"
+	"encoding/hex"
+	"log"
+	"slices"
+
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/godump/doa"
+)
+
+func main() {
+	prikey := doa.Try(crypto.HexToECDSA("0000000000000000000000000000000000000000000000000000000000000001"))
+	pubkey := prikey.PublicKey
+
+	log.Println("prikey", hex.EncodeToString(crypto.FromECDSA(prikey)))
+	log.Println("pubkey", hex.EncodeToString(crypto.FromECDSAPub(&pubkey)))
+
+	msg := make([]byte, 32)
+	rand.Read(msg)
+	log.Println("msg", hex.EncodeToString(msg))
+	sig := doa.Try(crypto.Sign(msg, prikey))
+	log.Println("sig", hex.EncodeToString(sig))
+
+	doa.Doa(crypto.VerifySignature(crypto.FromECDSAPub(&pubkey), msg, sig[:64]))
+	doa.Doa(slices.Equal(doa.Try(crypto.Ecrecover(msg, sig)), crypto.FromECDSAPub(&pubkey)))
+}
+```
+
+```text
+2024/03/26 15:35:16 prikey 0000000000000000000000000000000000000000000000000000000000000001
+2024/03/26 15:35:16 pubkey 0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8
+2024/03/26 15:35:16 msg 73d811670c997143c797190087543f8cb16494ddd662ca247b721dde6248ab0b
+2024/03/26 15:35:16 sig 8a5dad0cbf16771758662cf3cd6c94f3cc10980d98367762b419ccf23e0bae736dda0fe3908e68ccf1090568e7cabe3a0bfdd054477070c040c58de4baeec82001
+```
