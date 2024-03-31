@@ -15,7 +15,15 @@ $ mkswap /mnt/swap
 $ swapon /mnt/swap
 ```
 
-安装 Python 3.10.6. 比此更高版本的 Python 暂时不支持运行 torch. 采用源码方式安装步骤如下:
+下载 Stable Diffusion WebUI 源代码:
+
+```sh
+$ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
+$ cd stable-diffusion-webui
+$ git checkout bef51ae
+```
+
+安装 Python 3.10.6. 比此更高版本的 Python 暂时不支持运行 torch. 采用源码方式安装步骤如下. 你可以将以下脚本保存到源码目录下, 并执行以下脚本.
 
 ```sh
 set -ex
@@ -25,7 +33,7 @@ version=3.10.6
 wget https://www.python.org/ftp/python/${version}/Python-${version}.tgz
 tar -zxvf Python-${version}.tgz
 cd Python-${version}
-./configure --prefix ~/app/python-${version}
+./configure --prefix $(pwd)/python-${version}
 make
 make install
 cd ..
@@ -34,14 +42,10 @@ rm -rf Python-${version}
 rm -rf Python-${version}.tgz
 ```
 
-下载, 安装并运行 Stable Diffusion WebUI:
+启动 Stable Diffusion WebUI:
 
 ```sh
-$ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
-$ cd stable-diffusion-webui
-$ git checkout 5ef669de
-
-$ python_cmd=~/app/python-3.10.6/bin/python3 bash webui.sh --skip-torch-cuda-test --use-cpu all --lowram --no-half --listen
+$ python_cmd=$(pwd)/python-3.10.6/bin/python3 bash webui.sh --skip-torch-cuda-test --use-cpu all --lowram --no-half --listen
 ```
 
 等待一段时间, 在浏览器中打开 `127.0.0.1:7860` 即可见到 UI 界面.
