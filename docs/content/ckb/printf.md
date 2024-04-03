@@ -24,7 +24,7 @@ int main() {
 $ clang --target=riscv64 -march=rv64imac_zba_zbb_zbc_zbs \
       -nostdinc -nostdlib \
       -DCKB_C_STDLIB_PRINTF=1 \
-		  -DCKB_PRINTF_DECLARATION_ONLY=1 \
+      -DCKB_PRINTF_DECLARATION_ONLY=1 \
       -I ckb-c-stdlib/libc -I ckb-c-stdlib \
       -o main \
       main.c
