@@ -18,12 +18,13 @@ int main() {
 }
 ```
 
-使用 clang 对其进行编译. 注意编译参数, 必须添加 `-DCKB_C_STDLIB_PRINTF=1` 才能使用 `printf` 函数. 相关条件编译代码可在 `ckb-c-stdlib/libc/src/impl.c` 中找到.
+使用 clang 对其进行编译. 注意编译参数, 必须添加 `-DCKB_C_STDLIB_PRINTF=1` 和 `-DCKB_PRINTF_DECLARATION_ONLY=1` 才能使用 `printf` 函数. 相关条件编译代码可在 `ckb-c-stdlib/libc/src/impl.c` 中找到.
 
 ```sh
 $ clang --target=riscv64 -march=rv64imac_zba_zbb_zbc_zbs \
       -nostdinc -nostdlib \
       -DCKB_C_STDLIB_PRINTF=1 \
+      -DCKB_PRINTF_DECLARATION_ONLY=1 \
       -I ckb-c-stdlib/libc -I ckb-c-stdlib \
       -o main \
       main.c
