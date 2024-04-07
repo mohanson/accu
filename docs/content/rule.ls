@@ -18,6 +18,9 @@ R *.discordapp.com
 R  .discordapp.net
 R *.discordapp.net
 
+R   etherscan.io
+R *.etherscan.io
+
 R   ftx.com
 R *.ftx.com
 
