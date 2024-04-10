@@ -8,6 +8,8 @@
 
 真好吃真好吃 ~
 
+![img](../../img/cooking/tomato_scrambled_eggs/tomato_scrambled_eggs.jpg)
+
 西红柿炒鸡蛋是一道具有传统风味的中式菜肴, 其制作过程简单而美味.
 
 - 首先, 准备 1 个新鲜的西红柿和 3 个鸡蛋. 将西红柿洗净后切成均匀的小块.
@@ -20,5 +22,3 @@
 - 当鸡蛋完全熟透时, 关火, 将西红柿炒鸡蛋装盘, 即可享用.
 
 这是一种基本的西红柿炒鸡蛋做法, 可以根据个人喜好进行调整和创新. 烹饪时间和火候的掌握将影响菜肴的口感和味道, 因此需要根据实际情况进行调整.
-
-![img](../../img/cooking/tomato_scrambled_eggs/tomato_scrambled_eggs.jpg)
