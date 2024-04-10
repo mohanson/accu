@@ -21,10 +21,13 @@ $ python -m pip install . --editable
 
 ## 生成测试账号
 
-默认情况下, pyckb 配置为 CKB 测试网. 后文会介绍如何切换到主网. 我们创建一个新的钱包, 该钱包使用的私钥是 `1`. **注意: 请不要在主网这么做!**
+默认情况下, pyckb 配置为 CKB 开发网(即本地 127.0.0.1:8114). 我们需要将其切换为测试网, 文末会介绍如何切换到主网. 我们创建一个新的钱包, 该钱包使用的私钥是 `1`. **注意: 请不要在主网这么做!**
 
 ```py
 import ckb
+
+# 切换到 CKB 测试网络.
+ckb.config.current = ckb.config.testnet
 
 user = ckb.wallet.Wallet(1)
 print(user.addr)
@@ -49,6 +52,8 @@ $ python example/faucet.py ckt1qzda0cr08m85hc8jlnfp3zer7xulejywt49kt2rr0vthywaa5
 ```py
 import ckb
 
+ckb.config.current = ckb.config.testnet
+
 user = ckb.wallet.Wallet(1)
 jack = ckb.wallet.Wallet(2)
 
@@ -58,8 +63,12 @@ print(hash.hex())
 
 ## 发布脚本
 
+我们开始尝试将一段二进制数据发布到 CKB 网络上. 我们创建了一个 Cell, 并保存这段二进制数据. 为了方便演示, 我们仅仅使用了四个 Byte 来模拟我们即将发布的二进制程序.
+
 ```py
 import ckb
+
+ckb.config.current = ckb.config.testnet
 
 user = ckb.wallet.Wallet(1)
 hash = user.script_deploy_type_id(user.script, bytearray([0, 1, 2, 3]))
@@ -74,6 +83,8 @@ ckb.rpc.wait(f'0x{hash.hex()}')
 ```py
 import ckb
 
+ckb.config.current = ckb.config.testnet
+
 user = ckb.wallet.Wallet(1)
 out_point = ckb.core.OutPoint(bytearray.fromhex('29af4422896ac3e647558ecedfe35df45ff2270d3f22e8029a4e0780a776cdf2'), 0)
 hash = user.script_update_type_id(user.script, bytearray([0, 1, 2, 3, 4, 5]), out_point)
@@ -85,6 +96,8 @@ ckb.rpc.wait(f'0x{hash.hex()}')
 
 ```py
 import ckb
+
+ckb.config.current = ckb.config.testnet
 
 user = ckb.wallet.Wallet(1)
 
