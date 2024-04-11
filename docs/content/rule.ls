@@ -8,6 +8,8 @@ R   binance.com
 R *.binance.com
 R   binance.me
 R *.binance.me
+R   bnbstatic.com
+R *.bnbstatic.com
 
 R   discord.com
 R *.discord.com
