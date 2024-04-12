@@ -42,6 +42,9 @@ R *.hackmd.io
 R   huobi.com
 R *.huobi.com
 
+R   infura.io
+R *.infura.io
+
 R   nervos.org
 R *.nervos.org
 
