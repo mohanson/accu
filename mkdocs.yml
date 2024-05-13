@@ -209,6 +209,7 @@ nav:
         - 中华一番/可乐鸡翅: content/cooking/cola_chicken_wings.md
         - 中华一番/西红柿炒鸡蛋: content/cooking/tomato_scrambled_eggs.md
         - 中华一番/清蒸大闸蟹配酱油醋: content/cooking/hairy_crab.md
+        - 中华一番/糖醋山药: content/cooking/sweet_and_sour_yam.md
 - 独立游戏开发:
         - 独立游戏开发/个人开发者如何发布第一款微信小游戏: content/gamedev/wechat_game.md
         - 独立游戏开发/Cocos Creator 微信小游戏广告接入: content/gamedev/wechat_game_ad.md
