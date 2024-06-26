@@ -15,28 +15,30 @@ import (
 )
 
 func nameUsableOnce(name string) (int, error) {
-	body := strings.Replace("------WebKitFormBoundaryF15rNsGN08qoXN2Z\r\nContent-Disposition: form-data; name=\"authenticity_token\"\r\n\r\n5aXlNWinJebbx/yVkzgwb2l8Bwwhkg0fgsveQm4+u9Wc1spycql8131Jr243x9Z3EY+Kfi4vP+dVjjXfgtxF5g==\r\n------WebKitFormBoundaryF15rNsGN08qoXN2Z\r\nContent-Disposition: form-data; name=\"value\"\r\n\r\njack\r\n------WebKitFormBoundaryF15rNsGN08qoXN2Z--\r\n", "jack", name, 1)
-	requ, err := http.NewRequest(http.MethodPost, "https://github.com/signup_check/username", bytes.NewReader([]byte(body)))
+	requ, err := http.NewRequest(http.MethodGet, "https://github.com/signup_check/username?value="+name, nil)
 	if err != nil {
 		return 0, err
 	}
 	requ.Header.Set("accept", "*/*")
-	requ.Header.Set("accept-language", "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6,zh-TW;q=0.5")
-	requ.Header.Set("content-type", "multipart/form-data; boundary=----WebKitFormBoundaryJ387fEq3mIJpLAfG")
-	requ.Header.Set("sec-ch-ua", "\"Not A(Brand\";v=\"99\", \"Microsoft Edge\";v=\"121\", \"Chromium\";v=\"121\"")
+	requ.Header.Set("accept-language", "zh-CN,zh;q=0.9")
+	requ.Header.Set("cookie", "_octo=GH1.1.457252931.1719380713; logged_in=no; preferred_color_mode=light; tz=Asia%2FShanghai; _gh_sess=HF644%2F8U8ywdKlMp715RGYQkUpyS8vQW3FtmZD%2BZ2QlLpkX98KzAOkgJe%2F9EL9xm2NDeRviHfJoX3TseQ%2Ft2vBZF69RdBj7sjo2VqZFbwwLOpbFng2oKnOju1V7O4cTwXtE1ST%2FNrzspUv8ORQr%2FH0T89cbXNtRvBpRBeE2Li7%2BbEjw2plV1QqUeHft%2BvmN8VHy4g21Z%2FrdiElsCn%2BSdR3CcRy5II6QJGlglHzbBiRK3zEdMkDrkscAN9u2cddJjOBCU6Vb9vfqeS%2F4ld%2BTxTsUqeYFp9ZXWNUe6KQaX244Nmwu8--I89PWqORMAs7DW0y--Pb25BtIFFlyGMCfy%2BenVrw%3D%3D")
+	requ.Header.Set("priority", "u=1, i")
+	requ.Header.Set("referer", "https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home")
+	requ.Header.Set("sec-ch-ua", "\"Not A(Brand\";v=\"8\", \"Microsoft Edge\";v=\"126\", \"Chromium\";v=\"126\"")
 	requ.Header.Set("sec-ch-ua-mobile", "?0")
 	requ.Header.Set("sec-ch-ua-platform", "\"Windows\"")
 	requ.Header.Set("sec-fetch-dest", "empty")
 	requ.Header.Set("sec-fetch-mode", "cors")
 	requ.Header.Set("sec-fetch-site", "same-origin")
-	requ.Header.Set("cookie", "_octo=GH1.1.867648387.1708765773; logged_in=no; preferred_color_mode=light; tz=Asia%2FShanghai; _gh_sess=zjDsVXWemwKElzIr0bYNgR%2FRUZ34KY03HmmfUPjONO3%2B92DMW8%2F24p5kupdy5D0rUE4OtyBeOpDOKIC8PUcv5tIY5oz7W14bch5Jf72bOJeMbHbONnNyK69CjA%2BGRWI7BB%2FlC4L%2FnQtcfjUS69n3h2AEiPmMPumEwHxN%2FlLa8kyKVt4m%2FAzqqyvzXhSOQfCPTnhh%2BW8ciVwxWqJkPQute23j%2BMYg6MrrZb4fDpQbbsHi2duqWtjTK26diGqA%2BirURVF12T8EbCXhL90fuFsOFEvnCeCK%2BDOSiJlSQKPZy6y5VoRa--DavafQZCTdYzzivi--4JLPykEtSgSAkUNIJ32ANw%3D%3D")
-	requ.Header.Set("Referer", "https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home")
-	requ.Header.Set("Referrer-Policy", "strict-origin-when-cross-origin")
+	requ.Header.Set("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0")
 	resp, err := http.DefaultClient.Do(requ)
 	if err != nil {
 		return 0, err
 	}
-	if resp.StatusCode == 200 {
+	doa.Doa(resp.StatusCode == http.StatusOK)
+	defer resp.Body.Close()
+	body := string(doa.Try(io.ReadAll(resp.Body)))
+	if strings.Contains(body, "is available") {
 		return 1, nil
 	} else {
 		return 0, nil
