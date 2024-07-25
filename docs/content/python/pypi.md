@@ -45,6 +45,8 @@ homepage = "https://github.com/pypa/sampleproject"
 ## 打包并发布
 
 ```sh
+# 安装 build 依赖库
+$ python -m pip install --upgrade build
 # 安装 twine 依赖库
 $ python -m pip install --upgrade twine
 
