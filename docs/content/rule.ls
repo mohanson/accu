@@ -26,6 +26,9 @@ R *.etherscan.io
 R   ftx.com
 R *.ftx.com
 
+R   gate.io
+R *.gate.io
+
 R   github.com
 R *.github.com
 
