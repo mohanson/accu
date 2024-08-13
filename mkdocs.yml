@@ -126,6 +126,7 @@ nav:
         - Cryptography/椭圆曲线空间扩展之 Jacobian: content/cryptography/ecc_jacobian.md
         - Cryptography/椭圆曲线双线性配对: content/cryptography/ecc_pairing.md
         - Cryptography/椭圆曲线 Schnorr 签名: content/cryptography/schnorr.md
+        - Cryptography/椭圆曲线 Ed25519 + Eddsa 签名: content/cryptography/ed25519.md
         - Cryptography/多项式运算: content/cryptography/polynomial_math.md
         - Cryptography/KZG 多项式承诺: content/cryptography/kzg.md
         - Cryptography/蒙哥马利约分算法: content/cryptography/montgomery.md
