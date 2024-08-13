@@ -1,4 +1,4 @@
-# Cryptography/椭圆曲线签名与验签
+# Cryptography/椭圆曲线 ECDSA 签名与验签
 
 这节介绍椭圆曲线签名算法(Elliptic Curve Digital Signature Algorithm, ECDSA)与其验签步骤. 文章 <https://www.cs.miami.edu/home/burt/learning/Csc609.142/ecdsa-cert.pdf> 7 章节有详细的介绍, 此处只摘录重要结论.
 

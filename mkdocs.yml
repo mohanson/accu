@@ -121,8 +121,8 @@ nav:
         - Cryptography/群环域: content/cryptography/group_ring_field.md
         - Cryptography/椭圆曲线: content/cryptography/ecc.md
         - Cryptography/比特币地址生成详细步骤: content/cryptography/bitcoin_address_calculate.md
-        - Cryptography/椭圆曲线签名与验签: content/cryptography/ecdsa.md
-        - Cryptography/椭圆曲线签名的错误用法: content/cryptography/ecdsa_ps3_hack.md
+        - Cryptography/椭圆曲线 ECDSA 签名与验签: content/cryptography/ecdsa.md
+        - Cryptography/椭圆曲线 ECDSA 签名的错误用法: content/cryptography/ecdsa_ps3_hack.md
         - Cryptography/椭圆曲线空间扩展之 Jacobian: content/cryptography/ecc_jacobian.md
         - Cryptography/椭圆曲线双线性配对: content/cryptography/ecc_pairing.md
         - Cryptography/椭圆曲线 Schnorr 签名: content/cryptography/schnorr.md

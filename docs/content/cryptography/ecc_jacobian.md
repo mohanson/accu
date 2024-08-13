@@ -1,4 +1,4 @@
-# Cryptography/椭圆曲线 Jacobian 映射
+# Cryptography/椭圆曲线空间扩展之 Jacobian
 
 椭圆曲线上的计算可以通过空间映射(Projective Space)进行一定程度的加速, 映射的本质上是将二维坐标系中的点加上无穷远点映射到三维坐标系的直线.
 
