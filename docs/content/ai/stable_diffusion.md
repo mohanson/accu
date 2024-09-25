@@ -1,12 +1,12 @@
 # 人工智能/Stable Diffusion 安装和简单使用
 
-Stable Diffusion 是一种通过文字描述创造出图像的 AI 模型. 它是一个开源软件, 有许多人愿意在网络上免费分享他们的计算资源, 使得新手可以[在线尝试](https://stablediffusionweb.com/#demo).
+Stable diffusion 是一种通过文字描述创造出图像的 ai 模型. 它是一个开源软件, 有许多人愿意在网络上免费分享他们的计算资源, 使得新手可以[在线尝试](https://stablediffusionweb.com/#demo).
 
 ## 安装
 
-本地部署的 Stable Diffusion 有更高的可玩性, 例如允许您替换模型文件, 细致的调整参数, 以及突破线上服务的道德伦理检查等. 鉴于我目前没有可供霍霍的 GPU, 因此我将在一台 2 核 4G 内存的云服务上部署它. 这着实非常惊人!
+本地部署的 stable diffusion 有更高的可玩性, 例如允许您替换模型文件, 细致的调整参数, 以及突破线上服务的道德伦理检查等. 鉴于我目前没有可供霍霍的 GPU, 因此我将在一台 2 核 4G 内存的云服务上部署它. 这着实非常惊人!
 
-在安装运行 Stable Diffusion 之前, 首先需要为我的 Linux 机器创建一个 16G 大小的交换分区. Stable Diffusion 在运行过程中大概需要吃掉 12G 内存, 交换分区可以勉强让我们达到其最低运行需求. 当然如果您的机器拥有足够的内存, 可以忽略这一步.
+在安装运行 stable diffusion 之前, 首先需要为我的 linux 机器创建一个 16g 大小的交换分区. Stable diffusion 在运行过程中大概需要吃掉 12g 内存, 交换分区可以勉强让我们达到其最低运行需求. 当然如果您的机器拥有足够的内存, 可以忽略这一步.
 
 ```sh
 $ dd if=/dev/zero of=/mnt/swap bs=64M count=256
@@ -15,15 +15,15 @@ $ mkswap /mnt/swap
 $ swapon /mnt/swap
 ```
 
-下载 Stable Diffusion WebUI 源代码:
+下载 stable diffusion webui 源代码:
 
 ```sh
 $ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
 $ cd stable-diffusion-webui
-$ git checkout bef51ae
+$ git checkout v1.10.1
 ```
 
-安装 Python 3.10.6. 比此更高版本的 Python 暂时不支持运行 torch. 采用源码方式安装步骤如下. 你可以将以下脚本保存到源码目录下, 并执行以下脚本.
+安装 python 3.10.6. v1.10.1 版本的 stable diffusion webui 官方建议配套 3.10.6, 避免折腾我们就听官方的. 采用源码方式安装步骤如下. 你可以将以下脚本保存到源码目录下, 并执行以下脚本.
 
 ```sh
 set -ex
@@ -31,7 +31,7 @@ set -ex
 version=3.10.6
 
 wget https://www.python.org/ftp/python/${version}/Python-${version}.tgz
-tar -zxvf Python-${version}.tgz
+tar -xvf Python-${version}.tgz
 cd Python-${version}
 ./configure --prefix $(pwd)/python-${version}
 make
@@ -42,7 +42,7 @@ rm -rf Python-${version}
 rm -rf Python-${version}.tgz
 ```
 
-启动 Stable Diffusion WebUI:
+启动 stable diffusion webui:
 
 ```sh
 $ python_cmd=$(pwd)/python-3.10.6/bin/python3 bash webui.sh --skip-torch-cuda-test --use-cpu all --lowram --no-half --listen
@@ -52,11 +52,11 @@ $ python_cmd=$(pwd)/python-3.10.6/bin/python3 bash webui.sh --skip-torch-cuda-te
 
 ## 下载更多模型
 
-模型, 有时称为检查点文件, 是预先训练的 Stable Diffusion 权重, 用于生成一般或特定的图像类型. 模型可以生成的图像取决于用于训练它们的数据. 如果训练数据中没有猫, 模型将无法产生猫的形象. 同样, 如果您仅使用猫图像训练模型, 则只会产生猫.
+模型, 有时称为检查点文件, 是预先训练的 stable diffusion 权重, 用于生成一般或特定的图像类型. 模型可以生成的图像取决于用于训练它们的数据. 如果训练数据中没有猫, 模型将无法产生猫的形象. 同样, 如果您仅使用猫图像训练模型, 则只会产生猫.
 
 [此处](https://stable-diffusion-art.com/models/)介绍了一些常见的模型(v1.4, v1.5, F222, Anything V3, Open Journey v4).
 
-Stable Diffusion WebUI 运行时会自动下载 Stable Diffusion v1.5 模型. 下面提供了一些快速下载其它模型的命令.
+Stable diffusion webui 运行时会自动下载 stable diffusion v1.5 模型. 下面提供了一些快速下载其它模型的命令.
 
 ```sh
 $ cd models/Stable-diffusion
