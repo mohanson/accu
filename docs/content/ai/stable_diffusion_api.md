@@ -17,7 +17,7 @@ $ bash webui.sh --api
 ```py
 import requests
 
-host = "http://127.0.0.1:7860"
+host = 'http://127.0.0.1:7860'
 
 # 首先设置要使用的模型. 模型的名称可以通过 /sdapi/v1/sd-models 获得.
 requests.post(url=f'{host}/sdapi/v1/options', json={
@@ -26,15 +26,15 @@ requests.post(url=f'{host}/sdapi/v1/options', json={
 
 # 设置文生图的参数
 body = {
-    "prompt": "beautiful, masterpiece, best quality, extremely detailed face",
-    "negative_prompt": "paintings, sketches",
-    "width": 480,
-    "height": 270,
-    "batch_size": 4,
-    "save_images": True,   # 要保存图像. 默认情况下图像不会保存到 outputs/txt2img-images 内.
-    "send_images": False,  # 不返回图像. 默认情况下会将图像使用 base64 返回.
-    "restore_faces": True, # 修复人脸哟.
-    "steps": 20,
+    'prompt': 'beautiful, masterpiece, best quality, extremely detailed face',
+    'negative_prompt': 'paintings, sketches',
+    'width': 480,
+    'height': 270,
+    'batch_size': 4,
+    'save_images': True,   # 要保存图像. 默认情况下图像不会保存到 outputs/txt2img-images 内.
+    'send_images': False,  # 不返回图像. 默认情况下会将图像使用 base64 返回.
+    'restore_faces': True, # 修复人脸哟.
+    'steps': 20,
 }
 
 # 设置一个循环让其不停出图, 耶!
@@ -102,10 +102,10 @@ app, local_url, share_url = shared.demo.launch(
     prevent_thread_lock=True,
     allowed_paths=cmd_opts.gradio_allowed_path,
     app_kwargs={
-        "docs_url": "/docs",
-        "redoc_url": "/redoc",
+        'docs_url': '/docs',
+        'redoc_url': '/redoc',
     },
-    root_path=f"/{cmd_opts.subpath}" if cmd_opts.subpath else "",
+    root_path=f'/{cmd_opts.subpath}' if cmd_opts.subpath else '',
 )
 ```
 
