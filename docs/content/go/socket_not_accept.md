@@ -93,7 +93,7 @@ tcp        5      0 127.0.0.1:8080          127.0.0.1:56428         CLOSE_WAIT  
 
 验证了我的想法, 无论是否调用 Accept, connection 都已经建立起来了, Accept 只是将该 connection 包装成一个文件描述符, 供程序 Read, Write 和 Close. 那么关于第二步为什么客户端能 Write 成功就很容易解释了, 因为 connection 早已被建立(数据应该被暂存在服务端的接受缓冲区).
 
-接着再分析 CLOSE_WAIT. 正常情况下 CLOSE_WAIT 在 TCP 挥手过程中持续时间极短, 如果出现则表明"被动关闭 TCP 连接的一方未调用 Close 函数". 由于服务端是被动关闭的一方且并未条用 Close 函数, 因此服务端处于 CLOSE_WAIT 是正确的. 继续观察下图的 TCP 挥手过程, 得知"即使被动关闭一方未调用 Close, 依然会响应 FIN 包发出 ACK 包", 因此主动关闭一方将处于 FIN_WAIT2, 符合我们的实验观察结果.
+接着再分析 CLOSE_WAIT. 正常情况下 CLOSE_WAIT 在 TCP 挥手过程中持续时间极短, 如果出现则表明"被动关闭 TCP 连接的一方未调用 Close 函数". 由于服务端是被动关闭的一方且并未调用 Close 函数, 因此服务端处于 CLOSE_WAIT 是正确的. 继续观察下图的 TCP 挥手过程, 得知"即使被动关闭一方未调用 Close, 依然会响应 FIN 包发出 ACK 包", 因此主动关闭一方将处于 FIN_WAIT2, 符合我们的实验观察结果.
 
 ```text
                               +---------+ ---------\      active OPEN
