@@ -3,7 +3,6 @@ import os
 import subprocess
 import sys
 
-import htmlmin
 import PIL.Image
 
 
@@ -26,11 +25,6 @@ def mini():
     for html in glob.glob('site/**/*.html', recursive=1):
         with open(html, 'r+') as f:
             data = f.read()
-            data = htmlmin.minify(data, remove_comments=True,
-                                  remove_empty_space=True,
-                                  remove_all_empty_space=True,
-                                  reduce_empty_attributes=True,
-                                  reduce_boolean_attributes=True)
             f.seek(0)
             f.truncate(0)
             f.write(data)
