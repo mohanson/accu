@@ -206,6 +206,9 @@ class Fp:
     def __div__(self, other):
         return self * other ** -1
 
+    def __pos__(self) -> typing.Self:
+        return self
+
     def __pow__(self, other):
         return Fp(pow(self.x, other, P))
 
@@ -238,7 +241,7 @@ class Ec:
             return I
         x1, x2 = self.x, other.x
         y1, y2 = self.y, other.y
-        if self.y == other.y:
+        if self.x == other.x and self.y == +other.y:
             s = (Fp(3) * x1 * x1 + Fp(A)) / (Fp(2) * y1)
         else:
             s = (y2 - y1) / (x2 - x1)
