@@ -213,7 +213,7 @@ class Fp:
         return Fp(pow(self.x, other, P))
 
     def __neg__(self):
-        return Fp(P - self.x)
+        return Fp(P - self.x if self.x != 0 else 0)
 
 
 Fp.__truediv__ = Fp.__div__
