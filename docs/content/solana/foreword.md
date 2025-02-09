@@ -5,3 +5,21 @@
 这本 *Solana: 我们在等下一个可能*, 不像那些关于区块链之类的常规读物那样引人入胜, 也不是一本能让您快速暴富的投资学著作. 它的内核非常简单: 我将向读者们展示 solana 构建的数字文明. Solana 的设计理念与 bitcoin 或 ethereum 并不完全一致, 甚至可以说它们的某些核心观念南辕北辙. 但无论我们是赞同或者是否定它, 首先我们必须先了解它.
 
 或许是对未知的好奇, 或许是对可能的期待. 时隔多年, 我再次决定写一本书.
+
+**配套源码**
+
+课程主要使用 python 语言. 在第一章, 我们会使用到 pabtc, 它是一个比特币库. 在之后的章节, 我们主要使用到 solana 的 pxsol 库. 这两个库和本书的作者为同一个人.
+
+- Pabtc: <https://github.com/mohanson/pabtc>
+- Pxsol: <https://github.com/mohanson/pxsol>
+
+**语言**
+
+本书提供中文版和英文版.
+
+- [中文](http://accu.cc/content/solana/foreword/)
+- [英文](https://github.com/mohanson/pxsol/tree/master/doc)
+
+**小额赞助**
+
+- SOL: `Dd9i1im9RmaaxmdSrezjN4unqAPLF4HQGEgGrNDGKhtN`

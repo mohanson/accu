@@ -118,7 +118,6 @@ nav:
 - Cryptography:
         - Cryptography/Kerckhoffs 原则: content/cryptography/kerckhoffs_principle.md
         - Cryptography/分组加密操作模式: content/cryptography/encryption_mode.md
-        - Cryptography/群环域: content/cryptography/group_ring_field.md
         - Cryptography/椭圆曲线: content/cryptography/ecc.md
         - Cryptography/比特币地址生成详细步骤: content/cryptography/bitcoin_address_calculate.md
         - Cryptography/椭圆曲线 ECDSA 签名与验签: content/cryptography/ecdsa.md
@@ -183,6 +182,21 @@ nav:
 - Solana:
         - Solana/我们在等下一个可能: content/solana/foreword.md
         - Solana/私钥, 公钥与地址/导言: content/solana/prikey_introduction.md
+        - Solana/私钥, 公钥与地址/私钥: content/solana/prikey_prikey.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(一): content/solana/prikey_crypto_field.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(二): content/solana/prikey_crypto_asymmetric.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(三): content/solana/prikey_crypto_secp256k1.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(四): content/solana/prikey_crypto_ecdsa.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(五): content/solana/prikey_crypto_issue.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(六): content/solana/prikey_crypto_ed25519.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(七): content/solana/prikey_crypto_eddsa.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(八): content/solana/prikey_crypto_eddsa_advantages.md
+        - Solana/私钥, 公钥与地址/公钥: content/solana/prikey_pubkey.md
+        - Solana/私钥, 公钥与地址/地址: content/solana/prikey_addr.md
+        - Solana/私钥, 公钥与地址/地址伪装转账攻击与虚荣地址: content/solana/prikey_vanity.md
+        - Solana/私钥, 公钥与地址/Base58: content/solana/prikey_base58.md
+        - Solana/私钥, 公钥与地址/公私钥对: content/solana/prikey_keypair.md
+        - Solana/交易/导言: content/solana/tx_introduction.md
 - Python:
         - Python/f-strings: content/python/f_strings.md
         - Python/Windows 编程: content/python/windows.md

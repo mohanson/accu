@@ -44,12 +44,12 @@ Python 有一些云端执行环境, 这意味着你可以完全不安装任何�
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 x = np.linspace(-np.pi, np.pi, 256)
 y = np.sin(x)
 
-plt.plot(x, np.sin(x))
+plt.plot(x, y)
 plt.show()
 ```
 
@@ -125,7 +125,7 @@ plt.show()
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 x = np.linspace(-np.pi, np.pi, 256)
 y = np.sin(x)
@@ -144,7 +144,7 @@ plt.show()
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 x = np.linspace(-np.pi*2, np.pi*2, 256)
 y = np.sin(x)
@@ -163,7 +163,7 @@ plt.show()
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 x = np.linspace(-np.pi, np.pi, 256)
 y = np.sin(x)
@@ -187,7 +187,7 @@ plt.show()
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 x = np.linspace(-np.pi, np.pi, 256)
 y = np.sin(x)
@@ -208,7 +208,7 @@ plt.show()
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 x = np.linspace(-np.pi, np.pi, 256)
 y = np.sin(x)
@@ -226,7 +226,7 @@ plt.show()
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 x = np.linspace(-np.pi, np.pi, 16)
 y = np.sin(x)
@@ -245,7 +245,7 @@ plt.show()
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 x = np.linspace(-np.pi, np.pi, 16)
 y = np.sin(x)
@@ -262,7 +262,7 @@ plt.show()
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 p = plt.subplot(projection='3d')
 
@@ -284,7 +284,7 @@ plt.show()
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 X = np.arange(5) + 1
 Y = np.array([0.5, 0.67, 0.71, 0.56, 0.8])
@@ -327,7 +327,7 @@ plt.bar(X, Y, tick_label=['I', 'II', 'III', 'IV', 'V'], hatch='/')
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 X = np.arange(5) + 1
 Y1 = np.array([0.5, 0.67, 0.71, 0.56, 0.8])
@@ -349,7 +349,7 @@ plt.show()
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 bar_width = 0.8 / 2
 
@@ -373,7 +373,7 @@ plt.show()
 ```py
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 X = np.arange(5) + 1
 Y = np.random.random(5)
@@ -394,7 +394,7 @@ plt.show()
 
 ```py
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 X = [15, 30, 45, 10]
 labels = 'I', 'II', 'III', 'IV'
@@ -409,7 +409,7 @@ plt.show()
 
 ```py
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 X = [15, 30, 45, 10]
 labels = 'I', 'II', 'III', 'IV'
@@ -426,7 +426,7 @@ plt.show()
 
 ```py
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8-darkgrid')
 
 X = [15, 30, 45, 10]
 labels = 'I', 'II', 'III', 'IV'
@@ -446,25 +446,80 @@ plt.show()
 
 **Secp256k1 椭圆曲线**
 
-定义: y<sup>2</sup> = x<sup>3</sup> + 7
+定义: y² = x³ + 7
 
 ```py
-import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+import numpy as np
 
-fig = plt.subplot()
+plt.style.use('seaborn-v0_8-darkgrid')
+plt.figure(figsize=(4.8, 2.7))
+plt.xticks(fontsize=8)
+plt.yticks(fontsize=8)
+
 y, x = np.ogrid[-5:5:100j, -5:5:100j]
-fig.contour(x.ravel(), y.ravel(), y**2 - x**3 - 7, [0])
-
-fig.spines['bottom'].set_color('#646882')
-fig.spines['bottom'].set_linewidth(1)
-fig.spines['bottom'].set_position(('data', 0))
-fig.spines['left'].set_color('#646882')
-fig.spines['left'].set_linewidth(1)
-fig.spines['left'].set_position(('data', 0))
-
+plt.contour(x.ravel(), y.ravel(), y**2 - x**3 - 7, [0], colors='blue', alpha=0.5)
 plt.show()
 ```
 
 ![img](../../img/python/matplotlib/secp256k1.jpg)
+
+**爱德华兹曲线**
+
+定义: x² + y² = 1 - 30 * x² * y²
+
+```py
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.style.use('seaborn-v0_8-darkgrid')
+plt.figure(figsize=(4.8, 2.7))
+plt.xticks(fontsize=8)
+plt.yticks(fontsize=8)
+
+y, x = np.ogrid[-2:2:100j, -2:2:100j]
+plt.contour(x.ravel(), y.ravel(),  y**2 + x**2 + 30*x**2 * y**2 - 1, [0], colors='blue', alpha=0.5)
+plt.show()
+```
+
+![img](../../img/python/matplotlib/edwards.jpg)
+
+**扭曲爱德华兹曲线**
+
+定义: 8 * x² + y² = 1 + 4 * x² * y²
+
+```py
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.style.use('seaborn-v0_8-darkgrid')
+plt.figure(figsize=(4.8, 2.7))
+plt.xticks(fontsize=8)
+plt.yticks(fontsize=8)
+
+y, x = np.ogrid[-5:5:100j, -2:2:100j]
+plt.contour(x.ravel(), y.ravel(),  y**2 + 8*x**2 - 4*x**2 * y**2 - 1, [0], colors='blue', alpha=0.5)
+plt.show()
+```
+
+![img](../../img/python/matplotlib/edwards_twisted.jpg)
+
+**蒙哥马利曲线**
+
+定义: 0.25 * y² = x³ + 2.5 * x² + x
+
+```py
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.style.use('seaborn-v0_8-darkgrid')
+plt.figure(figsize=(4.8, 2.7))
+plt.xticks(fontsize=8)
+plt.yticks(fontsize=8)
+
+y, x = np.ogrid[-5:5:100j, -2:2:100j]
+plt.contour(x.ravel(), y.ravel(),  0.25*y**2 - x**3 - 2.5*x**2 - x, [0], colors='blue', alpha=0.5)
+plt.show()
+```
+
+![img](../../img/python/matplotlib/montgomery.jpg)
