@@ -13,3 +13,15 @@ $ curl -L https://ollama.com/download/ollama-linux-amd64.tgz -o ollama-linux-amd
 $ mkdir ollama
 $ sudo tar -C ollama -xzf ollama-linux-amd64.tgz
 ```
+
+## 启动
+
+ollama 的架构分为服务端和客户端, 服务端需要一直保持在后台运行, 客户端则可以随时启动或退出.
+
+```sh
+# 启动服务端
+$ ollama serve
+
+# 启动客户端, 开始语言对话
+$ ollama run llama3.2
+```
