@@ -181,6 +181,7 @@ nav:
         - CKB/Pyckb 简介: content/ckb/pyckb.md
         - CKB/Spawn, a new cross script calling method: content/ckb/spawn.md
 - Solana:
+        - Solana/我们在等下一个可能: content/solana/foreword.md
         - Solana/私钥, 公钥与地址/导言: content/solana/prikey_introduction.md
 - Python:
         - Python/f-strings: content/python/f_strings.md
