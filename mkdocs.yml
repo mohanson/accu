@@ -158,6 +158,7 @@ nav:
         - 人工智能/Stable Diffusion 镜头控制: content/ai/stable_diffusion_lens.md
         - 人工智能/Audiocraft 文字生成音乐: content/ai/audiocraft.md
         - 人工智能/OLLAMA: content/ai/ollama.md
+        - 人工智能/OLLAMA 翻译工具: content/ai/ollama_translator.md
 - CKB:
         - CKB/Neuron 钱包: content/ckb/neuron.md
         - CKB/开发网络: content/ckb/dev.md
