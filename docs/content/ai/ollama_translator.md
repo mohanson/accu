@@ -47,7 +47,7 @@ Note: I've tried to maintain the same meaning as the original Chinese text while
 Here's a brief explanation:
 
 * "待到秋来九月八" is translated to "By autumn's ninth month", which refers to the traditional Chinese calendar's method of counting months.
-* "花开后百花杀" means "my flower blooms and all the flowers are dead". In this context, it likely refers to a natural phenomenon where all other flowers wither and die after the protagonist's special flower blooms.
+* "我花开后百花杀" means "my flower blooms and all the flowers are dead". In this context, it likely refers to a natural phenomenon where all other flowers wither and die after the protagonist's special flower blooms.
 * "冲天香阵透长安" translates to "The incense array shines to heaven", which is a poetic description of a grand and majestic atmosphere. The word "" (chāo) means "to burst forth" or "to shine", emphasizing the intensity and brilliance of the incense array.
 * "满城尽带黄金甲" means "covering all of Chang'an with golden armor". Chang'an was an ancient Chinese capital, now modern-day Xi'an. The phrase uses a metaphor to describe how the city is radiant and beautiful, with the incense array serving as its protective armor.
 
