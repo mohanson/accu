@@ -24,20 +24,19 @@ for e in stream:
 print('', file=args.o)
 ```
 
-中文文件内容
-
-```txt
-待到秋来九月八, 我花开后百花杀.
-冲天香阵透长安, 满城尽带黄金甲.
-```
+使用参数 `-i` 以及 `-o` 指定输入和输出文件.
 
 ```sh
 $ python main.py -i chinese.txt
 ```
 
-英文文件内容
+**中文文件内容**
 
-```txt
+待到秋来九月八, 我花开后百花杀.
+冲天香阵透长安, 满城尽带黄金甲.
+
+**英文文件内容**
+
 Here's the translation:
 
 By autumn's ninth month (September 8th), my flower blooms and all the flowers are dead.
@@ -53,4 +52,3 @@ Here's a brief explanation:
 * "满城尽带黄金甲" means "covering all of Chang'an with golden armor". Chang'an was an ancient Chinese capital, now modern-day Xi'an. The phrase uses a metaphor to describe how the city is radiant and beautiful, with the incense array serving as its protective armor.
 
 Overall, this poem is likely describing a breathtaking natural event or a grand ceremony in an ancient Chinese setting.
-```
