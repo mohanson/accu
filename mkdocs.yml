@@ -183,6 +183,7 @@ nav:
 - Solana:
         - Solana/我们在等下一个可能: content/solana/foreword.md
         - Solana/私钥, 公钥与地址/导言: content/solana/prikey_introduction.md
+        - Solana/私钥, 公钥与地址/私钥: content/solana/prikey_prikey.md
 - Python:
         - Python/f-strings: content/python/f_strings.md
         - Python/Windows 编程: content/python/windows.md
