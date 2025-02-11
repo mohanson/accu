@@ -392,7 +392,7 @@ assert(pubkey.y.x == 0xc7b6277d32c52266ab94af215556316e31a9acde79a8b39643c688754
 
 使用第三方库验证以上计算过程是否正确, 验证代码如下:
 
-````py
+```py
 import ecdsa
 
 prikey = ecdsa.SigningKey.from_secret_exponent(
