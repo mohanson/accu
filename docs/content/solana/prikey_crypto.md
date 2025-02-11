@@ -150,3 +150,5 @@ assert Fp(12) + Fp(20) == Fp(9)
 assert Fp(8) * Fp(9) == Fp(3)
 assert Fp(8) ** -1 == Fp(3)
 ```
+
+您可能注意到了, 有限域的除法是一个特殊情况. 当我们试图求 `a / b` 时, 我们实际上需要求的是 `a * b⁻¹`. 根据费马小定理(Fermat's little theorem), bᵖ⁻¹ = 1 (mod p), 因此有 b * bᵖ⁻²  = 1 (mod p), 因此 b⁻¹ = bᵖ⁻².
