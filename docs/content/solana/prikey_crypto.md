@@ -152,3 +152,254 @@ assert Fp(8) ** -1 == Fp(3)
 ```
 
 您可能注意到了, 有限域的除法是一个特殊情况. 当我们试图求 `a / b` 时, 我们实际上需要求的是 `a * b⁻¹`. 根据费马小定理(Fermat's little theorem), bᵖ⁻¹ = 1 (mod p), 因此有 b * bᵖ⁻²  = 1 (mod p), 因此 b⁻¹ = bᵖ⁻².
+
+我们已经了解了素数有限域里的四则运算. 这真是太棒了! 因为椭圆曲线密码学实际上就是一种基于素数有限域进行计算的技术。对于椭圆曲线本身, 它表示为一类方程:
+
+```txt
+y² = x³ + ax + b
+```
+
+其中, x, y, a, b 都位于一个素数有限域中. 对于比特币密码学算法 secp256k1 而言, 该素数
+
+```py
+# 有限域的素数 2**256 - 2**32 - 2**9 - 2**8 - 2**7 - 2**6 - 2**4 - 1
+P = 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f
+```
+
+我们使用 python 来实现 secp256k1 方程如下:
+
+```py
+# Prime of finite field.
+P = 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f
+
+class Fq(Fp):
+    p = P
+
+A = Fq(0)
+B = Fq(7)
+
+
+class Pt:
+
+    def __init__(self, x: Fq, y: Fq) -> None:
+        if x != Fq(0) or y != Fq(0):
+            assert y ** 2 == x ** 3 + A * x + B
+        self.x = x
+        self.y = y
+```
+
+虽然现在有点困，但老师还是要开始布置课堂作业了. 例: 有如下 (x, y), 请判断其是否位于 secp256k1 曲线上.
+
+```py
+x = Fq(0xc6047f9441ed7d6d3045406e95c07cd85c778e4b8cef3ca7abac09b95c709ee5)
+y = Fq(0x1ae168fea63dc339a3c58419466ceaeef7f632653266d0e1236431a950cfe52a)
+```
+
+答:
+
+```py
+assert y ** 2 == x ** 3 + A * x + B
+```
+
+因此 (x, y) 位于 secp256k1 上.
+
+仅仅知道一个点是否位于椭圆曲线上还远远不够, 我们需要让椭圆曲线上的点构成一个加法群. 为了完成这个目的, 规定椭圆曲线上给定两个不同的点 p 和 q, 其加法 r = p + q, 规则如下:
+
+- 当 p == -q 时, p(x₁, y₁) + q(x₂, y₂) = r(x₃, y₃), r 被称为单位元, 其中
+
+```txt
+x₃ = 0
+y₃ = 0
+```
+
+- 当 p == +q 时, p(x₁, y₁) + q(x₂, y₂) = r(x₃, y₃), 其中
+
+```txt
+x₃ = ((3 * x₁² + a) / (2 * y₁))² - x * x₁
+y₃ = ((3 * x₁² + a) / (2 * y₁)) * (x₁ - x₃) - y₁
+```
+
+- 当 p != ±q 时, p(x₁, y₁) + q(x₂, y₂) = r(x₃, y₃), 其中
+
+```txt
+x₃ = ((y₂ - y₁) / (x₂ - x₁))² - x₁ - x₂
+y₃ = ((y₂ - y₁) / (x₂ - x₁)) * (x₁ - x₃) - y₁
+```
+
+在定义了加法之后, 我们可以定义标量乘法. 给定一个点 p 以及标量 k, 则 p * k 数值上等于 k 个 p 相加的和. 椭圆曲线上的乘法可以分解为一系列的 double 和 add 操作. 例如, 我们要运算 151 * p, 直观上我们会认为要进行 150 次点相加运算, 但可以进行优化. 151 可以表示为二进制格式 10010111:
+
+```txt
+151 = 1 * 2⁷ + 0 * 2⁶ + 0 * 2⁵ + 1 * 2⁴ + 0 * 2³ + 1 * 2² + 1 * 2¹ + 1 * 2⁰
+```
+
+我们从 10010111 的最低比特位开始, 如果为 1, 则结果加 p; 如果为 0, 令 p = 2p. 相关 python 代码如下所示:
+
+```py
+def bits(n):
+    # Generates the binary digits of n, starting from the least significant bit.
+    while n:
+        yield n & 1
+        n >>= 1
+
+def double_and_add(n, x):
+    # Returns the result of n * x, computed using the double and add algorithm.
+    result = 0
+    addend = x
+    for bit in bits(n):
+        if bit == 1:
+            result += addend
+        addend *= 2
+    return result
+```
+
+最后, 我们人为规定一个特殊点, 叫做生成点 g, 椭圆曲线上的任意点都可以表示为 g 与一个标量 k 的乘积.
+
+```py
+G = Pt(
+    Fq(0x79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798),
+    Fq(0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8),
+)
+```
+
+椭圆曲线上的点是有限个数的, 这个数量被称作椭圆曲线的阶. 标量 k 的取值必须小于这个数字, 对于 secp256k1 来说, 这个值为
+
+```py
+# The order n of G.
+N = 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141
+```
+
+上面这个标量 k 就是所谓的 secp256k1 私钥, 而生成点与 k 的乘积, 即 g * k 表示 secp256k1 公钥. 从私钥计算公钥是十分容易的, 而想从公钥计算私钥是相当困难的.
+
+最终, 我们得到完整的 secp256k1 代码如下.
+
+```py
+# Prime of finite field.
+P = 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f
+# The order n of G.
+N = 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141
+
+
+class Fq(Fp):
+
+    p = P
+
+    def __repr__(self) -> str:
+        return f'Fq(0x{self.x:064x})'
+
+
+class Fr(Fp):
+
+    p = N
+
+    def __repr__(self) -> str:
+        return f'Fr(0x{self.x:064x})'
+
+
+A = Fq(0)
+B = Fq(7)
+
+
+class Pt:
+
+    def __init__(self, x: Fq, y: Fq) -> None:
+        if x != Fq(0) or y != Fq(0):
+            assert y ** 2 == x ** 3 + A * x + B
+        self.x = x
+        self.y = y
+
+    def __repr__(self) -> str:
+        return f'Pt({self.x}, {self.y})'
+
+    def __eq__(self, data: typing.Self) -> bool:
+        return all([
+            self.x == data.x,
+            self.y == data.y,
+        ])
+
+    def __add__(self, data: typing.Self) -> typing.Self:
+        # https://www.cs.miami.edu/home/burt/learning/Csc609.142/ecdsa-cert.pdf
+        # Don Johnson, Alfred Menezes and Scott Vanstone, The Elliptic Curve Digital Signature Algorithm (ECDSA)
+        # 4.1 Elliptic Curves Over Fp
+        x1, x2 = self.x, data.x
+        y1, y2 = self.y, data.y
+        if x1 == Fq(0) and y1 == Fq(0):
+            return data
+        if x2 == Fq(0) and y2 == Fq(0):
+            return self
+        if x1 == x2 and y1 == +y2:
+            sk = (x1 * x1 + x1 * x1 + x1 * x1 + A) / (y1 + y1)
+            x3 = sk * sk - x1 - x2
+            y3 = sk * (x1 - x3) - y1
+            return Pt(x3, y3)
+        if x1 == x2 and y1 == -y2:
+            return I
+        sk = (y2 - y1) / (x2 - x1)
+        x3 = sk * sk - x1 - x2
+        y3 = sk * (x1 - x3) - y1
+        return Pt(x3, y3)
+
+    def __sub__(self, data: typing.Self) -> typing.Self:
+        return self + data.__neg__()
+
+    def __mul__(self, k: Fr) -> typing.Self:
+        # Point multiplication: Double-and-add
+        # https://en.wikipedia.org/wiki/Elliptic_curve_point_multiplication
+        n = k.x
+        result = I
+        addend = self
+        while n:
+            b = n & 1
+            if b == 1:
+                result += addend
+            addend = addend + addend
+            n = n >> 1
+        return result
+
+    def __truediv__(self, k: Fr) -> typing.Self:
+        return self.__mul__(k ** -1)
+
+    def __pos__(self) -> typing.Self:
+        return Pt(self.x, +self.y)
+
+    def __neg__(self) -> typing.Self:
+        return Pt(self.x, -self.y)
+
+
+# Identity element
+I = Pt(
+    Fq(0),
+    Fq(0),
+)
+# Generator point
+G = Pt(
+    Fq(0x79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798),
+    Fq(0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8),
+)
+```
+
+作为本小章的结束, 我将对还在听课的同学再次布置一到课堂作业.
+
+例: 已知比特币私钥为 0x5f6717883bef25f45a129c11fcac1567d74bda5a9ad4cbffc8203c0da2a1473c, 求公钥.
+
+答:
+
+```py
+prikey = 0x5f6717883bef25f45a129c11fcac1567d74bda5a9ad4cbffc8203c0da2a1473c
+pubkey = G * prikey
+assert(pubkey.x.x == 0xfb95541bf75e809625f860758a1bc38ac3c1cf120d899096194b94a5e700e891)
+assert(pubkey.y.x == 0xc7b6277d32c52266ab94af215556316e31a9acde79a8b39643c6887544fdf58c)
+```
+
+使用第三方库验证以上计算过程是否正确, 验证代码如下:
+
+````py
+import ecdsa
+
+prikey = ecdsa.SigningKey.from_secret_exponent(
+    0x5f6717883bef25f45a129c11fcac1567d74bda5a9ad4cbffc8203c0da2a1473c,
+    curve=ecdsa.SECP256k1)
+pubkey = prikey.get_verifying_key()
+pubkey = pubkey.to_string(encoding='raw')
+print(pubkey[0x00:0x20].hex())
+print(pubkey[0x20:0x40].hex())
+```
