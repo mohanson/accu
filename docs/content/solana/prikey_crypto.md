@@ -403,3 +403,82 @@ pubkey = pubkey.to_string(encoding='raw')
 print(pubkey[0x00:0x20].hex())
 print(pubkey[0x20:0x40].hex())
 ```
+
+## 比特币签名与验签
+
+在数字化世界中, 如何在不泄露密钥的前提下验证他人身份, 一直是加密学领域的终极难题. 传统的口令和证书系统虽然安全, 但易受破解; 而公私钥体系则凭借强大的数学基础, 为数字信任提供了新的可能. 基于椭圆曲线 secp256k1 的 ecdsa 签名算法不仅能够证明信息的完整性, 更重要的是能够确保发送该信息的是身份持有者.
+
+其签名和验证的过程包括以下几个步骤:
+
+**签名**
+
+0. 使用哈希函数(例如 sha256)对信息进行哈希处理, 得到信息摘要 m.
+0. 从 [1, n-1] 范围内选择一个随机整数 k.
+0. 计算点 R = kG, 并确定 R 的 x 坐标, 记为 r. 如果 r 等于 0, 则为 k 选择不同的值并重复该过程.
+0. 计算 s = k⁻¹(m + rd) mod n 的值, 其中 k⁻¹ 是 k mod n 的乘法逆元. 如果 s 等于 0, 则为 k 选择不同的值并重复该过程.
+0. 消息的数字签名由 (r, s) 对组成.
+
+**验证**
+
+0. 使用相同的哈希函数对收到的信息进行哈希处理, 得到信息摘要 m.
+0. 检查签名值 r 和 s 是否在 [1, n-1] 范围内. 如果不在, 则签名无效.
+0. 计算值 u₁ = m * s⁻¹ mod n 和 u₂ = r * s⁻¹ mod n, 其中 s⁻¹ 是 s mod n 的乘法逆元.
+0. 计算点 P = u₁ * G + u₂ * Q. 如果 P 等于无穷远处的点, 则签名无效.
+0. 确定 P 的 x 坐标, 记为 x_P. 如果 x_P 等于 r, 则签名有效, 否则无效.
+
+我们实现代码如下:
+
+```py
+import itertools
+import random
+import typing
+
+
+def sign(prikey: Fr, m: Fr) -> typing.Tuple[Fr, Fr, int]:
+    # https://www.secg.org/sec1-v2.pdf
+    # 4.1.3 Signing Operation
+    for _ in itertools.repeat(0):
+        k = Fr(random.randint(0, N - 1))
+        R = G * k
+        r = Fr(R.x.x)
+        if r.x == 0:
+            continue
+        s = (m + prikey * r) / k
+        if s.x == 0:
+            continue
+        v = 0
+        if R.y.x & 1 == 1:
+            v |= 1
+        if R.x.x >= N:
+            v |= 2
+        return r, s, v
+
+
+def verify(pubkey: Pt, m: Fr, r: Fr, s: Fr) -> bool:
+    # https://www.secg.org/sec1-v2.pdf
+    # 4.1.4 Verifying Operation
+    u1 = m / s
+    u2 = r / s
+    x = G * u1 + pubkey * u2
+    assert x != I
+    v = Fr(x.x.x)
+    return v == r
+```
+
+例: 有消息 0x72a963cdfb01bc37cd283106875ff1f07f02bc9ad6121b75c3d17629df128d4e, 请使用私钥 1 对其进行签名和验签.
+
+答:
+
+```py
+prikey = Fr(1)
+pubkey = G * prikey
+m = Fr(0x72a963cdfb01bc37cd283106875ff1f07f02bc9ad6121b75c3d17629df128d4e)
+
+r, s, _ = sign(prikey, m)
+assert verify(pubkey, m, r, s)
+```
+
+我已经将上文中所有出现的代码都公布在了 github 上, 这样您可以随时查看, 参考和使用. 如果您有任何问题或需要进一步的帮助, 请随时告诉我!
+
+- secp256k1: <https://github.com/mohanson/pabtc/blob/master/pabtc/secp256k1.py>
+- ecdsa: <https://github.com/mohanson/pabtc/blob/master/pabtc/ecdsa.py>
