@@ -33,7 +33,7 @@ Secp256k1 是比特币采用的标准椭圆曲线, 基于 koblitz 曲线(y² = x
 
 > 您只需要知道 P-256 是另一类被广泛使用的椭圆曲线, secp256k1 与其的区别只有参数不同.
 
-在椭圆曲线的计算中使用的数字不是我们常规认知中的数字, 而是一种在数论中称为"有限域"的数字. "有限域"的前提是"域", "域"的前身是"环", 而要了解"环", 又要求我们首先理解"群". 这些都是代数学里的基本结构，但对非数学专业的普通人来说还是挺抽象的.
+在椭圆曲线的计算中使用的数字不是我们常规认知中的数字, 而是一种在数论中称为"有限域"的数字. "有限域"的前提是"域", "域"的前身是"环", 而要了解"环", 又要求我们首先理解"群". 这些都是代数学里的基本结构, 但对非数学专业的普通人来说还是挺抽象的.
 
 **群**
 
@@ -75,9 +75,24 @@ Secp256k1 是比特币采用的标准椭圆曲线, 基于 koblitz 曲线(y² = x
 
 有限域(finite field)或伽罗瓦域是包含有限个元素的域. 与其他域一样, 有限域是进行加减乘除运算都有定义并且满足特定规则的集合. 有限域最常见的例子是当 p 为素数时, 整数对 p 取模.
 
-下面我们使用 python 代码实现一个素数有限域. 客观来讲, 它十分类似我们日常生活中使用的整数, 但区别在于我们需要对所有计算结果进行取模.
+例: 当素数 p 为 23 时, 求以下素数有限域算式的值.
+
+- 12 + 20
+- 8 * 9
+- 1 / 8
+
+答:
+
+- 12 + 20 = 32 % 23 = 9
+- 8 * 9 = 72 % 23 = 3
+- 由于 3 * 8 = 24 % 23 = 1, 因此 1 / 8 = 3
+
+下面我们使用 python 代码实现一个素数有限域. 客观来讲, 它十分类似我们日常生活中使用的整数, 但区别在于我们需要对所有计算结果进行取模. 下面的代码拷贝自 [pabtc](https://github.com/mohanson/pabtc) 项目, 您可以使用 `pip install pabtc` 来获取这份代码.
 
 ```py
+import typing
+
+
 class Fp:
     # Galois field. In mathematics, a finite field or Galois field is a field that contains a finite number of elements.
     # As with any field, a finite field is a set on which the operations of multiplication, addition, subtraction and
@@ -132,17 +147,7 @@ class Fp:
         return cls(1)
 ```
 
-例: 当素数 p 为 23 时, 求以下算式的值.
-
-- 12 + 20
-- 8 * 9
-- 1 / 8
-
-答:
-
-- 12 + 20 = 32 % 23 = 9
-- 8 * 9 = 72 % 23 = 3
-- 由于 3 * 8 = 24 % 23 = 1, 因此 1 / 8 = 3
+使用方式如下.
 
 ```py
 Fp.p = 23
@@ -153,7 +158,7 @@ assert Fp(8) ** -1 == Fp(3)
 
 您可能注意到了, 有限域的除法是一个特殊情况. 当我们试图求 `a / b` 时, 我们实际上需要求的是 `a * b⁻¹`. 根据费马小定理(Fermat's little theorem), bᵖ⁻¹ = 1 (mod p), 因此有 b * bᵖ⁻²  = 1 (mod p), 因此 b⁻¹ = bᵖ⁻².
 
-我们已经了解了素数有限域里的四则运算. 这真是太棒了! 因为椭圆曲线密码学实际上就是一种基于素数有限域进行计算的技术。对于椭圆曲线本身, 它表示为一类方程:
+我们已经了解了素数有限域里的四则运算. 这真是太棒了! 因为椭圆曲线密码学实际上就是一种基于素数有限域进行计算的技术. 对于椭圆曲线本身, 它表示为一类方程:
 
 ```txt
 y² = x³ + ax + b
@@ -166,7 +171,7 @@ y² = x³ + ax + b
 P = 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f
 ```
 
-我们使用 python 来实现 secp256k1 方程如下:
+我们继续使用 python 来实现 secp256k1 方程:
 
 ```py
 # Prime of finite field.
@@ -188,11 +193,13 @@ class Pt:
         self.y = y
 ```
 
-虽然现在有点困，但老师还是要开始布置课堂作业了. 例: 有如下 (x, y), 请判断其是否位于 secp256k1 曲线上.
+虽然现在有点困, 但老师还是要开始布置课堂作业了! 例: 有如下 (x, y), 请判断其是否位于 secp256k1 曲线上.
 
 ```py
-x = Fq(0xc6047f9441ed7d6d3045406e95c07cd85c778e4b8cef3ca7abac09b95c709ee5)
-y = Fq(0x1ae168fea63dc339a3c58419466ceaeef7f632653266d0e1236431a950cfe52a)
+import pabtc
+
+x = pabtc.secp256k1.Fq(0xc6047f9441ed7d6d3045406e95c07cd85c778e4b8cef3ca7abac09b95c709ee5)
+y = pabtc.secp256k1.Fq(0x1ae168fea63dc339a3c58419466ceaeef7f632653266d0e1236431a950cfe52a)
 ```
 
 答:
@@ -377,31 +384,19 @@ G = Pt(
 )
 ```
 
-作为本小章的结束, 我将对还在听课的同学再次布置一道课堂作业.
+作为本小节的结束, 我将对还在听课的同学布置最后一道课堂作业.
 
 例: 已知比特币私钥为 0x5f6717883bef25f45a129c11fcac1567d74bda5a9ad4cbffc8203c0da2a1473c, 求公钥.
 
 答:
 
 ```py
-prikey = Fr(0x5f6717883bef25f45a129c11fcac1567d74bda5a9ad4cbffc8203c0da2a1473c)
-pubkey = G * prikey
+import pabtc
+
+prikey = pabtc.secp256k1.Fr(0x5f6717883bef25f45a129c11fcac1567d74bda5a9ad4cbffc8203c0da2a1473c)
+pubkey = pabtc.secp256k1.G * prikey
 assert(pubkey.x.x == 0xfb95541bf75e809625f860758a1bc38ac3c1cf120d899096194b94a5e700e891)
 assert(pubkey.y.x == 0xc7b6277d32c52266ab94af215556316e31a9acde79a8b39643c6887544fdf58c)
-```
-
-使用第三方库验证以上计算过程是否正确, 验证代码如下:
-
-```py
-import ecdsa
-
-prikey = ecdsa.SigningKey.from_secret_exponent(
-    0x5f6717883bef25f45a129c11fcac1567d74bda5a9ad4cbffc8203c0da2a1473c,
-    curve=ecdsa.SECP256k1)
-pubkey = prikey.get_verifying_key()
-pubkey = pubkey.to_string(encoding='raw')
-print(pubkey[0x00:0x20].hex())
-print(pubkey[0x20:0x40].hex())
 ```
 
 ## 比特币签名与验签
@@ -432,15 +427,17 @@ print(pubkey[0x20:0x40].hex())
 import itertools
 import random
 import typing
+import pabtc.secp256k1
 
 
-def sign(prikey: Fr, m: Fr) -> typing.Tuple[Fr, Fr, int]:
+
+def sign(prikey: pabtc.secp256k1.Fr, m: pabtc.secp256k1.Fr) -> typing.Tuple[pabtc.secp256k1.Fr, pabtc.secp256k1.Fr, int]:
     # https://www.secg.org/sec1-v2.pdf
     # 4.1.3 Signing Operation
     for _ in itertools.repeat(0):
-        k = Fr(random.randint(0, N - 1))
-        R = G * k
-        r = Fr(R.x.x)
+        k = pabtc.secp256k1.Fr(random.randint(0, pabtc.secp256k1.N - 1))
+        R = pabtc.secp256k1.G * k
+        r = pabtc.secp256k1.Fr(R.x.x)
         if r.x == 0:
             continue
         s = (m + prikey * r) / k
@@ -449,36 +446,54 @@ def sign(prikey: Fr, m: Fr) -> typing.Tuple[Fr, Fr, int]:
         v = 0
         if R.y.x & 1 == 1:
             v |= 1
-        if R.x.x >= N:
+        if R.x.x >= pabtc.secp256k1.N:
             v |= 2
         return r, s, v
 
 
-def verify(pubkey: Pt, m: Fr, r: Fr, s: Fr) -> bool:
+def verify(pubkey: pabtc.secp256k1.Pt, m: pabtc.secp256k1.Fr, r: pabtc.secp256k1.Fr, s: pabtc.secp256k1.Fr) -> bool:
     # https://www.secg.org/sec1-v2.pdf
     # 4.1.4 Verifying Operation
     u1 = m / s
     u2 = r / s
-    x = G * u1 + pubkey * u2
-    assert x != I
-    v = Fr(x.x.x)
+    x = pabtc.secp256k1.G * u1 + pubkey * u2
+    assert x != pabtc.secp256k1.I
+    v = pabtc.secp256k1.Fr(x.x.x)
     return v == r
+
+
+def pubkey(m: pabtc.secp256k1.Fr, r: pabtc.secp256k1.Fr, s: pabtc.secp256k1.Fr, v: int) -> pabtc.secp256k1.Pt:
+    # https://www.secg.org/sec1-v2.pdf
+    # 4.1.6 Public Key Recovery Operation
+    assert v in [0, 1, 2, 3]
+    if v & 2 == 0:
+        x = pabtc.secp256k1.Fq(r.x)
+    else:
+        x = pabtc.secp256k1.Fq(r.x + pabtc.secp256k1.N)
+    y_y = x * x * x + pabtc.secp256k1.A * x + pabtc.secp256k1.B
+    y = y_y ** ((pabtc.secp256k1.P + 1) // 4)
+    if v & 1 != y.x & 1:
+        y = -y
+    R = pabtc.secp256k1.Pt(x, y)
+    return (R * s - pabtc.secp256k1.G * m) / r
 ```
 
-例: 有消息 0x72a963cdfb01bc37cd283106875ff1f07f02bc9ad6121b75c3d17629df128d4e, 请使用私钥 1 对其进行签名和验签.
+例: 有消息 0x72a963cdfb01bc37cd283106875ff1f07f02bc9ad6121b75c3d17629df128d4e, 请使用私钥 0x01 对其进行签名和验签.
 
 答:
 
 ```py
-prikey = Fr(1)
-pubkey = G * prikey
-m = Fr(0x72a963cdfb01bc37cd283106875ff1f07f02bc9ad6121b75c3d17629df128d4e)
+import pabtc
 
-r, s, _ = sign(prikey, m)
-assert verify(pubkey, m, r, s)
+prikey = pabtc.secp256k1.Fr(1)
+pubkey = pabtc.secp256k1.G * prikey
+m = pabtc.secp256k1.Fr(0x72a963cdfb01bc37cd283106875ff1f07f02bc9ad6121b75c3d17629df128d4e)
+
+r, s, _ = pabtc.ecdsa.sign(prikey, m)
+assert pabtc.ecdsa.verify(pubkey, m, r, s)
 ```
 
-我已经将上文中所有出现的代码都公布在了 github 上, 这样您可以随时查看, 参考和使用. 如果您有任何问题或需要进一步的帮助, 请随时告诉我!
+再次提醒! 上文中所有出现的代码都公布在 github 上, 这样您可以随时查看, 参考和使用. 如果您有任何问题或需要进一步的帮助, 请随时告诉我!
 
 - secp256k1: <https://github.com/mohanson/pabtc/blob/master/pabtc/secp256k1.py>
 - ecdsa: <https://github.com/mohanson/pabtc/blob/master/pabtc/ecdsa.py>
