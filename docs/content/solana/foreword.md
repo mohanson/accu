@@ -5,3 +5,9 @@
 这本 *Solana: 我们在等下一个可能*, 不像那些关于区块链之类的常规读物那样引人入胜, 也不是一本能让您快速暴富的投资学著作. 它的内核非常简单: 我将向读者们展示 solana 构建的数字文明. Solana 的设计理念与 bitcoin 或 ethereum 并不完全一致, 甚至可以说它们的某些核心观念南辕北辙. 但无论我们是赞同或者是否定它, 首先我们必须先了解它.
 
 或许是对未知的好奇, 或许是对可能的期待. 时隔多年, 我再次决定写一本书.
+
+**小额赞助**
+
+- BTC: `bc1qwhmj20d20egejugk9gxdz8t806pa2klle8h6d5`
+- ETH: `0x3172B76d2aBD88D87f46662e4588a02d8Cf2BC59`
+- SOL: `Dd9i1im9RmaaxmdSrezjN4unqAPLF4HQGEgGrNDGKhtN`
