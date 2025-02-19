@@ -186,6 +186,7 @@ nav:
         - Solana/私钥, 公钥与地址/私钥: content/solana/prikey_prikey.md
         - Solana/私钥, 公钥与地址/私钥的密码学解释(上篇): content/solana/prikey_crypto_ecdsa.md
         - Solana/私钥, 公钥与地址/私钥的密码学解释(中篇): content/solana/prikey_crypto_issue.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(下篇): content/solana/prikey_crypto_eddsa.md
 - Python:
         - Python/f-strings: content/python/f_strings.md
         - Python/Windows 编程: content/python/windows.md
