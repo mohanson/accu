@@ -49,7 +49,7 @@ plt.style.use('seaborn')
 x = np.linspace(-np.pi, np.pi, 256)
 y = np.sin(x)
 
-plt.plot(x, np.sin(x))
+plt.plot(x, y)
 plt.show()
 ```
 
@@ -446,24 +446,19 @@ plt.show()
 
 **Secp256k1 椭圆曲线**
 
-定义: y<sup>2</sup> = x<sup>3</sup> + 7
+定义: y² = x³ + 7
 
 ```py
-import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use('seaborn')
+import numpy as np
 
-fig = plt.subplot()
+plt.style.use('seaborn-v0_8-darkgrid')
+plt.figure(figsize=(4.8, 2.7))
+plt.xticks(fontsize=8)
+plt.yticks(fontsize=8)
+
 y, x = np.ogrid[-5:5:100j, -5:5:100j]
-fig.contour(x.ravel(), y.ravel(), y**2 - x**3 - 7, [0])
-
-fig.spines['bottom'].set_color('#646882')
-fig.spines['bottom'].set_linewidth(1)
-fig.spines['bottom'].set_position(('data', 0))
-fig.spines['left'].set_color('#646882')
-fig.spines['left'].set_linewidth(1)
-fig.spines['left'].set_position(('data', 0))
-
+plt.contour(x.ravel(), y.ravel(), y**2 - x**3 - 7, [0], colors='blue', alpha=0.5)
 plt.show()
 ```
 
