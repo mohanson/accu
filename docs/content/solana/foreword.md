@@ -6,6 +6,11 @@
 
 或许是对未知的好奇, 或许是对可能的期待. 时隔多年, 我再次决定写一本书.
 
+**配套源码**
+
+- Pxsol: <https://github.com/mohanson/pxsol>
+- Pabtc: <https://github.com/mohanson/pabtc>
+
 **小额赞助**
 
 - BTC: `bc1qwhmj20d20egejugk9gxdz8t806pa2klle8h6d5`
