@@ -55,3 +55,62 @@ y = pxsol.ed25519.Fq(0x2a619802432fe95214ac6fed9d01dd149d197f1202e8c2698caab0383
 
 assert pxsol.ed25519.A * x * x + y * y == pxsol.ed25519.Fq(1) + pxsol.ed25519.D * x * x * y * y
 ```
+
+## Ed25519 上的加法
+
+与 secp256k1 曲线类似, 我们需要让 ed25519 上的点构成一个加法群. 规定 ed25519 上给定两个不同的点 p 和 q, 其加法 r = p + q, 规则如下:
+
+```txt
+x₃ = (x₁ * y₂ + x₂ * y₁) / (1 + d * x₁ * x₂ * y₁ * y₂)
+y₃ = (y₁ * y₂ - a * x₁ * x₂) / (1 - d * x₁ * x₂ * y₁ * y₂)
+```
+
+代码实现如下.
+
+```py
+A = -Fq(1)
+D = -Fq(121665) / Fq(121666)
+
+class Pt:
+
+    def __init__(self, x: Fq, y: Fq) -> None:
+        assert A * x * x + y * y == Fq(1) + D * x * x * y * y
+        self.x = x
+        self.y = y
+
+    def __add__(self, data: typing.Self) -> typing.Self:
+        # https://datatracker.ietf.org/doc/html/rfc8032#ref-CURVE25519
+        # Points on the curve form a group under addition, (x3, y3) = (x1, y1) + (x2, y2), with the formulas
+        #           x1 * y2 + x2 * y1                y1 * y2 - a * x1 * x2
+        # x3 = --------------------------,   y3 = ---------------------------
+        #       1 + d * x1 * x2 * y1 * y2          1 - d * x1 * x2 * y1 * y2
+        x1, x2 = self.x, data.x
+        y1, y2 = self.y, data.y
+        x3 = (x1 * y2 + x2 * y1) / (Fq(1) + D * x1 * x2 * y1 * y2)
+        y3 = (y1 * y2 - A * x1 * x2) / (Fq(1) - D * x1 * x2 * y1 * y2)
+        return Pt(x3, y3)
+```
+
+如果我们对比 secp256k1 的加法, 会发现 ed25519 上的加法算法是大幅简化的: 我们不需要额外的逻辑代码来判断 p 是否等于 ±q. 对于计算机而言, 每增加一个分支判断都会大幅度拖累 cpu 的运算速度, 因此 ed25519 曲线上的加法算法相比 secp256k1 是非常高效的.
+
+与 secp256k1 相似, 在拥有加法后就能实现标量乘法, 这里不再赘述. 最后规定其生成点 g 为如下点.
+
+```py
+G = Pt(
+    Fq(0x216936d3cd6e53fec0a4e231fdd6dc5c692cc7609525a7b2c9562d608f25d51a),
+    Fq(0x6666666666666666666666666666666666666666666666666666666666666658),
+)
+```
+
+例: 计算 g * 42 的值.
+
+答:
+
+```py
+import pxsol
+
+p = pxsol.ed25519.G * pxsol.ed25519.Fr(42)
+
+assert p.x == pxsol.ed25519.Fq(0x5dbe6cc3ccfe19f056f503fd5895e4ca00385a5f109126914b52446017318069)
+assert p.y == pxsol.ed25519.Fq(0x4237066783c4352092fdf0de4df92cae7343f40939f32b3e195c834e99321ace)
+```
