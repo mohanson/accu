@@ -114,3 +114,75 @@ p = pxsol.ed25519.G * pxsol.ed25519.Fr(42)
 assert p.x == pxsol.ed25519.Fq(0x5dbe6cc3ccfe19f056f503fd5895e4ca00385a5f109126914b52446017318069)
 assert p.y == pxsol.ed25519.Fq(0x4237066783c4352092fdf0de4df92cae7343f40939f32b3e195c834e99321ace)
 ```
+
+## Ed25519 签名
+
+**点的编码**
+
+在 ed25519 中, 我们需要使用到一种特殊的曲线上的点的编码算法. 直观上将, 曲线上的一个点由 x 和 y 两个值组成, 且 x 和 y 都
+在 0 <= x,y < p 范围内, 因此我们需要使用 64 个字节来表示它. 但有办法将空间压缩到 32 个字节, 具体方法如下:
+
+0. 由于 y < p, 因此 y 的最高有效位始终为 0.
+0. 将 x 的最低有效位复制到 y 的最高有效位上, 并将结果以小端序编码为 32 个字节.
+
+在这种编码方式下, 我们能得知 y 的具体数值以及 x 的奇偶性. 代码实现如下.
+
+```py
+def pt_encode(pt: pxsol.ed25519.Pt) -> bytearray:
+    # A curve point (x,y), with coordinates in the range 0 <= x,y < p, is coded as follows. First, encode the
+    # y-coordinate as a little-endian string of 32 octets. The most significant bit of the final octet is always zero.
+    # To form the encoding of the point, copy the least significant bit of the x-coordinate to the most significant bit
+    # of the final octet.
+    # See https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.2
+    n = pt.y.x | ((pt.x.x & 1) << 255)
+    return bytearray(n.to_bytes(32, 'little'))
+```
+
+**点的解码**
+
+点的解码是点的编码的逆运算. 步骤如下:
+
+0. 首先, 将 32 字节数组解释为小端表示的整数. 此数字的第 255 位是 x 坐标的最低有效位, 表示了 x 值的奇偶性. 只需清除此位即可恢复 y 坐标. 如果结果值 >= p, 则解码失败.
+0. 要恢复 x 坐标, 意味着曲线方程 x² = (y² - 1) / (d * y² + 1) 成立. 令 u = y² - 1, v = d * y² + 1, 计算它的候选根 x = (u / v)^((p + 3) / 8).
+0. 现在有三种情况:
+    0. 如果 x * x == + u / v, 不做处理.
+    0. 如果 x * x == - u / v, 令 x = x * 2^((p - 1) / 4).
+    0. 解码失败, 点不在曲线上.
+0. 最后, 确定 x 的奇偶性. 如果奇偶性不一致, 则令 x = -x.
+
+代码实现如下
+
+```py
+def pt_decode(pt: bytearray) -> pxsol.ed25519.Pt:
+    # Decoding a point, given as a 32-octet string, is a little more complicated.
+    # See https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.3
+    #
+    # First, interpret the string as an integer in little-endian representation. Bit 255 of this number is the least
+    # significant bit of the x-coordinate and denote this value x_0. The y-coordinate is recovered simply by clearing
+    # this bit. If the resulting value is >= p, decoding fails.
+    uint = int.from_bytes(pt, 'little')
+    bit0 = uint >> 255
+    yint = uint & ((1 << 255) - 1)
+    assert yint < pxsol.ed25519.P
+    # To recover the x-coordinate, the curve equation implies x^2 = (y^2 - 1) / (d y^2 + 1) (mod p). The denominator is
+    # always non-zero mod p.
+    y = pxsol.ed25519.Fq(yint)
+    u = y * y - pxsol.ed25519.Fq(1)
+    v = pxsol.ed25519.D * y * y + pxsol.ed25519.Fq(1)
+    w = u / v
+    # To compute the square root of (u/v), the first step is to compute the candidate root x = (u/v)^((p+3)/8).
+    x = w ** ((pxsol.ed25519.P + 3) // 8)
+    # Again, there are three cases:
+    # 1. If v x^2 = +u (mod p), x is a square root.
+    # 2. If v x^2 = -u (mod p), set x <-- x * 2^((p-1)/4), which is a square root.
+    # 3. Otherwise, no square root exists for modulo p, and decoding fails.
+    if x*x != w:
+        x = x * pxsol.ed25519.Fq(2) ** ((pxsol.ed25519.P - 1) // 4)
+        assert x*x == w
+    # Finally, use the x_0 bit to select the right square root. If x = 0, and x_0 = 1, decoding fails. Otherwise, if
+    # x_0 != x mod 2, set x <-- p - x.  Return the decoded point (x,y).
+    assert x != pxsol.ed25519.Fq(0) or not bit0
+    if x.x & 1 != bit0:
+        x = -x
+    return pxsol.ed25519.Pt(x, y)
+```
