@@ -8,8 +8,10 @@
 
 **配套源码**
 
-- Pxsol: <https://github.com/mohanson/pxsol>
+课程主要使用 python 语言.
+
 - Pabtc: <https://github.com/mohanson/pabtc>
+- Pxsol: <https://github.com/mohanson/pxsol>
 
 **小额赞助**
 
