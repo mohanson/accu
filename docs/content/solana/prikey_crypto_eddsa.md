@@ -205,8 +205,8 @@ Ed25519 的公钥的长度同样是 32 字节. 32 字节公钥通过以下步骤
 
 0. 使用 sha-512 对 32 字节私钥进行哈希处理, 生成 64 个字节的哈希结果. 只有前 32 个字节用于生成公钥.
 0. 清除第一个字节的最低三位, 清除最后一个八位字节的最高位, 并设置最后一个字节的第二高位.
-0. 将上述数据解释为小端序整数, 形成秘密标量 s. 执行标量乘法 g * s.
-0. 公钥是点 g * s 的**点的编码**.
+0. 将上述数据解释为小端序整数, 形成秘密标量 a. 执行标量乘法 g * s 并记为 A.
+0. 公钥是点 A 的**点的编码**.
 
 ```py
 def pubkey(prikey: bytearray) -> bytearray:
@@ -220,3 +220,58 @@ def pubkey(prikey: bytearray) -> bytearray:
 ```
 
 Ed25519 的公钥生成过程是单向的: 从私钥可以快速计算出公钥, 但从公钥无法反推出私钥, 这种不可逆性是椭圆曲线离散对数问题的核心保障. 公钥的作用是公开身份, 任何人都可以使用公钥来验证签名. 由于 Ed25519 的设计高效, 公钥生成和使用都非常快速, 非常适用于高性能场景.
+
+**签名**
+
+签名是 Ed25519 的核心功能, 用于证明消息的真实性和完整性. 签名过程的输入是私钥(一个 32 字节的数组)和任意大小的消息 m, 签名过程如下:
+
+0. 使用 sha-512 对私钥(32 字节)进行哈希计算. 按照前一节的描述, 从哈希的前半部分构造秘密标量 a, 以及对应的公钥 pubkey. 将哈希摘要的后半部分记为 prefix.
+0. 计算 sha-512(prefix + m), 其中 m 是待签名的消息. 将得到的 64 字节哈希解释为一个小端序整数 r.
+0. 计算点 g * r, 并对结果进行点的编码, 记为 digest.
+0. 计算 sha-512(digest + pubkey + m),  并将得到的 64 字节摘要解释为一个小端序整数 h.
+0. 计算 s = r + a * h.
+0. 将 digest(32字节)和 s 的小端序编码(32字节; 最后一个字节的最高三位始终为零)连接起来, 形成签名.
+
+```py
+def sign(prikey: bytearray, m: bytearray) -> bytearray:
+    # The inputs to the signing procedure is the private key, a 32-octet string, and a message M of arbitrary size.
+    # See https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.6
+    assert len(prikey) == 32
+    h = hash(prikey)
+    a = int.from_bytes(h[:32], 'little')
+    a &= (1 << 254) - 8
+    a |= (1 << 254)
+    a = pxsol.ed25519.Fr(a)
+    A = pxsol.ed25519.G * a
+    pubkey = pt_encode(A)
+    prefix = h[32:]
+    r = pxsol.ed25519.Fr(int.from_bytes(hash(prefix + m), 'little'))
+    R = pxsol.ed25519.G * r
+    digest = pt_encode(R)
+    h = pxsol.ed25519.Fr(int.from_bytes(hash(digest + pubkey + m), 'little'))
+    s = r + a * h
+    return digest + bytearray(s.x.to_bytes(32, 'little'))
+```
+
+
+**验签**
+
+验签是验证签名的过程, 用于确认消息未被篡改且确实由持有对应私钥的人签署. Ed25519 的验签需要消息 m, 签名 v 和公钥 pubkey, 步骤如下:
+
+0. 先将签名 v 拆分为两个 32 字节数组. 将前半部分记为 digest, 解码为点 r, 将后半部分解码为整数 s. 将公钥 pubkey 解码为点 a. 如果任何解码失败(包括 s 超出范围), 则签名无效.
+0. 计算 sha-512(digest + pubkey + m), 并将 64 位字节摘要解释为小端整数 h.
+0. 检查是否满足群方程 g * s == r + a * h
+
+```py
+def verify(pubkey: bytearray, m: bytearray, g: bytearray) -> bool:
+    # Verify a signature on a message using public key.
+    # See https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.7
+    assert len(pubkey) == 32
+    assert len(g) == 64
+    A = pt_decode(pubkey)
+    digest = g[:32]
+    R = pt_decode(digest)
+    s = pxsol.ed25519.Fr(int.from_bytes(g[32:], 'little'))
+    h = pxsol.ed25519.Fr(int.from_bytes(hash(digest + pubkey + m), 'little'))
+    return pxsol.ed25519.G * s == R + A * h
+```
