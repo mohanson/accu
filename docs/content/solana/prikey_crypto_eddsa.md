@@ -115,7 +115,7 @@ assert p.x == pxsol.ed25519.Fq(0x5dbe6cc3ccfe19f056f503fd5895e4ca00385a5f1091269
 assert p.y == pxsol.ed25519.Fq(0x4237066783c4352092fdf0de4df92cae7343f40939f32b3e195c834e99321ace)
 ```
 
-## Ed25519 签名
+## Ed25519 签名系统
 
 **点的编码**
 
