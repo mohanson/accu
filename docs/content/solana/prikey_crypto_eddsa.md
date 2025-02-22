@@ -275,3 +275,20 @@ def verify(pubkey: bytearray, m: bytearray, g: bytearray) -> bool:
     h = pxsol.ed25519.Fr(int.from_bytes(hash(digest + pubkey + m), 'little'))
     return pxsol.ed25519.G * s == R + A * h
 ```
+
+例: 假设您有私钥 `833fe62409237b9d62ec77587520911e9a759cec1d19755b7da901b96dca3d42`, 请对消息 `sha-512('abc')` 进行签名并验证签名.
+
+答:
+
+```py
+import pxsol
+import hashlib
+
+prikey = bytearray.fromhex('833fe62409237b9d62ec77587520911e9a759cec1d19755b7da901b96dca3d42')
+pubkey = pxsol.eddsa.pubkey(prikey)
+msg = hashlib.sha512(b'abc').digest()
+sig = pxsol.eddsa.sign(prikey, msg)
+assert sig[:32].hex() == 'dc2a4459e7369633a52b1bf277839a00201009a3efbf3ecb69bea2186c26b589'
+assert sig[32:].hex() == '09351fc9ac90b3ecfdfbc7c66431e0303dca179c138ac17ad9bef1177331a704'
+assert pxsol.eddsa.verify(pubkey, msg, sig)
+```
