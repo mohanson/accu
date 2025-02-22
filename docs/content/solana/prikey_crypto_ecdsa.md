@@ -417,7 +417,7 @@ assert(pubkey.y.x == 0xc7b6277d32c52266ab94af215556316e31a9acde79a8b39643c688754
 
 0. 使用哈希函数(例如 sha256)对信息进行哈希处理, 得到信息摘要 m.
 0. 从 [1, n-1] 范围内选择一个随机整数 k.
-0. 计算点 g * k 并将结果的 x 坐标记为 r. 如果 r 等于 0, 则为 k 选择不同的值并重复该过程.
+0. 计算点 g * k 并将结果标记为 R. R 的 x 坐标记为 r. 如果 r 等于 0, 则为 k 选择不同的值并重复该过程.
 0. 计算 s = k⁻¹(m + r * prikey) mod n 的值, 其中 k⁻¹ 是 k mod n 的乘法逆元. 如果 s 等于 0, 则为 k 选择不同的值并重复该过程.
 0. 消息的数字签名由 (r, s) 对组成.
 
@@ -425,9 +425,9 @@ assert(pubkey.y.x == 0xc7b6277d32c52266ab94af215556316e31a9acde79a8b39643c688754
 
 0. 使用相同的哈希函数对收到的信息进行哈希处理, 得到信息摘要 m.
 0. 检查签名值 r 和 s 是否在 [1, n-1] 范围内. 如果不在, 则签名无效.
-0. 计算值 u₁ = m * s⁻¹ mod n 和 u₂ = r * s⁻¹ mod n, 其中 s⁻¹ 是 s mod n 的乘法逆元.
-0. 计算点 p = g * u₁ + pubkey * u₂. 如果 p 等于无穷远处的点, 则签名无效.
-0. 如果 p 的 x 坐标等于 r, 则签名有效, 否则无效.
+0. 计算值 a = m * s⁻¹ mod n 和 b = r * s⁻¹ mod n, 其中 s⁻¹ 是 s mod n 的乘法逆元.
+0. 计算点 R = g * a + pubkey * b. 如果 R 等于无穷远处的点, 则签名无效.
+0. 如果 R 的 x 坐标等于 r, 则签名有效, 否则无效.
 
 我们实现代码如下:
 
@@ -462,12 +462,11 @@ def sign(prikey: pabtc.secp256k1.Fr, m: pabtc.secp256k1.Fr) -> typing.Tuple[pabt
 def verify(pubkey: pabtc.secp256k1.Pt, m: pabtc.secp256k1.Fr, r: pabtc.secp256k1.Fr, s: pabtc.secp256k1.Fr) -> bool:
     # https://www.secg.org/sec1-v2.pdf
     # 4.1.4 Verifying Operation
-    u1 = m / s
-    u2 = r / s
-    x = pabtc.secp256k1.G * u1 + pubkey * u2
-    assert x != pabtc.secp256k1.I
-    v = pabtc.secp256k1.Fr(x.x.x)
-    return v == r
+    a = m / s
+    b = r / s
+    R = pabtc.secp256k1.G * a + pubkey * b
+    assert R != pabtc.secp256k1.I
+    return r == pabtc.secp256k1.Fr(R.x.x)
 
 
 def pubkey(m: pabtc.secp256k1.Fr, r: pabtc.secp256k1.Fr, s: pabtc.secp256k1.Fr, v: int) -> pabtc.secp256k1.Pt:
@@ -478,8 +477,8 @@ def pubkey(m: pabtc.secp256k1.Fr, r: pabtc.secp256k1.Fr, s: pabtc.secp256k1.Fr, 
         x = pabtc.secp256k1.Fq(r.x)
     else:
         x = pabtc.secp256k1.Fq(r.x + pabtc.secp256k1.N)
-    y_y = x * x * x + pabtc.secp256k1.A * x + pabtc.secp256k1.B
-    y = y_y ** ((pabtc.secp256k1.P + 1) // 4)
+    z = x * x * x + pabtc.secp256k1.A * x + pabtc.secp256k1.B
+    y = z ** ((pabtc.secp256k1.P + 1) // 4)
     if v & 1 != y.x & 1:
         y = -y
     R = pabtc.secp256k1.Pt(x, y)
