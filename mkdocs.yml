@@ -191,6 +191,7 @@ nav:
         - Solana/私钥, 公钥与地址/地址: content/solana/prikey_addr.md
         - Solana/私钥, 公钥与地址/地址伪装转账攻击与虚荣地址: content/solana/prikey_vanity.md
         - Solana/私钥, 公钥与地址/Base58: content/solana/prikey_base58.md
+        - Solana/私钥, 公钥与地址/公私钥对: content/solana/prikey_keypair.md
 - Python:
         - Python/f-strings: content/python/f_strings.md
         - Python/Windows 编程: content/python/windows.md
