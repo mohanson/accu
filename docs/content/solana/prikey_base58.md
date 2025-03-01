@@ -35,7 +35,7 @@ data = bytearray.fromhex('ef5557e913d5e13e9390a2fb0eeca75d739eccd5249dc174587669
 print(pxsol.base58.encode(data)) # 92EW9Qnnov7V3QLqToHsFNyEnQ6vvJdYiLgBTfLCv3J5XJjnh1K
 ```
 
-## 我的看法
+## 小结
 
 将二进制数据直接以 16 进制方式表示是工程上最普遍的设计, 也是对人类最友好的设计. 但问题偏偏在于, 比特币的地址中包含的数据太多了, 如果以 16 进制表示那结果会非常长. 因此中本聪设计了 base58 这种紧凑型编码方式, 并移除了他认为容易引起混淆或者麻烦的字符.
 
