@@ -118,7 +118,6 @@ nav:
 - Cryptography:
         - Cryptography/Kerckhoffs 原则: content/cryptography/kerckhoffs_principle.md
         - Cryptography/分组加密操作模式: content/cryptography/encryption_mode.md
-        - Cryptography/群环域: content/cryptography/group_ring_field.md
         - Cryptography/椭圆曲线: content/cryptography/ecc.md
         - Cryptography/比特币地址生成详细步骤: content/cryptography/bitcoin_address_calculate.md
         - Cryptography/椭圆曲线 ECDSA 签名与验签: content/cryptography/ecdsa.md
