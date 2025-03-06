@@ -188,7 +188,8 @@ nav:
         - Solana/私钥, 公钥与地址/私钥的密码学解释(三): content/solana/prikey_crypto_secp256k1.md
         - Solana/私钥, 公钥与地址/私钥的密码学解释(四): content/solana/prikey_crypto_ecdsa.md
         - Solana/私钥, 公钥与地址/私钥的密码学解释(五): content/solana/prikey_crypto_issue.md
-        - Solana/私钥, 公钥与地址/私钥的密码学解释(六): content/solana/prikey_crypto_eddsa.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(六): content/solana/prikey_crypto_ed25519.md
+        - Solana/私钥, 公钥与地址/私钥的密码学解释(七): content/solana/prikey_crypto_eddsa.md
         - Solana/私钥, 公钥与地址/公钥: content/solana/prikey_pubkey.md
         - Solana/私钥, 公钥与地址/地址: content/solana/prikey_addr.md
         - Solana/私钥, 公钥与地址/地址伪装转账攻击与虚荣地址: content/solana/prikey_vanity.md
