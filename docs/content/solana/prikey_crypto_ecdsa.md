@@ -51,9 +51,12 @@ def sign(prikey: pabtc.secp256k1.Fr, m: pabtc.secp256k1.Fr) -> typing.Tuple[pabt
 
 您可能发现在代码实现上, 签名函数不但返回了 (r, s), 还额外返回了一个 v 值. 这是恢复标识符, 用于从签名中确定签名者的公钥. 它使用了两个标志位, 最低标识位标志 c 的 y 轴坐标的奇偶位, 以便我们可以根据签名中的 r 来唯一还原 c 的实际值(椭圆曲线是关于 x 轴对称的曲线, 每一个 x 都对应两个可能的 y 值). 另一个比特位用于确认 r 值是否发生过溢出, 因为椭圆曲线上的点的坐标范围是 0 到 P, 但在签名运算中我们会将 c 的 x 坐标转换为一个标量, 范围将缩小到 0 到 N, 因此可能会发生溢出截断.
 
-> 您还记得 P 与 N 的取值吗?
-> P = 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f
-> N = 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141
+> 您还记得 P 与 N 的取值吗? P 指的是素数域中的素数, N 指 secp256k1 椭圆曲线的阶, N 比 P 小.
+
+```py
+P = 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f
+N = 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141
+```
 
 ## Ecdsa 验签
 
