@@ -35,12 +35,69 @@ data = bytearray.fromhex('ef5557e913d5e13e9390a2fb0eeca75d739eccd5249dc174587669
 print(pxsol.base58.encode(data)) # 92EW9Qnnov7V3QLqToHsFNyEnQ6vvJdYiLgBTfLCv3J5XJjnh1K
 ```
 
-## 小结
+## Base58 的代码实现
 
-将二进制数据直接以 16 进制方式表示是工程上最普遍的设计, 也是对人类最友好的设计. 但问题偏偏在于, 比特币的地址中包含的数据太多了, 如果以 16 进制表示那结果会非常长. 因此中本聪设计了 base58 这种紧凑型编码方式, 并移除了他认为容易引起混淆或者麻烦的字符.
+您可以在 [pxsol.base58](https://github.com/mohanson/pxsol/blob/master/pxsol/base58.py) 找到一份 base58 的简单 python 实现.
 
-但是以现在的眼光来看, 在地址中包含太多数据没有明显的好处, 并且会引起用户的恐慌: 仅仅让用户理解比特币现在的四种常用地址类型的区别就是个天大的困难了.
+```py
+# Copyright (C) 2011 Sam Rushing
+# Copyright (C) 2013-2014 The python-bitcoinlib developers
+#
+# This file is part of python-bitcoinlib.
+#
+# It is subject to the license terms in the LICENSE file found in the top-level
+# directory of this distribution.
+#
+# No part of python-bitcoinlib, including this file, may be copied, modified,
+# propagated, or distributed except according to the terms contained in the
+# LICENSE file.
 
-区块链地址现在依然是不可读也不可写的, 以这种眼光来看 base58 移除 0, O, I 和 l 字符其实是一种无效设计. 无论我们怎么处理公钥到地址的转换, 最后得到的必然都是乱七八糟的字符堆.
+# Base58 encoding and decoding
 
-话虽如此, base58 依然是加密货币中的经典编码方式, 依然是技术史上的一个重要里程碑.
+B58_DIGITS = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+
+
+def encode(b: bytearray) -> str:
+    # Encode bytes to a base58-encoded string
+    assert isinstance(b, bytearray)
+    # Convert big-endian bytes to integer
+    n = int.from_bytes(b)
+    # Divide that integer into bas58
+    res = []
+    while n > 0:
+        n, r = divmod(n, 58)
+        res.append(B58_DIGITS[r])
+    res = ''.join(res[::-1])
+    # Encode leading zeros as base58 zeros
+    czero = 0
+    pad = 0
+    for c in b:
+        if c == czero:
+            pad += 1
+        else:
+            break
+    return B58_DIGITS[0] * pad + res
+
+
+def decode(s: str) -> bytearray:
+    # Decode a base58-encoding string, returning bytes.
+    if not s:
+        return bytearray()
+    # Convert the string to an integer
+    n = 0
+    for c in s:
+        n *= 58
+        assert c in B58_DIGITS
+        digit = B58_DIGITS.index(c)
+        n += digit
+    # Convert the integer to bytes
+    res = bytearray(n.to_bytes(max((n.bit_length() + 7) // 8, 1)))
+    # Add padding back.
+    pad = 0
+    for c in s[:-1]:
+        if c == B58_DIGITS[0]:
+            pad += 1
+        else:
+            break
+    return bytearray(pad) + res
+```
