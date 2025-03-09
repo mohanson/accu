@@ -22,6 +22,4 @@
 
 **小额赞助**
 
-- BTC: `bc1qwhmj20d20egejugk9gxdz8t806pa2klle8h6d5`
-- ETH: `0x3172B76d2aBD88D87f46662e4588a02d8Cf2BC59`
 - SOL: `Dd9i1im9RmaaxmdSrezjN4unqAPLF4HQGEgGrNDGKhtN`
