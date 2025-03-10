@@ -133,3 +133,5 @@ dr.text((0, 0), ''.join(words), '#000000', font)
 im = im.resize(size, PIL.Image.LANCZOS)
 im.show()
 ```
+
+![img](../../img/pil/ascii/home.jpg)
