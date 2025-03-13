@@ -15,7 +15,7 @@
 
 **语言**
 
-本书提供中文版和英文版.
+本书提供中文版和英文版. 在连载期间, 英文版进度将略微落后于中文版.
 
 - [中文](http://accu.cc/content/solana/foreword/)
 - [英文](https://github.com/mohanson/pxsol/tree/master/doc)
