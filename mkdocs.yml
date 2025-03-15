@@ -115,6 +115,7 @@ nav:
         - Solana/私钥, 公钥与地址/Base58: content/solana/prikey_base58.md
         - Solana/私钥, 公钥与地址/公私钥对: content/solana/prikey_keypair.md
         - Solana/交易/导言: content/solana/tx_introduction.md
+        - Solana/交易/货币面值: content/solana/tx_denomination.md
         - Solana/交易/构建本地开发环境: content/solana/tx_devnet.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
