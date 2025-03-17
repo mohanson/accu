@@ -85,3 +85,5 @@ print(f'ada: {ada.sol_balance() / pxsol.denomination.sol} sol')
 ```
 
 细心的 ada 发现, 自己的余额减少的数字略微大于 1 sol, 这其间的差值是该交易所支付的手续费.
+
+Solana 拥有无与伦比的交易确认速度: 通常在您发出交易的瞬间, 交易就会被确认. 因此 pxsol 的内置钱包采用了同步交易确认方式: 只有当交易被网络确认, `sol_transfer()` 方法才会返回.
