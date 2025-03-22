@@ -12,7 +12,7 @@ for e in pxsol.rpc.get_signatures_for_address(ada.pubkey.base58(), {'limit': 32}
     tx_meta = pxsol.rpc.get_transaction(e['signature'], {'encoding': 'base64'})
     tx_byte = base64.b64decode(tx_meta['transaction'][0])
     tx = pxsol.core.Transaction.serialize_decode(tx_byte)
-    print(tx.json())
+    print(tx)
 ```
 
 > 如果存在多个交易, 交易将按照交易时间倒序排序输出.
