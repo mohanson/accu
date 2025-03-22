@@ -1,6 +1,6 @@
 # Solana/交易/交易详情
 
-在上一节中, ada 向 bob 转移了 1 sol. 我们想查看这笔交易的详细内容, 为此, 我们使用 `pxsol.rpc.get_signatures_for_address` 来查询 ada 过去一段时间内的所有交易历史.
+在上一节中, ada 向 bob 转移了 1 sol. 我们想查看这笔交易的详细内容, 为此, 我们使用 `pxsol.rpc.get_signatures_for_address` 来查询 ada 过去一段时间内的所有交易历史. 接口将返回交易的序列化格式数据, 对其进行反序列化就能得到一个 `pxsol.core.Transaction` 对象.
 
 ```py
 import base64
