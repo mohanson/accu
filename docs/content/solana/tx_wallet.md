@@ -57,7 +57,7 @@ assert prikey.pubkey().base58() == '6ASf5EcmmEHTgDJ4X4ZT5vT6iHVJBXPg5AN5YoTCpGWt
 
 Pxsol 的子模块 `pxsol.wallet` 实现了一个简单但是功能强大的内置钱包.
 
-现在, ada 决定转移 1 sol 给 bob. 为了实现这个过程, ada 首先用自己的私钥初始化了自己的钱包. 要完成这笔交易, ada 还需要完成两个步骤:
+Ada 正在泰国享受他的假期. 他进入了一家海鲜餐厅, 美美的吃上了一顿. 在结账的时候, 他注意到这家餐厅允许顾客使用 solana 支付账单. Ada 决定试一试, 他现在需要向店主 bob 支付 1 sol. 为了实现这个过程, ada 首先用自己的私钥初始化了自己的钱包. 要完成这笔交易, ada 还需要完成两个步骤:
 
 - 填写 bob 的 solana 公钥(地址).
 - 要发送的金额, 以 lamport 表示.
