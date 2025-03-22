@@ -118,6 +118,7 @@ nav:
         - Solana/交易/货币面值: content/solana/tx_denomination.md
         - Solana/交易/构建本地开发环境: content/solana/tx_devnet.md
         - Solana/交易/使用内置钱包进行转账: content/solana/tx_wallet.md
+        - Solana/交易/交易详情: content/solana/tx_info.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
