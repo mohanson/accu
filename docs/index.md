@@ -12,7 +12,7 @@ Mohanson 只是一个不存在的人.
 - 视频课程[轻松实现Rust系统入门，实战编译器开发](https://coding.imooc.com/class/517.html)慕课网发布.
 - 单机游戏[像素推箱](https://store.steampowered.com/app/2511610/_/)正式发布! 下一个独立游戏制作人?
 - 首张独立创制专辑[别景色](https://music.163.com/#/album?id=178829929)，2023 年 11 月 13 日正式发行, 三弦吾爱!
-- [Solana: 我们在等下一个可能](https://accu.cc/content/solana/foreword/) 开启连载.
+- 感谢 solana 基金会对 [Solana: 我们在等下一个可能](https://accu.cc/content/solana/foreword/) 的赞助!
 
 ## 联系方式
 
