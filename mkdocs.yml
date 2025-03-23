@@ -120,6 +120,7 @@ nav:
         - Solana/交易/使用内置钱包进行转账: content/solana/tx_wallet.md
         - Solana/交易/交易详情: content/solana/tx_info.md
         - Solana/交易/签名与验证: content/solana/tx_signature.md
+        - Solana/交易/序列化与反序列化: content/solana/tx_serialize.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
