@@ -122,6 +122,7 @@ nav:
         - Solana/交易/签名与验证: content/solana/tx_signature.md
         - Solana/交易/序列化与反序列化: content/solana/tx_serialize.md
         - Solana/交易/账户与权限: content/solana/tx_permission.md
+        - Solana/交易/区块哈希与时效性: content/solana/tx_recent_blockhash.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
