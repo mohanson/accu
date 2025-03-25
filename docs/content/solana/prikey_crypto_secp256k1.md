@@ -170,15 +170,6 @@ class Pt:
         self.x = x
         self.y = y
 
-    def __repr__(self) -> str:
-        return f'Pt({self.x}, {self.y})'
-
-    def __eq__(self, data: typing.Self) -> bool:
-        return all([
-            self.x == data.x,
-            self.y == data.y,
-        ])
-
     def __add__(self, data: typing.Self) -> typing.Self:
         # https://www.cs.miami.edu/home/burt/learning/Csc609.142/ecdsa-cert.pdf
         # Don Johnson, Alfred Menezes and Scott Vanstone, The Elliptic Curve Digital Signature Algorithm (ECDSA)
@@ -201,8 +192,11 @@ class Pt:
         y3 = sk * (x1 - x3) - y1
         return Pt(x3, y3)
 
-    def __sub__(self, data: typing.Self) -> typing.Self:
-        return self + data.__neg__()
+    def __eq__(self, data: typing.Self) -> bool:
+        return all([
+            self.x == data.x,
+            self.y == data.y,
+        ])
 
     def __mul__(self, k: Fr) -> typing.Self:
         # Point multiplication: Double-and-add
@@ -218,14 +212,20 @@ class Pt:
             n = n >> 1
         return result
 
+    def __neg__(self) -> typing.Self:
+        return Pt(self.x, -self.y)
+
+    def __repr__(self) -> str:
+        return f'Pt({self.x}, {self.y})'
+
+    def __sub__(self, data: typing.Self) -> typing.Self:
+        return self + data.__neg__()
+
     def __truediv__(self, k: Fr) -> typing.Self:
         return self.__mul__(k ** -1)
 
     def __pos__(self) -> typing.Self:
         return Pt(self.x, +self.y)
-
-    def __neg__(self) -> typing.Self:
-        return Pt(self.x, -self.y)
 
 
 # Identity element
