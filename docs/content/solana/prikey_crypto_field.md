@@ -67,6 +67,7 @@
 下面我们使用 python 代码实现一个素数有限域. 客观来讲, 它十分类似我们日常生活中使用的整数, 但区别在于我们需要对所有计算结果进行取模. 下面的代码拷贝自 [pabtc](https://github.com/mohanson/pabtc) 项目, 您可以使用 `pip install pabtc` 来获取这份代码.
 
 ```py
+import json
 import typing
 
 
@@ -74,42 +75,49 @@ class Fp:
     # Galois field. In mathematics, a finite field or Galois field is a field that contains a finite number of elements.
     # As with any field, a finite field is a set on which the operations of multiplication, addition, subtraction and
     # division are defined and satisfy certain basic rules.
+    #
+    # https://www.cs.miami.edu/home/burt/learning/Csc609.142/ecdsa-cert.pdf
+    # Don Johnson, Alfred Menezes and Scott Vanstone, The Elliptic Curve Digital Signature Algorithm (ECDSA)
+    # 3.1 The Finite Field Fp
 
     p = 0
 
     def __init__(self, x: int) -> None:
         self.x = x % self.p
 
-    def __repr__(self) -> str:
-        return f'Fp(0x{self.x:064x})'
+    def __add__(self, data: typing.Self) -> typing.Self:
+        assert self.p == data.p
+        return self.__class__(self.x + data.x)
 
     def __eq__(self, data: typing.Self) -> bool:
         assert self.p == data.p
         return self.x == data.x
 
-    def __add__(self, data: typing.Self) -> typing.Self:
+    def __mul__(self, data: typing.Self) -> typing.Self:
         assert self.p == data.p
-        return self.__class__(self.x + data.x)
+        return self.__class__(self.x * data.x)
+
+    def __neg__(self) -> typing.Self:
+        return self.__class__(self.p - self.x)
+
+    def __repr__(self) -> str:
+        return json.dumps(self.json())
 
     def __sub__(self, data: typing.Self) -> typing.Self:
         assert self.p == data.p
         return self.__class__(self.x - data.x)
 
-    def __mul__(self, data: typing.Self) -> typing.Self:
-        assert self.p == data.p
-        return self.__class__(self.x * data.x)
-
     def __truediv__(self, data: typing.Self) -> typing.Self:
         return self * data ** -1
-
-    def __pow__(self, data: int) -> typing.Self:
-        return self.__class__(pow(self.x, data, self.p))
 
     def __pos__(self) -> typing.Self:
         return self.__class__(self.x)
 
-    def __neg__(self) -> typing.Self:
-        return self.__class__(self.p - self.x)
+    def __pow__(self, data: int) -> typing.Self:
+        return self.__class__(pow(self.x, data, self.p))
+
+    def json(self) -> str:
+        return f'{self.x:064x}'
 
     @classmethod
     def nil(cls) -> typing.Self:
