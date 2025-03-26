@@ -124,6 +124,7 @@ nav:
         - Solana/交易/账户与权限: content/solana/tx_permission.md
         - Solana/交易/区块哈希与时效性: content/solana/tx_recent_blockhash.md
         - Solana/交易/指令: content/solana/tx_instruction.md
+        - Solana/交易/系统程序: content/solana/tx_system_program.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
