@@ -98,3 +98,14 @@ import pxsol
 pubkey = pxsol.core.PubKey.base58_decode('11111111111111111111111111111111')
 assert pubkey.hex() == '0000000000000000000000000000000000000000000000000000000000000000'
 ```
+
+例: 如果 ada 要转账 2 sol 给 bob, 他应当如何构造指令数据?
+
+答: 我们可以按照上述规则手工拼凑数据, 也可以借助 `pxsol.program` 模块完成数据的构建. 此处仅演示第二种方法:
+
+```py
+import pxsol
+
+data = pxsol.program.System.transfer(2 * pxsol.denomination.sol)
+assert pxsol.base58.encode(data) == '3Bxs3zxH1DZVrsVy'
+```
