@@ -25,3 +25,23 @@ Solana 的交易手续费之所以能保持在极低水平, 主要得益于其�
 
 Solana 的手续费有一部分会被"燃烧", 即永久销毁, 以减少 sol 的总供应量, 从而在长期内可能对代币价值产生正向影响. 具体来说:
 50% 的手续费被燃烧, 这部分直接从流通中移除. 50% 的手续费分配给验证者, 作为对维护网络安全的奖励.
+
+## 添加优先费用
+
+执行交易时, 网络会消耗以计算单位(compute unit)为单位的计算资源. 交易最多可使用 1,400,000 个计算单位, 默认情况下, 每条指令限制为 200,000 个计算单位. 您可以通过在交易中包含一条 `set_compute_unit_limit` 指令来请求特定的计算单位限制.
+
+```py
+rq = pxsol.core.Requisition(pxsol.program.ComputeBudget.pubkey, [], bytearray())
+rq.data = pxsol.program.ComputeBudget.set_compute_unit_limit(200000)
+```
+
+您可以为每个计算单位支付一点优先费用, 如果您要这么做, 通过在交易中包含一条 `set_compute_unit_price` 指令就可以了.
+
+```py
+rq = pxsol.core.Requisition(pxsol.program.ComputeBudget.pubkey, [], bytearray())
+rq.data = pxsol.program.ComputeBudget.set_compute_unit_price(1)
+```
+
+交易优先费用以 micro lamport 计价, 其换算规则是 1,000,000 micro lamport = 1 lamport.
+
+> 绝密信息: 将交易优先费用指定为 1, 就能让您的交易轻松优先于未设置交易优先费用的交易! 网络上有一些实时追踪 solana 交易优先手续费的工具, 可能会建议您设置上千的费用, 但实际上, 您完全不需要支付如此庞大的费用!
