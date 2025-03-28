@@ -126,6 +126,7 @@ nav:
         - Solana/交易/指令: content/solana/tx_instruction.md
         - Solana/交易/系统程序: content/solana/tx_system_program.md
         - Solana/交易/手工构造交易: content/solana/tx_handmade.md
+        - Solana/交易/手续费: content/solana/tx_fee.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
