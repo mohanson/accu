@@ -45,3 +45,32 @@ rq.data = pxsol.program.ComputeBudget.set_compute_unit_price(1)
 交易优先费用以 micro lamport 计价, 其换算规则是 1,000,000 micro lamport = 1 lamport.
 
 > 绝密信息: 将交易优先费用指定为 1, 就能让您的交易轻松优先于未设置交易优先费用的交易! 网络上有一些实时追踪 solana 交易优先手续费的工具, 可能会建议您设置上千的费用, 但实际上, 您完全不需要支付如此庞大的费用!
+
+## 习题
+
+例: ada 准备向 bob 转账 1 sol, 但此时 ada 意识到网络非常拥堵, 因此他决定为这笔交易添加一点优先费用!
+
+答:
+
+```py
+import base64
+import pxsol
+
+ada = pxsol.core.PriKey.int_decode(1)
+bob = pxsol.core.PubKey.base58_decode('8pM1DN3RiT8vbom5u1sNryaNT1nyL8CTTW3b5PwWXRBH')
+
+r0 = pxsol.core.Requisition(pxsol.program.System.pubkey, [], bytearray())
+r0.account.append(pxsol.core.AccountMeta(ada.pubkey(), 3))
+r0.account.append(pxsol.core.AccountMeta(bob, 1))
+r0.data = pxsol.program.System.transfer(1 * pxsol.denomination.sol)
+
+r1 = pxsol.core.Requisition(pxsol.program.ComputeBudget.pubkey, [], bytearray())
+r1.data = pxsol.program.ComputeBudget.set_compute_unit_price(1)
+
+tx = pxsol.core.Transaction.requisition_decode(ada.pubkey(), [r0, r1])
+tx.message.recent_blockhash = pxsol.base58.decode(pxsol.rpc.get_latest_blockhash({})['blockhash'])
+tx.sign([ada])
+txid = pxsol.rpc.send_transaction(base64.b64encode(tx.serialize()).decode(), {})
+assert pxsol.base58.decode(txid) == tx.signatures[0]
+pxsol.rpc.wait([txid])
+```
