@@ -55,8 +55,8 @@ Solana 的交易指令有很多种, 像转账指令就是其中之一. 每种指
 
 在示例中:
 
-- `"program": 2`: 调用 `tx.message.account_keys[2]`, 即系统程序 `1111111...`.
-- `"account": [0, 1]`: 使用 `tx.message.account_keys[0]` 和 `tx.message.account_keys[1]`.
+- `"program": 2`: 表示调用 `tx.message.account_keys[2]`, 即系统程序 `1111111...`.
+- `"account": [0, 1]`: 表示涉及了两个账户, `tx.message.account_keys[0]` 和 `tx.message.account_keys[1]`.
 - `"data": "3Bxs3zzLZLuLQEYX"`: 表示具体操作.
 
 我们将 data 数据进行 base58 解码, 得到其十六进制表示的数据为 `0200000000ca9a3b00000000`. 系统程序 `1111111...` 会对数据进行解析, 前 4 个字节会被解析为内部函数索引, 后 8 个字节解释为转账的金额. 在示例中, 我们的内部函数索引为 2, 表示转账, 金额则为 1000000000 lamport.
