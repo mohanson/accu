@@ -78,7 +78,7 @@ Bincode 编码规范详见 <https://github.com/bincode-org/bincode/blob/trunk/do
 | index    | u32  | 约定为 2          |
 | lamports | u64  | 要转移的 sol 数量 |
 
-## 其它系统程序
+## 其它内置程序
 
 Solana 系统程序的执行方式是"基于账户"的, 系统程序通过修改账户的状态和存储的数据来执行任务. 除了系统程序外, solana 还内置了一些其它程序:
 
