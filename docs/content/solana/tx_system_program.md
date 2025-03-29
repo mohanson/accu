@@ -66,7 +66,7 @@ Bincode 编码规范详见 <https://github.com/bincode-org/bincode/blob/trunk/do
 
 涉及账户:
 
-|    名称    | 类型 | 说明 |
+|    账户    | 权限 | 说明 |
 | ---------- | ---- | ---- |
 | 发送方公钥 | 3    | -    |
 | 接收方公钥 | 1    | -    |
