@@ -75,9 +75,9 @@ assert s == tx.signatures[0]
 
 ## 验证过程
 
-当交易提交到 solana 网络时, 验证节点首先会检查 signatures 的数量是否与 message.header 匹配, 然后使用账户的公钥(来自 account_keys) 验证每个签名是否有效.
+当交易提交到 solana 网络时, 验证节点首先会检查 `tx.signatures` 的数量是否与 `tx.message.header` 匹配, 然后使用账户的公钥(来自 `tx.message.account_keys`) 验证每个签名是否有效.
 
-在我们的例子中, 签名对应 account_keys 中的第一个账户: `6ASf5EcmmEHTgDJ4X4ZT5vT6iHVJBXPg5AN5YoTCpGWt`. 这个账户是交易的发起者, 且支付了交易费用.
+在我们的例子中, 签名对应 `tx.message.account_keys` 中的第一个账户: `6ASf5EcmmEHTgDJ4X4ZT5vT6iHVJBXPg5AN5YoTCpGWt`. 这个账户是交易的发起者, 且支付了交易费用.
 
 例: 验证上述交易的签名有效.
 
