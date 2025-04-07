@@ -1,6 +1,6 @@
 # 遗传算法/最优保留策略
 
-最优保留策略指将群体中最优的一部分个体不经过选择, 交叉和变异操作, 直接进入下一代, 以避免优秀个体损失. 我们希望适应度最好的个体总是能保留到下一代群体中, 以避免优秀的基因因为偶然原因而被淘汰(例如由于过量引用伏特加而在俄罗斯轮盘赌中失利).
+最优保留策略指将群体中最优的一部分个体不经过选择, 交叉和变异操作, 直接进入下一代, 以避免优秀个体损失. 我们希望适应度最好的个体总是能保留到下一代群体中, 以避免优秀的基因因为偶然原因而被淘汰(例如由于过量饮用伏特加而在俄罗斯轮盘赌中失利).
 
 最优保留策略的执行过程如下:
 
@@ -13,19 +13,20 @@
 
 ## 代码实现
 
-- 复制首节例子代码, 增加作用于 evolve 函数的 optret 装饰器.
+- 复制首节例子代码, 修改 evolve 函数, 增加一段保留最优个体的代码逻辑.
 - 为了方便观察, 调整种群大小为 4, 变异概率为 0.5.
 
 ```py
-import matplotlib.animation
+import math
 import matplotlib.pyplot as plt
 import numpy as np
+import random
+import typing
 
-plt.style.use('seaborn')
 
+class Ga:
 
-class GA:
-    def __init__(self):
+    def __init__(self) -> None:
         self.pop_size = 4
         self.max_iter = 20
         self.pc = 0.6
@@ -33,103 +34,93 @@ class GA:
         self.dna_size = 10
         self.x_bound = [0, 5]
 
-    def f(self, x):
-        return np.sin(10 * x) * x + np.cos(2 * x) * x
+    def f(self, x: float) -> float:
+        return math.sin(10 * x) * x + math.cos(2 * x) * x
 
-    def encode(self, x):
-        a = x / (self.x_bound[1] - self.x_bound[0]) * (2 ** self.dna_size - 1)
+    def encode(self, feno: float) -> typing.List[int]:
+        a = feno / (self.x_bound[1] - self.x_bound[0]) * (2 ** self.dna_size - 1)
         a = int(a)
-        return np.array(list(np.binary_repr(a).zfill(self.dna_size))).astype(np.uint8)
+        s = bin(a)[2:]
+        s = '0' * (self.dna_size - len(s)) + s
+        return [int(e) for e in s]
 
-    def decode(self, per):
-        return per.dot(1 << np.arange(self.dna_size)[::-1]) / (2**self.dna_size - 1) * self.x_bound[1]
+    def decode(self, geno: typing.List[int]) -> float:
+        s = ''.join([str(e) for e in geno])
+        return int(s, 2) / (2**self.dna_size - 1) * self.x_bound[1]
 
-    def perfit(self, per):
-        x = self.decode(per)
-        return self.f(x)
-
-    def getfit(self, pop):
-        x = self.decode(pop)
-        r = self.f(x)
+    def assess(self, pop: typing.List[typing.List[int]]) -> typing.List[float]:
+        x = [self.decode(e) for e in pop]
+        r = [self.f(x) for x in x]
         return r
 
-    def select(self, pop, fit):
-        fit = fit - np.min(fit)
-        fit = fit + np.max(fit) / 2 + 0.001
-        idx = np.random.choice(np.arange(self.pop_size), size=self.pop_size, replace=True, p=fit / fit.sum())
-        pop = pop[idx]
-        return pop
+    def select(self, pop: typing.List[typing.List[int]], fit: typing.List[float]) -> typing.List[typing.List[int]]:
+        fit_min = min(fit)
+        fit_max = max(fit)
+        fit = [(e - fit_min) + fit_max / 2 + 0.001 for e in fit]
+        return random.choices(pop, fit, k=self.pop_size)
 
-    def optret(self, f):
-        def mt(*args, **kwargs):
-            opt = None
-            opf = None
-            for pop, fit in f(*args, **kwargs):
-                max_idx = np.argmax(fit)
-                min_idx = np.argmax(fit)
-                if opf is None or fit[max_idx] >= opf:
-                    opt = pop[max_idx]
-                    opf = fit[max_idx]
-                else:
-                    pop[min_idx] = opt
-                    fit[min_idx] = opf
-                yield pop, fit
-        return mt
-
-    def crosso(self, pop):
+    def crossover(self, pop: typing.List[typing.List[int]]) -> typing.List[typing.List[int]]:
+        ret = pop.copy()
         for i in range(0, self.pop_size, 2):
-            if np.random.random() < self.pc:
+            j = i + 1
+            if random.random() < self.pc:
                 a = pop[i]
-                b = pop[i + 1]
-                p = np.random.randint(1, self.dna_size)
-                a[p:], b[p:] = b[p:], a[p:]
-                pop[i] = a
-                pop[i + 1] = b
-        return pop
+                b = pop[j]
+                p = random.randint(1, self.dna_size)
+                ret[i] = a[:p] + b[p:]
+                ret[j] = b[:p] + a[p:]
+        return ret
 
-    def mutate(self, pop):
-        mut = np.random.choice(np.array([0, 1]), pop.shape, p=[1 - self.pm, self.pm])
-        pop = np.where(mut == 1, 1 - pop, pop)
-        return pop
+    def mutate(self, pop: typing.List[typing.List[int]]) -> typing.List[typing.List[int]]:
+        ret = [None for _ in range(self.pop_size)]
+        for i in range(self.pop_size):
+            e = pop[i].copy()
+            for j in range(self.dna_size):
+                if random.random() < self.pm:
+                    e[j] = 1 - e[j]
+            ret[i] = e
+        return ret
 
-    def evolve(self):
-        pop = np.random.randint(2, size=(self.pop_size, self.dna_size))
-        pop_fit = self.getfit(pop)
-        yield pop, pop_fit
+    def evolve(self) -> typing.Iterable[typing.List[typing.List[int]]]:
+        pop = [[random.randint(0, 1) for _ in range(self.dna_size)] for _ in range(self.pop_size)]
+        fit = self.assess(pop)
+        idx = max(range(len(fit)), key=lambda i: fit[i])
+        top_ind = pop[idx]
+        top_fit = fit[idx]
+        yield pop
         for _ in range(self.max_iter - 1):
-            chd = self.select(pop, pop_fit)
-            chd = self.crosso(chd)
-            chd = self.mutate(chd)
-            chd_fit = self.getfit(chd)
-            yield chd, chd_fit
-            pop = chd
-            pop_fit = chd_fit
+            pop = self.select(pop, fit)
+            pop = self.crossover(pop)
+            pop = self.mutate(pop)
+            fit = self.assess(pop)
+            idx = max(range(len(fit)), key=lambda i: fit[i])
+            if fit[idx] > top_fit:
+                top_ind = pop[idx]
+                top_fit = fit[idx]
+            if fit[idx] < top_fit:
+                idx = min(range(len(fit)), key=lambda i: fit[i])
+                pop[idx] = top_ind
+                fit[idx] = top_fit
+            yield pop
 
 
-ga = GA()
-gaiter = ga.optret(ga.evolve)()
+ga = Ga()
 
-fig, ax = plt.subplots()
-ax.set_xlim(-0.2, 5.2)
-ax.set_ylim(-10, 7.5)
-x = np.linspace(*ga.x_bound, 200)
-ax.plot(x, ga.f(x))
-sca1 = ax.scatter([], [], s=200, c='#CF6FC1', alpha=0.5)
-sca2 = ax.scatter([], [], s=300, c='#ED8826', alpha=0.5)
-
-
-def update(*args):
-    pop, _ = next(gaiter)
-    fx = ga.decode(pop)
-    fv = ga.f(fx)
-    i = np.argmax(fv)
-    sca1.set_offsets(np.column_stack((fx, fv)))
-    sca2.set_offsets(np.column_stack(([fx[i]], fv[i])))
-    # plt.savefig(f'/tmp/img/{args[0]+1:0>2}.png')
-
-
-ani = matplotlib.animation.FuncAnimation(fig, update, interval=200, repeat=False)
-plt.show()
+plt.style.use('seaborn-v0_8-darkgrid')
+plt.figure(figsize=(4.8, 2.7))
+ga = Ga()
+for i, e in enumerate(ga.evolve()):
+    p = plt.subplot()
+    p.set_xlim(-0.2, 5.2)
+    p.set_ylim(-10, 7.5)
+    x = np.linspace(*ga.x_bound, 200)
+    y = [ga.f(e) for e in x]
+    p.plot(x, y)
+    x = [ga.decode(e) for e in e]
+    y = [ga.f(e) for e in x]
+    p.scatter(x, y, s=50, c='#CF6FC1', alpha=0.5)
+    plt.savefig(f'/tmp/img/{i+1:0>2}.png')
+    p.clear()
 ```
 
 ![img](../../img/ga/maintain_the_best_solution/calc_max.gif)
