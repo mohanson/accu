@@ -133,7 +133,6 @@ nav:
         - 遗传算法/俄罗斯轮盘赌: content/ga/russian_roulette.md
         - 遗传算法/最优保留策略: content/ga/maintain_the_best_solution.md
         - 遗传算法/生物进化模拟: content/ga/evolve.md
-        - 遗传算法/愚弄神经网络: content/ga/fooled_nn.md
 - X64 汇编:
         - X64 汇编/Hello World: content/x64/hello_world.md
         - X64 汇编/术语和概念: content/x64/concept.md
