@@ -112,65 +112,60 @@ class Ga:
         self.pc = 0.6
         self.pm = 0.001
         self.dna_size = 10
-        self.x_bound = [0, 5]
-
-    def f(self, x: float) -> float:
-        return math.sin(10 * x) * x + math.cos(2 * x) * x
+        self.x_bounds = [0, 5]
 
     def encode(self, feno: float) -> typing.List[int]:
-        a = feno / (self.x_bound[1] - self.x_bound[0]) * (2 ** self.dna_size - 1)
+        a = feno / (self.x_bounds[1] - self.x_bounds[0]) * (2 ** self.dna_size - 1)
         a = int(a)
         s = bin(a)[2:]
         s = '0' * (self.dna_size - len(s)) + s
         return [int(e) for e in s]
 
-    def decode(self, geno: typing.List[int]) -> float:
-        s = ''.join([str(e) for e in geno])
-        return int(s, 2) / (2**self.dna_size - 1) * self.x_bound[1]
+    def decode(self, gene: typing.List[int]) -> float:
+        s = ''.join([str(e) for e in gene])
+        return int(s, 2) / (2**self.dna_size - 1) * self.x_bounds[1]
 
-    def assess(self, pop: typing.List[typing.List[int]]) -> typing.List[float]:
-        x = [self.decode(e) for e in pop]
-        r = [self.f(x) for x in x]
-        return r
+    def assess(self, feno: float) -> float:
+        return math.sin(10 * feno) * feno + math.cos(2 * feno) * feno
 
     def select(self, pop: typing.List[typing.List[int]], fit: typing.List[float]) -> typing.List[typing.List[int]]:
         fit_min = min(fit)
         fit_max = max(fit)
         fit = [(e - fit_min) + fit_max / 2 + 0.001 for e in fit]
-        return random.choices(pop, fit, k=self.pop_size)
+        return [e.copy() for e in random.choices(pop, fit, k=self.pop_size)]
 
     def crossover(self, pop: typing.List[typing.List[int]]) -> typing.List[typing.List[int]]:
-        ret = pop.copy()
+        ret = [e.copy() for e in pop]
         for i in range(0, self.pop_size, 2):
             j = i + 1
             if random.random() < self.pc:
-                a = pop[i]
-                b = pop[j]
-                p = random.randint(1, self.dna_size)
-                ret[i] = a[:p] + b[p:]
-                ret[j] = b[:p] + a[p:]
+                p = random.randint(1, self.dna_size-1)
+                ret[i][p:] = pop[j][p:]
+                ret[j][p:] = pop[i][p:]
         return ret
 
     def mutate(self, pop: typing.List[typing.List[int]]) -> typing.List[typing.List[int]]:
-        ret = [None for _ in range(self.pop_size)]
+        ret = [e.copy() for e in pop]
         for i in range(self.pop_size):
-            e = pop[i].copy()
+            e = ret[i]
             for j in range(self.dna_size):
                 if random.random() < self.pm:
                     e[j] = 1 - e[j]
-            ret[i] = e
         return ret
 
-    def evolve(self) -> typing.Iterable[typing.List[typing.List[int]]]:
+    def evolve(self) -> typing.Iterable[typing.List[typing.Tuple[typing.List[int], float, float]]]:
         pop = [[random.randint(0, 1) for _ in range(self.dna_size)] for _ in range(self.pop_size)]
-        fit = self.assess(pop)
-        yield pop
+        per = [self.decode(e) for e in pop]
+        fit = [self.assess(e) for e in per]
+        yield list(zip(pop, per, fit))
         for _ in range(self.max_iter - 1):
             pop = self.select(pop, fit)
             pop = self.crossover(pop)
             pop = self.mutate(pop)
-            fit = self.assess(pop)
-            yield pop
+            per = [self.decode(e) for e in pop]
+            fit = [self.assess(e) for e in per]
+            yield list(zip(pop, per, fit))
+
 
 plt.style.use('seaborn-v0_8-darkgrid')
 plt.figure(figsize=(4.8, 2.7))
@@ -179,11 +174,11 @@ for i, e in enumerate(ga.evolve()):
     p = plt.subplot()
     p.set_xlim(-0.2, 5.2)
     p.set_ylim(-10, 7.5)
-    x = np.linspace(*ga.x_bound, 200)
-    y = [ga.f(e) for e in x]
+    x = np.linspace(ga.x_bounds[0], ga.x_bounds[1], 200)
+    y = [ga.assess(e) for e in x]
     p.plot(x, y)
-    x = [ga.decode(e) for e in e]
-    y = [ga.f(e) for e in x]
+    x = [f[1] for f in e]
+    y = [f[2] for f in e]
     p.scatter(x, y, s=50, c='#CF6FC1', alpha=0.5)
     plt.savefig(f'/tmp/img/{i+1:0>2}.png')
     p.clear()

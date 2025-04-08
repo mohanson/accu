@@ -17,7 +17,7 @@
 - 选择算子: 轮盘选择 + 最优保留策略
 - 交叉算子: 单点交叉
 - 变异算子: 等位变异
-- 运行参数: 迭代 12000 次, 种群大小 80, 交叉概率 0.6, 变异概率 0.008
+- 运行参数: 迭代 3000 次, 种群大小 80, 交叉概率 0.6, 变异概率 0.008
 
 ## 代码实现
 
@@ -25,20 +25,27 @@
 
 ```py
 import copy
+import numpy as np
 import os
 import os.path
-
-import numpy as np
+import random
 import skimage.draw
 import skimage.io
 import skimage.transform
+import typing
 
-control_im_path = 'firefox.jpg'
+img_path = '/tmp/firefox_logo_57_512w.png'
 save_dir = '/tmp/img'
+
+img = skimage.io.imread(img_path)
+if img.shape[2] == 4:
+    img = skimage.color.rgba2rgb(img)
+    img = (255 * img).astype(np.uint8)
+img = skimage.transform.resize(img, (128, 128), mode='reflect', preserve_range=True).astype(np.uint8)
 
 
 class Base:
-    def __init__(self, r, c, color, alpha):
+    def __init__(self, r: typing.List[int], c: typing.List[int], color: typing.List[int], alpha: float) -> None:
         self.r = r
         self.c = c
         self.color = color
@@ -46,14 +53,14 @@ class Base:
 
 
 class Gene:
-    def __init__(self):
-        self.base = []
+    def __init__(self, base: typing.List[Base]) -> None:
+        self.base = base
 
-    def copy(self):
+    def copy(self) -> typing.Self:
         return copy.deepcopy(self)
 
 
-class GA:
+class Ga:
     def __init__(self):
         self.pop_size = 80
         self.dna_size = 100
@@ -61,117 +68,97 @@ class GA:
         self.pc = 0.6
         self.pm = 0.008
 
-        im = skimage.io.imread(control_im_path)
-        if im.shape[2] == 4:
-            im = skimage.color.rgba2rgb(im)
-            im = (255 * im).astype(np.uint8)
-        self.control_im = skimage.transform.resize(
-            im, (128, 128), mode='reflect', preserve_range=True).astype(np.uint8)
+    def random_base(self) -> Base:
+        return Base(
+            [random.randint(0, img.shape[0] - 1) for _ in range(3)],
+            [random.randint(0, img.shape[1] - 1) for _ in range(3)],
+            [random.randint(0, 255) for _ in range(3)],
+            random.random() * 0.45,
+        )
 
-    def decode(self, per):
-        im = np.ones(self.control_im.shape, dtype=np.uint8) * 255
-        for e in per.base:
+    def random_gene(self) -> Gene:
+        return Gene([self.random_base() for _ in range(self.dna_size)])
+
+    def decode(self, geno: Gene) -> np.ndarray:
+        ind = np.ones(img.shape, dtype=np.uint8) * 255
+        for e in geno.base:
             rr, cc = skimage.draw.polygon(e.r, e.c)
-            skimage.draw.set_color(im, (rr, cc), e.color, e.alpha)
-        return im
+            skimage.draw.set_color(ind, (rr, cc), e.color, e.alpha)
+        return ind
 
-    def perfit(self, per):
-        im = self.decode(per)
-        assert im.shape == self.control_im.shape
+    def assess(self, feno: np.ndarray) -> float:
         # 三维矩阵的欧式距离
-        d = np.linalg.norm(np.where(self.control_im > im, self.control_im - im, im - self.control_im))
+        d = np.linalg.norm(np.where(img > feno, img - feno, feno - img))
         # 使用一个较大的数减去欧式距离
-        # 此处该数为 (self.control_im.size * ((3 * 255 ** 2) ** 0.5) ** 2) ** 0.5
-        return (self.control_im.size * 195075) ** 0.5 - d
+        # 此处该数为 (img.size * ((3 * 255 ** 2) ** 0.5) ** 2) ** 0.5
+        return (img.size * 195075) ** 0.5 - d
 
-    def getfit(self, pop):
-        fit = np.zeros(self.pop_size)
-        for i, per in enumerate(pop):
-            fit[i] = self.perfit(per)
-        return fit
+    def select(self, pop: typing.List[Gene], fit: typing.List[float]) -> typing.List[Gene]:
+        fit_min = min(fit)
+        fit_max = max(fit)
+        fit = [(e - fit_min) + fit_max / 2 + 0.001 for e in fit]
+        return [e.copy() for e in random.choices(pop, fit, k=self.pop_size)]
 
-    def genpop(self):
-        pop = []
-        for _ in range(self.pop_size):
-            per = Gene()
-            for _ in range(self.dna_size):
-                r = np.random.randint(0, self.control_im.shape[0], 3, dtype=np.uint8)
-                c = np.random.randint(0, self.control_im.shape[1], 3, dtype=np.uint8)
-                color = np.random.randint(0, 256, 3)
-                alpha = np.random.random() * 0.45
-                per.base.append(Base(r, c, color, alpha))
-            pop.append(per)
-        return pop
-
-    def select(self, pop, fit):
-        fit = fit - np.min(fit)
-        fit = fit + np.max(fit) / 2 + 0.01
-        idx = np.random.choice(np.arange(self.pop_size), size=self.pop_size, replace=True, p=fit / fit.sum())
-        son = []
-        for i in idx:
-            son.append(pop[i].copy())
-        return son
-
-    def optret(self, f):
-        def mt(*args, **kwargs):
-            opt = None
-            opf = None
-            for pop, fit in f(*args, **kwargs):
-                max_idx = np.argmax(fit)
-                min_idx = np.argmax(fit)
-                if opf is None or fit[max_idx] >= opf:
-                    opt = pop[max_idx]
-                    opf = fit[max_idx]
-                else:
-                    pop[min_idx] = opt
-                    fit[min_idx] = opf
-                yield pop, fit
-        return mt
-
-    def crosso(self, pop):
+    def crossover(self, pop: typing.List[Gene]) -> typing.List[Gene]:
+        ret = [e.copy() for e in pop]
         for i in range(0, self.pop_size, 2):
-            if np.random.random() < self.pc:
-                a = pop[i]
-                b = pop[i + 1]
-                p = np.random.randint(1, self.dna_size)
-                a.base[p:], b.base[p:] = b.base[p:], a.base[p:]
-                pop[i] = a
-                pop[i + 1] = b
-        return pop
+            j = i + 1
+            if random.random() < self.pc:
+                p = random.randint(1, self.dna_size-1)
+                ret[i].base[p:] = pop[j].base[p:]
+                ret[j].base[p:] = pop[i].base[p:]
+        return ret
 
-    def mutate(self, pop):
-        for per in pop:
-            for base in per.base:
-                if np.random.random() < self.pm:
-                    base.r = np.random.randint(0, self.control_im.shape[0], 3, dtype=np.uint8)
-                    base.c = np.random.randint(0, self.control_im.shape[1], 3, dtype=np.uint8)
-                    base.color = np.random.randint(0, 256, 3)
-                    base.alpha = np.random.random() * 0.45
-        return pop
+    def mutate(self, pop: typing.List[Gene]) -> typing.List[Gene]:
+        ret = [e.copy() for e in pop]
+        for i in range(self.pop_size):
+            e = ret[i]
+            for j in range(self.dna_size):
+                if random.random() < self.pm:
+                    e.base[j] = self.random_base()
+        return ret
 
     def evolve(self):
-        pop = self.genpop()
-        pop_fit = self.getfit(pop)
-        for _ in range(self.max_iter):
-            chd = self.select(pop, pop_fit)
-            chd = self.crosso(chd)
-            chd = self.mutate(chd)
-            chd_fit = self.getfit(chd)
-            yield chd, chd_fit
-            pop = chd
-            pop_fit = chd_fit
+        pop = [self.random_gene() for _ in range(self.pop_size)]
+        per = [self.decode(e) for e in pop]
+        fit = [self.assess(e) for e in per]
+        old_top_idx = max(range(len(fit)), key=lambda i: fit[i])
+        old_top = pop[old_top_idx]
+        old_top_per = per[old_top_idx]
+        old_top_fit = fit[old_top_idx]
+        yield list(zip(pop, per, fit))
+        for _ in range(self.max_iter - 1):
+            pop = self.select(pop, fit)
+            pop = self.crossover(pop)
+            pop = self.mutate(pop)
+            per = [self.decode(e) for e in pop]
+            fit = [self.assess(e) for e in per]
+            new_bad_idx = min(range(len(fit)), key=lambda i: fit[i])
+            new_top_idx = max(range(len(fit)), key=lambda i: fit[i])
+            new_top = pop[new_top_idx]
+            new_top_per = per[new_top_idx]
+            new_top_fit = fit[new_top_idx]
+            if new_top_fit < old_top_fit:
+                pop[new_bad_idx] = old_top
+                per[new_bad_idx] = old_top_per
+                fit[new_bad_idx] = old_top_fit
+            if new_top_fit > old_top_fit:
+                old_top = new_top
+                old_top_per = new_top_per
+                old_top_fit = new_top_fit
+            yield list(zip(pop, per, fit))
 
 
-ga = GA()
-for i, (pop, fit) in enumerate(ga.optret(ga.evolve)()):
-    j = np.argmax(fit)
-    per = pop[j]
-    per_fit = ga.perfit(per)
-    print(f'{i:0>5} {per_fit}')
-    skimage.io.imsave(os.path.join(save_dir, f'{i:0>5}.jpg'), ga.decode(per))
+ga = Ga()
+for i, e in enumerate(ga.evolve()):
+    per = [f[1] for f in e]
+    fit = [f[2] for f in e]
+    idx = max(range(len(fit)), key=lambda i: fit[i])
+    print(f'{i:0>4} {fit[idx]}')
+    skimage.io.imsave(os.path.join(save_dir, f'{i:0>4}.jpg'), per[idx])
 ```
 
-执行上述代码, 记得修改 `control_im_path` 与 `save_dir` 为可用地址. 不用一会, 就能在 `save_dir` 中见到每一代最优个体了. 当然, 跑完 3000 代还是需要一点时间的(大约半天~).
+执行上述代码, 记得修改 `img_path` 与 `save_dir` 为可用地址. 不用一会, 就能在 `save_dir` 中见到每一代最优个体了. 当然, 跑完 3000 代还是需要一点时间的(大约半天~).
 
 ## 后记
 
