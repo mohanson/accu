@@ -79,7 +79,7 @@ print(pxsol.base58.encode(idjson)) # 1111111111111111111111111111111PPm2a2NNZH2E
 
 例: 有私钥 `11111111111111111111111111111112`, 应当如何将其导入到 phantom 钱包里?
 
-答: 我们通过私钥来生成 keypair.
+答: 我们通过私钥来生成 keypair 的 base58 表示.
 
 ```py
 import pxsol
