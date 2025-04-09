@@ -33,7 +33,7 @@ pop rax
 
 它能很好的工作. 但对于我来说, 每次调用函数时都要重复的复制和粘贴代码太麻烦了. 我可以使用宏来进行优化. 宏能在编译期展开, 因而不会对性能有任何的影响.
 
-NASM 支持两种形式的宏, 分别是单行和多行宏. 我们先从多行宏开始. 多行宏以 `%macro` 指令开头, 并以 `%endmacro` 结尾. 它的一般形式如下:
+Nasm 支持两种形式的宏, 分别是单行和多行宏. 我们先从多行宏开始. 多行宏以 `%macro` 指令开头, 并以 `%endmacro` 结尾. 它的一般形式如下:
 
 ```text
 %macro name number_of_parameters
@@ -43,7 +43,7 @@ NASM 支持两种形式的宏, 分别是单行和多行宏. 我们先从多行�
 %endmacro
 ```
 
-我们可以使用多行宏改写我们的代码, 将它们封装为 prepcall 和 postcall 两个宏.
+我们可以使用多行宏改写我们的代码, 将它们封装为 `prepcall` 和 `postcall` 两个宏.
 
 ```text
 %macro prepcall 0
@@ -84,7 +84,7 @@ call printf
 postcall
 ```
 
-至于单行宏, 它和 C 中的语法非常相似. 所有单行宏都必须从 `%define` 指令开始, 形式如下:
+至于单行宏, 它和 c 中的语法非常相似. 所有单行宏都必须从 `%define` 指令开始, 形式如下:
 
 ```text
 %define macro_name(parameter) value
@@ -121,9 +121,9 @@ _start:
 
 ```sh
 $ nasm -f elf64 -o main.o main.asm
-$ ld main.o -o main -lc --dynamic-linker /lib64/ld-linux-x86-64.so.2
-$ ./main arg2 arg3
-./main
-arg2
-arg3
+$ ld -o main -lc --dynamic-linker /lib64/ld-linux-x86-64.so.2 main.o
+$ ./main Hello World!
+$ ./main
+# Hello
+# World!
 ```

@@ -1,8 +1,8 @@
 # X64 汇编/AT&T
 
-在 x64 汇编语法的领域内分成两个流派: NASM 和 AT&T. 大多数国人可能更为熟悉 NASM 语法, 因为它源自 8086 CPU, 许多大学都会开设 8086 CPU 的实验课, 我也是在那是第一次接触 NASM. 后者则流行于 Unix/Linux 平台上, 是目前更为主流的语法.
+在 x64 汇编语法的领域内分成两个流派: nasm 和 att. 大多数国人可能更为熟悉 nasm 语法, 因为它源自 8086 cpu, 许多大学都会开设 8086 cpu 的实验课, 我也是在那是第一次接触 nasm. 后者则流行于 unix/linux 平台上, 是目前更为主流的语法.
 
-对我而言, 我更为喜欢 NASM 语法, 不过 AT&T 与 NASM 区别也不大. 在两种语法之间切换并不困难. 我们先来看下典型的 AT&T 语法的样子. 我们编译如下的 C 代码:
+对我而言, 我更为喜欢 nasm 语法, 不过 att 与 nasm 区别也不大. 在两种语法之间切换并不困难. 我们先来看下典型的 att 语法的样子. 我们编译如下的 C 代码:
 
 ```c
 int main() {
@@ -14,67 +14,33 @@ int main() {
 $ gcc -S -o main.s main.c
 ```
 
-`-S` 命令表示 gcc 在生成汇编代码后停止后续工作. 打开 main.s, 内容如下:
+命令 `-S` 表示 gcc 在生成汇编代码后停止后续工作. 打开 main.s, 内容如下:
 
 ```text
-        .file   "main.c"
-        .text
-        .globl  main
-        .type   main, @function
+    .file   "main.c"
+    .text
+    .globl  main
+    .type   main, @function
 main:
 .LFB0:
-        .cfi_startproc
-        pushq   %rbp
-        .cfi_def_cfa_offset 16
-        .cfi_offset 6, -16
-        movq    %rsp, %rbp
-        .cfi_def_cfa_register 6
-        movl    $0, %eax
-        popq    %rbp
-        .cfi_def_cfa 7, 8
-        ret
-        .cfi_endproc
+    .cfi_startproc
+    pushq   %rbp
+    .cfi_def_cfa_offset 16
+    .cfi_offset 6, -16
+    movq    %rsp, %rbp
+    .cfi_def_cfa_register 6
+    movl    $0, %eax
+    popq    %rbp
+    .cfi_def_cfa 7, 8
+    ret
+    .cfi_endproc
 .LFE0:
-        .size   main, .-main
-        .ident  "GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
-        .section        .note.GNU-stack,"",@progbits
+    .size   main, .-main
+    .ident  "GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
+    .section        .note.GNU-stack,"",@progbits
 ```
 
-## AT&T vs NASM (简要区别)
-
-AT&T 语法和 NASM(Netwide Assembler) 语法主要区别如下:
-
-- 语法结构: AT&T 语法使用逗号作为操作数分隔符, 操作数的顺序是目标操作数在前, 源操作数在后. 而 NASM 语法使用逗号作为分隔符, 操作数的顺序是源操作数在前, 目标操作数在后.
-
-例如, 将寄存器 eax 的值加到寄存器 ebx 中, AT&T 语法中的指令是:
-
-```text
-addl %eax, %ebx
-```
-
-而在 NASM 语法中的指令则是:
-
-```text
-add ebx, eax
-```
-
-- 寄存器表示: AT&T 语法在寄存器名前使用 % 符号, 而 NASM 语法中不使用 % 符号. 例如, 表示 eax 寄存器时, AT&T 语法为 %eax, 而 NASM 语法为 eax.
-- 立即数表示: AT&T 语法使用 $ 符号表示立即数, 而 NASM 语法中不使用 $ 符号. 例如, 表示立即数 10 时, AT&T 语法为 $10, 而 NASM 语法为 10.
-- 操作数大小: AT&T 语法在操作码后面使用后缀字符来表示操作数的大小, 例如, b 表示字节, w 表示字, l 表示双字. 而 NASM 语法使用关键字来表示操作数的大小, 例如, BYTE 表示字节, WORD 表示字, DWORD 表示双字.
-
-例如, 将立即数 10 存储到寄存器 eax 中, AT&T 语法为:
-
-```text
-movl $10, %eax
-```
-
-而在 NASM 语法中的指令则是:
-
-```text
-mov eax, 10
-```
-
-## AT&T vs NASM (详细区别)
+## AT&T vs NASM
 
 ```text
 AT&T vs. NASM
