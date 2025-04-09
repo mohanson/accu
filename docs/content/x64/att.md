@@ -11,10 +11,10 @@ int main() {
 ```
 
 ```sh
-$ gcc -S -o main.s main.c
+$ gcc -S -o main.asm main.c
 ```
 
-命令 `-S` 表示 gcc 在生成汇编代码后停止后续工作. 打开 main.s, 内容如下:
+命令 `-S` 表示 gcc 在生成汇编代码后停止后续工作. 打开 main.asm, 内容如下:
 
 ```text
     .file   "main.c"
