@@ -144,6 +144,13 @@ nav:
         - JIT 编译器原理简述/原理简述: content/jit/principle.md
         - JIT 编译器原理简述/实现 Brainfuck 解释器与 IR 优化: content/jit/brainfuck_interpreter.md
         - JIT 编译器原理简述/实现 Brainfuck JIT 编译器: content/jit/brainfuck_jit.md
+- 独立游戏开发:
+        - 独立游戏开发/个人开发者如何发布第一款微信小游戏: content/gamedev/wechat_game.md
+        - 独立游戏开发/Cocos Creator 微信小游戏广告接入: content/gamedev/wechat_game_ad.md
+        - 独立游戏开发/Cocos Creator 微信小游戏创建视频广告页面卡顿问题解决: content/gamedev/wechat_game_vd.md
+        - 独立游戏开发/Cocos Creator 将微信小游戏发布到 QQ 小游戏: content/gamedev/wechat_game_qq.md
+        - 独立游戏开发/Cocos Creator 发布到 Steam: content/gamedev/cocos_steam.md
+        - 独立游戏开发/软件著作权申请: content/gamedev/copyright.md
 - Cryptography:
         - Cryptography/Kerckhoffs 原则: content/cryptography/kerckhoffs_principle.md
         - Cryptography/分组加密操作模式: content/cryptography/encryption_mode.md
@@ -242,13 +249,6 @@ nav:
         - 中华一番/西红柿炒鸡蛋: content/cooking/tomato_scrambled_eggs.md
         - 中华一番/清蒸大闸蟹配酱油醋: content/cooking/hairy_crab.md
         - 中华一番/糖醋山药: content/cooking/sweet_and_sour_yam.md
-- 独立游戏开发:
-        - 独立游戏开发/个人开发者如何发布第一款微信小游戏: content/gamedev/wechat_game.md
-        - 独立游戏开发/Cocos Creator 微信小游戏广告接入: content/gamedev/wechat_game_ad.md
-        - 独立游戏开发/Cocos Creator 微信小游戏创建视频广告页面卡顿问题解决: content/gamedev/wechat_game_vd.md
-        - 独立游戏开发/Cocos Creator 将微信小游戏发布到 QQ 小游戏: content/gamedev/wechat_game_qq.md
-        - 独立游戏开发/Cocos Creator 发布到 Steam: content/gamedev/cocos_steam.md
-        - 独立游戏开发/软件著作权申请: content/gamedev/copyright.md
 - 杂项:
         - 杂项/康威生命游戏: content/misc/game_of_life.md
         - 杂项/神的存在性证明: content/misc/proof_of_god_existence.md

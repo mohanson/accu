@@ -58,27 +58,27 @@
 
 ## 学习小游戏开发框架
 
-微信小游戏采用的是基于 JavaScript 的开发框架, 可以使用类似于网页开发的技术进行开发. 你可以学习使用微信提供的开发文档, 教程和示例来了解小游戏的开发流程和框架. 不过我更加建议你直接学习 Cocos 引擎, Cocos 引擎可以将游戏导出为微信小游戏格式. 如果仅仅这一条优点还不足以让我推荐你使用, Cocos 同时可以将游戏导出为字节小程序, 小米小程序等, 目前唯一不支持的国内小程序平台是百度(但这不重要).
+微信小游戏采用的是基于 javascript 的开发框架, 可以使用类似于网页开发的技术进行开发. 你可以学习使用微信提供的开发文档, 教程和示例来了解小游戏的开发流程和框架. 不过我更加建议你直接学习 cocos 引擎, cocos 引擎可以将游戏导出为微信小游戏格式. 如果仅仅这一条优点还不足以让我推荐你使用, cocos 同时可以将游戏导出为字节小程序, 小米小程序等, 目前唯一不支持的国内小程序平台是百度(但这不重要).
 
 ## 提交审核和发布
 
 当你完成了游戏的开发和测试后, 使用微信开发者工具上传代码, 之后将游戏提交给微信小游戏开放平台进行审核. 审核通过后, 你就可以发布你的游戏, 让其他用户可以在微信中玩到你的小游戏了. 在提交审核时会要求填写苹果开发者账号, 这个账号年费 299 美元. 经过我实测, 你只需要注册苹果开发者账号, 并不一定需要付费开通, 微信审核就能通过.
 
-请注意不要将游戏 Demo 提交给微信审核, 这样会导致你的账号永久作废.
+请注意不要将游戏 demo 提交给微信审核, 这样会导致你的账号永久作废.
 
 ## Cocos 教程
 
 作为初学者, 你只需要阅读这几篇文档, 就能完成一个最小的微信小游戏:
 
-0. 下载并安装 Cocos: <https://www.cocos.com/creator-download>
-0. 制作第一个 2D 游戏: <https://docs.cocos.com/creator/manual/zh/getting-started/first-game-2d/>
+0. 下载并安装 cocos: <https://www.cocos.com/creator-download>
+0. 制作第一个 2d 游戏: <https://docs.cocos.com/creator/manual/zh/getting-started/first-game-2d/>
 0. 发布到微信小游戏: <https://docs.cocos.com/creator/manual/zh/editor/publish/publish-wechatgame.html>
 
 在完成游戏后, 尽量针对微信进行适配.
 
-0. 默认情况下, 微信小程序与小游戏不允许转发和分享至朋友圈. 这无疑会对游戏推广造成负面影响, 你可以通过相关 API 打开此功能: <https://developers.weixin.qq.com/miniprogram/dev/api/share/wx.showShareMenu.html>
+0. 默认情况下, 微信小程序与小游戏不允许转发和分享至朋友圈. 这无疑会对游戏推广造成负面影响, 你可以通过相关 api 打开此功能: <https://developers.weixin.qq.com/miniprogram/dev/api/share/wx.showShareMenu.html>
 
-要调用微信 API, 可以直接在 Cocos 中完成, 并不需要你去使用微信开发者工具. 使用 npm 安装 [minigame-api-typings](https://github.com/wechat-miniprogram/minigame-api-typings) 即可.
+要调用微信 api, 可以直接在 cocos 中完成, 并不需要你去使用微信开发者工具. 使用 npm 安装 [minigame-api-typings](https://github.com/wechat-miniprogram/minigame-api-typings) 即可.
 
 ## 推广
 
