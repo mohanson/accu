@@ -129,6 +129,7 @@ nav:
         - Solana/交易/手续费: content/solana/tx_fee.md
         - Solana/账户模型/导言: content/solana/account_introduction.md
         - Solana/账户模型/账户数据结构: content/solana/account_type.md
+        - Solana/账户模型/未花费交易输出模型与账户模型: content/solana/account_utxo_vs_account.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
