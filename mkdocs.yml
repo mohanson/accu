@@ -131,6 +131,7 @@ nav:
         - Solana/账户模型/账户数据结构: content/solana/account_type.md
         - Solana/账户模型/未花费交易输出模型与账户模型: content/solana/account_utxo_vs_account.md
         - Solana/账户模型/所有权和权限控制: content/solana/account_owner.md
+        - Solana/账户模型/普通钱包账户: content/solana/account_wallet.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
