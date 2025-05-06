@@ -37,7 +37,7 @@ ret = pxsol.rpc.get_account_info(bob.pubkey.base58(), {})
 print(ret)
 # {
 #     "data": ["", "base64"],
-#     "executable": False,
+#     "executable": false,
 #     "lamports": 1000000000,
 #     "owner": "11111111111111111111111111111111",
 #     "rentEpoch": 18446744073709551615,
