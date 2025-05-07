@@ -45,6 +45,8 @@ print(pxsol.rpc.get_account_info(program_pubkey.base58(), {}))
 
 Solana 包含少量原生程序, 这些程序是运行验证器节点所必需的. 与第三方程序不同, 原生程序是 solana 网络的一部分. 我们之前提到的用于 sol 转账的 solana 系统程序, 以及 bpf upgradeable loader 都是 solana 原生程序.
 
+[此页面](https://docs.anza.xyz/runtime/programs)列举了 solana 当前存在的全部原生程序.
+
 ## 调用程序
 
 Solana 里的程序就像是个链上工具人, 只要您发出合法的指令, 它就能帮你完成一些预设的基础活!
