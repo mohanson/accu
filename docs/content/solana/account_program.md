@@ -81,3 +81,107 @@ for e in r['meta']['logMessages']:
 在第二行输出, 我们收到了来自程序发出的 `Hello, Solana!` 消息.
 
 Hello, Solana!
+
+## 等等, 程序在那儿?
+
+我们在部署程序后就立即查询了程序账户的信息, jsonrpc 接口返回信息如下:
+
+```json
+{
+    "data": [
+        "AgAAAKqeeWx5rwCATKoazfymul8X00alxPltuX+elp+32dxO",
+        "base64"
+    ],
+    "executable": true,
+    "lamports": 1141440,
+    "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+    "rentEpoch": 18446744073709551615,
+    "space": 36
+}
+```
+
+但事情似乎有点不对劲. 程序账户里存储的数据 data 是不是有点...太少了? 毕竟我们程序的本体可是有足足 38936 字节那么大!
+
+```sh
+$ ls hello_solana_program.so
+# -rwxrwxr-x  1 ubuntu ubuntu 38936 Sep 13  2024 hello_solana_program.so
+```
+
+实际上, 在这个例子里, 程序账户存储的是"程序元信息", 而不是程序代码本体!
+
+因为历史原因, solana 支持两种部署模式:
+
+|     模式     |         所有者         |                                  描述                                   |
+| ------------ | ---------------------- | ----------------------------------------------------------------------- |
+| 不可升级程序 | bpf loader             | 字节码直接存进程序账户的 data 里                                        |
+| 可升级程序   | bpf upgradeable loader | 程序账户只是"壳子", 真正的字节码存放在另一个账户叫 program data account |
+
+不可升级程序在 solana 网络上已经事实上被弃用, 因此 pxsol 不再支持不可升级程序, 正因如此您部署的是一个可升级的 solana 程序, 这时候程序账户(就是你部署出来的那个地址)里的 data 其实并不直接存储整个 bpf 字节码, 而是一个指向 program data account 的"指针".
+
+我们解码 data 数据 `AgAAAKqeeWx5rwCATKoazfymul8X00alxPltuX+elp+32dxO`, 得到:
+
+```py
+import base64
+
+data = base64.b64decode('AgAAAKqeeWx5rwCATKoazfymul8X00alxPltuX+elp+32dxO')
+print(data.hex())
+# 02000000aa9e796c79af00804caa1acdfca6ba5f17d346a5c4f96db97f9e969fb7d9dc4e
+```
+
+这个数据结构由 bpf upgradeable loader 管理, 格式大致是:
+
+```rs
+pub enum UpgradeableLoaderState {
+    /// Account is not initialized.
+    Uninitialized,
+    /// A Buffer account.
+    Buffer {
+        /// Authority address
+        authority_address: Option<Pubkey>,
+        // The raw program data follows this serialized structure in the
+        // account's data.
+    },
+    /// An Program account.
+    Program {
+        /// Address of the ProgramData account.
+        programdata_address: Pubkey,
+    },
+    // A ProgramData account.
+    ProgramData {
+        /// Slot that the program was last modified.
+        slot: u64,
+        /// Address of the Program's upgrade authority.
+        upgrade_authority_address: Option<Pubkey>,
+        // The raw program data follows this serialized structure in the
+        // account's data.
+    },
+}
+```
+
+- `02000000` 表示当前的枚举类型索引.
+- `aa9e796c79af00804caa1acdfca6ba5f17d346a5c4f96db97f9e969fb7d9dc4e` 表示的则是 program data 账户地址.
+
+这一次, 我们查询 program data 的账户信息, 得到消息如下:
+
+```py
+import pxsol
+
+program_data_pubkey_byte = bytearray.fromhex('aa9e796c79af00804caa1acdfca6ba5f17d346a5c4f96db97f9e969fb7d9dc4e')
+program_data_pubkey = pxsol.core.PubKey(program_data_pubkey_byte)
+
+r = pxsol.rpc.get_account_info(program_data_pubkey.base58(), {})
+print(r)
+# {
+#     "data": [
+#         "AwAAACwBAAAAAAAAAUy...AAAAAAAAAAAAAAAAAAAAA==",
+#         "base64"
+#     ],
+#     "executable": false,
+#     "lamports": 543193200,
+#     "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+#     "rentEpoch": 18446744073709551615,
+#     "space": 77917
+# }
+```
+
+可以确认, `hello_solana_program.so` 的字节码确实直接塞在了 data 里.
