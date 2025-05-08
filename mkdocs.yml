@@ -133,6 +133,7 @@ nav:
         - Solana/账户模型/所有权和权限控制: content/solana/account_owner.md
         - Solana/账户模型/普通钱包账户: content/solana/account_wallet.md
         - Solana/账户模型/程序账户: content/solana/account_program.md
+        - Solana/账户模型/数据账户: content/solana/account_data.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
