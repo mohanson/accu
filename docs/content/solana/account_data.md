@@ -6,11 +6,11 @@
 
 不过, 在 solana 上, 程序本身不能自己创建数据账户, 它只能让调用者, 也就是发交易的人, 在执行时预先签名并通过程序指令来由系统程序代创建, 并将数据账户的所有者设定为您的自定义程序, 这样您的自定义程序就能在数据账户的 data 里写入, 修改或者删除数据.
 
-## 如何创建数据账户
+## 如何手动创建账户
 
-例: 创建一个新的随机账户, 并将其所有者指定为泰铢币程序, 即 `3EwjHuke6N6CfWPQdbRayrMUANyEkbondw96n5HJpYja`.
+例: 创建一个新的随机账户, 并将其所有者指定为系统程序, 即 `11111111111111111111111111111111`.
 
-答: 创建账户需要使用 solana 系统程序的 create_account 指令. 完整代码如下:
+答: 使用 solana 系统程序的 create_account 指令创建账户, 完整代码如下:
 
 ```py
 import base64
@@ -27,7 +27,7 @@ rq.account.append(pxsol.core.AccountMeta(tmp.pubkey, 3)) # The new account
 rq.data = pxsol.program.System.create_account(
     pxsol.denomination.sol, # Initial lamports
     0, # Data size for the new account
-    pxsol.core.PubKey.base58_decode('3EwjHuke6N6CfWPQdbRayrMUANyEkbondw96n5HJpYja') # Owner
+    pxsol.program.System.pubkey # Owner
 )
 
 tx = pxsol.core.Transaction.requisition_decode(ada.pubkey, [rq])
@@ -45,7 +45,7 @@ print(json.dumps(r, indent=4))
 #     ],
 #     "executable": false,
 #     "lamports": 1000000000,
-#     "owner": "3EwjHuke6N6CfWPQdbRayrMUANyEkbondw96n5HJpYja",
+#     "owner": "11111111111111111111111111111111",
 #     "rentEpoch": 18446744073709551615,
 #     "space": 0
 # }
