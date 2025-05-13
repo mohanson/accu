@@ -39,7 +39,7 @@ print(pxsol.rpc.get_account_info(program_pubkey.base58(), {}))
 
 ## 程序账户的权限和状态
 
-部署后的程序账户由 [bpf upgradeable loader](https://docs.anza.xyz/runtime/programs#bpf-loader) 拥有, 这个 loader 控制是否可以升级程序.
+部署后的程序账户由 [bpf upgradeable loader](https://docs.anza.xyz/runtime/programs#bpf-loader), 即 `BPFLoaderUpgradeab1e11111111111111111111111` 所拥有, 这个 loader 控制是否可以升级程序.
 
 账户信息里的 `executable` 被标记为 true, 表示它是一个程序账户, 可以执行代码.
 
@@ -111,10 +111,10 @@ $ ls hello_solana_program.so
 
 因为历史原因, solana 支持两种部署模式:
 
-|     模式     |         所有者         |                                  描述                                   |
-| ------------ | ---------------------- | ----------------------------------------------------------------------- |
-| 不可升级程序 | bpf loader             | 字节码直接存进程序账户的 data 里                                        |
-| 可升级程序   | bpf upgradeable loader | 程序账户只是"壳子", 真正的字节码存放在另一个账户叫 program data account |
+|     模式     |         所有者         |                                     描述                                     |
+| ------------ | ---------------------- | ---------------------------------------------------------------------------- |
+| 不可升级程序 | bpf loader             | 字节码直接存进程序账户的 data 里                                             |
+| 可升级程序   | bpf upgradeable loader | 程序账户只是壳子, 真正的字节码存放在另一个叫做 program data account 的账户里 |
 
 不可升级程序在 solana 网络上已经事实上被弃用, 因此 pxsol 不再支持不可升级程序, 正因如此您部署的是一个可升级的 solana 程序, 这时候程序账户(就是你部署出来的那个地址)里的 data 其实并不直接存储整个 bpf 字节码, 而是一个指向 program data account 的"指针".
 
@@ -159,9 +159,9 @@ pub enum UpgradeableLoaderState {
 ```
 
 - `02000000` 表示当前的枚举类型索引.
-- `aa9e796c79af00804caa1acdfca6ba5f17d346a5c4f96db97f9e969fb7d9dc4e` 表示的则是 program data 账户地址.
+- `aa9e796c79af00804caa1acdfca6ba5f17d346a5c4f96db97f9e969fb7d9dc4e` 表示的则是 program data account 地址.
 
-这一次, 我们查询 program data 的账户信息, 得到消息如下:
+这一次, 我们查询 program data account 的账户信息, 得到消息如下:
 
 ```py
 import pxsol
