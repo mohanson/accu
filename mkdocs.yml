@@ -136,6 +136,7 @@ nav:
         - Solana/账户模型/数据账户: content/solana/account_data.md
         - Solana/账户模型/程序派生地址算法解析: content/solana/account_pda.md
         - Solana/账户模型/租赁与租赁豁免机制: content/solana/account_rent.md
+        - Solana/账户模型/尚未深入探讨的问题: content/solana/account_epilog.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
