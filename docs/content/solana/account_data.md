@@ -6,11 +6,23 @@
 
 不过, 在 solana 上, 程序本身不能自己创建数据账户, 它只能让调用者, 也就是发交易的人, 在执行时预先签名并通过程序指令来由系统程序代创建, 并将数据账户的所有者设定为您的自定义程序, 这样您的自定义程序就能在数据账户的 data 里写入, 修改或者删除数据.
 
-## 如何手动创建账户
+## 如何手动创建数据账户
 
-例: 创建一个新的随机账户, 并将其所有者指定为系统程序, 即 `11111111111111111111111111111111`.
+如果您准备创建一个数据账户, 您首先需要明确以下三件事情.
 
-答: 使用 solana 系统程序的 create_account 指令创建账户, 完整代码如下:
+- 数据账户的所有者程序是谁?
+- 数据账户的空间是多少? 也就是您预期数据账户里会被写入多少数据?
+- 数据账户的初始余额是多少?
+
+创建账户需要使用 solana 系统程序的 create_account 指令. 我们举一个简单的例子, 对此进行演示.
+
+例: 创建一个新的随机账户, 要求:
+
+- 所有者程序指定为系统程序, 即 `11111111111111111111111111111111`.
+- 数据账户的空间为 64 字节.
+- 数据账户的初始余额为 1 sol.
+
+答: 代码如下:
 
 ```py
 import base64
@@ -26,7 +38,7 @@ rq.account.append(pxsol.core.AccountMeta(ada.pubkey, 3)) # Funding account
 rq.account.append(pxsol.core.AccountMeta(tmp.pubkey, 3)) # The new account
 rq.data = pxsol.program.System.create_account(
     pxsol.denomination.sol, # Initial lamports
-    0, # Data size for the new account
+    64, # Data size for the new account
     pxsol.program.System.pubkey # Owner
 )
 
@@ -40,14 +52,14 @@ r = pxsol.rpc.get_account_info(tmp.pubkey.base58(), {})
 print(json.dumps(r, indent=4))
 # {
 #     "data": [
-#         "",
+#         "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
 #         "base64"
 #     ],
 #     "executable": false,
 #     "lamports": 1000000000,
 #     "owner": "11111111111111111111111111111111",
 #     "rentEpoch": 18446744073709551615,
-#     "space": 0
+#     "space": 64
 # }
 ```
 
