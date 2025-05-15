@@ -46,7 +46,7 @@ tx = pxsol.core.Transaction.requisition_decode(ada.pubkey, [rq])
 tx.message.recent_blockhash = pxsol.base58.decode(pxsol.rpc.get_latest_blockhash({})['blockhash'])
 tx.sign([ada.prikey, tmp.prikey])
 txid = pxsol.rpc.send_transaction(base64.b64encode(tx.serialize()).decode(), {})
-pxsol.rpc.wait([txid])
+pxsol.rpc.wait([txid]) # Waiting for the transaction to be processed
 
 r = pxsol.rpc.get_account_info(tmp.pubkey.base58(), {})
 print(json.dumps(r, indent=4))
