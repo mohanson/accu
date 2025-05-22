@@ -140,6 +140,7 @@ nav:
         - Solana/程序开发入门/导言: content/solana/ss_introduction.md
         - Solana/程序开发入门/搭建 Rust 开发环境: content/solana/ss_rust_env.md
         - Solana/程序开发入门/一个允许用户自由存储数据的链上程序: content/solana/ss_requirement.md
+        - Solana/程序开发入门/搭建初始目录结构: content/solana/ss_skeleton.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
