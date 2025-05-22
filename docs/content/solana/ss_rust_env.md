@@ -1,0 +1,40 @@
+# Solana/程序开发入门/搭建 Rust 开发环境
+
+在区块链的世界里, solana 一直以快和高并发闻名. 如果您有点 web3 的背景, 大概也听说过它的一些不同: 它不用 evm, 不用 solidity, 合约用 rust 写, 部署成 bpf 字节码.
+
+刚听上去可能有点劝退, 但其实一旦上手, 您会发现 solana 合约系统非常清爽, 性能极高, 而且资源管理也非常工程化和模板化. 只要您成功编写了第一个能正常运行的程序, 您几乎就能编写 solana 生态系统里的所有种类的程序.
+
+本篇文章就带你一步步搭建 solana 智能合约的开发环境, 为后续学习和动手实验做好准备.
+
+## 为什么用 Rust 写 Solana 合约
+
+Solana 的运行时不是基于 evm, 而是基于 berkeley packet filter(bpf), 它是一种经过验证的适合在内核或沙盒中运行的字节码格式. Rust 是目前社区最成熟的用来编写 bpf 合约的语言, 原因有几个:
+
+- Rust 编译器对内存和类型检查非常严格, 能减少低级错误.
+- Rust 的性能接近 c/c++, 但更安全.
+- 最重要的: solana 官方 sdk 用 rust 编写, 生态完善.
+
+所以, 不管你是 web 开发者, 链上合约老手还是系统程序员, 只要你想写 solana 合约, rust 是唯一且最佳选择.
+
+## 安装 Rust 工具链
+
+如果你已经是 rust 用户, 可以跳过这一步. 否则, 前往 [rust 安装页面](https://www.rust-lang.org/tools/install) 根据提示安装 rust. 对于 linux, macos 以及 windows 上的 linux 子系统而言, 其安装命令都是一样的:
+
+```sh
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+安装后, 运行:
+
+```sh
+$ rustup --version
+$ cargo --version
+```
+
+确认一切就绪.
+
+## Anchor 开发框架(可选但目前不推荐)
+
+Anchor 是 solana 合约的一个开发框架. 它有一些优点, 例如自带合约模板, 自动处理 pda 账户权限, 支持集成测试等. 但是对于新手来说, 过早使用框架进行合约开发, 可能无法真正掌握 solana 合约的底层逻辑.
+
+鉴于多数 solana 合约开发教程或文档, 均习惯基于框架进行教学, 因此我特地在这里告诉您, 本章节后续的内容不会依赖 anchor 框架, 您现在也没有必要安装 anchor.
