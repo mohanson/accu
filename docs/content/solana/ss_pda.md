@@ -42,7 +42,7 @@ Solana 提供了一个函数可以查询系统规定的租赁豁免门槛:
 let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(data.len());
 ```
 
-data 是您准备在 pda 账户中存储的字节数, rent_exemption 是为租赁豁免所需的 lamport 数量.
+参数 `data.len()` 是您准备在 pda 账户中存储的字节数, 返回值 rent_exemption 是为租赁豁免所需的 lamport 数量.
 
 ## 派生 PDA 数据账户地址
 
@@ -76,7 +76,7 @@ solana_program::system_instruction::create_account(
 )
 ```
 
-由于 pda 没有私钥, 不能自己签名, 所以要用程序的签名种子进行签名:
+由于 pda 没有私钥, 不能自己签名, 所以要用程序的签名种子进行签名.
 
 ```rs
 solana_program::program::invoke_signed(
@@ -91,6 +91,8 @@ solana_program::program::invoke_signed(
     &[&[&account_user.key.to_bytes(), &[bump_seed]]],
 )?;
 ```
+
+Solana rust sdk 中有一个与 `invoke_signed()` 函数非常相似的 `invoke()` 函数, 它们的作用都是用于执行一个指令, 但是功能上存在细微的差异. 在这个例子中, 我们要操作的账户是 pda, 也就是说这个账户没有私钥, 不能真正签名,  但您(程序)作为它的所有者, 有权代表它执行操作. 这个时候就不能用普通的 `invoke()`, 而是要用 `invoke_signed()`, 让 solana 系统知道: "这个账户虽然没有签名, 但我是它的创建者, 我现在代表它签名了".
 
 完成! 您现在拥有了一个租赁豁免的 pda 数据账户.
 

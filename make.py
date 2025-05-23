@@ -1,24 +1,26 @@
 import glob
 import os
 import subprocess
-import sys
 
 import PIL.Image
 
 
-def call(command):
-    print('$', command)
-    r = subprocess.call(command, shell=True)
-    if r != 0:
-        sys.exit(r)
-
-
 def make():
-    call('mkdocs build')
-    call('echo -n "9530b96b26004efa430cc08502bdb442" > site/baidu_verify_codeva-bkxO1ABXUL.html')
-    call('echo -n "03890937a90586962ffe04ea5adaa43c" > site/03890937a90586962ffe04ea5adaa43c.txt')  # 360
-    call('echo -n "google-site-verification: google9b75b4b4147e247b.html" > site/google9b75b4b4147e247b.html')
-    call('echo -n "google.com, pub-5236818090688638, DIRECT, f08c47fec0942fa0" > site/ads.txt')
+    r = subprocess.run('git status mkdocs.yml', capture_output=True, shell=True)
+    if 'nothing to commit, working tree clean' in r.stdout.decode():
+        r = subprocess.run('mkdocs build --dirty', shell=True)
+        assert r.returncode == 0
+    else:
+        r = subprocess.run('mkdocs build --clean', shell=True)
+        assert r.returncode == 0
+    with open('site/baidu_verify_codeva-bkxO1ABXUL.html', 'w') as f:
+        f.write('9530b96b26004efa430cc08502bdb442')
+    with open('site/03890937a90586962ffe04ea5adaa43c.txt', 'w') as f:  # 360
+        f.write('03890937a90586962ffe04ea5adaa43c')
+    with open('site/google9b75b4b4147e247b.html', 'w') as f:
+        f.write('google-site-verification: google9b75b4b4147e247b.html')
+    with open('site/ads.txt', 'w') as f:
+        f.write('google.com, pub-5236818090688638, DIRECT, f08c47fec0942fa0')
 
 
 def mini():
