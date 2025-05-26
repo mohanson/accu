@@ -145,6 +145,7 @@ nav:
         - Solana/程序开发入门/创建数据账户并使其达成租赁豁免: content/solana/ss_pda_create.md
         - Solana/程序开发入门/数据账户内容更新及动态租赁调节: content/solana/ss_pda_update.md
         - Solana/程序开发入门/完整链上代码: content/solana/ss_code.md
+        - Solana/程序开发入门/编译并部署程序: content/solana/ss_deploy.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
