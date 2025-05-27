@@ -42,14 +42,14 @@ Pxsol 默认使用 v3 来部署程序. 这会自动创建两个账户:
 | Program data account | 存储实际代码字节码, 可变   |
 
 ```text
-Program ID (e.g., MyTokenProgram111...)
+Program ID (e.g., MyProgram111...)
 │
-├──→ Program Account
+├──> Program Account
 │     └── owner: BPFLoaderUpgradeable
 │     └── executable: true
 │     └── points to:
 │
-├──→ ProgramData Account
+└──> ProgramData Account
       └── contains: .so 字节码
       └── contains: upgrade_authority pubkey
 ```
