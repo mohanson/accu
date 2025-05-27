@@ -148,6 +148,7 @@ nav:
         - Solana/程序开发入门/编译并部署程序: content/solana/ss_deploy.md
         - Solana/程序开发入门/存储和读取数据: content/solana/ss_save_load.md
         - Solana/程序开发入门/升级程序: content/solana/ss_upgrade.md
+        - Solana/程序开发入门/获取完整源码: content/solana/ss_github.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
