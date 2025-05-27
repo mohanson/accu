@@ -110,6 +110,8 @@ def load(user: pxsol.wallet.Wallet) -> bytearray:
 
 
 if __name__ == '__main__':
+    save(ada, b'The quick brown fox jumps over the lazy dog')
+    print(load(ada).decode()) # The quick brown fox jumps over the lazy dog
     save(ada, '待到秋来九月八, 我花开后百花杀.'.encode())
     print(load(ada).decode()) # 待到秋来九月八, 我花开后百花杀.
 ```
