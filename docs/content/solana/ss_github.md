@@ -4,6 +4,8 @@
 
 如果你懒得跟着一步步敲代码(我懂你), 可以直接去看我准备好的示例项目. 地址在这儿, 不用谢我, 除非你想请我喝杯奶茶.
 
+我知道许多开发者喜欢咖啡, 但对于我而言, 奶茶总是最好的.
+
 ```sh
 $ git clone https://github.com/mohanson/pxsol-ss
 $ cd pxsol-ss
@@ -13,6 +15,8 @@ $ cd pxsol-ss
 $ python make.py deploy
 # 2025/05/20 16:06:38 main: deploy program pubkey="T6vZUAQyiFfX6968XoJVmXxpbZwtnKfQbNNBYrcxkcp"
 ```
+
+注意到程序地址会被保存在 `res/info.json` 中, 后续操作会直接从此文件获取程序地址.
 
 ```sh
 # Save some data.
