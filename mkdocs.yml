@@ -150,6 +150,7 @@ nav:
         - Solana/程序开发入门/升级程序: content/solana/ss_upgrade.md
         - Solana/程序开发入门/获取完整源码: content/solana/ss_github.md
         - Solana/泰铢币/导言: content/solana/thaibaht_introduction.md
+        - Solana/泰铢币/进化之路: content/solana/thaibaht_evolution.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
