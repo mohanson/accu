@@ -146,7 +146,7 @@ nav:
         - Solana/程序开发入门/数据账户内容更新及动态租赁调节: content/solana/ss_pda_update.md
         - Solana/程序开发入门/完整链上代码: content/solana/ss_code.md
         - Solana/程序开发入门/编译并部署程序: content/solana/ss_deploy.md
-        - Solana/程序开发入门/存储和读取数据: content/solana/ss_save_load.md
+        - Solana/程序开发入门/合约交互: content/solana/ss_interaction.md
         - Solana/程序开发入门/升级程序: content/solana/ss_upgrade.md
         - Solana/程序开发入门/获取完整源码: content/solana/ss_github.md
         - Solana/泰铢币/导言: content/solana/thaibaht_introduction.md
