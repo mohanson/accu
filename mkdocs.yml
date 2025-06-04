@@ -153,6 +153,7 @@ nav:
         - Solana/泰铢币/进化之路: content/solana/thaibaht_evolution.md
         - Solana/泰铢币/核心机制实现: content/solana/thaibaht_core.md
         - Solana/泰铢币/完整链上代码: content/solana/thaibaht_code.md
+        - Solana/泰铢币/程序交互: content/solana/thaibaht_interaction.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
