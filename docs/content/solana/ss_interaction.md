@@ -1,4 +1,4 @@
-# Solana/程序开发入门/合约交互
+# Solana/程序开发入门/程序交互
 
 现在, 我们的链上数据存储器已经被部署在 `DVapU9kvtjzFdH3sRd3VDCXjZVkwBR6Cxosx36A5sK5E` 地址上. 我们尝试写入自己的数据到程序里.
 
