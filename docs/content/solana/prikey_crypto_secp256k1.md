@@ -244,7 +244,7 @@ G = Pt(
 
 ## 习题
 
-例: 已知比特币私钥为 0x5f6717883bef25f45a129c11fcac1567d74bda5a9ad4cbffc8203c0da2a1473c, 求公钥.
+例: 已知比特币私钥为 `0x5f6717883bef25f45a129c11fcac1567d74bda5a9ad4cbffc8203c0da2a1473c`, 求公钥.
 
 答:
 
