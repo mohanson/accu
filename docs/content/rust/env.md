@@ -1,4 +1,4 @@
-# Rust/开发环境搭建
+# Rust 零基础入门/开发环境搭建
 
 这次我们将约定俗成的用 Rust 写出 Hello World! 代码. 当然啦, 首先我们应该做的是下载并安装 Rust. 正如你在视频前看到的, 我现在正在使用 Windows 操作系统录制这次课程, 但我平常更加常用的开发系统是 Linux. 所以我将先打开 [https://www.rust-lang.org/tools/install](https://www.rust-lang.org/tools/install) 这个网页, 如果你想在 Windows 上安装 Rust, 那么可以直接点击页面上的 "DOWNLOAD RUSTUP-INIT.EXE (64-BIT)" 按钮下载. 或者你和我一样在使用 Linux, 那么点击 "Other Installation Methods", 找到页面上的 `curl https://sh.rustup.rs -sSf | sh -s -- --help`, 将它敲入你的 shell 中.
 
