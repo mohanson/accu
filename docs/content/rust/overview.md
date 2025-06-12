@@ -1,4 +1,4 @@
-# Rust/概览
+# Rust 零基础入门/概览
 
 各位 Rust 的朋友们大家好, 我是 Yeah 老师. 那, 其实我想做 Rust 相关的课程也有一段时间了, 可能是在 2018 年左右, 呵呵, 可是后来, 因为 Rust 语言当时比较小众, 课程就不容易申请下来. 目前视频课程已经上线慕课: [https://www.imooc.com/learn/1301](https://www.imooc.com/learn/1301).
 
