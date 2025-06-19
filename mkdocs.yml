@@ -156,6 +156,7 @@ nav:
         - Solana/泰铢币/程序交互: content/solana/thaibaht_interaction.md
         - Solana/泰铢币/获取完整源码: content/solana/thaibaht_github.md
         - Solana/SPL Token/导言: content/solana/spl_introduction.md
+        - Solana/SPL Token/历史与核心规范概览: content/solana/spl_spec.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
