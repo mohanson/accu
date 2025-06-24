@@ -8,13 +8,13 @@ Pxsol 内置的钱包集成了一个简单且通用的接口, 用于创建您的
 import pxsol
 
 ada = pxsol.wallet.Wallet(pxsol.core.PriKey.int_decode(1))
-spl_mint = ada.spl_create(
+spl = ada.spl_create(
     'PXSOL',
     'PXS',
     'https://raw.githubusercontent.com/mohanson/pxsol/refs/heads/master/res/pxs.json',
     9,
 )
-print(spl_mint) # 2CMXJX8arHRsiiZadVheRLTd6uhP7DpbaJ9hRiRMSGcF
+print(spl) # 2CMXJX8arHRsiiZadVheRLTd6uhP7DpbaJ9hRiRMSGcF
 ```
 
 上述代码运行后, 在 `2CMXJX8arHRsiiZadVheRLTd6uhP7DpbaJ9hRiRMSGcF` 地址上创建了一个新的代币. 函数方法 `spl_create()` 接收四个参数, 分别是:
