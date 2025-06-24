@@ -63,7 +63,7 @@ print(data.hex())
 您可以参考以下两个源代码链接, 来辅助您进行数据分析.
 
 - [基础账户类型](https://github.com/solana-program/token-2022/blob/a2ddae7f39d6bb182b0595fa3f48e38e94e7c684/program/src/pod.rs#L64-L85)
-- [账户扩展字段](https://github.com/solana-program/token-2022/blob/a2ddae7f39d6bb182b0595fa3f48e38e94e7c684/program/src/extension/mod.rs#L1036-L1137)
+- [账户类型以及扩展字段](https://github.com/solana-program/token-2022/blob/a2ddae7f39d6bb182b0595fa3f48e38e94e7c684/program/src/extension/mod.rs#L1036-L1137)
 
 在多数情况下, 我们只会关注前三个字段, 也就是代币的地址, 用户的普通钱包地址以及余额.
 
