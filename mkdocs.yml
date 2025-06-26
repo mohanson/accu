@@ -159,6 +159,7 @@ nav:
         - Solana/SPL Token/历史与核心规范概览: content/solana/spl_spec.md
         - Solana/SPL Token/用 Pxsol 创建你的 SPL Token: content/solana/spl_create.md
         - Solana/SPL Token/铸造代币和查询代币余额: content/solana/spl_mint.md
+        - Solana/SPL Token/转账: content/solana/spl_transfer.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
