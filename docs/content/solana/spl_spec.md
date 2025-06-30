@@ -1,29 +1,37 @@
 # Solana/SPL Token/历史与核心规范概览
 
-## 为什么需要 SPL Token
+让我们把时间退回到 2017 年, 在这一年, 以太坊上的 [erc-20](https://github.com/ethereum/ercs/blob/master/ERCS/erc-20.md) 正式成为以太坊生态的标准. 它定义了一套标准化的智能合约接口, 极大地降低了开发者创建代币的复杂性. 通过统一的规范, 开发者无需从头构建代币合约, 只需遵循 erc-20 标准即可快速发行代币.
 
-基于 solana 账户模型的关系, solana 本身并不内建"一个代币账户有多少余额"这样的逻辑. 开发者必须使用 pda 数据账户手动实现代币的存储, 增发与转账. 但这显然容易出错, 也容易重复造轮子. 用户还必须面临一个最大的问题: 不同的代币, 所支持的指令可能是不同的.
+该规范直接推动了 2017 年以及 2021 年的两次加密货币牛市. 第一次的行业热点是 ico(首次代币发行), 吸引了大量资金和开发者进入以太坊生态, 奠定了以太坊作为智能合约平台领导者的地位. 第二次的行业热点是 defi(去中心化金融), 我们现在熟知的几乎所有 defi 玩法(如 uniswap, compound, aave 等) 都爆发于 2021 年, 它们全都依赖 erc-20 代币进行价值传递, 流动性提供和链上治理.
 
-为了解决这个问题, solana 团队创建了 spl token, 作为统一的代币标准. 它参考了以太坊的 erc20 规范, 为开发者提供标准接口, 来促进生态兼容性. 这样钱包, dex, defi 等应用都可以通用识别代币.
+我们可以肯定的说, 代币是以太坊生态发展的最关键推动力.
 
-与以太坊的 erc20 标准不同, 开发者无需自己部署 spl token 的代码, 相反开发者只需要创建一个被称为 spl 铸造账户的账户, 用于存储该代币的基本信息, 就可以创建出一个自己的 spl token.
+现在, 问题来到了 solana. 作为行业的年轻挑战者, solana 应当如何设计并实现一个代币标准?
+
+## 破局之道
+
+与以太坊不同, 基于 solana 账户模型的关系, solana 本身并不内建"一个钱包账户有多少余额"这样的逻辑. 开发者必须使用 pda 数据账户手动实现代币的存储, 增发与转账. 但这显然容易出错, 也容易重复造轮子. 用户还必须面临一个最大的问题: 不同的代币, 所支持的指令可能是不同的.
+
+为了解决这个问题, solana 团队创建了 spl token, 作为统一的代币标准. 它参考了以太坊的 erc20 规范, 为开发者提供标准接口, 来促进生态兼容性. 这样钱包, 去中心化交易所, 去中心化金融等应用都可以通用识别代币.
+
+得益于 solana 生态支持原生程序, 因此开发者无需自己部署 spl token 的代码, 相反开发者只需要创建一个被称为 spl 铸造账户的账户, 用于存储该代币的基本信息, 就可以创建出一个自己的 spl token.
 
 ## 查询链上代币信息
 
-我们以 solana 上使用较为广泛的 usdc 代币为例, 该代币的铸造账户地址为 `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`, 您可以通过[浏览器](https://explorer.solana.com/address/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/metadata)查询到该代币, 一些重要信息如下.
+我们以 solana 上使用较为广泛的 usdc 代币为例, 该代币的铸造账户地址为 `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v`, 您可以通过[浏览器](https://explorer.solana.com/address/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/metadata)查询到该代币, 一些重要信息如代币总量, 小数点精度, 名称等如下.
 
-|    Overview    |                   |
+|    Overview    |       Value       |
 | -------------- | ----------------- |
 | Current Supply | 7761611891.221625 |
 | Decimals       | 6                 |
 | data.name      | USD Coin          |
 | data.symbol    | USDC              |
 
-根据[最新数据](https://learn.backpack.exchange/articles/pump-fun-token-launch-2025-pump-airdrop-rumors-1b-raise-and-solana-market-impact), 截至 2025 年 06 月, solana 网络上总共有一千三百万个 spl token, 其中 pump.fun 一家就铸出了一千一百万个 token. 历史峰值出现在 2024 年 10 月 24 日, 仅仅一天就铸造了 3.6 万个新 spl token.
+根据[最新数据](https://learn.backpack.exchange/articles/pump-fun-token-launch-2025-pump-airdrop-rumors-1b-raise-and-solana-market-impact), 截至 2025 年 06 月, solana 网络上总共有一千三百万个 spl token, 其中 [pump.fun](https://pump.fun/) 一家就铸出了一千一百万个 token. 历史峰值出现在 2024 年 10 月 24 日, 仅仅一天就铸造了 3.6 万个新 spl token.
 
-在 solana 创建一个新的代币几乎不花钱, 任何有一定经验的开发者都能在 1 秒之内就能完成. 同时 pump.fun 以及 let's bonk 等网站上线的一键发币功能也吸引了大量非开发者用户, 助推了 spl token 的数量暴涨.
+在 solana 创建一个新的代币几乎不花钱, 任何有一定经验的开发者都能在 1 秒之内就能完成. 同时像 pump.fun 以及 let's bonk 等网站上线的一键发币功能也吸引了大量非开发者用户, 助推了 spl token 的数量暴涨.
 
-> 让我们铸出来再说!
+> 没时间解释了, 让我们铸出来再说!
 
 ## 发展历史
 
@@ -76,4 +84,4 @@ Solana 刚上线时, spl token 是以最小可行产品方式发布(v1). 该版�
 
 基于一些历史原因, spl token 被设计为如此. 铸造账户是代币的基础, 用来管理代币供应和权限. 元数据账户是基于铸造账户派生出来的一个 pda 数据账户, 用来附加包装纸, 描述代币的名字, logo 等供人类阅读的信息.
 
-Solana 已经铺好路，只等您发车.
+Solana 已经铺好路, 只等您发车.
