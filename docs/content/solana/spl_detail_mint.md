@@ -49,7 +49,7 @@ r0.account.append(pxsol.core.AccountMeta(pxsol.program.Token.pubkey, 0))
 r0.data = pxsol.program.AssociatedTokenAccount.create_idempotent()
 ```
 
-该指令为接收人自动创建与相关联的关联代币账户. 使用 `create_idempotent()` 保证即使目标账户已经存在, 指令也不会报错导致交易失败, 这是 `AssociatedTokenAccount.create_idempotent()` 指令区别于 `AssociatedTokenAccount.create()` 的一点. 您可以这样理解这条指令的逻辑:
+上述代码为接收人自动创建与相关联的关联代币账户. 使用 `create_idempotent()` 保证即使目标账户已经存在, 指令也不会报错导致交易失败, 这是 `AssociatedTokenAccount.create_idempotent()` 指令区别于 `AssociatedTokenAccount.create()` 的一点. 您可以这样理解这条指令的逻辑:
 
 - 如果目标关联代币账户已经存在, 则正常退出.
 - 如果目标关联代币账户还未存在, 则创建账户, 并正常退出.
@@ -66,4 +66,4 @@ r1.account.append(pxsol.core.AccountMeta(self.pubkey, 2))
 r1.data = pxsol.program.Token.mint_to(amount)
 ```
 
-该指令将一定数量的代币铸造到接收者账户. 铸造代币需要拥有铸造权限, 在 `pxsol.wallet.Wallet` 的设计里, 代币的铸造权限拥有者默认是代币发布者本人.
+上述代码将一定数量的代币铸造到接收者账户. 铸造代币需要拥有铸造权限, 在 `pxsol.wallet.Wallet` 的设计里, 代币的铸造权限拥有者默认是代币发布者本人.
