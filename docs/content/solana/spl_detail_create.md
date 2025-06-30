@@ -69,7 +69,7 @@ r1.account.append(pxsol.core.AccountMeta(mint_pubkey, 1))
 r1.data = pxsol.program.Token.metadata_pointer_extension_initialize(self.pubkey, mint_pubkey)
 ```
 
-上述代码启用 token 2022 的扩展字段: metadata pointer. 这是 token 2022 的一个特性, 允许你在铸造账户上挂载额外的元数据结构. 在稍后的指令中, 我们将实际上挂载数据. 除此扩展之外, token 2022 实际上还支持另外几十个不同的扩展, 您可以在[此页面](https://spl.solana.com/token-2022/extensions)了解更多.
+上述代码启用 token-2022 的扩展字段: metadata pointer. 这是 token-2022 的一个特性, 允许你在铸造账户上挂载额外的元数据结构. 在稍后的指令中, 我们将实际上挂载数据. 除此扩展之外, token-2022 实际上还支持另外几十个不同的扩展, 您可以在[此页面](https://spl.solana.com/token-2022/extensions)了解更多.
 
 **指令 3: 初始化铸造账户**
 

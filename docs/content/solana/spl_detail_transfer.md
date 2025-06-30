@@ -65,4 +65,4 @@ r1.account.append(pxsol.core.AccountMeta(self.pubkey, 2))
 r1.data = pxsol.program.Token.transfer(amount)
 ```
 
-上述代码将一定数量的代币从当前账户转移到接收者账户. 转账操作最终会由 token 2022 程序验证并计入双方余额变化.
+上述代码将一定数量的代币从当前账户转移到接收者账户. 转账操作最终会由 token-2022 程序验证并计入双方余额变化.
