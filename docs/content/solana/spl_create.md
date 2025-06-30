@@ -1,6 +1,6 @@
-# Solana/SPL Token/用 Pxsol 创建你的 SPL Token
+# Solana/SPL Token/创建您的代币
 
-Pxsol 内置的钱包集成了一个简单且通用的接口, 用于创建您的 spl token.
+Pxsol 的内置钱包集成了一个简单且通用的接口, 用于创建您的 spl token (以及执行通用的 spl 操作).
 
 ## 创建代币
 
