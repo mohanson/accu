@@ -161,6 +161,7 @@ nav:
         - Solana/SPL Token/铸造代币和查询代币余额: content/solana/spl_mint.md
         - Solana/SPL Token/转账: content/solana/spl_transfer.md
         - Solana/SPL Token/指令详解(一): content/solana/spl_detail_create.md
+        - Solana/SPL Token/指令详解(二): content/solana/spl_detail_mint.md
         - Solana/SPL Token/后记: content/solana/spl_epilog.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
