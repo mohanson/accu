@@ -4,7 +4,7 @@
 
 ## 源码
 
-> 为了避免读者不停切换页面, 我将待分析的代码复制在了如下.
+> 为了避免读者不停切换页面, 我将待分析的代码复制在了这里.
 
 ```py
 def spl_mint(self, mint: pxsol.core.PubKey, recv: pxsol.core.PubKey, amount: int) -> None:
