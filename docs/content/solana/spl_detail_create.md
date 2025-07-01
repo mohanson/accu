@@ -4,7 +4,7 @@
 
 ## 源码
 
-> 为了避免读者不停切换页面, 我将待分析的代码复制在了如下.
+> 为了避免读者不停切换页面, 我将待分析的代码复制在了这里.
 
 ```py
 def spl_create(self, name: str, symbol: str, uri: str, decimals: int) -> pxsol.core.PubKey:
@@ -57,10 +57,6 @@ r0.data = pxsol.program.System.create_account(mint_lamports, mint_size, pxsol.pr
 
 上述代码为新 spl token 分配一个租金豁免的账户. 账户大小需要包括基础数据与扩展数据. 参数 `mint_lamports` 是租金豁免的最低 lamports, 通过 rpc 查询获得.
 
-> 账户大小的计算实际上非常复杂. 您没有必要去了解它里面的全部细节, 因为在我看来它底层仅仅是一系列以兼容性为名铸成的灿烂屎山. 您完全可以忽略它是怎么计算的, 仅仅设置一个略微大的数字, 例如 1000, 就可以了.
->
-> 再次强调, 了解它没有意义.
-
 **指令 2: 初始化元数据扩展指针**
 
 ```py
@@ -69,7 +65,7 @@ r1.account.append(pxsol.core.AccountMeta(mint_pubkey, 1))
 r1.data = pxsol.program.Token.metadata_pointer_extension_initialize(self.pubkey, mint_pubkey)
 ```
 
-上述代码启用 token-2022 的扩展字段: metadata pointer. 这是 token-2022 的一个特性, 允许你在铸造账户上挂载额外的元数据结构. 在稍后的指令中, 我们将实际上挂载数据. 除此扩展之外, token-2022 实际上还支持另外几十个不同的扩展, 您可以在[此页面](https://spl.solana.com/token-2022/extensions)了解更多.
+上述代码启用 token-2022 的扩展字段: metadata pointer. 这是 token-2022 的一个特性, 允许你在铸造账户上挂载额外的元数据结构. 在稍后的指令中, 我们将实际去挂载数据, 该指令当前仅做申明使用. 除此扩展之外, token-2022 实际上还支持另外几十个不同的扩展, 您可以在[此页面](https://spl.solana.com/token-2022/extensions)了解更多.
 
 **指令 3: 初始化铸造账户**
 
@@ -80,9 +76,9 @@ r2.account.append(pxsol.core.AccountMeta(pxsol.program.SysvarRent.pubkey, 0))
 r2.data = pxsol.program.Token.initialize_mint(decimals, self.pubkey, self.pubkey)
 ```
 
-上述代码设置代币的小数精度, 铸造权限和冻结权限. 多数情况下, 将这些权限设置为发布者本人就可以了. 初始化完成后, 您才能开始铸币.
+上述代码在创建出来的铸造账户里设置代币的小数精度, 铸造权限和冻结权限. 多数情况下, 将这些权限设置为发布者本人就可以了. 初始化完成后, 您才能开始铸币.
 
-**指令 4: 初始化内联元数据**
+**指令 4: 初始化元数据**
 
 ```py
 r3 = pxsol.core.Requisition(pxsol.program.Token.pubkey, [], bytearray())
