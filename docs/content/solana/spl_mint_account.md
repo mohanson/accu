@@ -45,7 +45,7 @@ print(mint)
 - `inited`: 表示铸造账户是否已初始化. 只有正确初始化的铸造账户可用于代币操作.
 - `auth_freeze`: 冻结权限表示有权冻结或解冻代币账户的地址. 冻结功能可用于暂停代币的转账操作, 通常用于合规性或安全管理. 在本例中, 冻结权限与铸造权限相同, 均为 `6ASf5EcmmEHTgDJ4X4ZT5vT6iHVJBXPg5AN5YoTCpGWt`.
 
-## 扩展字段
+## 扩展字段解析
 
 Token-2022 程序的一大特点是支持扩展功能, 这些功能通过 `extensions` 字段实现. 在本例中, 铸造账户包含了两种扩展: `metadata_pointer` 与 `metadata`.
 
