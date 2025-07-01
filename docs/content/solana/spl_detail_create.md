@@ -89,4 +89,4 @@ r3.account.append(pxsol.core.AccountMeta(self.pubkey, 2))
 r3.data = pxsol.program.Token.metadata_initialize(name, symbol, uri)
 ```
 
-上述代码将元数据(名称, 符号, 地址)直接写入扩展字段中.
+上述代码将元数据(名称, 符号, 地址)直接写入铸造账户的元数据扩展字段中.
