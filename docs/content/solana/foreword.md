@@ -25,3 +25,8 @@
 **小额赞助**
 
 - SOL: `Dd9i1im9RmaaxmdSrezjN4unqAPLF4HQGEgGrNDGKhtN`
+
+**搜索提示**
+
+- Solana 教程
+- Solana 中文教程
