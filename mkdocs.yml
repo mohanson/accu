@@ -165,6 +165,7 @@ nav:
         - Solana/SPL Token/指令详解(二): content/solana/spl_detail_mint.md
         - Solana/SPL Token/指令详解(三): content/solana/spl_detail_transfer.md
         - Solana/SPL Token/后记: content/solana/spl_epilog.md
+        - Solana/在主网发行您的代币/导言: content/solana/project_introduction.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
