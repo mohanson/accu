@@ -9,7 +9,7 @@
 ```py
 def spl_create(self, name: str, symbol: str, uri: str, decimals: int) -> pxsol.core.PubKey:
     # Create a new token.
-    mint_prikey = pxsol.core.PriKey(bytearray(random.randbytes(32)))
+    mint_prikey = pxsol.core.PriKey.random()
     mint_pubkey = mint_prikey.pubkey()
     mint_size = pxsol.program.Token.size_extensions_base + pxsol.program.Token.size_extensions_metadata_pointer
     # Helper function to tack on the size of an extension bytes if an account with extensions is exactly the size

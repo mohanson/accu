@@ -31,7 +31,7 @@ import pxsol
 import random
 
 ada = pxsol.wallet.Wallet(pxsol.core.PriKey.int_decode(0x01))
-tmp = pxsol.wallet.Wallet(pxsol.core.PriKey(bytearray(random.randbytes(32))))
+tmp = pxsol.wallet.Wallet(pxsol.core.PriKey.random())
 
 rq = pxsol.core.Requisition(pxsol.program.System.pubkey, [], bytearray())
 rq.account.append(pxsol.core.AccountMeta(ada.pubkey, 3)) # Funding account

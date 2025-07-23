@@ -24,7 +24,7 @@
 
 ```py
 import itertools
-import random
+import secrets
 import typing
 import pabtc.secp256k1
 
@@ -33,7 +33,7 @@ def sign(prikey: pabtc.secp256k1.Fr, m: pabtc.secp256k1.Fr) -> typing.Tuple[pabt
     # https://www.secg.org/sec1-v2.pdf
     # 4.1.3 Signing Operation
     for _ in itertools.repeat(0):
-        k = pabtc.secp256k1.Fr(random.randint(0, pabtc.secp256k1.N - 1))
+        k = pabtc.secp256k1.Fr(max(1, secrets.randbelow(pabtc.secp256k1.N)))
         R = pabtc.secp256k1.G * k
         r = pabtc.secp256k1.Fr(R.x.x)
         if r.x == 0:
