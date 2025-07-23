@@ -156,12 +156,12 @@ assert prikey == pabtc.secp256k1.Fr(1)
 
 ```py
 import pabtc
-import random
+import secrets
 import timeit
 
-k_one = pabtc.secp256k1.Fr(0x8000000000000000000000000000000000000000000000000000000000000000) # Has one '1' bits
-k_255 = pabtc.secp256k1.Fr(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) # Has 255 '1' bits
-k_unknown = pabtc.secp256k1.Fr(random.randint(0, pabtc.secp256k1.N - 1) | k_one.x) # The unknown k
+k_one = pabtc.secp256k1.Fr(0x8000000000000000000000000000000000000000000000000000000000000000)  # Has one '1' bits
+k_255 = pabtc.secp256k1.Fr(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)  # Has 255 '1' bits
+k_unknown = pabtc.secp256k1.Fr(max(1, secrets.randbelow(pabtc.secp256k1.N)) | k_one.x)  # The unknown k
 
 a = timeit.timeit(lambda: pabtc.secp256k1.G * k_one, number=1024)
 b = timeit.timeit(lambda: pabtc.secp256k1.G * k_255, number=1024)

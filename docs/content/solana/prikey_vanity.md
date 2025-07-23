@@ -32,14 +32,14 @@ Solana 作为一个高性能的区块链平台, 因其快速交易和低费用�
 
 ```py
 import pxsol
-import random
 
 target = '6ASf5EcmmEHTgDJ4X4ZT5vT6iHVJBXPg5AN5YoTCpGWt'
 
 for _ in range(1 << 32):
-    prikey = pxsol.core.PriKey(bytearray(random.randbytes(32)))
-    pubkey = prikey.pubkey().base58()
-    if pubkey[:2] == target[:2] and pubkey[-2:] == target[-2:]:
+    prikey = pxsol.core.PriKey.random()
+    pubkey = prikey.pubkey()
+    pubkey_base58 = pubkey.base58()
+    if pubkey_base58[:2] == target[:2] and pubkey_base58[-2:] == target[-2:]:
         print(prikey)
         print(pubkey)
         break

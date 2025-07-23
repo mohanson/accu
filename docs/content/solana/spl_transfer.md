@@ -39,6 +39,6 @@ ada = pxsol.wallet.Wallet(pxsol.core.PriKey.int_decode(1))
 spl = pxsol.core.PubKey.base58_decode('2CMXJX8arHRsiiZadVheRLTd6uhP7DpbaJ9hRiRMSGcF')
 
 for _ in range(1000):
-    dst = pxsol.core.PriKey(bytearray(random.randbytes(32))).pubkey()
+    dst = pxsol.core.PriKey.random().pubkey()
     ada.spl_transfer(spl, dst, 100 * 10 ** 9)
 ```
