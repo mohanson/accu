@@ -1,5 +1,7 @@
 # Solana/在主网发行您的代币/获取空投
 
+Pxs 空投合约的设计允许任意调用该合约的用户获取 5 pxs 的空投, 因此我们编写脚本如下. 该脚本的功能只是简单的调用一次空投合约.
+
 ```py
 import argparse
 import base64
@@ -41,4 +43,10 @@ tlog = pxsol.rpc.get_transaction(txid, {})
 for e in tlog['meta']['logMessages']:
     pxsol.log.debugln(e)
 pxsol.log.debugln(f'main: request pxs airdrop done')
+```
+
+您可以在 pxsol 项目的[源码](https://github.com/mohanson/pxsol/blob/master/example/pxs_airdrop.py)中找到这份脚本. 运行脚本后, 我们的空投合约就将发送 5 pxs 至您的账户!
+
+```sh
+$ python example/pxs_airdrop.py --prikey 0xYOUR_MAINNET_PRIVATE_KEY
 ```
