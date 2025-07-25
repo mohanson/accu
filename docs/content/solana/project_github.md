@@ -10,3 +10,20 @@
 $ git clone https://github.com/mohanson/pxsol-spl
 $ cd pxsol-spl
 ```
+
+在本地开发网络发行代币并部署其空投合约:
+
+```sh
+$ python make.py deploy
+# 2025/05/19 11:42:11 main: deploy mana pubkey="344HRAgWWiLuhUWTm9YNKWfhV5fWK26vx45vMxA9HyCE"
+```
+
+生成一个随机账户, 并发送空投:
+
+```sh
+$ python make.py genuser
+# 2025/05/19 11:45:11 main: random user prikey="Dk5y9WDhMiX83VDPTfojkWgXt6KuBAYhQEgVRAKYGLYG"
+
+$ python make.py --prikey Dk5y9WDhMiX83VDPTfojkWgXt6KuBAYhQEgVRAKYGLYG airdrop
+# 2025/05/19 11:45:24 main: request spl airdrop done recv=5.0
+```
