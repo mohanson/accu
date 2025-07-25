@@ -167,6 +167,7 @@ nav:
         - Solana/SPL Token/后记: content/solana/spl_epilog.md
         - Solana/在主网发行您的代币/导言: content/solana/project_introduction.md
         - Solana/在主网发行您的代币/从测试网到主网的迁移: content/solana/project_mainnet.md
+        - Solana/在主网发行您的代币/在主网发行您的代币: content/solana/project_deploy.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
