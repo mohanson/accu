@@ -170,6 +170,7 @@ nav:
         - Solana/在主网发行您的代币/在主网发行您的代币: content/solana/project_deploy.md
         - Solana/在主网发行您的代币/上架去中心化交易所: content/solana/project_raydium.md
         - Solana/在主网发行您的代币/设计空投规则: content/solana/project_rule.md
+        - Solana/在主网发行您的代币/由程序控制的代币: content/solana/project_control_by_program.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
