@@ -71,7 +71,7 @@ print(mana)
 
 Pxs 代币的空投合约在主网上的部署地址为 `HgatfFyGw2bLJeTy9HkVd4ESD6FkKu4TqMYgALsWZnE6`.
 
-最后再简要分析下该空投程序的涉及账户:
+简要分析下该空投程序的涉及账户:
 
 |          账户          | 权限 |                          说明                           |
 | ---------------------- | ---- | ------------------------------------------------------- |
@@ -84,3 +84,17 @@ Pxs 代币的空投合约在主网上的部署地址为 `HgatfFyGw2bLJeTy9HkVd4E
 | 系统程序               | 0    | 主网地址 `11111111111111111111111111111111`             |
 | 原生程序: Token-2022   | 0    | 主网地址 `TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb`  |
 | 原生程序: 关联代币程序 | 0    | 主网地址 `ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL` |
+
+最后, 不要忘记, 您需要将一些代币转账到**程序 pda 账户**. 注意: 转账目标不是程序账户而是程序 pda 账户! 代码如下:
+
+```py
+import pxsol
+pxsol.config.current = pxsol.config.mainnet
+
+user = pxsol.wallet.Wallet(pxsol.core.PriKey.base58_decode('Put your private key here'))
+pubkey_mint = pxsol.core.PubKey.base58_decode('6B1ztFd9wSm3J5zD5vmMNEKg2r85M41wZMUW7wXwvEPH')
+pubkey_mana = pxsol.core.PubKey.base58_decode('HgatfFyGw2bLJeTy9HkVd4ESD6FkKu4TqMYgALsWZnE6')
+pubkey_mana_seed = bytearray([])
+pubkey_mana_auth = pubkey_mana.derive_pda(pubkey_mana_seed)
+user.spl_transfer(pubkey_mint, pubkey_mana_auth, 100000000 * 10**9)
+```
