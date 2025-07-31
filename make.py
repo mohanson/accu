@@ -66,11 +66,20 @@ def exam_imgs_size():
         assert i.size[0] == 480 and i.size[1] % 2 == 0, f'imsize {e} {i.size[0]}x{i.size[1]}'
 
 
+def exam_link(name: str):
+    for e in os.scandir(name):
+        p = os.path.join(name, e.name)
+        assert not e.is_symlink()
+        if e.is_dir():
+            exam_link(p)
+
+
 def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     exam_imgs_unused()
     exam_imgs_format()
     exam_imgs_size()
+    exam_link('site')
     make()
     mini()
 
