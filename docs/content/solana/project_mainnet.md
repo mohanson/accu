@@ -58,7 +58,7 @@ pxsol.config.current.rpc.cooldown = 1
 pxsol.config.current.rpc.url = 'https://api.mainnet-beta.solana.com'
 ```
 
-您也可以使用一些付费的节点, 例如 helius 或者 triton one 这种由服务提供商提供的节点, 或者直接搭建自己的主网 fullnode, 成本较高但完全自由.
+您也可以使用一些付费的节点, 例如 [helius](https://www.helius.dev/) 或者 [triton one](https://triton.one/) 这种由服务提供商提供的节点, 或者直接搭建自己的主网 fullnode, 成本较高但完全自由.
 
 ## 图片与元数据托管建议
 
