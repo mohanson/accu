@@ -66,9 +66,12 @@ import matplotlib.pyplot as plt
 import pathlib
 
 plt.style.use('seaborn-v0_8-darkgrid')
+plt.figure(figsize=(4.8, 2.7))
 
 genesis = json.loads(pathlib.Path('genesis.json').read_text())
 accounts = genesis['accounts']
+accounts.sort(key=lambda x: -x['account']['lamports'])
+
 x = [e['account']['lamports'] for e in accounts]
 
 plt.pie(x)
