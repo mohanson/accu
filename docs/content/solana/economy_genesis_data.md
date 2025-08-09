@@ -91,3 +91,9 @@ $ agave-ledger-tool genesis --ledger ledger --accounts --output json
     },
 }
 ```
+
+您可以直接通过地址 <https://raw.githubusercontent.com/mohanson/pxsol/refs/heads/master/res/genesis.json> 下载我预先解析好的 json 文件.
+
+```sh
+$ wget https://raw.githubusercontent.com/mohanson/pxsol/refs/heads/master/res/genesis.json
+```
