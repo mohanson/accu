@@ -80,3 +80,5 @@ plt.show()
 ```
 
 ![img](../../img/solana/economy_genesis_analysis/genesis.jpg)
+
+注意上图中灰色的区域是排名在后的几百个账户的叠加显示, 并非代表一个账户.
