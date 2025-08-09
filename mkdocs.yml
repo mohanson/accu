@@ -176,6 +176,7 @@ nav:
         - Solana/在主网发行您的代币/获取完整源码: content/solana/project_github.md
         - Solana/经济系统/导言: content/solana/economy_introduction.md
         - Solana/经济系统/创世块(一): content/solana/economy_genesis_data.md
+        - Solana/经济系统/创世块(二): content/solana/economy_genesis_analysis.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
