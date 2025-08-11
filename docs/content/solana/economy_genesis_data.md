@@ -41,7 +41,7 @@ $ ll
 # rw-r--r--    1 ubuntu ubuntu 132347 Mar 16  2020 genesis.bin
 ```
 
-该文件使用 borsh 编码了一个账户列表, 我们需要编译一个工具来分析 `genesis.bin` 文件. 下载 solana 源码库, 并编译其中的 `ledger-tool` 工具.
+该文件使用 bincode 编码了一个账户列表, 我们需要编译一个工具来分析 `genesis.bin` 文件. 下载 solana 源码库, 并编译其中的 `ledger-tool` 工具.
 
 ```sh
 $ git clone https://github.com/anza-xyz/agave
