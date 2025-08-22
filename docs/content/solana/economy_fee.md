@@ -28,7 +28,7 @@ Solana 的费用燃烧机制是其经济模型的重要组成部分, 旨在通�
 
 > More than 200,000 new wallets are created on Solana each week, indicating robust organic adoption.
 
-假设一个账户的平均数据大小为 165 字节(spl token 账户的典型大小), 那么使用以下代码估算下每日新增租金约为 83 sol.
+假设一个账户的平均数据大小为 165 字节(spl token 账户的典型大小), 那么使用以下代码估算下每日新增租金消耗约为 83 sol.
 
 ```py
 import pxsol
