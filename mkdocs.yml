@@ -180,6 +180,7 @@ nav:
         - Solana/经济系统/创世块(一): content/solana/economy_genesis_data.md
         - Solana/经济系统/创世块(二): content/solana/economy_genesis_analysis.md
         - Solana/经济系统/通胀奖励: content/solana/economy_inflation.md
+        - Solana/经济系统/手续费与手续费燃烧: content/solana/economy_fee.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
