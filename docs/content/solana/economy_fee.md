@@ -24,7 +24,7 @@ Solana 的费用燃烧机制是其经济模型的重要组成部分, 旨在通�
 
 在 solana上, 存储账户数据需要支付租金, 费用与账户占用空间成正比. 租金费用在账户关闭时可退还, 旨在激励用户清理不必要的链上数据. 50% 的租金费用会被燃烧, 剩余 50% 分配给验证者.
 
-租金费用相当于将一部分 sol **暂时**移出了流动池, 除非用户决定删除自己的账户, 否则这部分租金将不会参与流通. 根据 [coinlaw 的报告](https://coinlaw.io/solana-statistics/), solana 目前每周新增约 200000 个钱包, 平均每日新增约 28571 个账户.
+租金费用相当于将一半 sol 永久移出流动池, 并将剩下一半 sol **暂时**移出流动池, 除非用户决定删除自己的账户, 否则这部分租金将永远不会参与流通. 根据 [coinlaw 的报告](https://coinlaw.io/solana-statistics/), solana 目前每周新增约 200000 个钱包, 平均每日新增约 28571 个账户.
 
 > More than 200,000 new wallets are created on Solana each week, indicating robust organic adoption.
 
@@ -40,7 +40,7 @@ sol = lamport / pxsol.denomination.sol
 print(sol) # 83.71760136
 ```
 
-不过事实上, 如果开发者要在 solana 网络上部署程序, 需要支付的租金要远远大于一个普通用户账户. 因此这个 83 sol 数据是极端低估的.
+不过事实上, 如果一名开发者要在 solana 网络上部署程序账户, 需要支付的租金要远远大于一个普通用户账户. 因此这个 83 sol 数据是极端低估的.
 
 ## 总结
 
