@@ -2,11 +2,11 @@
 
 Solana 的系统程序 `1111111...` 是 solana 中最核心的程序, 负责提供基本的区块链账户管理功能. 其主要功能包括创建账户, 余额转移, 数据存储等功能. 通过在交易中调用它, 您可以实现各种复杂功能, 这也是 solana 可编程性的体现.
 
-系统程序所支持的指令列表定义在 <https://github.com/solana-program/system/blob/main/interface/src/instruction.rs>.
+系统程序所支持的指令列表定义在 <https://github.com/anza-xyz/solana-sdk/blob/c654e5f556ad3e22679fe9757da1bf5c9486e2f1/system-interface/src/instruction.rs#L68-L252>.
 
 您可以看到, 指令数据被定义为一个枚举类型, 并使用 bincode 编码. Bincode 是一种紧凑型编码方式, 特点是编码对象的大小将等于或小于对象在正在运行的 rust 程序中占用的内存大小.
 
-Bincode 编码规范详见 <https://github.com/bincode-org/bincode/blob/trunk/docs/spec.md>.
+Bincode 编码规范详见 <https://docs.rs/crate/bincode/2.0.1/source/docs/spec.md>.
 
 粗略的讲, 我们目前只需要关注 bincode 中以下几条规则:
 
