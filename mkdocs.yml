@@ -215,6 +215,7 @@ nav:
         - 圣杯/双均线策略: content/sangreal/sma.md
         - 圣杯/阻力支撑相对强度指标: content/sangreal/rsrs.md
         - 圣杯/耐心策略与心态: content/sangreal/mindset.md
+        - 圣杯/永久投资组合: content/sangreal/permanent_portfolio.md
 - Rust 零基础入门:
         - Rust 零基础入门/概览: content/rust/overview.md
         - Rust 零基础入门/开发环境搭建: content/rust/env.md
