@@ -185,6 +185,9 @@ nav:
         - Solana/经济系统/质押: content/solana/economy_stake.md
         - Solana/经济系统/社区治理中的争议: content/solana/economy_governance.md
         - Solana/更多开发者工具/导言: content/solana/tool_introduction.md
+        - Solana/更多开发者工具/Anchor 环境搭建: content/solana/tool_anchor_install.md
+        - Solana/更多开发者工具/Anchor 里的简单数据存储合约: content/solana/tool_anchor_ss.md
+        - Solana/更多开发者工具/Anchor 测试框架: content/solana/tool_anchor_test.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
