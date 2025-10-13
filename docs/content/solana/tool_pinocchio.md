@@ -4,11 +4,11 @@ Solana 开发团队正在积极打造更多工具, 帮助开发者更高效地�
 
 ## Pinocchio?
 
-Pinocchio 是一个零依赖(zero-dependency), no_std 的 rust 库, 用来编写 solana 链上程序. 它不依赖 solana-program, 而是直接契合 svm loader 与程序之间的原始 abi(一个序列化后的字节数组), 通过零拷贝解析把输入映射为程序可用的类型, 从而在以下方面受益:
+Pinocchio 是一个零依赖(zero-dependency), no_std 的 rust 库, 用来编写 solana 链上程序. 它不依赖 [solana-program](https://crates.io/crates/solana-program), 而是直接契合 svm loader 与程序之间的原始 abi(一个序列化后的字节数组), 通过零拷贝解析把输入映射为程序可用的类型, 从而在以下方面受益:
 
-- 更小二进制: 避免引入庞大的 SDK 依赖
-- 更低 CU: 入口解析与 CPI 过程更省计算
-- 更强掌控: 按需解析输入, 可禁用分配器, 强化可预测性
+- 更小二进制: 避免引入庞大的 sdk 依赖
+- 更低资源消耗: 入口解析与 cpi 过程更省计算
+- 更强掌控: 按需解析输入, 可禁用内存分配器(allocator), 强化可预测性
 - 适合追求极致体积与性能, 或被依赖地狱困扰的项目
 
 零依赖是 pinocchio 的核心卖点, 使用 pinocchio 时不像使用 solana-program, 不需要引入上百个依赖, 但它的功能确是和 solana-program 相当的. 它提供了类似的类型与功能, 在实际开发过程中可以平替 solana-program, 也可以很方便的从现有的 solana-program 代码迁移过来.
@@ -17,7 +17,7 @@ Pinocchio 是一个零依赖(zero-dependency), no_std 的 rust 库, 用来编写
 
 ## 快速开始
 
-要在项目中使用 pinocchio, 只需在 Cargo.toml 中添加依赖. 在本文档创作时, pinocchio 的最新版本是 0.9.2, 你可以根据需要选择合适的版本.
+要在项目中使用 pinocchio, 只需添加其为依赖即可. 在本文档创作时, pinocchio 的最新版本是 0.9.2, 你可以根据需要选择合适的版本.
 
 ```toml
 [dependencies]
@@ -71,7 +71,7 @@ Pinocchio 还有一些进阶的用法, 允许你更灵活地控制入口与解�
 - `solana_program::msg!` -> `pinocchio::msg!`
 - 如果需要格式化, 那么需要引入 `pinocchio-log` 的 `log!` 宏
 
-**CPI 与 sysvars**
+**cpi 与 sysvars**
 
 - 将 `solana_program::program::invoke*` 与 `sysvar` 访问, 替换为 pinocchio 提供的接口(命名与用法保持直觉, 一般改动不大)
 
