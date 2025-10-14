@@ -14,8 +14,8 @@ def spl_transfer(self, mint: pxsol.core.PubKey, recv: pxsol.core.PubKey, amount:
     # Transfers tokens to the target. Note that amount refers to the smallest unit of count, For example, when the
     # decimals of token is 2, you should use 100 to represent 1 token. If the token account does not exist, it will
     # be created automatically.
-    self_ata_pubkey = self.spl_account(mint)
-    recv_ata_pubkey = Wallet.view_only(recv).spl_account(mint)
+    self_ata_pubkey = self.spl_ata(mint)
+    recv_ata_pubkey = Wallet.view_only(recv).spl_ata(mint)
     r0 = pxsol.core.Requisition(pxsol.program.AssociatedTokenAccount.pubkey, [], bytearray())
     r0.account.append(pxsol.core.AccountMeta(self.pubkey, 3))
     r0.account.append(pxsol.core.AccountMeta(recv_ata_pubkey, 1))

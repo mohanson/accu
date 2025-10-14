@@ -48,7 +48,7 @@ import pxsol
 
 ada = pxsol.wallet.Wallet(pxsol.core.PriKey.int_decode(1))
 spl = pxsol.core.PubKey.base58_decode('2CMXJX8arHRsiiZadVheRLTd6uhP7DpbaJ9hRiRMSGcF')
-ata = ada.spl_account(spl)
+ata = ada.spl_ata(spl)
 
 info = pxsol.rpc.get_account_info(ata.base58(), {})
 data = base64.b64decode(info['data'][0])
