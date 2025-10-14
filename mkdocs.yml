@@ -192,6 +192,7 @@ nav:
         - Solana/更多开发者工具/Pinocchio 重写简单数据存储合约: content/solana/tool_pinocchio_ss.md
         - Solana/更多开发者工具/web3.js 快速上手: content/solana/tool_web3.md
         - Solana/更多开发者工具/web3.js 的常见坑与规避: content/solana/tool_web3_pitfall.md
+        - Solana/更多开发者工具/solana-py 和 solders 库的结合使用: content/solana/tool_solana_py.md
 - 遗传算法:
         - 遗传算法/简单遗传算法: content/ga/sga.md
         - 遗传算法/格雷码: content/ga/graycode.md
