@@ -24,7 +24,7 @@ def make():
 
 
 def mini():
-    for html in glob.glob('site/**/*.html', recursive=1):
+    for html in glob.glob('site/**/*.html', recursive=True):
         with open(html, 'r+') as f:
             data = f.read()
             f.seek(0)
@@ -33,8 +33,8 @@ def mini():
 
 
 def exam_imgs_unused():
-    imgs = glob.glob('docs/img/**/*.*', recursive=1)
-    docs = glob.glob('docs/content/**/*.md', recursive=1)
+    imgs = glob.glob('docs/img/**/*.*', recursive=True)
+    docs = glob.glob('docs/content/**/*.md', recursive=True)
     docs.append('docs/index.md')
     imgs_dict = dict.fromkeys(imgs, 0)
 
@@ -53,14 +53,14 @@ def exam_imgs_unused():
 
 
 def exam_imgs_format():
-    imgs = glob.glob('docs/img/**/*.*', recursive=1)
+    imgs = glob.glob('docs/img/**/*.*', recursive=True)
     for e in imgs:
         i = PIL.Image.open(e)
         assert i.format in ['JPEG', 'GIF'], f'format {e} {i.format}'
 
 
 def exam_imgs_size():
-    imgs = glob.glob('docs/img/**/*.*', recursive=1)
+    imgs = glob.glob('docs/img/**/*.*', recursive=True)
     for e in imgs:
         i = PIL.Image.open(e)
         assert i.size[0] == 480 and i.size[1] % 2 == 0, f'imsize {e} {i.size[0]}x{i.size[1]}'
