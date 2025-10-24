@@ -98,7 +98,7 @@ nav:
         - GB/其它/测试: content/gameboy/other/test.md
         - GB/后记: content/gameboy/foot.md
 - Solana:
-        - Solana/我们在等下一个可能: content/solana/foreword.md
+        - Solana/Learn Me A Solana: content/solana/foreword.md
         - Solana/私钥, 公钥与地址/导言: content/solana/prikey_introduction.md
         - Solana/私钥, 公钥与地址/私钥: content/solana/prikey_prikey.md
         - Solana/私钥, 公钥与地址/私钥的密码学解释(一): content/solana/prikey_crypto_field.md
