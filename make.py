@@ -1,18 +1,16 @@
 import glob
 import os
+import shutil
 import subprocess
+import tempfile
 
 import PIL.Image
 
 
 def make():
-    r = subprocess.run('git status mkdocs.yml', capture_output=True, shell=True)
-    if 'nothing to commit, working tree clean' in r.stdout.decode():
-        r = subprocess.run('mkdocs build --dirty', shell=True)
-        assert r.returncode == 0
-    else:
-        r = subprocess.run('mkdocs build --clean', shell=True)
-        assert r.returncode == 0
+    with tempfile.TemporaryDirectory() as output:
+        subprocess.run(f'mkdocs build -d {output}', shell=True)
+        shutil.copytree(f'{output}', 'site', dirs_exist_ok=True)
     with open('site/baidu_verify_codeva-bkxO1ABXUL.html', 'w') as f:
         f.write('9530b96b26004efa430cc08502bdb442')
     with open('site/03890937a90586962ffe04ea5adaa43c.txt', 'w') as f:  # 360
@@ -79,8 +77,8 @@ def main():
     exam_imgs_unused()
     exam_imgs_format()
     exam_imgs_size()
-    exam_link('site')
     make()
+    exam_link('site')
     mini()
 
 
