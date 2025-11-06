@@ -22,12 +22,10 @@ def make():
 
 
 def mini():
+    if shutil.which('js-beautify') is None:
+        return
     for html in glob.glob('site/**/*.html', recursive=True):
-        with open(html, 'r+') as f:
-            data = f.read()
-            f.seek(0)
-            f.truncate(0)
-            f.write(data)
+        subprocess.run(f'js-beautify -r --no-preserve-newlines {html}', shell=True)
 
 
 def exam_imgs_unused():
