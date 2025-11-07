@@ -3,336 +3,336 @@ site_description: Mohanson 的网络日志, 分享数字图像处理, 编译器�
 site_url: http://accu.cc
 site_author: Mohanson
 theme:
-        name: readthedocs
-        highlightjs: true
-        custom_dir: custom_theme/
+    name: readthedocs
+    highlightjs: true
+    custom_dir: custom_theme/
 repo_url: https://github.com/mohanson/accu
 dev_addr: 0.0.0.0:8080
 plugins: []
 nav:
 - 主页: index.md
 - 数字图像处理:
-        - 数字图像处理/通道: content/pil/channel.md
-        - 数字图像处理/均值: content/pil/mean.md
-        - 数字图像处理/对比增强: content/pil/contrast.md
-        - 数字图像处理/对比拉伸: content/pil/contrast_tensile.md
-        - 数字图像处理/位图切割: content/pil/bit.md
-        - 数字图像处理/直方图均衡化: content/pil/histogram_equalization.md
-        - 数字图像处理/图像减法: content/pil/sub.md
-        - 数字图像处理/加性高斯白噪声与去噪: content/pil/agwn.md
-        - 数字图像处理/空间滤波基础: content/pil/spatial_filter.md
-        - 数字图像处理/空间滤波/均值滤波: content/pil/spatial_filter_mean.md
-        - 数字图像处理/空间滤波/中值滤波: content/pil/spatial_filter_medium.md
-        - 数字图像处理/空间滤波/锐化滤波: content/pil/spatial_filter_sharpening.md
-        - 数字图像处理/空间滤波/高斯滤波: content/pil/spatial_filter_gaussian_blur.md
-        - 数字图像处理/频域滤波基础: content/pil/frequency_filter.md
-        - 数字图像处理/频域滤波/低通滤波: content/pil/frequency_filter_lpf.md
-        - 数字图像处理/频域滤波/高通滤波: content/pil/frequency_filter_hpf.md
-        - 数字图像处理/噪声: content/pil/noise.md
-        - 数字图像处理/安全色: content/pil/safe_color.md
-        - 数字图像处理/马卡龙色: content/pil/macaron_color.md
-        - 数字图像处理/补色和反色: content/pil/complementary_and_invert_color.md
-        - 数字图像处理/水印: content/pil/watermark.md
-        - 数字图像处理/缩放/最近邻插值法: content/pil/resize_nearst.md
-        - 数字图像处理/缩放/最近邻插值法的幽灵事件: content/pil/resize_nearst_ghost.md
-        - 数字图像处理/缩放/双线性算法: content/pil/resize_bilinear.md
-        - 数字图像处理/缩放/双三次插值法: content/pil/resize_bicubic.md
-        - 数字图像处理/字符画: content/pil/ascii.md
-        - 数字图像处理/PIL/概览: content/pil/pil_tutorial_overview.md
-        - 数字图像处理/PIL/Image: content/pil/pil_image.md
-        - 数字图像处理/PIL/ImageChops: content/pil/pil_imagechops.md
-        - 数字图像处理/PIL/ImageColor: content/pil/pil_imagecolor.md
-        - 数字图像处理/PIL/ImageDraw: content/pil/pil_imagedraw.md
-        - 数字图像处理/PIL/ImageEnhance: content/pil/pil_imageenhance.md
-        - 数字图像处理/PIL/ImageOps: content/pil/pil_imageops.md
+    - 数字图像处理/通道: content/pil/channel.md
+    - 数字图像处理/均值: content/pil/mean.md
+    - 数字图像处理/对比增强: content/pil/contrast.md
+    - 数字图像处理/对比拉伸: content/pil/contrast_tensile.md
+    - 数字图像处理/位图切割: content/pil/bit.md
+    - 数字图像处理/直方图均衡化: content/pil/histogram_equalization.md
+    - 数字图像处理/图像减法: content/pil/sub.md
+    - 数字图像处理/加性高斯白噪声与去噪: content/pil/agwn.md
+    - 数字图像处理/空间滤波基础: content/pil/spatial_filter.md
+    - 数字图像处理/空间滤波/均值滤波: content/pil/spatial_filter_mean.md
+    - 数字图像处理/空间滤波/中值滤波: content/pil/spatial_filter_medium.md
+    - 数字图像处理/空间滤波/锐化滤波: content/pil/spatial_filter_sharpening.md
+    - 数字图像处理/空间滤波/高斯滤波: content/pil/spatial_filter_gaussian_blur.md
+    - 数字图像处理/频域滤波基础: content/pil/frequency_filter.md
+    - 数字图像处理/频域滤波/低通滤波: content/pil/frequency_filter_lpf.md
+    - 数字图像处理/频域滤波/高通滤波: content/pil/frequency_filter_hpf.md
+    - 数字图像处理/噪声: content/pil/noise.md
+    - 数字图像处理/安全色: content/pil/safe_color.md
+    - 数字图像处理/马卡龙色: content/pil/macaron_color.md
+    - 数字图像处理/补色和反色: content/pil/complementary_and_invert_color.md
+    - 数字图像处理/水印: content/pil/watermark.md
+    - 数字图像处理/缩放/最近邻插值法: content/pil/resize_nearst.md
+    - 数字图像处理/缩放/最近邻插值法的幽灵事件: content/pil/resize_nearst_ghost.md
+    - 数字图像处理/缩放/双线性算法: content/pil/resize_bilinear.md
+    - 数字图像处理/缩放/双三次插值法: content/pil/resize_bicubic.md
+    - 数字图像处理/字符画: content/pil/ascii.md
+    - 数字图像处理/PIL/概览: content/pil/pil_tutorial_overview.md
+    - 数字图像处理/PIL/Image: content/pil/pil_image.md
+    - 数字图像处理/PIL/ImageChops: content/pil/pil_imagechops.md
+    - 数字图像处理/PIL/ImageColor: content/pil/pil_imagecolor.md
+    - 数字图像处理/PIL/ImageDraw: content/pil/pil_imagedraw.md
+    - 数字图像处理/PIL/ImageEnhance: content/pil/pil_imageenhance.md
+    - 数字图像处理/PIL/ImageOps: content/pil/pil_imageops.md
 - GameBoy 模拟器:
-        - GB/前言: content/gameboy/preface.md
-        - GB/虚拟机发展史/硬件仿真器: content/gameboy/history/emulator.md
-        - GB/虚拟机发展史/程序虚拟机: content/gameboy/history/runtime.md
-        - GB/虚拟机发展史/软件模拟器: content/gameboy/history/simulator.md
-        - GB/游戏卡带/漫谈卡带: content/gameboy/cartridge/about_cartridge.md
-        - GB/游戏卡带/Header: content/gameboy/cartridge/cartridge_header.md
-        - GB/游戏卡带/Memory Bank Controller: content/gameboy/cartridge/memory_bank_controller.md
-        - GB/游戏卡带/ROM only: content/gameboy/cartridge/rom_only.md
-        - GB/游戏卡带/MBC1: content/gameboy/cartridge/mbc1.md
-        - GB/游戏卡带/MBC2: content/gameboy/cartridge/mbc2.md
-        - GB/游戏卡带/MBC3: content/gameboy/cartridge/mbc3.md
-        - GB/游戏卡带/MBC5: content/gameboy/cartridge/mbc5.md
-        - GB/游戏卡带/完整代码: content/gameboy/cartridge/others.md
-        - GB/CPU/概览: content/gameboy/cpu/overview.md
-        - GB/CPU/算术逻辑单元: content/gameboy/cpu/alu.md
-        - GB/CPU/寄存器与存储系统: content/gameboy/cpu/register.md
-        - GB/CPU/指令与指令集: content/gameboy/cpu/isa.md
-        - GB/CPU/流水线: content/gameboy/cpu/pipeline.md
-        - GB/CPU/LR35902 标准指令集: content/gameboy/cpu/lr35902_standard.md
-        - GB/CPU/LR35902 扩展指令集: content/gameboy/cpu/lr35902_extension.md
-        - GB/CPU/LR35902 时钟周期与频率仿真: content/gameboy/cpu/cycles.md
-        - GB/CPU/LR35902 中断: content/gameboy/cpu/interrupts.md
-        - GB/CPU/内存管理单元与主板: content/gameboy/cpu/mmu.md
-        - GB/视频/概览: content/gameboy/video/overview.md
-        - GB/视频/点阵图: content/gameboy/video/dot_matrix.md
-        - GB/视频/显示输出: content/gameboy/video/show.md
-        - GB/视频/光栅成像原理与概念: content/gameboy/video/crt.md
-        - GB/视频/图像显示系统: content/gameboy/video/system.md
-        - GB/视频/GPU 寄存器与内存结构: content/gameboy/video/gpu.md
-        - GB/视频/代码实现: content/gameboy/video/code.md
-        - GB/音频/概览: content/gameboy/audio/overview.md
-        - GB/音频/声音的构成: content/gameboy/audio/sound.md
-        - GB/音频/Rust Cpal 库介绍: content/gameboy/audio/cpal.md
-        - GB/音频/音频系统概念简介: content/gameboy/audio/concept.md
-        - GB/音频/寄存器: content/gameboy/audio/register.md
-        - GB/音频/512 Hz 时钟信号: content/gameboy/audio/timer.md
-        - GB/音频/序列发生器: content/gameboy/audio/frame_sequence.md
-        - GB/音频/长度计数器: content/gameboy/audio/length_counter.md
-        - GB/音频/音量包络: content/gameboy/audio/vol.md
-        - GB/音频/频率扫描器: content/gameboy/audio/frequency_sweep.md
-        - GB/音频/方波通道: content/gameboy/audio/square.md
-        - GB/音频/可编程波形通道: content/gameboy/audio/wave.md
-        - GB/音频/白噪音通道: content/gameboy/audio/noise.md
-        - GB/音频/混频器: content/gameboy/audio/mixer.md
-        - GB/音频/在计算机上播放: content/gameboy/audio/play.md
-        - GB/其它/游戏手柄: content/gameboy/other/joypad.md
-        - GB/其它/串行通行接口: content/gameboy/other/serial.md
-        - GB/其它/定时器: content/gameboy/other/timer.md
-        - GB/其它/硬件初始化工作: content/gameboy/other/init.md
-        - GB/其它/测试: content/gameboy/other/test.md
-        - GB/后记: content/gameboy/foot.md
+    - GB/前言: content/gameboy/preface.md
+    - GB/虚拟机发展史/硬件仿真器: content/gameboy/history/emulator.md
+    - GB/虚拟机发展史/程序虚拟机: content/gameboy/history/runtime.md
+    - GB/虚拟机发展史/软件模拟器: content/gameboy/history/simulator.md
+    - GB/游戏卡带/漫谈卡带: content/gameboy/cartridge/about_cartridge.md
+    - GB/游戏卡带/Header: content/gameboy/cartridge/cartridge_header.md
+    - GB/游戏卡带/Memory Bank Controller: content/gameboy/cartridge/memory_bank_controller.md
+    - GB/游戏卡带/ROM only: content/gameboy/cartridge/rom_only.md
+    - GB/游戏卡带/MBC1: content/gameboy/cartridge/mbc1.md
+    - GB/游戏卡带/MBC2: content/gameboy/cartridge/mbc2.md
+    - GB/游戏卡带/MBC3: content/gameboy/cartridge/mbc3.md
+    - GB/游戏卡带/MBC5: content/gameboy/cartridge/mbc5.md
+    - GB/游戏卡带/完整代码: content/gameboy/cartridge/others.md
+    - GB/CPU/概览: content/gameboy/cpu/overview.md
+    - GB/CPU/算术逻辑单元: content/gameboy/cpu/alu.md
+    - GB/CPU/寄存器与存储系统: content/gameboy/cpu/register.md
+    - GB/CPU/指令与指令集: content/gameboy/cpu/isa.md
+    - GB/CPU/流水线: content/gameboy/cpu/pipeline.md
+    - GB/CPU/LR35902 标准指令集: content/gameboy/cpu/lr35902_standard.md
+    - GB/CPU/LR35902 扩展指令集: content/gameboy/cpu/lr35902_extension.md
+    - GB/CPU/LR35902 时钟周期与频率仿真: content/gameboy/cpu/cycles.md
+    - GB/CPU/LR35902 中断: content/gameboy/cpu/interrupts.md
+    - GB/CPU/内存管理单元与主板: content/gameboy/cpu/mmu.md
+    - GB/视频/概览: content/gameboy/video/overview.md
+    - GB/视频/点阵图: content/gameboy/video/dot_matrix.md
+    - GB/视频/显示输出: content/gameboy/video/show.md
+    - GB/视频/光栅成像原理与概念: content/gameboy/video/crt.md
+    - GB/视频/图像显示系统: content/gameboy/video/system.md
+    - GB/视频/GPU 寄存器与内存结构: content/gameboy/video/gpu.md
+    - GB/视频/代码实现: content/gameboy/video/code.md
+    - GB/音频/概览: content/gameboy/audio/overview.md
+    - GB/音频/声音的构成: content/gameboy/audio/sound.md
+    - GB/音频/Rust Cpal 库介绍: content/gameboy/audio/cpal.md
+    - GB/音频/音频系统概念简介: content/gameboy/audio/concept.md
+    - GB/音频/寄存器: content/gameboy/audio/register.md
+    - GB/音频/512 Hz 时钟信号: content/gameboy/audio/timer.md
+    - GB/音频/序列发生器: content/gameboy/audio/frame_sequence.md
+    - GB/音频/长度计数器: content/gameboy/audio/length_counter.md
+    - GB/音频/音量包络: content/gameboy/audio/vol.md
+    - GB/音频/频率扫描器: content/gameboy/audio/frequency_sweep.md
+    - GB/音频/方波通道: content/gameboy/audio/square.md
+    - GB/音频/可编程波形通道: content/gameboy/audio/wave.md
+    - GB/音频/白噪音通道: content/gameboy/audio/noise.md
+    - GB/音频/混频器: content/gameboy/audio/mixer.md
+    - GB/音频/在计算机上播放: content/gameboy/audio/play.md
+    - GB/其它/游戏手柄: content/gameboy/other/joypad.md
+    - GB/其它/串行通行接口: content/gameboy/other/serial.md
+    - GB/其它/定时器: content/gameboy/other/timer.md
+    - GB/其它/硬件初始化工作: content/gameboy/other/init.md
+    - GB/其它/测试: content/gameboy/other/test.md
+    - GB/后记: content/gameboy/foot.md
 - Solana:
-        - Solana/Learn Me A Solana: content/solana/foreword.md
-        - Solana/私钥, 公钥与地址/导言: content/solana/prikey_introduction.md
-        - Solana/私钥, 公钥与地址/私钥: content/solana/prikey_prikey.md
-        - Solana/私钥, 公钥与地址/私钥的密码学解释(一): content/solana/prikey_crypto_field.md
-        - Solana/私钥, 公钥与地址/私钥的密码学解释(二): content/solana/prikey_crypto_asymmetric.md
-        - Solana/私钥, 公钥与地址/私钥的密码学解释(三): content/solana/prikey_crypto_secp256k1.md
-        - Solana/私钥, 公钥与地址/私钥的密码学解释(四): content/solana/prikey_crypto_ecdsa.md
-        - Solana/私钥, 公钥与地址/私钥的密码学解释(五): content/solana/prikey_crypto_issue.md
-        - Solana/私钥, 公钥与地址/私钥的密码学解释(六): content/solana/prikey_crypto_ed25519.md
-        - Solana/私钥, 公钥与地址/私钥的密码学解释(七): content/solana/prikey_crypto_eddsa.md
-        - Solana/私钥, 公钥与地址/私钥的密码学解释(八): content/solana/prikey_crypto_eddsa_advantages.md
-        - Solana/私钥, 公钥与地址/公钥: content/solana/prikey_pubkey.md
-        - Solana/私钥, 公钥与地址/地址: content/solana/prikey_addr.md
-        - Solana/私钥, 公钥与地址/地址伪装转账攻击与虚荣地址: content/solana/prikey_vanity.md
-        - Solana/私钥, 公钥与地址/Base58: content/solana/prikey_base58.md
-        - Solana/私钥, 公钥与地址/公私钥对: content/solana/prikey_keypair.md
-        - Solana/交易/导言: content/solana/tx_introduction.md
-        - Solana/交易/货币面值: content/solana/tx_denomination.md
-        - Solana/交易/构建本地开发环境: content/solana/tx_devnet.md
-        - Solana/交易/使用内置钱包进行转账: content/solana/tx_wallet.md
-        - Solana/交易/交易详情: content/solana/tx_info.md
-        - Solana/交易/签名与验证: content/solana/tx_signature.md
-        - Solana/交易/序列化与反序列化: content/solana/tx_serialize.md
-        - Solana/交易/账户与权限: content/solana/tx_permission.md
-        - Solana/交易/区块哈希与时效性: content/solana/tx_recent_blockhash.md
-        - Solana/交易/指令: content/solana/tx_instruction.md
-        - Solana/交易/系统程序: content/solana/tx_system_program.md
-        - Solana/交易/手工构造交易: content/solana/tx_handmade.md
-        - Solana/交易/手续费: content/solana/tx_fee.md
-        - Solana/账户模型/导言: content/solana/account_introduction.md
-        - Solana/账户模型/账户数据结构: content/solana/account_type.md
-        - Solana/账户模型/未花费交易输出模型与账户模型: content/solana/account_utxo_vs_account.md
-        - Solana/账户模型/所有权和权限控制: content/solana/account_owner.md
-        - Solana/账户模型/普通钱包账户: content/solana/account_wallet.md
-        - Solana/账户模型/程序账户: content/solana/account_program.md
-        - Solana/账户模型/数据账户: content/solana/account_data.md
-        - Solana/账户模型/程序派生地址算法解析: content/solana/account_pda.md
-        - Solana/账户模型/租赁与租赁豁免机制: content/solana/account_rent.md
-        - Solana/账户模型/尚未深入探讨的问题: content/solana/account_epilog.md
-        - Solana/程序开发入门/导言: content/solana/ss_introduction.md
-        - Solana/程序开发入门/搭建 Rust 开发环境: content/solana/ss_rust_env.md
-        - Solana/程序开发入门/一个允许用户自由存储数据的链上程序: content/solana/ss_requirement.md
-        - Solana/程序开发入门/搭建初始目录结构: content/solana/ss_skeleton.md
-        - Solana/程序开发入门/入口函数解释: content/solana/ss_entrypoint.md
-        - Solana/程序开发入门/创建数据账户并使其达成租赁豁免: content/solana/ss_pda_create.md
-        - Solana/程序开发入门/数据账户内容更新及动态租赁调节: content/solana/ss_pda_update.md
-        - Solana/程序开发入门/完整链上代码: content/solana/ss_code.md
-        - Solana/程序开发入门/编译并部署程序: content/solana/ss_deploy.md
-        - Solana/程序开发入门/程序交互: content/solana/ss_interaction.md
-        - Solana/程序开发入门/升级程序: content/solana/ss_upgrade.md
-        - Solana/程序开发入门/获取完整源码: content/solana/ss_github.md
-        - Solana/泰铢币/导言: content/solana/thaibaht_introduction.md
-        - Solana/泰铢币/进化之路: content/solana/thaibaht_evolution.md
-        - Solana/泰铢币/核心机制实现: content/solana/thaibaht_core.md
-        - Solana/泰铢币/完整链上代码: content/solana/thaibaht_code.md
-        - Solana/泰铢币/程序交互: content/solana/thaibaht_interaction.md
-        - Solana/泰铢币/获取完整源码: content/solana/thaibaht_github.md
-        - Solana/SPL Token/导言: content/solana/spl_introduction.md
-        - Solana/SPL Token/历史与核心规范概览: content/solana/spl_spec.md
-        - Solana/SPL Token/创建您的代币: content/solana/spl_create.md
-        - Solana/SPL Token/铸造账户解析: content/solana/spl_mint_account.md
-        - Solana/SPL Token/铸造代币和查询代币余额: content/solana/spl_mint.md
-        - Solana/SPL Token/转账: content/solana/spl_transfer.md
-        - Solana/SPL Token/指令详解(一): content/solana/spl_detail_create.md
-        - Solana/SPL Token/指令详解(二): content/solana/spl_detail_mint.md
-        - Solana/SPL Token/指令详解(三): content/solana/spl_detail_transfer.md
-        - Solana/SPL Token/后记: content/solana/spl_epilog.md
-        - Solana/在主网发行您的代币/导言: content/solana/project_introduction.md
-        - Solana/在主网发行您的代币/从测试网到主网的迁移: content/solana/project_mainnet.md
-        - Solana/在主网发行您的代币/在主网发行您的代币: content/solana/project_deploy.md
-        - Solana/在主网发行您的代币/上架去中心化交易所: content/solana/project_raydium.md
-        - Solana/在主网发行您的代币/设计空投规则: content/solana/project_rule.md
-        - Solana/在主网发行您的代币/由程序控制的代币: content/solana/project_control_by_program.md
-        - Solana/在主网发行您的代币/实现空投程序: content/solana/project_code.md
-        - Solana/在主网发行您的代币/获取空投: content/solana/project_airdrop.md
-        - Solana/在主网发行您的代币/获取完整源码: content/solana/project_github.md
-        - Solana/经济系统/导言: content/solana/economy_introduction.md
-        - Solana/经济系统/典型案例分析: content/solana/economy_typical_case.md
-        - Solana/经济系统/概述: content/solana/economy_overview.md
-        - Solana/经济系统/创世块(一): content/solana/economy_genesis_data.md
-        - Solana/经济系统/创世块(二): content/solana/economy_genesis_analysis.md
-        - Solana/经济系统/通胀奖励: content/solana/economy_inflation.md
-        - Solana/经济系统/手续费与手续费燃烧: content/solana/economy_fee.md
-        - Solana/经济系统/验证者的成本和预期收益: content/solana/economy_validator.md
-        - Solana/经济系统/质押: content/solana/economy_stake.md
-        - Solana/经济系统/社区治理中的争议: content/solana/economy_governance.md
-        - Solana/更多开发者工具/导言: content/solana/tool_introduction.md
-        - Solana/更多开发者工具/Anchor 环境搭建: content/solana/tool_anchor_install.md
-        - Solana/更多开发者工具/Anchor 里的简单数据存储合约: content/solana/tool_anchor_ss.md
-        - Solana/更多开发者工具/Anchor 测试框架: content/solana/tool_anchor_test.md
-        - Solana/更多开发者工具/Pinocchio? Pinocchio!: content/solana/tool_pinocchio.md
-        - Solana/更多开发者工具/Pinocchio 重写简单数据存储合约: content/solana/tool_pinocchio_ss.md
-        - Solana/更多开发者工具/web3.js 快速上手: content/solana/tool_web3.md
-        - Solana/更多开发者工具/web3.js 的常见坑与规避: content/solana/tool_web3_pitfall.md
-        - Solana/更多开发者工具/solana-py 和 solders 库的结合使用: content/solana/tool_solana_py.md
-        - Solana/书后: content/solana/epilog.md
+    - Solana/Learn Me A Solana: content/solana/foreword.md
+    - Solana/私钥, 公钥与地址/导言: content/solana/prikey_introduction.md
+    - Solana/私钥, 公钥与地址/私钥: content/solana/prikey_prikey.md
+    - Solana/私钥, 公钥与地址/私钥的密码学解释(一): content/solana/prikey_crypto_field.md
+    - Solana/私钥, 公钥与地址/私钥的密码学解释(二): content/solana/prikey_crypto_asymmetric.md
+    - Solana/私钥, 公钥与地址/私钥的密码学解释(三): content/solana/prikey_crypto_secp256k1.md
+    - Solana/私钥, 公钥与地址/私钥的密码学解释(四): content/solana/prikey_crypto_ecdsa.md
+    - Solana/私钥, 公钥与地址/私钥的密码学解释(五): content/solana/prikey_crypto_issue.md
+    - Solana/私钥, 公钥与地址/私钥的密码学解释(六): content/solana/prikey_crypto_ed25519.md
+    - Solana/私钥, 公钥与地址/私钥的密码学解释(七): content/solana/prikey_crypto_eddsa.md
+    - Solana/私钥, 公钥与地址/私钥的密码学解释(八): content/solana/prikey_crypto_eddsa_advantages.md
+    - Solana/私钥, 公钥与地址/公钥: content/solana/prikey_pubkey.md
+    - Solana/私钥, 公钥与地址/地址: content/solana/prikey_addr.md
+    - Solana/私钥, 公钥与地址/地址伪装转账攻击与虚荣地址: content/solana/prikey_vanity.md
+    - Solana/私钥, 公钥与地址/Base58: content/solana/prikey_base58.md
+    - Solana/私钥, 公钥与地址/公私钥对: content/solana/prikey_keypair.md
+    - Solana/交易/导言: content/solana/tx_introduction.md
+    - Solana/交易/货币面值: content/solana/tx_denomination.md
+    - Solana/交易/构建本地开发环境: content/solana/tx_devnet.md
+    - Solana/交易/使用内置钱包进行转账: content/solana/tx_wallet.md
+    - Solana/交易/交易详情: content/solana/tx_info.md
+    - Solana/交易/签名与验证: content/solana/tx_signature.md
+    - Solana/交易/序列化与反序列化: content/solana/tx_serialize.md
+    - Solana/交易/账户与权限: content/solana/tx_permission.md
+    - Solana/交易/区块哈希与时效性: content/solana/tx_recent_blockhash.md
+    - Solana/交易/指令: content/solana/tx_instruction.md
+    - Solana/交易/系统程序: content/solana/tx_system_program.md
+    - Solana/交易/手工构造交易: content/solana/tx_handmade.md
+    - Solana/交易/手续费: content/solana/tx_fee.md
+    - Solana/账户模型/导言: content/solana/account_introduction.md
+    - Solana/账户模型/账户数据结构: content/solana/account_type.md
+    - Solana/账户模型/未花费交易输出模型与账户模型: content/solana/account_utxo_vs_account.md
+    - Solana/账户模型/所有权和权限控制: content/solana/account_owner.md
+    - Solana/账户模型/普通钱包账户: content/solana/account_wallet.md
+    - Solana/账户模型/程序账户: content/solana/account_program.md
+    - Solana/账户模型/数据账户: content/solana/account_data.md
+    - Solana/账户模型/程序派生地址算法解析: content/solana/account_pda.md
+    - Solana/账户模型/租赁与租赁豁免机制: content/solana/account_rent.md
+    - Solana/账户模型/尚未深入探讨的问题: content/solana/account_epilog.md
+    - Solana/程序开发入门/导言: content/solana/ss_introduction.md
+    - Solana/程序开发入门/搭建 Rust 开发环境: content/solana/ss_rust_env.md
+    - Solana/程序开发入门/一个允许用户自由存储数据的链上程序: content/solana/ss_requirement.md
+    - Solana/程序开发入门/搭建初始目录结构: content/solana/ss_skeleton.md
+    - Solana/程序开发入门/入口函数解释: content/solana/ss_entrypoint.md
+    - Solana/程序开发入门/创建数据账户并使其达成租赁豁免: content/solana/ss_pda_create.md
+    - Solana/程序开发入门/数据账户内容更新及动态租赁调节: content/solana/ss_pda_update.md
+    - Solana/程序开发入门/完整链上代码: content/solana/ss_code.md
+    - Solana/程序开发入门/编译并部署程序: content/solana/ss_deploy.md
+    - Solana/程序开发入门/程序交互: content/solana/ss_interaction.md
+    - Solana/程序开发入门/升级程序: content/solana/ss_upgrade.md
+    - Solana/程序开发入门/获取完整源码: content/solana/ss_github.md
+    - Solana/泰铢币/导言: content/solana/thaibaht_introduction.md
+    - Solana/泰铢币/进化之路: content/solana/thaibaht_evolution.md
+    - Solana/泰铢币/核心机制实现: content/solana/thaibaht_core.md
+    - Solana/泰铢币/完整链上代码: content/solana/thaibaht_code.md
+    - Solana/泰铢币/程序交互: content/solana/thaibaht_interaction.md
+    - Solana/泰铢币/获取完整源码: content/solana/thaibaht_github.md
+    - Solana/SPL Token/导言: content/solana/spl_introduction.md
+    - Solana/SPL Token/历史与核心规范概览: content/solana/spl_spec.md
+    - Solana/SPL Token/创建您的代币: content/solana/spl_create.md
+    - Solana/SPL Token/铸造账户解析: content/solana/spl_mint_account.md
+    - Solana/SPL Token/铸造代币和查询代币余额: content/solana/spl_mint.md
+    - Solana/SPL Token/转账: content/solana/spl_transfer.md
+    - Solana/SPL Token/指令详解(一): content/solana/spl_detail_create.md
+    - Solana/SPL Token/指令详解(二): content/solana/spl_detail_mint.md
+    - Solana/SPL Token/指令详解(三): content/solana/spl_detail_transfer.md
+    - Solana/SPL Token/后记: content/solana/spl_epilog.md
+    - Solana/在主网发行您的代币/导言: content/solana/project_introduction.md
+    - Solana/在主网发行您的代币/从测试网到主网的迁移: content/solana/project_mainnet.md
+    - Solana/在主网发行您的代币/在主网发行您的代币: content/solana/project_deploy.md
+    - Solana/在主网发行您的代币/上架去中心化交易所: content/solana/project_raydium.md
+    - Solana/在主网发行您的代币/设计空投规则: content/solana/project_rule.md
+    - Solana/在主网发行您的代币/由程序控制的代币: content/solana/project_control_by_program.md
+    - Solana/在主网发行您的代币/实现空投程序: content/solana/project_code.md
+    - Solana/在主网发行您的代币/获取空投: content/solana/project_airdrop.md
+    - Solana/在主网发行您的代币/获取完整源码: content/solana/project_github.md
+    - Solana/经济系统/导言: content/solana/economy_introduction.md
+    - Solana/经济系统/典型案例分析: content/solana/economy_typical_case.md
+    - Solana/经济系统/概述: content/solana/economy_overview.md
+    - Solana/经济系统/创世块(一): content/solana/economy_genesis_data.md
+    - Solana/经济系统/创世块(二): content/solana/economy_genesis_analysis.md
+    - Solana/经济系统/通胀奖励: content/solana/economy_inflation.md
+    - Solana/经济系统/手续费与手续费燃烧: content/solana/economy_fee.md
+    - Solana/经济系统/验证者的成本和预期收益: content/solana/economy_validator.md
+    - Solana/经济系统/质押: content/solana/economy_stake.md
+    - Solana/经济系统/社区治理中的争议: content/solana/economy_governance.md
+    - Solana/更多开发者工具/导言: content/solana/tool_introduction.md
+    - Solana/更多开发者工具/Anchor 环境搭建: content/solana/tool_anchor_install.md
+    - Solana/更多开发者工具/Anchor 里的简单数据存储合约: content/solana/tool_anchor_ss.md
+    - Solana/更多开发者工具/Anchor 测试框架: content/solana/tool_anchor_test.md
+    - Solana/更多开发者工具/Pinocchio? Pinocchio!: content/solana/tool_pinocchio.md
+    - Solana/更多开发者工具/Pinocchio 重写简单数据存储合约: content/solana/tool_pinocchio_ss.md
+    - Solana/更多开发者工具/web3.js 快速上手: content/solana/tool_web3.md
+    - Solana/更多开发者工具/web3.js 的常见坑与规避: content/solana/tool_web3_pitfall.md
+    - Solana/更多开发者工具/solana-py 和 solders 库的结合使用: content/solana/tool_solana_py.md
+    - Solana/书后: content/solana/epilog.md
 - 遗传算法:
-        - 遗传算法/简单遗传算法: content/ga/sga.md
-        - 遗传算法/格雷码: content/ga/graycode.md
-        - 遗传算法/俄罗斯轮盘赌: content/ga/russian_roulette.md
-        - 遗传算法/最优保留策略: content/ga/maintain_the_best_solution.md
-        - 遗传算法/生物进化模拟: content/ga/evolve.md
+    - 遗传算法/简单遗传算法: content/ga/sga.md
+    - 遗传算法/格雷码: content/ga/graycode.md
+    - 遗传算法/俄罗斯轮盘赌: content/ga/russian_roulette.md
+    - 遗传算法/最优保留策略: content/ga/maintain_the_best_solution.md
+    - 遗传算法/生物进化模拟: content/ga/evolve.md
 - X64 汇编:
-        - X64 汇编/Hello World: content/x64/hello_world.md
-        - X64 汇编/术语和概念: content/x64/concept.md
-        - X64 汇编/栈: content/x64/stack.md
-        - X64 汇编/宏: content/x64/macros.md
-        - X64 汇编/AT&T: content/x64/att.md
-        - X64 汇编/混合汇编与 C: content/x64/mix_c.md
+    - X64 汇编/Hello World: content/x64/hello_world.md
+    - X64 汇编/术语和概念: content/x64/concept.md
+    - X64 汇编/栈: content/x64/stack.md
+    - X64 汇编/宏: content/x64/macros.md
+    - X64 汇编/AT&T: content/x64/att.md
+    - X64 汇编/混合汇编与 C: content/x64/mix_c.md
 - JIT 编译器原理简述:
-        - JIT 编译器原理简述/原理简述: content/jit/principle.md
-        - JIT 编译器原理简述/实现 Brainfuck 解释器与 IR 优化: content/jit/brainfuck_interpreter.md
-        - JIT 编译器原理简述/实现 Brainfuck JIT 编译器: content/jit/brainfuck_jit.md
+    - JIT 编译器原理简述/原理简述: content/jit/principle.md
+    - JIT 编译器原理简述/实现 Brainfuck 解释器与 IR 优化: content/jit/brainfuck_interpreter.md
+    - JIT 编译器原理简述/实现 Brainfuck JIT 编译器: content/jit/brainfuck_jit.md
 - 独立游戏开发:
-        - 独立游戏开发/个人开发者如何发布第一款微信小游戏: content/gamedev/wechat_game.md
-        - 独立游戏开发/Cocos Creator 微信小游戏广告接入: content/gamedev/wechat_game_ad.md
-        - 独立游戏开发/Cocos Creator 微信小游戏创建视频广告页面卡顿问题解决: content/gamedev/wechat_game_vd.md
-        - 独立游戏开发/Cocos Creator 将微信小游戏发布到 QQ 小游戏: content/gamedev/wechat_game_qq.md
-        - 独立游戏开发/Cocos Creator 发布到 Steam: content/gamedev/cocos_steam.md
-        - 独立游戏开发/软件著作权申请: content/gamedev/copyright.md
+    - 独立游戏开发/个人开发者如何发布第一款微信小游戏: content/gamedev/wechat_game.md
+    - 独立游戏开发/Cocos Creator 微信小游戏广告接入: content/gamedev/wechat_game_ad.md
+    - 独立游戏开发/Cocos Creator 微信小游戏创建视频广告页面卡顿问题解决: content/gamedev/wechat_game_vd.md
+    - 独立游戏开发/Cocos Creator 将微信小游戏发布到 QQ 小游戏: content/gamedev/wechat_game_qq.md
+    - 独立游戏开发/Cocos Creator 发布到 Steam: content/gamedev/cocos_steam.md
+    - 独立游戏开发/软件著作权申请: content/gamedev/copyright.md
 - 圣杯:
-        - 圣杯/追寻之路: content/sangreal/overview.md
-        - 圣杯/网格交易: content/sangreal/grid.md
-        - 圣杯/马丁格尔爆仓之路: content/sangreal/martingale.md
-        - 圣杯/双均线策略: content/sangreal/sma.md
-        - 圣杯/阻力支撑相对强度指标: content/sangreal/rsrs.md
-        - 圣杯/耐心策略与心态: content/sangreal/mindset.md
-        - 圣杯/永久投资组合: content/sangreal/permanent_portfolio.md
+    - 圣杯/追寻之路: content/sangreal/overview.md
+    - 圣杯/网格交易: content/sangreal/grid.md
+    - 圣杯/马丁格尔爆仓之路: content/sangreal/martingale.md
+    - 圣杯/双均线策略: content/sangreal/sma.md
+    - 圣杯/阻力支撑相对强度指标: content/sangreal/rsrs.md
+    - 圣杯/耐心策略与心态: content/sangreal/mindset.md
+    - 圣杯/永久投资组合: content/sangreal/permanent_portfolio.md
 - Rust 零基础入门:
-        - Rust 零基础入门/概览: content/rust/overview.md
-        - Rust 零基础入门/开发环境搭建: content/rust/env.md
-        - Rust 零基础入门/变量与可变性: content/rust/variables_and_mutability.md
-        - Rust 零基础入门/数据类型: content/rust/data_type.md
-        - Rust 零基础入门/流程控制: content/rust/control_flow.md
-        - Rust 零基础入门/结构体, 函数与方法: content/rust/structs.md
-        - Rust 零基础入门/泛型类型: content/rust/trait.md
-        - Rust 零基础入门/所有权: content/rust/ownership.md
-        - Rust 零基础入门/引用与借用: content/rust/borrow.md
-        - Rust 零基础入门/二叉树: content/rust/binary_tree.md
+    - Rust 零基础入门/概览: content/rust/overview.md
+    - Rust 零基础入门/开发环境搭建: content/rust/env.md
+    - Rust 零基础入门/变量与可变性: content/rust/variables_and_mutability.md
+    - Rust 零基础入门/数据类型: content/rust/data_type.md
+    - Rust 零基础入门/流程控制: content/rust/control_flow.md
+    - Rust 零基础入门/结构体, 函数与方法: content/rust/structs.md
+    - Rust 零基础入门/泛型类型: content/rust/trait.md
+    - Rust 零基础入门/所有权: content/rust/ownership.md
+    - Rust 零基础入门/引用与借用: content/rust/borrow.md
+    - Rust 零基础入门/二叉树: content/rust/binary_tree.md
 - Cryptography:
-        - Cryptography/Kerckhoffs 原则: content/cryptography/kerckhoffs_principle.md
-        - Cryptography/分组加密操作模式: content/cryptography/encryption_mode.md
-        - Cryptography/椭圆曲线: content/cryptography/ecc.md
-        - Cryptography/比特币地址生成详细步骤: content/cryptography/bitcoin_address_calculate.md
-        - Cryptography/椭圆曲线 ECDSA 签名与验签: content/cryptography/ecdsa.md
-        - Cryptography/椭圆曲线 ECDSA 签名的错误用法: content/cryptography/ecdsa_ps3_hack.md
-        - Cryptography/椭圆曲线空间扩展之 Jacobian: content/cryptography/ecc_jacobian.md
-        - Cryptography/椭圆曲线双线性配对: content/cryptography/ecc_pairing.md
-        - Cryptography/椭圆曲线 Schnorr 签名: content/cryptography/schnorr.md
-        - Cryptography/椭圆曲线 Ed25519 + Eddsa 签名: content/cryptography/ed25519.md
-        - Cryptography/多项式运算: content/cryptography/polynomial_math.md
-        - Cryptography/KZG 多项式承诺: content/cryptography/kzg.md
-        - Cryptography/蒙哥马利约分算法: content/cryptography/montgomery.md
-        - Cryptography/默克尔树: content/cryptography/merkle_tree.md
-        - Cryptography/抗量子 Lamport 签名: content/cryptography/lamport.md
-        - Cryptography/抗量子 W-OTS 签名: content/cryptography/winternitz.md
-        - Cryptography/RC4: content/cryptography/rc4.md
-        - Cryptography/谷歌两步验证算法实现: content/cryptography/2fa.md
-        - Cryptography/算法心得笔记: content/cryptography/hackers_delight.md
+    - Cryptography/Kerckhoffs 原则: content/cryptography/kerckhoffs_principle.md
+    - Cryptography/分组加密操作模式: content/cryptography/encryption_mode.md
+    - Cryptography/椭圆曲线: content/cryptography/ecc.md
+    - Cryptography/比特币地址生成详细步骤: content/cryptography/bitcoin_address_calculate.md
+    - Cryptography/椭圆曲线 ECDSA 签名与验签: content/cryptography/ecdsa.md
+    - Cryptography/椭圆曲线 ECDSA 签名的错误用法: content/cryptography/ecdsa_ps3_hack.md
+    - Cryptography/椭圆曲线空间扩展之 Jacobian: content/cryptography/ecc_jacobian.md
+    - Cryptography/椭圆曲线双线性配对: content/cryptography/ecc_pairing.md
+    - Cryptography/椭圆曲线 Schnorr 签名: content/cryptography/schnorr.md
+    - Cryptography/椭圆曲线 Ed25519 + Eddsa 签名: content/cryptography/ed25519.md
+    - Cryptography/多项式运算: content/cryptography/polynomial_math.md
+    - Cryptography/KZG 多项式承诺: content/cryptography/kzg.md
+    - Cryptography/蒙哥马利约分算法: content/cryptography/montgomery.md
+    - Cryptography/默克尔树: content/cryptography/merkle_tree.md
+    - Cryptography/抗量子 Lamport 签名: content/cryptography/lamport.md
+    - Cryptography/抗量子 W-OTS 签名: content/cryptography/winternitz.md
+    - Cryptography/RC4: content/cryptography/rc4.md
+    - Cryptography/谷歌两步验证算法实现: content/cryptography/2fa.md
+    - Cryptography/算法心得笔记: content/cryptography/hackers_delight.md
 - 人工智能:
-        - 人工智能/Neural Style Transfer: content/ai/neural_style_transfer.md
-        - 人工智能/Dlib: content/ai/dlib.md
-        - 人工智能/Stable Diffusion 安装和简单使用: content/ai/stable_diffusion.md
-        - 人工智能/Stable Diffusion 面容修复: content/ai/stable_diffusion_face_restoration.md
-        - 人工智能/Stable Diffusion API: content/ai/stable_diffusion_api.md
-        - 人工智能/Stable Diffusion 超分辨率放大: content/ai/stable_diffusion_upscale.md
-        - 人工智能/Stable Diffusion 真人照片转动漫风格: content/ai/stable_diffusion_r2a.md
-        - 人工智能/Stable Diffusion 镜头控制: content/ai/stable_diffusion_lens.md
-        - 人工智能/Audiocraft 文字生成音乐: content/ai/audiocraft.md
-        - 人工智能/OLLAMA: content/ai/ollama.md
-        - 人工智能/OLLAMA 翻译工具: content/ai/ollama_translator.md
+    - 人工智能/Neural Style Transfer: content/ai/neural_style_transfer.md
+    - 人工智能/Dlib: content/ai/dlib.md
+    - 人工智能/Stable Diffusion 安装和简单使用: content/ai/stable_diffusion.md
+    - 人工智能/Stable Diffusion 面容修复: content/ai/stable_diffusion_face_restoration.md
+    - 人工智能/Stable Diffusion API: content/ai/stable_diffusion_api.md
+    - 人工智能/Stable Diffusion 超分辨率放大: content/ai/stable_diffusion_upscale.md
+    - 人工智能/Stable Diffusion 真人照片转动漫风格: content/ai/stable_diffusion_r2a.md
+    - 人工智能/Stable Diffusion 镜头控制: content/ai/stable_diffusion_lens.md
+    - 人工智能/Audiocraft 文字生成音乐: content/ai/audiocraft.md
+    - 人工智能/OLLAMA: content/ai/ollama.md
+    - 人工智能/OLLAMA 翻译工具: content/ai/ollama_translator.md
 - CKB:
-        - CKB/Neuron 钱包: content/ckb/neuron.md
-        - CKB/开发网络: content/ckb/dev.md
-        - CKB/RISC-V 工具链安装: content/ckb/riscv_toolchains.md
-        - CKB/部署脚本: content/ckb/deploy.md
-        - CKB/DAO: content/ckb/dao.md
-        - CKB/CKB-VM B 扩展指令集: content/ckb/ckb_vm_b_extension.md
-        - CKB/CKB-VM 宏指令融合技术(MOP): content/ckb/ckb_vm_mop.md
-        - CKB/CKB-VM 模糊测试实践: content/ckb/ckb_vm_fuzzing.md
-        - CKB/CKB-VM Zero Cost Abstractions: content/ckb/ckb_vm_zero_cost_abstractions.md
-        - CKB/MiniTS 以 LLVM 为后端的 TypeScript 静态编译器: content/ckb/minits.md
-        - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(中文): content/ckb/wasc_cn.md
-        - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(英文): content/ckb/wasc_en.md
-        - CKB/RISC-V 在区块链智能及云原生中的应用, 机遇与挑战: content/ckb/riscv_in_blockchain.md
-        - CKB/EVM 简介: content/ckb/evm.md
-        - CKB/将 LLVM compiler-rt builtins 编译为 RISC-V 静态库: content/ckb/llvm_compiler_rt_builtins.md
-        - CKB/使用 Rust 编写 RISC-V 程序: content/ckb/rust_riscv_bytes.md
-        - CKB/使用 printf 函数进行代码调试: content/ckb/printf.md
-        - CKB/以太坊 RPC 接口使用: content/ckb/eth_rpc.md
-        - CKB/Pyckb 简介: content/ckb/pyckb.md
-        - CKB/Spawn, a new cross script calling method: content/ckb/spawn.md
+    - CKB/Neuron 钱包: content/ckb/neuron.md
+    - CKB/开发网络: content/ckb/dev.md
+    - CKB/RISC-V 工具链安装: content/ckb/riscv_toolchains.md
+    - CKB/部署脚本: content/ckb/deploy.md
+    - CKB/DAO: content/ckb/dao.md
+    - CKB/CKB-VM B 扩展指令集: content/ckb/ckb_vm_b_extension.md
+    - CKB/CKB-VM 宏指令融合技术(MOP): content/ckb/ckb_vm_mop.md
+    - CKB/CKB-VM 模糊测试实践: content/ckb/ckb_vm_fuzzing.md
+    - CKB/CKB-VM Zero Cost Abstractions: content/ckb/ckb_vm_zero_cost_abstractions.md
+    - CKB/MiniTS 以 LLVM 为后端的 TypeScript 静态编译器: content/ckb/minits.md
+    - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(中文): content/ckb/wasc_cn.md
+    - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(英文): content/ckb/wasc_en.md
+    - CKB/RISC-V 在区块链智能及云原生中的应用, 机遇与挑战: content/ckb/riscv_in_blockchain.md
+    - CKB/EVM 简介: content/ckb/evm.md
+    - CKB/将 LLVM compiler-rt builtins 编译为 RISC-V 静态库: content/ckb/llvm_compiler_rt_builtins.md
+    - CKB/使用 Rust 编写 RISC-V 程序: content/ckb/rust_riscv_bytes.md
+    - CKB/使用 printf 函数进行代码调试: content/ckb/printf.md
+    - CKB/以太坊 RPC 接口使用: content/ckb/eth_rpc.md
+    - CKB/Pyckb 简介: content/ckb/pyckb.md
+    - CKB/Spawn, a new cross script calling method: content/ckb/spawn.md
 - Python:
-        - Python/f-strings: content/python/f_strings.md
-        - Python/Windows 编程: content/python/windows.md
-        - Python/Pypi: content/python/pypi.md
-        - Python/Matplotlib: content/python/matplotlib.md
-        - Python/使用 requests 下载显示进度: content/python/requests_progress.md
-        - Python/霍夫曼编码: content/python/huffman.md
+    - Python/f-strings: content/python/f_strings.md
+    - Python/Windows 编程: content/python/windows.md
+    - Python/Pypi: content/python/pypi.md
+    - Python/Matplotlib: content/python/matplotlib.md
+    - Python/使用 requests 下载显示进度: content/python/requests_progress.md
+    - Python/霍夫曼编码: content/python/huffman.md
 - Go:
-        - Go/按行读取文件: content/go/read_line.md
-        - Go/Socket 编程: content/go/socket.md
-        - Go/Socket 假如服务端不调用 Accept: content/go/socket_not_accept.md
-        - Go/TLS: content/go/tls.md
-        - Go/DNS over TLS: content/go/dot.md
-        - Go/DNS over HTTPS: content/go/doh.md
-        - Go/目录监听: content/go/fswatch.md
-        - Go/Cgo: content/go/cgo.md
-        - Go/令牌桶算法限流: content/go/token_bucket.md
-        - Go/时间的终结: content/go/end_of_time.md
-        - Go/Github 用户名可用性并发检测: content/go/github_signup_name.md
+    - Go/按行读取文件: content/go/read_line.md
+    - Go/Socket 编程: content/go/socket.md
+    - Go/Socket 假如服务端不调用 Accept: content/go/socket_not_accept.md
+    - Go/TLS: content/go/tls.md
+    - Go/DNS over TLS: content/go/dot.md
+    - Go/DNS over HTTPS: content/go/doh.md
+    - Go/目录监听: content/go/fswatch.md
+    - Go/Cgo: content/go/cgo.md
+    - Go/令牌桶算法限流: content/go/token_bucket.md
+    - Go/时间的终结: content/go/end_of_time.md
+    - Go/Github 用户名可用性并发检测: content/go/github_signup_name.md
 - AHK:
-        - AHK/安装和使用: content/ahk/overview.md
-        - AHK/在一个热键上开启或关闭: content/ahk/toggle.md
+    - AHK/安装和使用: content/ahk/overview.md
+    - AHK/在一个热键上开启或关闭: content/ahk/toggle.md
 - 中华一番:
-        - 中华一番/扇贝炒鸡蛋: content/cooking/scrambled_eggs_with_scallops.md
-        - 中华一番/可乐鸡翅: content/cooking/cola_chicken_wings.md
-        - 中华一番/西红柿炒鸡蛋: content/cooking/tomato_scrambled_eggs.md
-        - 中华一番/清蒸大闸蟹配酱油醋: content/cooking/hairy_crab.md
-        - 中华一番/糖醋山药: content/cooking/sweet_and_sour_yam.md
-        - 中华一番/蒜蓉帝王蟹: content/cooking/paralithodes_camtschaticus.md
+    - 中华一番/扇贝炒鸡蛋: content/cooking/scrambled_eggs_with_scallops.md
+    - 中华一番/可乐鸡翅: content/cooking/cola_chicken_wings.md
+    - 中华一番/西红柿炒鸡蛋: content/cooking/tomato_scrambled_eggs.md
+    - 中华一番/清蒸大闸蟹配酱油醋: content/cooking/hairy_crab.md
+    - 中华一番/糖醋山药: content/cooking/sweet_and_sour_yam.md
+    - 中华一番/蒜蓉帝王蟹: content/cooking/paralithodes_camtschaticus.md
 - 杂项:
-        - 杂项/康威生命游戏: content/misc/game_of_life.md
-        - 杂项/神的存在性证明: content/misc/proof_of_god_existence.md
-        - 杂项/为什么中本聪不给比特币设计最终性: content/misc/bitcoin_finality.md
-        - 杂项/个体户老板们的创业指南: content/misc/self_employed_business.md
-        - 杂项/云服务器环境下使用 QEMU 安装和使用虚拟机: content/misc/qemu.md
-        - 杂项/2018 年刑侦科推理试题解法: content/misc/criminal_investigation_2018.md
-        - 杂项/Chatgpt 咒语: content/misc/chatgpt.md
-        - 杂项/常用数学符号输入: content/misc/mathematics_symbol.md
+    - 杂项/康威生命游戏: content/misc/game_of_life.md
+    - 杂项/神的存在性证明: content/misc/proof_of_god_existence.md
+    - 杂项/为什么中本聪不给比特币设计最终性: content/misc/bitcoin_finality.md
+    - 杂项/个体户老板们的创业指南: content/misc/self_employed_business.md
+    - 杂项/云服务器环境下使用 QEMU 安装和使用虚拟机: content/misc/qemu.md
+    - 杂项/2018 年刑侦科推理试题解法: content/misc/criminal_investigation_2018.md
+    - 杂项/Chatgpt 咒语: content/misc/chatgpt.md
+    - 杂项/常用数学符号输入: content/misc/mathematics_symbol.md
 - 竹书纪年:
-        - Y2019: content/diary/2019.md
-        - Y2020: content/diary/2020.md
-        - Y2021: content/diary/2021.md
-        - Y2022: content/diary/2022.md
-        - Y2023: content/diary/2023.md
-        - Y2024: content/diary/2024.md
-        - Y2025: content/diary/2025.md
+    - Y2019: content/diary/2019.md
+    - Y2020: content/diary/2020.md
+    - Y2021: content/diary/2021.md
+    - Y2022: content/diary/2022.md
+    - Y2023: content/diary/2023.md
+    - Y2024: content/diary/2024.md
+    - Y2025: content/diary/2025.md
