@@ -5,6 +5,7 @@ import subprocess
 import tempfile
 
 import PIL.Image
+import lib.gool
 
 
 def make():
@@ -23,9 +24,12 @@ def make():
 
 def mini():
     if shutil.which('js-beautify') is None:
+        print('main: mini skipped, js-beautify not found')
         return
+    grun = lib.gool.cpu()
     for html in glob.glob('site/**/*.html', recursive=True):
-        subprocess.run(f'js-beautify -r --no-preserve-newlines {html}', shell=True)
+        grun.call(subprocess.run, f'js-beautify -r --no-preserve-newlines {html}', shell=True)
+    grun.wait()
 
 
 def exam_imgs_unused():
