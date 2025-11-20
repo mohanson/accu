@@ -24,7 +24,6 @@ def make():
 
 def mini():
     if shutil.which('js-beautify') is None:
-        print('main: mini skipped, js-beautify not found')
         return
     grun = lib.gool.cpu()
     for html in glob.glob('site/**/*.html', recursive=True):
@@ -57,6 +56,7 @@ def exam_imgs_format():
     for e in imgs:
         i = PIL.Image.open(e)
         assert i.format in ['JPEG', 'GIF'], f'format {e} {i.format}'
+        i.close()
 
 
 def exam_imgs_size():
@@ -64,6 +64,7 @@ def exam_imgs_size():
     for e in imgs:
         i = PIL.Image.open(e)
         assert i.size[0] == 480 and i.size[1] % 2 == 0, f'imsize {e} {i.size[0]}x{i.size[1]}'
+        i.close()
 
 
 def exam_link(name: str):
