@@ -1,4 +1,4 @@
-# CKB/使用 Rust 编写 RISC-V 程序
+# CKB/Rust 裸金属编程
 
 我们将在本文中验证是否能用 Rust 编写一个 RISC-V 程序. 本文的目的是探索有关 Rust 交叉编译的功能, 并在编译 Rust 程序时为 RISC-V 提供确切的步骤和配置.
 

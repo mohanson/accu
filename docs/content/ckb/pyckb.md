@@ -1,4 +1,4 @@
-# CKB/Pyckb 简介
+# CKB/Python 客户端 Pyckb 简介
 
 [Pyckb](https://github.com/mohanson/pyckb) 是一个用于与 CKB 区块链交互的 Python 工具库. 这个项目的目的是为了提供访问 CKB 区块链的能力, 以进行脚本部署, 交易创建, 数据查询等操作. Pyckb 具有我个人十分明显的代码编写风格, 具体而言, 它包含以下两点:
 

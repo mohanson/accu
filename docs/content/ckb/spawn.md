@@ -1,4 +1,4 @@
-# CKB/Spawn: a new cross script calling method
+# CKB/CKB-VM Spawn 系统调用
 
 Hey everyone! Today, I'd like to introduce some exciting new features in ckb script development. One of these features is spawn, which was added as part of the ckb meepo hard fork. The meepo hard fork introduced several interesting changes, and spawn is one of the key additions.
 

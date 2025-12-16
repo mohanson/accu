@@ -1,4 +1,4 @@
-# CKB/CKB-VM Zero Cost Abstractions
+# CKB/CKB-VM 零成本抽象
 
 Rust 的零成本抽象是许多 Rust 使用者津津乐道的话题, 借助 Rust 提供的各种工具, 例如生命周期, 引用, 借用或者 Trait 工具, 它让我们可以不用费太多的努力就可以写出优秀的代码. 零成本抽象这个概念最早来自 C++, 是由 C++ 创始人 Bjarne Stroustrup 定义:
 

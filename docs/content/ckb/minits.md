@@ -1,4 +1,4 @@
-# CKB/MiniTS: 以 LLVM 为后端的 TypeScript 静态编译器
+# CKB/MiniTS 之以 LLVM 为后端的 TypeScript 静态编译器
 
 - 时间: 2019-11-03
 - 地点: 2019 中国开源年会(COSCon'19), 华东师范大学

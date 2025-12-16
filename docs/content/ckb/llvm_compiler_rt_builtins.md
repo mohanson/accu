@@ -24,7 +24,7 @@ $ git clone https://github.com/llvm/llvm-project --branch release/16.x --depth=1
 $ mkdir build-compiler-rt
 $ cd build-compiler-rt
 
-$ FLAGS="--target=riscv64-unknown-elf -march=rv64imac_zba_zbb_zbc_zbs -mabi=lp64"
+$ FLAGS="--target=riscv64-unknown-elf -march=rv64imac -mabi=lp64"
 $ cmake ../compiler-rt/lib/builtins \
     -DCMAKE_C_COMPILER=/usr/bin/clang-16 \
     -DCMAKE_AR=/usr/bin/llvm-ar-16 \

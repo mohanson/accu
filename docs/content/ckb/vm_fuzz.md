@@ -1,4 +1,4 @@
-# CKB/CKB-VM 模糊测试实践
+# CKB/CKB-VM 模糊测试
 
 ## 引言
 
