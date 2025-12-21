@@ -17,10 +17,14 @@
 
 **语言**
 
-本书提供中文版和英文版. 在连载期间, 英文版进度将略微落后于中文版.
+本书提供中文和英文版. 您可以根据自己的喜好选择在线阅读或者离线下载.
 
-- [中文](http://accu.cc/content/solana/foreword/)
-- [英文](https://github.com/mohanson/pxsol/tree/master/doc)
+- [English - Markdown](https://github.com/mohanson/pxsol/tree/master/doc/en/markdown)
+- [English - PDF](https://github.com/mohanson/pxsol/releases/download/v0.5.6/pxsol-en.pdf)
+- [English - Web](https://pxsol.vercel.app/)
+- [中文 - Markdown](https://github.com/mohanson/pxsol/tree/master/doc/zh/markdown)
+- [中文 - PDF](https://github.com/mohanson/pxsol/releases/download/v0.5.6/pxsol-zh.pdf)
+- [中文 - Web](http://accu.cc/content/solana/foreword/)
 
 **小额赞助**
 
