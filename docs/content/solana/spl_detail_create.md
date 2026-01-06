@@ -23,7 +23,7 @@ def spl_create(self, name: str, symbol: str, uri: str, decimals: int) -> pxsol.c
     r0.data = pxsol.program.System.create_account(mint_lamports, mint_size, pxsol.program.Token.pubkey)
     r1 = pxsol.core.Requisition(pxsol.program.Token.pubkey, [], bytearray())
     r1.account.append(pxsol.core.AccountMeta(mint_pubkey, 1))
-    r1.data = pxsol.program.Token.metadata_pointer_extension_initialize(self.pubkey, mint_pubkey)
+    r1.data = pxsol.program.TokenExtensionMetadataPointer.initialize(self.pubkey, mint_pubkey)
     r2 = pxsol.core.Requisition(pxsol.program.Token.pubkey, [], bytearray())
     r2.account.append(pxsol.core.AccountMeta(mint_pubkey, 1))
     r2.account.append(pxsol.core.AccountMeta(pxsol.program.SysvarRent.pubkey, 0))
@@ -62,7 +62,7 @@ r0.data = pxsol.program.System.create_account(mint_lamports, mint_size, pxsol.pr
 ```py
 r1 = pxsol.core.Requisition(pxsol.program.Token.pubkey, [], bytearray())
 r1.account.append(pxsol.core.AccountMeta(mint_pubkey, 1))
-r1.data = pxsol.program.Token.metadata_pointer_extension_initialize(self.pubkey, mint_pubkey)
+r1.data = pxsol.program.TokenExtensionMetadataPointer.initialize(self.pubkey, mint_pubkey)
 ```
 
 上述代码启用 token-2022 的扩展字段: metadata pointer. 这是 token-2022 的一个特性, 允许你在铸造账户上挂载额外的元数据结构. 在稍后的指令中, 我们将实际去挂载数据, 该指令当前仅做申明使用. 除此扩展之外, token-2022 实际上还支持另外几十个不同的扩展, 您可以在[此页面](https://spl.solana.com/token-2022/extensions)了解更多.
