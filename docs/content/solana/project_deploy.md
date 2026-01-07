@@ -9,12 +9,13 @@ import pxsol
 pxsol.config.current = pxsol.config.mainnet
 
 you = pxsol.wallet.Wallet(pxsol.core.PriKey.base58_decode('Put your private key here'))
-spl = you.spl_create(
-    'PXSOL',
-    'PXS',
-    'https://raw.githubusercontent.com/mohanson/pxsol/refs/heads/master/res/pxs.json',
-    9,
-)
+spl = you.spl_create(9, {
+    'metadata': {
+        'name': 'PXSOL',
+        'symbol': 'PXS',
+        'uri': 'https://raw.githubusercontent.com/mohanson/pxsol/refs/heads/master/res/pxs.json',
+    }
+})
 print(spl) # 6B1ztFd9wSm3J5zD5vmMNEKg2r85M41wZMUW7wXwvEPH
 ```
 
