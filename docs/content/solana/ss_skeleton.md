@@ -24,7 +24,7 @@ crate-type = ["cdylib", "lib"]
 
 这个是告诉 cargo 我们要生成哪几种类型的 crate.
 
-其中 `cdylib` 表示编译为一个 c 兼容的动态库. Solana 要求合约以 cdylib 形式编译为 `.so` 文件, 才能部署到链上. 这个 `.so` 文件会通过 `cargo build-bpf` 生成.
+其中 `cdylib` 表示编译为一个 c 兼容的动态库. Solana 要求合约以 cdylib 形式编译为 `.so` 文件, 才能部署到链上. 这个 `.so` 文件会通过 `cargo build-sbf` 生成.
 
 另外 `lib` 表示我们还希望编译成普通的 rust 库, 即 `.rlib`. 这有助于在本地测试时, 把合约逻辑当作普通 rust 模块来调用, 也方便写单元测试或集成测试.
 
