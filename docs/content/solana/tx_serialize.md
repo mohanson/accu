@@ -75,7 +75,7 @@ Solana 序列化算法中采用的变长整数编码称作 compact-u16. 该算�
 ```py
 import pxsol
 
-assert pxsol.core.compact_u16_encode(5) == bytearray([0x05])
+assert pxsol.compact_u16.encode(5) == bytearray([0x05])
 ```
 
 - 128 到 16383(0x3fff)的值, 需要 2 个字节. 第一个字节的最高位设为 1, 表示有后续字节; 低 7 位存储数值的低 7 位. 第二个字节的最高位设为 0, 表示结束; 低 7 位存储数值的剩余部分.
@@ -87,7 +87,7 @@ assert pxsol.core.compact_u16_encode(5) == bytearray([0x05])
 ```py
 import pxsol
 
-assert pxsol.core.compact_u16_encode(132) == bytearray([0x84, 0x01])
+assert pxsol.compact_u16.encode(132) == bytearray([0x84, 0x01])
 ```
 
 - 大于 16383 的值, 需要 3 个字节. 前两个字节的延续位都设为 1, 分别存储低 14 位. 第三个字节的延续位设为 0, 存储剩余部分.
@@ -99,7 +99,7 @@ assert pxsol.core.compact_u16_encode(132) == bytearray([0x84, 0x01])
 ```py
 import pxsol
 
-assert pxsol.core.compact_u16_encode(65535) == bytearray([0xff, 0xff, 0x03])
+assert pxsol.compact_u16.encode(65535) == bytearray([0xff, 0xff, 0x03])
 ```
 
 在 solana 中, 交易内部的数据通常较小, 长度一般会在 128 以内. 使用 compact-u16, 这些值可以用单个字节表示, 而不是固定使用 2 个字节, 从而减少传输和存储成本.
