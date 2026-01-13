@@ -36,7 +36,7 @@ crate-type = ["cdylib", "lib"]
 
 ```toml
 [dependencies]
-solana-program = "1.18.0"
+solana-program = "2"
 ```
 
 ## 项目目录结构参考
