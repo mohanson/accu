@@ -95,7 +95,7 @@ user = pxsol.wallet.Wallet(pxsol.core.PriKey.base58_decode('Put your private key
 pubkey_mint = pxsol.core.PubKey.base58_decode('6B1ztFd9wSm3J5zD5vmMNEKg2r85M41wZMUW7wXwvEPH')
 pubkey_mana = pxsol.core.PubKey.base58_decode('HgatfFyGw2bLJeTy9HkVd4ESD6FkKu4TqMYgALsWZnE6')
 pubkey_mana_seed = bytearray([])
-pubkey_mana_auth = pubkey_mana.derive_pda(pubkey_mana_seed)
+pubkey_mana_auth = pubkey_mana.derive_pda(pubkey_mana_seed)[0]
 user.spl_transfer(pubkey_mint, pubkey_mana_auth, 90000000 * 10**9)
 ```
 

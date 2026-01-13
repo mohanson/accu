@@ -42,7 +42,7 @@ import pxsol
 def mint(user: pxsol.wallet.Wallet, amount: int) -> None:
     assert user.pubkey.base58() == '6ASf5EcmmEHTgDJ4X4ZT5vT6iHVJBXPg5AN5YoTCpGWt' # Is ada?
     prog_pubkey = pxsol.core.PubKey.base58_decode('9SP6msRytNxeHXvW38xHxjsBHspqZERDTMh5Wi8xh16Q')
-    data_pubkey = prog_pubkey.derive_pda(user.pubkey.p)
+    data_pubkey = prog_pubkey.derive_pda(user.pubkey.p)[0]
     rq = pxsol.core.Requisition(prog_pubkey, [], bytearray())
     rq.account.append(pxsol.core.AccountMeta(user.pubkey, 3))
     rq.account.append(pxsol.core.AccountMeta(data_pubkey, 1))
@@ -74,7 +74,7 @@ import pxsol
 
 def balance(user: pxsol.core.PubKey) -> int:
     prog_pubkey = pxsol.core.PubKey.base58_decode('9SP6msRytNxeHXvW38xHxjsBHspqZERDTMh5Wi8xh16Q')
-    data_pubkey = prog_pubkey.derive_pda(user.p)
+    data_pubkey = prog_pubkey.derive_pda(user.p)[0]
     info = pxsol.rpc.get_account_info(data_pubkey.base58(), {})
     return int.from_bytes(base64.b64decode(info['data'][0]))
 
@@ -94,16 +94,16 @@ import pxsol
 
 def balance(user: pxsol.core.PubKey) -> int:
     prog_pubkey = pxsol.core.PubKey.base58_decode('9SP6msRytNxeHXvW38xHxjsBHspqZERDTMh5Wi8xh16Q')
-    data_pubkey = prog_pubkey.derive_pda(user.p)
+    data_pubkey = prog_pubkey.derive_pda(user.p)[0]
     info = pxsol.rpc.get_account_info(data_pubkey.base58(), {})
     return int.from_bytes(base64.b64decode(info['data'][0]))
 
 
 def transfer(user: pxsol.wallet.Wallet, into: pxsol.core.PubKey, amount: int) -> None:
     prog_pubkey = pxsol.core.PubKey.base58_decode('9SP6msRytNxeHXvW38xHxjsBHspqZERDTMh5Wi8xh16Q')
-    upda_pubkey = prog_pubkey.derive_pda(user.pubkey.p)
+    upda_pubkey = prog_pubkey.derive_pda(user.pubkey.p)[0]
     into_pubkey = into
-    ipda_pubkey = prog_pubkey.derive_pda(into_pubkey.p)
+    ipda_pubkey = prog_pubkey.derive_pda(into_pubkey.p)[0]
     rq = pxsol.core.Requisition(prog_pubkey, [], bytearray())
     rq.account.append(pxsol.core.AccountMeta(user.pubkey, 3))
     rq.account.append(pxsol.core.AccountMeta(upda_pubkey, 1))

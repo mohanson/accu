@@ -106,7 +106,7 @@ args = parser.parse_args()
 
 user = pxsol.wallet.Wallet(pxsol.core.PriKey.base58_decode(args.prikey))
 prog_pubkey = pxsol.core.PubKey.base58_decode('GS5XPyzsXRec4sQzxJSpeDYHaTnZyYt5BtpeNXYuH1SM')
-data_pubkey = prog_pubkey.derive_pda(b'data' + user.pubkey.p)
+data_pubkey = prog_pubkey.derive_pda(b'data' + user.pubkey.p)[0]
 
 
 def init():

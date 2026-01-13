@@ -102,7 +102,7 @@ import pxsol
 
 ada = pxsol.wallet.Wallet(pxsol.core.PriKey.int_decode(0x01))
 thb = pxsol.core.PubKey.base58_decode('F782pXBcfvHvb8eJfrDtyD7MBtQDfsrihSRjvzwuVoJU')
-pda = thb.derive_pda(ada.pubkey.p)
+pda = thb.derive_pda(ada.pubkey.p)[0]
 print(pda) # HCPe787nPq7TfjeFivP9ZvZwejTAq1PGGzch93qUYeC3
 ```
 
@@ -117,7 +117,7 @@ import pxsol
 
 program = pxsol.core.PubKey.base58_decode('3EwjHuke6N6CfWPQdbRayrMUANyEkbondw96n5HJpYja')
 program_data = pxsol.core.PubKey.hex_decode('aa9e796c79af00804caa1acdfca6ba5f17d346a5c4f96db97f9e969fb7d9dc4e')
-assert pxsol.program.LoaderUpgradeable.pubkey.derive_pda(program.p) == program_data
+assert pxsol.program.LoaderUpgradeable.pubkey.derive_pda(program.p)[0] == program_data
 ```
 
 有了 pda, 链上生活真是舒服多了!

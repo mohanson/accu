@@ -15,7 +15,7 @@ import pxsol
 
 ada = pxsol.wallet.Wallet(pxsol.core.PriKey.int_decode(0x01))
 thb = pxsol.core.PubKey.base58_decode('F782pXBcfvHvb8eJfrDtyD7MBtQDfsrihSRjvzwuVoJU')
-pda = thb.derive_pda(ada.pubkey.p)
+pda = thb.derive_pda(ada.pubkey.p)[0]
 print(pda) # HCPe787nPq7TfjeFivP9ZvZwejTAq1PGGzch93qUYeC3
 ```
 
@@ -45,7 +45,7 @@ class PubKey:
         assert len(p) == 32
         self.p = p
 
-    def derive_pda(self, seed: bytearray) -> typing.Self:
+    def derive_pda(self, seed: bytearray) -> typing.Tuple[PubKey, int]:
         # Program Derived Address (PDA). PDAs are addresses derived deterministically using a combination of
         # user-defined seeds, a bump seed, and a program's ID.
         # See: https://solana.com/docs/core/pda
@@ -59,7 +59,7 @@ class PubKey:
             hash = bytearray(hashlib.sha256(data).digest())
             # The pda should fall off the ed25519 curve.
             if not pxsol.eddsa.pt_exists(hash):
-                return PubKey(hash)
+                return PubKey(hash), i
         raise Exception
 ```
 

@@ -17,7 +17,7 @@ ada = pxsol.wallet.Wallet(pxsol.core.PriKey.int_decode(0x01))
 
 def save(user: pxsol.wallet.Wallet, data: bytearray) -> None:
     prog_pubkey = pxsol.core.PubKey.base58_decode('DVapU9kvtjzFdH3sRd3VDCXjZVkwBR6Cxosx36A5sK5E')
-    data_pubkey = prog_pubkey.derive_pda(user.pubkey.p)
+    data_pubkey = prog_pubkey.derive_pda(user.pubkey.p)[0]
     rq = pxsol.core.Requisition(prog_pubkey, [], bytearray())
     rq.account.append(pxsol.core.AccountMeta(user.pubkey, 3))
     rq.account.append(pxsol.core.AccountMeta(data_pubkey, 1))
@@ -61,7 +61,7 @@ ada = pxsol.wallet.Wallet(pxsol.core.PriKey.int_decode(0x01))
 
 def load(user: pxsol.wallet.Wallet) -> bytearray:
     prog_pubkey = pxsol.core.PubKey.base58_decode('DVapU9kvtjzFdH3sRd3VDCXjZVkwBR6Cxosx36A5sK5E')
-    data_pubkey = prog_pubkey.derive_pda(user.pubkey.p)
+    data_pubkey = prog_pubkey.derive_pda(user.pubkey.p)[0]
     info = pxsol.rpc.get_account_info(data_pubkey.base58(), {})
     return base64.b64decode(info['data'][0])
 
@@ -85,7 +85,7 @@ ada = pxsol.wallet.Wallet(pxsol.core.PriKey.int_decode(0x01))
 
 def save(user: pxsol.wallet.Wallet, data: bytearray) -> None:
     prog_pubkey = pxsol.core.PubKey.base58_decode('DVapU9kvtjzFdH3sRd3VDCXjZVkwBR6Cxosx36A5sK5E')
-    data_pubkey = prog_pubkey.derive_pda(user.pubkey.p)
+    data_pubkey = prog_pubkey.derive_pda(user.pubkey.p)[0]
     rq = pxsol.core.Requisition(prog_pubkey, [], bytearray())
     rq.account.append(pxsol.core.AccountMeta(user.pubkey, 3))
     rq.account.append(pxsol.core.AccountMeta(data_pubkey, 1))
@@ -104,7 +104,7 @@ def save(user: pxsol.wallet.Wallet, data: bytearray) -> None:
 
 def load(user: pxsol.wallet.Wallet) -> bytearray:
     prog_pubkey = pxsol.core.PubKey.base58_decode('DVapU9kvtjzFdH3sRd3VDCXjZVkwBR6Cxosx36A5sK5E')
-    data_pubkey = prog_pubkey.derive_pda(user.pubkey.p)
+    data_pubkey = prog_pubkey.derive_pda(user.pubkey.p)[0]
     info = pxsol.rpc.get_account_info(data_pubkey.base58(), {})
     return base64.b64decode(info['data'][0])
 

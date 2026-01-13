@@ -20,7 +20,7 @@ user = pxsol.wallet.Wallet(pxsol.core.PriKey.int_decode(int(args.prikey, 0)))
 pubkey_mint = pxsol.core.PubKey.base58_decode('6B1ztFd9wSm3J5zD5vmMNEKg2r85M41wZMUW7wXwvEPH')
 pubkey_mana = pxsol.core.PubKey.base58_decode('HgatfFyGw2bLJeTy9HkVd4ESD6FkKu4TqMYgALsWZnE6')
 pubkey_mana_seed = bytearray([])
-pubkey_mana_auth = pubkey_mana.derive_pda(pubkey_mana_seed)
+pubkey_mana_auth = pubkey_mana.derive_pda(pubkey_mana_seed)[0]
 pubkey_mana_spla = pxsol.wallet.Wallet.view_only(pubkey_mana_auth).spl_account(pubkey_mint)
 rq = pxsol.core.Requisition(pubkey_mana, [], bytearray())
 rq.account.append(pxsol.core.AccountMeta(user.pubkey, 3))
