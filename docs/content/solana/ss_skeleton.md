@@ -94,7 +94,7 @@ $ cargo build-sbf -- -Znext-lockfile-bump
 
 如果一切正常, 你会在 `target/deploy/` 目录下看到 `pxsol_ss.so` 文件, 这就是可以部署到 solana 的程序文件.
 
-注意参数 `-Znext-lockfile-bump` 是一个临时参数, 因为 solana v1.18 依赖于 rustc 1.75, 如果您本地的 rust 版本大于 1.75, 存在一些兼容性问题, 因此需要传入该参数. 当您阅读本书时, 随着版本的更新, 此兼容问题很可能已经修复, 因此您也许可以尝试看看不加入该临时参数. 关于该问题的详细解释, 可以参考该 [github 页面](https://github.com/solana-foundation/anchor/issues/3392).
+注意参数 `-Znext-lockfile-bump` 是一个临时参数, 因为旧的 solana_program 依赖于旧的 rustc, 如果您本地的 rust 版本大于它所期望的, 存在一些兼容性问题, 因此需要传入该参数. 当您阅读本书时, 随着版本的更新, 此兼容问题很可能已经修复, 因此您也许可以尝试看看不加入该临时参数. 关于该问题的详细解释, 可以参考该 [github 页面](https://github.com/solana-foundation/anchor/issues/3392).
 
 ## 小结
 
