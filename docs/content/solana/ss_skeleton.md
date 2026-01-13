@@ -62,7 +62,7 @@ edition = "2021"
 crate-type = ["cdylib", "lib"]
 
 [dependencies]
-solana-program = "1.18"
+solana-program = "2"
 ```
 
 ## 创建 lib.rs 骨架
