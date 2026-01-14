@@ -21,7 +21,10 @@ pub fn process_instruction(
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program sysvar rent
 
     let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(data.len());
-    let bump_seed = solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id).1;
+    let calculated_pda =
+        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
+    assert_eq!(account_data.key, &calculated_pda.0); // Ensure the PDA is correct.
+    let bump_seed = calculated_pda.1;
 
     // Data account is not initialized. Create an account and write data into it.
     if **account_data.try_borrow_lamports().unwrap() == 0 {
