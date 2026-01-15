@@ -121,7 +121,7 @@ def pubkey(m: pabtc.secp256k1.Fr, r: pabtc.secp256k1.Fr, s: pabtc.secp256k1.Fr, 
 
 ## 习题
 
-例: 有一条消息经过哈希处理为, 哈希值为 0x72a963cdfb01bc37cd283106875ff1f07f02bc9ad6121b75c3d17629df128d4e, 请使用私钥 0x01 对其进行签名, 验签以及公钥恢复.
+例: 有一条消息经过哈希处理, 其哈希值为 0x72a963cdfb01bc37cd283106875ff1f07f02bc9ad6121b75c3d17629df128d4e, 请使用私钥 0x01 对其进行签名, 验签以及公钥恢复.
 
 答:
 
