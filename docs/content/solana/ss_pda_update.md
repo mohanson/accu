@@ -6,11 +6,11 @@ Solana 的账户存储需要租金, 数据越长, 租金越贵. 如果数据更�
 
 ## 更新数据账户内容
 
-链上账户可以使用 `.data.borrow_mut()` 来更新内容, 但大小不能变, 所以通常需要重新创建或使用 `.realloc()` 重分配数据账户空间.
+链上账户可以使用 `.data.borrow_mut()` 来更新内容, 但大小不能变, 所以通常需要重新创建或使用 `.resize()` 重分配数据账户空间.
 
 ```rs
 // Realloc space.
-account_data.realloc(data.len(), false)?;
+account_data.resize(data.len())?;
 // Overwrite old data with new data.
 account_data.data.borrow_mut().copy_from_slice(data);
 ```

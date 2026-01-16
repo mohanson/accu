@@ -68,11 +68,16 @@ pub fn process_instruction_mint(
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program system
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program sysvar rent
 
+    // Check accounts permissons.
+    assert!(account_user.is_signer);
+    let account_user_pda_calc =
+        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
+    assert_eq!(account_user_pda.key, &account_user_pda_calc.0);
+
     // Data account is not initialized. Create an account and write data into it.
     if **account_user_pda.try_borrow_lamports().unwrap() == 0 {
         let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(8);
-        let bump_seed =
-            solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id).1;
+        let bump = account_user_pda_calc.1;
         solana_program::program::invoke_signed(
             &solana_program::system_instruction::create_account(
                 account_user.key,
@@ -82,7 +87,7 @@ pub fn process_instruction_mint(
                 program_id,
             ),
             accounts,
-            &[&[&account_user.key.to_bytes(), &[bump_seed]]],
+            &[&[&account_user.key.to_bytes(), &[bump]]],
         )?;
         account_user_pda.data.borrow_mut().copy_from_slice(&u64::MIN.to_be_bytes());
     }
@@ -103,11 +108,19 @@ pub fn process_instruction_transfer(
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program system
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program sysvar rent
 
+    // Check accounts permissons.
+    assert!(account_user.is_signer);
+    let account_user_pda_calc =
+        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
+    assert_eq!(account_user_pda.key, &account_user_pda_calc.0);
+    let account_into_pda_calc =
+        solana_program::pubkey::Pubkey::find_program_address(&[&account_into.key.to_bytes()], program_id);
+    assert_eq!(account_into_pda.key, &account_into_pda_calc.0);
+
     // Data account is not initialized. Create an account and write data into it.
     if **account_into_pda.try_borrow_lamports().unwrap() == 0 {
         let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(8);
-        let bump_seed =
-            solana_program::pubkey::Pubkey::find_program_address(&[&account_into.key.to_bytes()], program_id).1;
+        let bump = account_into_pda_calc.1;
         solana_program::program::invoke_signed(
             &solana_program::system_instruction::create_account(
                 account_user.key,
@@ -117,7 +130,7 @@ pub fn process_instruction_transfer(
                 program_id,
             ),
             accounts,
-            &[&[&account_into.key.to_bytes(), &[bump_seed]]],
+            &[&[&account_into.key.to_bytes(), &[bump]]],
         )?;
         account_into_pda.data.borrow_mut().copy_from_slice(&u64::MIN.to_be_bytes());
     }
@@ -154,9 +167,9 @@ account_user_pda.data.borrow_mut().copy_from_slice(&new.to_be_bytes());
 要注意的是, 转账操作时必须验证发送人的 pda 账户确实属于发送人, 防止让他人扣了您的钱!
 
 ```rs
-let account_need_pda =
-        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id).0;
-assert_eq!(account_user_pda.key, &account_need_pda);
+let account_user_pda_calc =
+    solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
+assert_eq!(account_user_pda.key, &account_user_pda_calc.0);
 ```
 
 Rust 的 `.checked_sub()` 和 `.checked_add()` 有溢出检测, 可以防止你搞个负数变成链上亿万富翁. 转账流程如下:

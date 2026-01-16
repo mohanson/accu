@@ -20,20 +20,18 @@ pub fn process_instruction_mint(
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program system
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program sysvar rent
 
-    // Ensure PDAs are correct.
-    let account_user_pda_expect =
-        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
-    assert_eq!(account_user_pda.key, &account_user_pda_expect.0);
-    // Ensure user signed.
+    // Check accounts permissons.
     assert!(account_user.is_signer);
-
     // Only Ada can mint more Thai Baht.
     assert_eq!(*account_user.key, solana_program::pubkey!("6ASf5EcmmEHTgDJ4X4ZT5vT6iHVJBXPg5AN5YoTCpGWt"));
+    let account_user_pda_calc =
+        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
+    assert_eq!(account_user_pda.key, &account_user_pda_calc.0);
 
     // Data account is not initialized. Create an account and write data into it.
     if **account_user_pda.try_borrow_lamports().unwrap() == 0 {
         let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(8);
-        let bump_seed = account_user_pda_expect.1;
+        let bump = account_user_pda_calc.1;
         solana_program::program::invoke_signed(
             &solana_program::system_instruction::create_account(
                 account_user.key,
@@ -43,7 +41,7 @@ pub fn process_instruction_mint(
                 program_id,
             ),
             accounts,
-            &[&[&account_user.key.to_bytes(), &[bump_seed]]],
+            &[&[&account_user.key.to_bytes(), &[bump]]],
         )?;
         account_user_pda.data.borrow_mut().copy_from_slice(&u64::MIN.to_be_bytes());
     }
@@ -72,20 +70,19 @@ pub fn process_instruction_transfer(
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program system
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program sysvar rent
 
-    // Ensure PDAs are correct.
-    let account_user_pda_expect =
-        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
-    assert_eq!(account_user_pda.key, &account_user_pda_expect.0);
-    let account_into_pda_expect =
-        solana_program::pubkey::Pubkey::find_program_address(&[&account_into.key.to_bytes()], program_id);
-    assert_eq!(account_into_pda.key, &account_into_pda_expect.0);
-    // Ensure user signed.
+    // Check accounts permissons.
     assert!(account_user.is_signer);
+    let account_user_pda_calc =
+        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
+    assert_eq!(account_user_pda.key, &account_user_pda_calc.0);
+    let account_into_pda_calc =
+        solana_program::pubkey::Pubkey::find_program_address(&[&account_into.key.to_bytes()], program_id);
+    assert_eq!(account_into_pda.key, &account_into_pda_calc.0);
 
     // Data account is not initialized. Create an account and write data into it.
     if **account_into_pda.try_borrow_lamports().unwrap() == 0 {
         let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(8);
-        let bump_seed = account_into_pda_expect.1;
+        let bump = account_into_pda_calc.1;
         solana_program::program::invoke_signed(
             &solana_program::system_instruction::create_account(
                 account_user.key,
@@ -95,7 +92,7 @@ pub fn process_instruction_transfer(
                 program_id,
             ),
             accounts,
-            &[&[&account_into.key.to_bytes(), &[bump_seed]]],
+            &[&[&account_into.key.to_bytes(), &[bump]]],
         )?;
         account_into_pda.data.borrow_mut().copy_from_slice(&u64::MIN.to_be_bytes());
     }

@@ -34,6 +34,15 @@ let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Prog
 let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program sysvar rent
 ```
 
+获取账户后必须进行权限和约束检查, 确保账户权限正确无误.
+
+```rs
+assert!(account_user.is_signer);
+let account_data_calc =
+    solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
+assert_eq!(account_data.key, &account_data_calc.0);
+```
+
 ## 计算租赁豁免
 
 Solana 提供了一个函数可以查询系统规定的租赁豁免门槛:
@@ -46,13 +55,12 @@ let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(data.len
 
 ## 派生 PDA 数据账户地址
 
-您需要使用 `solana_program::pubkey::Pubkey::find_program_address` 来获取 pda 账户地址以及其 bump 值. 在本示例中, 我们只需要使用到 bump 的值.
+您需要使用 `solana_program::pubkey::Pubkey::find_program_address` 来获取 pda 账户地址以及其 bump 值.
 
 ```rs
-let calculated_pda =
+let account_data_calc =
     solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
-assert_eq!(account_data.key, &calculated_pda.0); // Ensure the PDA is correct.
-let bump_seed = calculated_pda.1;
+let bump = account_data_calc.1;
 ```
 
 ## 判断 PDA 是否已经存在
@@ -91,7 +99,7 @@ solana_program::program::invoke_signed(
         program_id,
     ),
     accounts,
-    &[&[&account_user.key.to_bytes(), &[bump_seed]]],
+    &[&[&account_user.key.to_bytes(), &[bump]]],
 )?;
 ```
 
@@ -127,11 +135,14 @@ pub fn process_instruction(
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program system
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program sysvar rent
 
-    let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(data.len());
-    let calculated_pda =
+    // Check accounts permissons.
+    assert!(account_user.is_signer);
+    let account_data_calc =
         solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
-    assert_eq!(account_data.key, &calculated_pda.0); // Ensure the PDA is correct.
-    let bump_seed = calculated_pda.1;
+    assert_eq!(account_data.key, &account_data_calc.0);
+
+    let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(data.len());
+    let bump = account_data_calc.1;
 
     // Data account is not initialized. Create an account and write data into it.
     if **account_data.try_borrow_lamports().unwrap() == 0 {
@@ -144,7 +155,7 @@ pub fn process_instruction(
                 program_id,
             ),
             accounts,
-            &[&[&account_user.key.to_bytes(), &[bump_seed]]],
+            &[&[&account_user.key.to_bytes(), &[bump]]],
         )?;
         account_data.data.borrow_mut().copy_from_slice(data);
         return Ok(());
