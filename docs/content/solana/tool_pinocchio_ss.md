@@ -98,6 +98,8 @@ account_data.try_borrow_mut_data().unwrap().copy_from_slice(data);
 我们的迁移工作已经完成, 下面是完整代码.
 
 ```rs
+#![allow(unexpected_cfgs)]
+
 use pinocchio::sysvars::Sysvar;
 
 pinocchio::entrypoint!(process_instruction);
@@ -110,12 +112,13 @@ pub fn process_instruction(
     let account_user = accounts[0];
     let account_data = accounts[1];
 
-    let rent_exemption = pinocchio::sysvars::rent::Rent::get()?.minimum_balance(data.len());
-    let calculated_pda = pinocchio::pubkey::find_program_address(&[&account_user.key()[..]], program_id);
-    assert_eq!(&calculated_pda.0, account_data.key());
+    // Check accounts permissons.
     assert!(account_user.is_signer());
+    let account_data_calc = pinocchio::pubkey::find_program_address(&[&account_user.key()[..]], program_id);
+    assert_eq!(account_data.key(), &account_data_calc.0);
 
-    let bump = &[calculated_pda.1];
+    let rent_exemption = pinocchio::sysvars::rent::Rent::get()?.minimum_balance(data.len());
+    let bump = &[account_data_calc.1];
     let signer_seed = pinocchio::seeds!(account_user.key(), bump);
     let signer = pinocchio::instruction::Signer::from(&signer_seed);
 
