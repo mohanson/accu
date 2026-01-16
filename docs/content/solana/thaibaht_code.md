@@ -20,14 +20,20 @@ pub fn process_instruction_mint(
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program system
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program sysvar rent
 
+    // Ensure PDAs are correct.
+    let account_user_pda_expect =
+        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
+    assert_eq!(account_user_pda.key, &account_user_pda_expect.0);
+    // Ensure user signed.
+    assert!(account_user.is_signer);
+
     // Only Ada can mint more Thai Baht.
     assert_eq!(*account_user.key, solana_program::pubkey!("6ASf5EcmmEHTgDJ4X4ZT5vT6iHVJBXPg5AN5YoTCpGWt"));
 
     // Data account is not initialized. Create an account and write data into it.
     if **account_user_pda.try_borrow_lamports().unwrap() == 0 {
         let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(8);
-        let bump_seed =
-            solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id).1;
+        let bump_seed = account_user_pda_expect.1;
         solana_program::program::invoke_signed(
             &solana_program::system_instruction::create_account(
                 account_user.key,
@@ -66,15 +72,20 @@ pub fn process_instruction_transfer(
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program system
     let _ = solana_program::account_info::next_account_info(accounts_iter)?; // Program sysvar rent
 
-    let account_need_pda =
-        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id).0;
-    assert_eq!(account_user_pda.key, &account_need_pda);
+    // Ensure PDAs are correct.
+    let account_user_pda_expect =
+        solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
+    assert_eq!(account_user_pda.key, &account_user_pda_expect.0);
+    let account_into_pda_expect =
+        solana_program::pubkey::Pubkey::find_program_address(&[&account_into.key.to_bytes()], program_id);
+    assert_eq!(account_into_pda.key, &account_into_pda_expect.0);
+    // Ensure user signed.
+    assert!(account_user.is_signer);
 
     // Data account is not initialized. Create an account and write data into it.
     if **account_into_pda.try_borrow_lamports().unwrap() == 0 {
         let rent_exemption = solana_program::rent::Rent::get()?.minimum_balance(8);
-        let bump_seed =
-            solana_program::pubkey::Pubkey::find_program_address(&[&account_into.key.to_bytes()], program_id).1;
+        let bump_seed = account_into_pda_expect.1;
         solana_program::program::invoke_signed(
             &solana_program::system_instruction::create_account(
                 account_user.key,

@@ -25,6 +25,7 @@ pub fn process_instruction(
         solana_program::pubkey::Pubkey::find_program_address(&[&account_user.key.to_bytes()], program_id);
     assert_eq!(account_data.key, &calculated_pda.0); // Ensure the PDA is correct.
     let bump_seed = calculated_pda.1;
+    assert!(account_user.is_signer);
 
     // Data account is not initialized. Create an account and write data into it.
     if **account_data.try_borrow_lamports().unwrap() == 0 {
