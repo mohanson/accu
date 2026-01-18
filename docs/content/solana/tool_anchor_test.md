@@ -90,6 +90,17 @@ $ anchor test
 
 这条路更贴近协议本身. 我们会亲手排列账户列表, 拼接 8 字节方法 discriminator, 再把 4 字节小端长度与原始字节流接在后头. 它适合跨语言集成, 或在没有 anchor 客户端的环境里验算每一步.
 
+与 account discriminator 不同, 方法 discriminator 是对方法名称做 sha256 哈希后取前 8 字节. 例如 `init` 方法的 discriminator 是 `dc3bcfec6cfa2f64` (十六进制). `update` 方法的 discriminator 是 `dbc858b09e3ffd7f` (十六进制).
+
+```py
+import hashlib
+
+r = hashlib.sha256(b'global:init').digest()[:8]
+print(list(r)) # [220, 59, 207, 236, 108, 250, 47, 100]
+r = hashlib.sha256(b'global:update').digest()[:8]
+print(list(r)) # [219, 200, 88, 176, 158, 63, 253, 127]
+```
+
 代码如下:
 
 ```py
@@ -163,6 +174,7 @@ $ solana-test-validator -l /tmp/solana-ledger
 $ anchor deploy
 # Program Id: GS5XPyzsXRec4sQzxJSpeDYHaTnZyYt5BtpeNXYuH1SM
 
+$ python tests/pxsol-ss-anchor.py init
 $ python tests/pxsol-ss-anchor.py update "The quick brown fox jumps over the lazy dog"
 $ python tests/pxsol-ss-anchor.py load
 # The quick brown fox jumps over the lazy dog
