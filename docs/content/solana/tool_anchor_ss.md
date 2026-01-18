@@ -106,29 +106,19 @@ pub struct Init<'info> {
 pub fn update(ctx: Context<Update>, data: Vec<u8>) -> Result<()> {
     let account_user = &ctx.accounts.user;
     let account_user_pda = &mut ctx.accounts.user_pda;
-    // Authorization: only the stored authority can update.
-    require_keys_eq!(account_user_pda.auth, account_user.key(), PxsolError::Unauthorized);
-    // At this point, Anchor has already reallocated the account according to the `realloc = ...` constraint
-    // (using `new_data.len()`), pulling extra lamports from auth if needed to maintain rent-exemption.
+
+    // Update the data field with the new data.
     account_user_pda.data = data;
+
     // If the account was shrunk, Anchor won't automatically refund excess lamports. Refund any surplus (over the
     // new rent-exempt minimum) back to the user.
     let account_user_pda_info = account_user_pda.to_account_info();
-    let rent = Rent::get()?;
-    let rent_exemption = rent.minimum_balance(account_user_pda_info.data_len());
+    let rent_exemption = Rent::get()?.minimum_balance(account_user_pda_info.data_len());
     let hold = **account_user_pda_info.lamports.borrow();
     if hold > rent_exemption {
         let refund = hold.saturating_sub(rent_exemption);
-        // Transfer lamports from PDA to user using the PDA as signer.
-        let signer_seeds: &[&[u8]] = &[SEED, account_user.key.as_ref(), &[account_user_pda.bump]];
-        let signer = &[signer_seeds];
-        let cpictx = CpiContext::new_with_signer(
-            ctx.accounts.system_program.to_account_info(),
-            system_program::Transfer { from: account_user_pda_info.clone(), to: account_user.to_account_info() },
-            signer,
-        );
-        // It's okay if refund equals current - min_rent; system program enforces balances.
-        system_program::transfer(cpictx, refund)?;
+        **account_user_pda_info.lamports.borrow_mut() = rent_exemption;
+        **account_user.lamports.borrow_mut() = account_user.lamports().checked_add(refund).unwrap();
     }
     Ok(())
 }
