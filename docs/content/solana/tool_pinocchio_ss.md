@@ -98,8 +98,6 @@ account_data.try_borrow_mut_data().unwrap().copy_from_slice(data);
 我们的迁移工作已经完成, 下面是完整代码.
 
 ```rs
-#![allow(unexpected_cfgs)]
-
 use pinocchio::sysvars::Sysvar;
 
 pinocchio::entrypoint!(process_instruction);

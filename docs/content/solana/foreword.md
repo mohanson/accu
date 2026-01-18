@@ -20,10 +20,10 @@
 本书提供中文和英文版. 您可以根据自己的喜好选择在线阅读或者离线下载.
 
 - [English - Markdown](https://github.com/mohanson/pxsol/tree/master/doc/en/markdown)
-- [English - PDF](https://github.com/mohanson/pxsol/releases/download/v0.5.6/pxsol-en.pdf)
+- [English - PDF](https://github.com/mohanson/pxsol/releases/download/v1.0.0/pxsol-en.pdf)
 - [English - Web](https://pxsol.vercel.app/)
 - [中文 - Markdown](https://github.com/mohanson/pxsol/tree/master/doc/zh/markdown)
-- [中文 - PDF](https://github.com/mohanson/pxsol/releases/download/v0.5.6/pxsol-zh.pdf)
+- [中文 - PDF](https://github.com/mohanson/pxsol/releases/download/v1.0.0/pxsol-zh.pdf)
 - [中文 - Web](http://accu.cc/content/solana/foreword/)
 
 **小额赞助**
