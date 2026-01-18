@@ -26,6 +26,22 @@ pub fn process_instruction(
     let account_spl = solana_program::account_info::next_account_info(accounts_iter)?;
     let _ = solana_program::account_info::next_account_info(accounts_iter)?;
 
+    assert!(account_user.is_signer);
+    let account_user_spla_calc = spl_associated_token_account::get_associated_token_address_with_program_id(
+        &account_user.key,
+        &account_mint.key,
+        &spl_token_2022::id(),
+    );
+    assert_eq!(account_user_spla.key, &account_user_spla_calc);
+    let account_mana_auth_calc = solana_program::pubkey::Pubkey::find_program_address(&[&[]], account_mana.key);
+    assert_eq!(account_mana_auth.key, &account_mana_auth_calc.0);
+    let account_mana_spla_calc = spl_associated_token_account::get_associated_token_address_with_program_id(
+        &account_mana_auth.key,
+        &account_mint.key,
+        &spl_token_2022::id(),
+    );
+    assert_eq!(account_mana_spla.key, &account_mana_spla_calc);
+
     solana_program::program::invoke(
         &spl_associated_token_account::instruction::create_associated_token_account_idempotent(
             &account_user.key,
@@ -35,8 +51,6 @@ pub fn process_instruction(
         ),
         accounts,
     )?;
-    let account_seed = &[];
-    let account_bump = solana_program::pubkey::Pubkey::find_program_address(&[account_seed], account_mana.key).1;
     solana_program::program::invoke_signed(
         &spl_token_2022::instruction::transfer_checked(
             &account_spl.key,
@@ -49,7 +63,7 @@ pub fn process_instruction(
             9,
         )?,
         accounts,
-        &[&[account_seed, &[account_bump]]],
+        &[&[&[], &[account_mana_auth_calc.1]]],
     )?;
 
     Ok(())
