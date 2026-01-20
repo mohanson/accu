@@ -6,6 +6,19 @@ Anchor 是一种为 solana 区块链设计的开发框架, 用于快速, 安全�
 
 我们在这里用 Anchor 重写那个数据存储程序, 让你体会它的魔力. 我们不会在这里做说明书式的工具介绍, 如果您需要它, 请参考[官方文档](https://book.anchor-lang.com/). 我们只会准备一张干净的工作台来组装代码, 让你专注于实现核心功能. 你会看到 anchor 的核心心智模型, 完成一次从零到一的本地运行, 并学会辨认路上的几个小坑.
 
+## 历史
+
+Anchor 最初由 project serum(由 ftx 交易所主导) 团队开发, 旨在简化 solana 上的智能合约开发. 在 solana 生态早期, 大家通常使用 solana-program 直接编写原生 rust 程序, 但面临一些问题:
+
+0. 大量的样板代码. 开发者需要编写大量重复的代码来处理账户验证, pda 账户管理, 租赁豁免管理等琐事.
+0. 安全性挑战. 直接操作低级账户和指令数据容易引入安全漏洞, 需要开发者具备深厚的 solana 内部知识.
+
+Anchor 通过引入高级抽象和自动化工具, 大大简化了这些任务. 它大量使用**宏**和**属性**来自动生成样板代码以防止常见漏洞, 并生成易于使用的客户端库.
+
+不过后续随着 2022 年 11 月 ftx 交易所崩盘, project serum 团队解体, anchor 的维护也一度陷入停滞. 原 serum 团队部分成员成立了 coral-xyz, anchor 的仓库迁移到了 <https://github.com/coral-xyz/anchor>. 在 2025 年 4 月, solana 开发团队经历了一次重大人事变动, solana 协议的核心客户端 solana 改名 agave 并由 solana-labs 转移给了 anza-xyz 团队; anchor 则是由 coral-xyz 转移给了 solana-foundation 维护: <https://github.com/solana-foundation/anchor>.
+
+> 2025 年 4 月这次人事变动看起来范围相当巨大.
+
 ## 环境搭建
 
 如果你的机器还没有这些工具, 请先安好: rust, solana cli, node.js 与 yarn, 以及 anchor 本体. 下面的命令可以直接复用; 若你已有其一, 可跳过相应小节.
