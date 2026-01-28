@@ -215,6 +215,11 @@ nav:
     - 独立游戏开发/Cocos Creator 将微信小游戏发布到 QQ 小游戏: content/gamedev/wechat_game_qq.md
     - 独立游戏开发/Cocos Creator 发布到 Steam: content/gamedev/cocos_steam.md
     - 独立游戏开发/软件著作权申请: content/gamedev/copyright.md
+- 即时编译:
+    - 即时编译/原理简述: content/jit/principle.md
+    - 即时编译/Brainfuck 解释器: content/jit/brainfuck_interpreter.md
+    - 即时编译/Brainfuck 中间码优化: content/jit/brainfuck_ir.md
+    - 即时编译/Brainfuck 即时编译器: content/jit/brainfuck_jit.md
 - CKB:
     - CKB/CKB-VM 扩展指令集 B: content/ckb/vm_b.md
     - CKB/CKB-VM 宏指令融合 MOP: content/ckb/vm_mop.md
@@ -227,10 +232,6 @@ nav:
     - CKB/MiniTS 之以 LLVM 为后端的 TypeScript 静态编译器: content/ckb/minits.md
     - CKB/RISC-V 在云原生中的应用机遇与挑战: content/ckb/riscv_cloud_native.md
     - CKB/Rust 裸金属编程: content/ckb/rust_riscv.md
-- JIT 编译器原理简述:
-    - JIT 编译器原理简述/原理简述: content/jit/principle.md
-    - JIT 编译器原理简述/实现 Brainfuck 解释器与 IR 优化: content/jit/brainfuck_interpreter.md
-    - JIT 编译器原理简述/实现 Brainfuck JIT 编译器: content/jit/brainfuck_jit.md
 - Cryptography:
     - Cryptography/Kerckhoffs 原则: content/cryptography/kerckhoffs_principle.md
     - Cryptography/分组加密操作模式: content/cryptography/encryption_mode.md
