@@ -45,22 +45,20 @@
 
 格雷码与二进制码之间的转换极其简单, 公式可以用如下代码表示:
 
-```go
-// 二进制到格雷码
-func GraycodeEncode(x uint64) uint64 {
-	return x ^ (x >> 1)
-}
+```py
+# 二进制到格雷码
+def graycode_encode(x: int) -> int:
+    return x ^ (x >> 1)
 
-// 格雷码到二进制
-func GraycodeDecode(x uint64) uint64 {
-	x ^= x >> 32
-	x ^= x >> 16
-	x ^= x >> 8
-	x ^= x >> 4
-	x ^= x >> 2
-	x ^= x >> 1
-	return x
-}
+# 格雷码到二进制
+def graycode_decode(x: int) -> int:
+    x ^= x >> 32
+    x ^= x >> 16
+    x ^= x >> 8
+    x ^= x >> 4
+    x ^= x >> 2
+    x ^= x >> 1
+    return x
 ```
 
 作为二进制编码的一种变形, 它在拥有二进制编码的全部优点的同时, 还额外有更优的局部搜索能力. 大多数情况下, 在可以使用格雷码的前提下我们总是应该使用格雷码.

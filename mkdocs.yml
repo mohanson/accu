@@ -194,6 +194,12 @@ nav:
     - Solana/更多开发者工具/web3.js 的常见坑与规避: content/solana/tool_web3_pitfall.md
     - Solana/更多开发者工具/solana-py 和 solders 库的结合使用: content/solana/tool_solana_py.md
     - Solana/书后: content/solana/epilog.md
+- 遗传算法:
+    - 遗传算法/简单遗传算法: content/ga/sga.md
+    - 遗传算法/格雷码: content/ga/graycode.md
+    - 遗传算法/俄罗斯轮盘赌: content/ga/russian_roulette.md
+    - 遗传算法/最优保留策略: content/ga/maintain_the_best_solution.md
+    - 遗传算法/生物进化模拟: content/ga/evolve.md
 - CKB:
     - CKB/CKB-VM 扩展指令集 B: content/ckb/vm_b.md
     - CKB/CKB-VM 宏指令融合 MOP: content/ckb/vm_mop.md
@@ -206,12 +212,6 @@ nav:
     - CKB/MiniTS 之以 LLVM 为后端的 TypeScript 静态编译器: content/ckb/minits.md
     - CKB/RISC-V 在云原生中的应用机遇与挑战: content/ckb/riscv_cloud_native.md
     - CKB/Rust 裸金属编程: content/ckb/rust_riscv.md
-- 遗传算法:
-    - 遗传算法/简单遗传算法: content/ga/sga.md
-    - 遗传算法/格雷码: content/ga/graycode.md
-    - 遗传算法/俄罗斯轮盘赌: content/ga/russian_roulette.md
-    - 遗传算法/最优保留策略: content/ga/maintain_the_best_solution.md
-    - 遗传算法/生物进化模拟: content/ga/evolve.md
 - X64 汇编:
     - X64 汇编/Hello World: content/x64/hello_world.md
     - X64 汇编/术语和概念: content/x64/concept.md
