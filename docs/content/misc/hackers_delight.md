@@ -1,6 +1,6 @@
-# Cryptography/算法心得笔记
+# 杂项/算法心得笔记
 
-![img](../../img/cryptography/hackers_delight/hackers_delight.jpg)
+![img](../../img/misc/hackers_delight/hackers_delight.jpg)
 
 > 本书既不是普通的数学算式教程, 也不是单纯的电脑程序算法手册, 它讲的是"计算机算术" -- 卷首语.
 
