@@ -205,9 +205,7 @@ nav:
     - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(英文): content/ckb/wasc_en.md
     - CKB/MiniTS 之以 LLVM 为后端的 TypeScript 静态编译器: content/ckb/minits.md
     - CKB/RISC-V 在云原生中的应用机遇与挑战: content/ckb/riscv_cloud_native.md
-    - CKB/Python 客户端 Pyckb 简介: content/ckb/pyckb.md
     - CKB/Rust 裸金属编程: content/ckb/rust_riscv.md
-    - CKB/将 LLVM compiler-rt builtins 编译为 RISC-V 静态库: content/ckb/llvm_compiler_rt_builtins.md
 - 遗传算法:
     - 遗传算法/简单遗传算法: content/ga/sga.md
     - 遗传算法/格雷码: content/ga/graycode.md
