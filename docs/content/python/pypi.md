@@ -22,10 +22,10 @@ password = pypi-xxxx
 
 在待发布的项目中创建 `pyproject.toml` 文件, 并写入以下模板内容:
 
-```py
+```toml
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "sample"

@@ -220,6 +220,10 @@ nav:
     - 即时编译/Brainfuck 解释器: content/jit/brainfuck_interpreter.md
     - 即时编译/Brainfuck 中间码优化: content/jit/brainfuck_ir.md
     - 即时编译/Brainfuck 即时编译器: content/jit/brainfuck_jit.md
+- Python:
+    - Python/Matplotlib: content/python/matplotlib.md
+    - Python/Pypi: content/python/pypi.md
+    - Python/Windows 编程: content/python/windows.md
 - CKB:
     - CKB/CKB-VM 扩展指令集 B: content/ckb/vm_b.md
     - CKB/CKB-VM 宏指令融合 MOP: content/ckb/vm_mop.md
@@ -232,13 +236,6 @@ nav:
     - CKB/MiniTS 之以 LLVM 为后端的 TypeScript 静态编译器: content/ckb/minits.md
     - CKB/RISC-V 在云原生中的应用机遇与挑战: content/ckb/riscv_cloud_native.md
     - CKB/Rust 裸金属编程: content/ckb/rust_riscv.md
-- Python:
-    - Python/f-strings: content/python/f_strings.md
-    - Python/Windows 编程: content/python/windows.md
-    - Python/Pypi: content/python/pypi.md
-    - Python/Matplotlib: content/python/matplotlib.md
-    - Python/使用 requests 下载显示进度: content/python/requests_progress.md
-    - Python/霍夫曼编码: content/python/huffman.md
 - Go:
     - Go/按行读取文件: content/go/read_line.md
     - Go/Socket 编程: content/go/socket.md
