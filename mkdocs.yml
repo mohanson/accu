@@ -200,6 +200,21 @@ nav:
     - 遗传算法/俄罗斯轮盘赌: content/ga/russian_roulette.md
     - 遗传算法/最优保留策略: content/ga/maintain_the_best_solution.md
     - 遗传算法/生物进化模拟: content/ga/evolve.md
+- 圣杯:
+    - 圣杯/追寻之路: content/sangreal/overview.md
+    - 圣杯/网格交易: content/sangreal/grid.md
+    - 圣杯/马丁格尔爆仓之路: content/sangreal/martingale.md
+    - 圣杯/双均线策略: content/sangreal/sma.md
+    - 圣杯/阻力支撑相对强度指标: content/sangreal/rsrs.md
+    - 圣杯/耐心策略与心态: content/sangreal/mindset.md
+    - 圣杯/永久投资组合: content/sangreal/permanent_portfolio.md
+- 独立游戏开发:
+    - 独立游戏开发/个人开发者如何发布第一款微信小游戏: content/gamedev/wechat_game.md
+    - 独立游戏开发/Cocos Creator 微信小游戏广告接入: content/gamedev/wechat_game_ad.md
+    - 独立游戏开发/Cocos Creator 微信小游戏创建视频广告页面卡顿问题解决: content/gamedev/wechat_game_vd.md
+    - 独立游戏开发/Cocos Creator 将微信小游戏发布到 QQ 小游戏: content/gamedev/wechat_game_qq.md
+    - 独立游戏开发/Cocos Creator 发布到 Steam: content/gamedev/cocos_steam.md
+    - 独立游戏开发/软件著作权申请: content/gamedev/copyright.md
 - CKB:
     - CKB/CKB-VM 扩展指令集 B: content/ckb/vm_b.md
     - CKB/CKB-VM 宏指令融合 MOP: content/ckb/vm_mop.md
@@ -223,21 +238,6 @@ nav:
     - JIT 编译器原理简述/原理简述: content/jit/principle.md
     - JIT 编译器原理简述/实现 Brainfuck 解释器与 IR 优化: content/jit/brainfuck_interpreter.md
     - JIT 编译器原理简述/实现 Brainfuck JIT 编译器: content/jit/brainfuck_jit.md
-- 独立游戏开发:
-    - 独立游戏开发/个人开发者如何发布第一款微信小游戏: content/gamedev/wechat_game.md
-    - 独立游戏开发/Cocos Creator 微信小游戏广告接入: content/gamedev/wechat_game_ad.md
-    - 独立游戏开发/Cocos Creator 微信小游戏创建视频广告页面卡顿问题解决: content/gamedev/wechat_game_vd.md
-    - 独立游戏开发/Cocos Creator 将微信小游戏发布到 QQ 小游戏: content/gamedev/wechat_game_qq.md
-    - 独立游戏开发/Cocos Creator 发布到 Steam: content/gamedev/cocos_steam.md
-    - 独立游戏开发/软件著作权申请: content/gamedev/copyright.md
-- 圣杯:
-    - 圣杯/追寻之路: content/sangreal/overview.md
-    - 圣杯/网格交易: content/sangreal/grid.md
-    - 圣杯/马丁格尔爆仓之路: content/sangreal/martingale.md
-    - 圣杯/双均线策略: content/sangreal/sma.md
-    - 圣杯/阻力支撑相对强度指标: content/sangreal/rsrs.md
-    - 圣杯/耐心策略与心态: content/sangreal/mindset.md
-    - 圣杯/永久投资组合: content/sangreal/permanent_portfolio.md
 - Cryptography:
     - Cryptography/Kerckhoffs 原则: content/cryptography/kerckhoffs_principle.md
     - Cryptography/分组加密操作模式: content/cryptography/encryption_mode.md
