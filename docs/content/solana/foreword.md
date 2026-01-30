@@ -13,17 +13,17 @@
 课程主要使用 python 语言. 在第一章, 我们会使用到 pabtc, 它是一个比特币库. 在之后的章节, 我们主要使用到 solana 的 pxsol 库. 这两个库和本书的作者为同一个人.
 
 - Pabtc: <https://github.com/mohanson/pabtc>
-- Pxsol: <https://github.com/mohanson/pxsol>
+- Pxsol: <https://github.com/libraries/pxsol>
 
 **语言**
 
 本书提供中文和英文版. 您可以根据自己的喜好选择在线阅读或者离线下载.
 
-- [English - Markdown](https://github.com/mohanson/pxsol/tree/master/doc/en/markdown)
-- [English - PDF](https://github.com/mohanson/pxsol/releases/download/v1.1.4/pxsol-en.pdf)
+- [English - Markdown](https://github.com/libraries/pxsol/tree/master/doc/en/markdown)
+- [English - PDF](https://github.com/libraries/pxsol/releases/download/v1.1.4/pxsol-en.pdf)
 - [English - Web](https://pxsol.vercel.app/)
-- [中文 - Markdown](https://github.com/mohanson/pxsol/tree/master/doc/zh/markdown)
-- [中文 - PDF](https://github.com/mohanson/pxsol/releases/download/v1.1.4/pxsol-zh.pdf)
+- [中文 - Markdown](https://github.com/libraries/pxsol/tree/master/doc/zh/markdown)
+- [中文 - PDF](https://github.com/libraries/pxsol/releases/download/v1.1.4/pxsol-zh.pdf)
 - [中文 - Web](http://accu.cc/content/solana/foreword/)
 
 **小额赞助**

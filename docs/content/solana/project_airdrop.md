@@ -45,10 +45,10 @@ for e in tlog['meta']['logMessages']:
 pxsol.log.debugln(f'main: request pxs airdrop done')
 ```
 
-您可以在 pxsol 项目的源码中找到这份[脚本](https://github.com/mohanson/pxsol/blob/master/example/pxs_airdrop.py). 脚本已经默认配置到主网, 运行脚本后, 我们的空投合约就将发送 5 pxs 至您的账户!
+您可以在 pxsol 项目的源码中找到这份[脚本](https://github.com/libraries/pxsol/blob/master/example/pxs_airdrop.py). 脚本已经默认配置到主网, 运行脚本后, 我们的空投合约就将发送 5 pxs 至您的账户!
 
 ```sh
-$ git clone https://github.com/mohanson/pxsol
+$ git clone https://github.com/libraries/pxsol
 $ cd pxsol
 $ python example/pxs_airdrop.py --prikey 0xYOUR_MAINNET_PRIVATE_KEY
 ```

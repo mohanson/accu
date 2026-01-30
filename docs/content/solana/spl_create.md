@@ -34,7 +34,7 @@ print(spl) # 2CMXJX8arHRsiiZadVheRLTd6uhP7DpbaJ9hRiRMSGcF
 {
     "name": "PXSOL",
     "symbol": "PXS",
-    "description": "Proof of study https://github.com/mohanson/pxsol",
+    "description": "Proof of study https://github.com/libraries/pxsol",
     "image": "https://raw.githubusercontent.com/mohanson/pxsol/refs/heads/master/res/pxs.png"
 }
 ```

@@ -37,7 +37,7 @@ print(pxsol.base58.encode(data)) # 92EW9Qnnov7V3QLqToHsFNyEnQ6vvJdYiLgBTfLCv3J5X
 
 ## Base58 的代码实现
 
-您可以在 [pxsol.base58](https://github.com/mohanson/pxsol/blob/master/pxsol/base58.py) 找到一份 base58 的简单 python 实现.
+您可以在 [pxsol.base58](https://github.com/libraries/pxsol/blob/master/pxsol/base58.py) 找到一份 base58 的简单 python 实现.
 
 ```py
 # Copyright (C) 2011 Sam Rushing

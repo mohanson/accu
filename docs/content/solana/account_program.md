@@ -4,7 +4,7 @@ Solana 上的程序账户就是一个部署了 solana 程序(智能合约)的账
 
 ## 部署程序
 
-作为一名老练的开发者, 我们已经在职业生涯中编写并运行过大量的 hello world 代码. 今天也不例外, 我们会尝试在 solana 网络上部署并运行一段简单的代码. 恰巧, pxsol 的资源目录中保存了一份 [hello world 代码](https://github.com/mohanson/pxsol/blob/master/res/hello_solana_program.so), 您可以通过以下命令下载它:
+作为一名老练的开发者, 我们已经在职业生涯中编写并运行过大量的 hello world 代码. 今天也不例外, 我们会尝试在 solana 网络上部署并运行一段简单的代码. 恰巧, pxsol 的资源目录中保存了一份 [hello world 代码](https://github.com/libraries/pxsol/blob/master/res/hello_solana_program.so), 您可以通过以下命令下载它:
 
 ```sh
 $ wget https://raw.githubusercontent.com/mohanson/pxsol/refs/heads/master/res/hello_solana_program.so

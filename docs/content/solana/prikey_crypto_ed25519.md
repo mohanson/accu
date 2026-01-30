@@ -41,7 +41,7 @@ y² = x³ + 486662 * x² + x
 - `x = 0x1122e705f69819df8042c3a34d5294668f25830f41e9b585b2aa6b05ef4cc7e2`
 - `y = 0x2a619802432fe95214ac6fed9d01dd149d197f1202e8c2698caab03831b8f2ee`
 
-答: ed25519 与 secp256k1 的代码实现非常类似, 您可以在 [pxsol.ed25519](https://github.com/mohanson/pxsol/blob/master/pxsol/ed25519.py) 中找到它的源码. 或者使用 `pip install pxsol` 安装完整的 solana 包.
+答: ed25519 与 secp256k1 的代码实现非常类似, 您可以在 [pxsol.ed25519](https://github.com/libraries/pxsol/blob/master/pxsol/ed25519.py) 中找到它的源码. 或者使用 `pip install pxsol` 安装完整的 solana 包.
 
 ```py
 import pxsol
