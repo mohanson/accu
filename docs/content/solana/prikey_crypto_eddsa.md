@@ -19,7 +19,7 @@ def pt_encode(pt: pxsol.ed25519.Pt) -> bytearray:
     # To form the encoding of the point, copy the least significant bit of the x-coordinate to the most significant bit
     # of the final octet.
     # See https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.2
-    n = pt.y.x | ((pt.x.x & 1) << 255)
+    n = pt.y.n | ((pt.x.n & 1) << 255)
     return bytearray(n.to_bytes(32, 'little'))
 ```
 

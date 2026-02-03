@@ -32,21 +32,22 @@ import pabtc.secp256k1
 def sign(prikey: pabtc.secp256k1.Fr, m: pabtc.secp256k1.Fr) -> typing.Tuple[pabtc.secp256k1.Fr, pabtc.secp256k1.Fr, int]:
     # https://www.secg.org/sec1-v2.pdf
     # 4.1.3 Signing Operation
-    for _ in itertools.repeat(0):
+    for _ in range(64):
         k = pabtc.secp256k1.Fr(max(1, secrets.randbelow(pabtc.secp256k1.N)))
         R = pabtc.secp256k1.G * k
-        r = pabtc.secp256k1.Fr(R.x.x)
-        if r.x == 0:
+        r = pabtc.secp256k1.Fr(R.x.n)
+        if r.n == 0:
             continue
         s = (m + prikey * r) / k
-        if s.x == 0:
+        if s.n == 0:
             continue
         v = 0
-        if R.y.x & 1 == 1:
+        if R.y.n & 1 == 1:
             v |= 1
-        if R.x.x >= pabtc.secp256k1.N:
+        if R.x.n >= pabtc.secp256k1.N:
             v |= 2
         return r, s, v
+    raise Exception('unreachable')
 ```
 
 您可能发现在代码实现上, 签名函数不但返回了 (r, s), 还额外返回了一个 v 值. 这是恢复标识符, 用于从签名中确定签名者的公钥. 它使用了两个标志位, 最低标识位标志 c 的 y 轴坐标的奇偶位, 以便我们可以根据签名中的 r 来唯一还原 c 的实际值(椭圆曲线是关于 x 轴对称的曲线, 每一个 x 都对应两个可能的 y 值). 另一个比特位用于确认 r 值是否发生过溢出, 因为椭圆曲线上的点的坐标范围是 0 到 P, 但在签名运算中我们会将 c 的 x 坐标转换为一个标量, 范围将缩小到 0 到 N, 因此可能会发生溢出截断.
@@ -81,7 +82,7 @@ def verify(pubkey: pabtc.secp256k1.Pt, m: pabtc.secp256k1.Fr, r: pabtc.secp256k1
     b = r / s
     R = pabtc.secp256k1.G * a + pubkey * b
     assert R != pabtc.secp256k1.I
-    return r == pabtc.secp256k1.Fr(R.x.x)
+    return r == pabtc.secp256k1.Fr(R.x.n)
 ```
 
 ## Ecdsa 公钥恢复
