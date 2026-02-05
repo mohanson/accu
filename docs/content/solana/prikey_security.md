@@ -56,6 +56,14 @@
 
 ### 私钥保管
 
+**纸钱包**
+
+![img](../../img/solana/prikey_security/paper_wallet.jpg)
+
+**金属钱包**
+
+![img](../../img/solana/prikey_security/metal_wallet.jpg)
+
 目前仍在使用的主流密码学方案, 其安全性足够抵御暴力破解攻击(考虑到当前技术水平). 私钥真正的威胁不是破解, 而是保管不当.
 
 现代钱包通常使用密码加密存储私钥, 加密方案通常可以选择 aes 或 chacha20, 然后使用密钥派生算法: pbkdf2, argon2, scrypt 等. 典型的加密流程:
