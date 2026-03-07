@@ -5,7 +5,6 @@ import subprocess
 import tempfile
 
 import PIL.Image
-import lib.gool
 
 
 def make():
@@ -20,15 +19,6 @@ def make():
         f.write('google-site-verification: google9b75b4b4147e247b.html')
     with open('site/ads.txt', 'w') as f:
         f.write('google.com, pub-5236818090688638, DIRECT, f08c47fec0942fa0')
-
-
-def mini():
-    if shutil.which('js-beautify') is None:
-        return
-    grun = lib.gool.cpu()
-    for html in glob.glob('site/**/*.html', recursive=True):
-        grun.call(subprocess.run, f'js-beautify -r --no-preserve-newlines {html}', shell=True)
-    grun.wait()
 
 
 def exam_imgs_unused():
@@ -82,7 +72,6 @@ def main():
     exam_imgs_size()
     make()
     exam_link('site')
-    mini()
 
 
 if __name__ == '__main__':
