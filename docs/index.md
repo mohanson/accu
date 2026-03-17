@@ -13,6 +13,7 @@ Mohanson 只是一个不存在的人.
 - 单机游戏[像素推箱](https://store.steampowered.com/app/2511610/_/)正式发布! 下一个独立游戏制作人?
 - 首张独立创制专辑[别景色](https://music.163.com/#/album?id=178829929)，2023 年 11 月 13 日正式发行, 三弦吾爱!
 - 感谢 solana 基金会对 [Learn me a solana](https://accu.cc/content/solana/foreword/) 的赞助!
+- 感谢受邀成为 [Solana Bootcamp 2026 S1](https://www.bilibili.com/video/BV1HfquBsE1L) 主要讲师之一.
 
 ## 联系方式
 
