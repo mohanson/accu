@@ -244,6 +244,7 @@ nav:
     - 杂项/常用数学符号输入: content/misc/mathematics_symbol.md
     - 杂项/个体户老板们的创业指南: content/misc/self_employed_business.md
     - 杂项/算法心得笔记: content/misc/hackers_delight.md
+    - 杂项/Github Action 配置编写: content/misc/github_action.md
 - 竹书纪年:
     - Y2019: content/diary/2019.md
     - Y2020: content/diary/2020.md
