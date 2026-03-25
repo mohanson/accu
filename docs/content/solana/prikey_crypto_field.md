@@ -64,7 +64,7 @@
 - 8 * 9 = 72 % 23 = 3
 - 由于 3 * 8 = 24 % 23 = 1, 因此 1 / 8 = 3
 
-下面我们使用 python 代码实现一个素数有限域. 客观来讲, 它十分类似我们日常生活中使用的整数, 但区别在于我们需要对所有计算结果进行取模. 下面的代码拷贝自 [pabtc](https://github.com/mohanson/pabtc) 项目, 您可以使用 `pip install pabtc` 来获取这份代码.
+下面我们使用 python 代码实现一个素数有限域. 客观来讲, 它十分类似我们日常生活中使用的整数, 但区别在于我们需要对所有计算结果进行取模. 下面的代码拷贝自 [pabtc](https://github.com/libraries/pabtc) 项目, 您可以使用 `pip install pabtc` 来获取这份代码.
 
 ```py
 import json

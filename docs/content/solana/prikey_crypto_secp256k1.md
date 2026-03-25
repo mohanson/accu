@@ -133,7 +133,7 @@ N = 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141
 
 ## Secp256k1 完整代码
 
-最终, 我们得到完整的 secp256k1 代码如下. 您可以在 [pabtc.secp256k1](https://github.com/mohanson/pabtc/blob/master/pabtc/secp256k1.py) 中找到这份代码.
+最终, 我们得到完整的 secp256k1 代码如下. 您可以在 [pabtc.secp256k1](https://github.com/libraries/pabtc/blob/master/pabtc/secp256k1.py) 中找到这份代码.
 
 ```py
 # Prime of finite field.

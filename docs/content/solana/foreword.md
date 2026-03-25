@@ -12,7 +12,7 @@
 
 课程主要使用 python 语言. 在第一章, 我们会使用到 pabtc, 它是一个比特币库. 在之后的章节, 我们主要使用到 solana 的 pxsol 库. 这两个库和本书的作者为同一个人.
 
-- Pabtc: <https://github.com/mohanson/pabtc>
+- Pabtc: <https://github.com/libraries/pabtc>
 - Pxsol: <https://github.com/libraries/pxsol>
 
 **语言**
