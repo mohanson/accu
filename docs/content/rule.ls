@@ -8,5 +8,7 @@ R *.polymarket.com
 
 R   googleapis.com
 R *.googleapis.com
+R   gstatic.com
+R *.gstatic.com
 R   xn--ngstr-lra8j.com
 R *.xn--ngstr-lra8j.com
