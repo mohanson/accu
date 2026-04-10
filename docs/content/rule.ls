@@ -6,6 +6,8 @@ R *.bnbstatic.com
 R   polymarket.com
 R *.polymarket.com
 
+R   googleapis.cn
+R *.googleapis.cn
 R   googleapis.com
 R *.googleapis.com
 R   gstatic.com
