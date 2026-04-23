@@ -223,6 +223,7 @@ nav:
     - 即时编译/Brainfuck 中间码优化: content/jit/brainfuck_ir.md
     - 即时编译/Brainfuck 即时编译器: content/jit/brainfuck_jit.md
 - CKB:
+    - CKB/CKB-VM/理解 Cell 模型: content/ckb/vm_cell.md
     - CKB/CKB-VM 扩展指令集 B: content/ckb/vm_b.md
     - CKB/CKB-VM 扩展指令集 CFI: content/ckb/vm_cfi.md
     - CKB/CKB-VM 宏指令融合 MOP: content/ckb/vm_mop.md
