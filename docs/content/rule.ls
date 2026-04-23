@@ -3,6 +3,9 @@ R *.binance.com
 R   bnbstatic.com
 R *.bnbstatic.com
 
+R   discord.com
+R *.discord.com
+
 R   polymarket.com
 R *.polymarket.com
 
