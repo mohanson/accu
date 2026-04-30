@@ -226,6 +226,7 @@ nav:
     - CKB/CKB-VM/理解 Cell 模型: content/ckb/vm_cell.md
     - CKB/CKB-VM/交易结构与交易验证逻辑: content/ckb/vm_tx.md
     - CKB/CKB-VM/使用标准 Rust 环境编写 CKB 脚本(一): content/ckb/vm_script_basis.md
+    - CKB/CKB-VM/使用标准 Rust 环境编写 CKB 脚本(二): content/ckb/vm_script_dynamic_collections.md
     - CKB/CKB-VM 扩展指令集 B: content/ckb/vm_b.md
     - CKB/CKB-VM 扩展指令集 CFI: content/ckb/vm_cfi.md
     - CKB/CKB-VM 宏指令融合 MOP: content/ckb/vm_mop.md
@@ -233,7 +234,6 @@ nav:
     - CKB/CKB-VM 零成本抽象: content/ckb/vm_zero_cost_abstractions.md
     - CKB/CKB-VM Spawn 系统调用: content/ckb/vm_spawn.md
     - CKB/CKB-VM TypeScript 静态编译器: content/ckb/vm_minits.md
-    - CKB/CKB-VM 裸金属编程: content/ckb/vm_baremetal.md
     - CKB/CKB-VM 在云原生中的应用机遇与挑战: content/ckb/vm_cloud_native.md
     - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(中文): content/ckb/wasc_cn.md
     - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(英文): content/ckb/wasc_en.md
