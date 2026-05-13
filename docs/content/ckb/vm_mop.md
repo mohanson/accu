@@ -248,7 +248,7 @@ addi  r0, r0, lo
 - **asm**: ASM 后端, 不启用 MOP 融合
 - **mop**: ASM 后端, 已启用 MOP 融合
 
-测试对象均为 CKB 链上常见的密码学算法, 使用 Criterion 测量 100 次采样的中位周期数.
+测试对象均为 CKB 链上常见的密码学算法, 使用 Criterion 测量 100 次采样的中位周期数. 下表中的 cycles 指的是 host 端 x86-64 CPU 上执行 CKB-VM 时的周期数, 而不是 RISC-V 指令周期数, 这点值得注意.
 
 ### 周期数对比
 
