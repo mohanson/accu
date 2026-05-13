@@ -1,12 +1,14 @@
 # CKB/CKB-VM 扩展指令集 CFI
 
-在 RISC-V 架构中, 函数调用机制依赖于 ra(return address) 寄存器来保存返回地址. 当执行函数跳转时, 处理器会将返回地址写入 ra 寄存器. 对于嵌套函数调用的场景, 由于 ra 寄存器只有一个, 因此当前 ra 中的返回地址必须被保存到栈上, 以便后续恢复.
+在 RISC-V 架构中, 函数调用依赖 `ra`(return address) 寄存器存储返回地址. 每次执行跳转链接指令(如 `jal`)时, 处理器将下一条指令的地址写入 `ra` 寄存器作为返回地址. 对于嵌套函数调用的场景, 由于 `ra` 寄存器只有一个, 当前返回地址必须提前保存到栈上, 函数返回时再行恢复.
 
-这种设计引入了一个关键的安全风险: 如果攻击者能够通过某种手段(如缓冲区溢出漏洞)破坏栈里的内容, 就可以篡改保存在栈上的返回地址. 这正是 [ROP(Return-Oriented Programming)](https://en.wikipedia.org/wiki/Return-oriented_programming) 或 JOP 攻击的核心原理. 攻击者通过精心构造的 gadgets(代码片段) 链, 劫持程序的控制流, 从而实现任意代码执行.
+这种设计引入了一个关键的安全风险: 如果攻击者能够通过某种手段(如缓冲区溢出漏洞)破坏栈内容, 就可以篡改保存在栈上的返回地址. 这正是 [ROP(Return-Oriented Programming)](https://en.wikipedia.org/wiki/Return-oriented_programming) 或 JOP 攻击的核心原理, 攻击者通过精心构造的 gadget 链劫持程序的控制流, 实现任意代码执行.
 
-在 CKB 智能合约的场景下, 这种攻击的威胁尤为显著. 攻击者甚至不需要构造复杂的 ROP 链, 只需将返回地址指向 `syscall exit` 并设置退出码为 0, 即可绕过合约的安全检查, 使验证逻辑失效. 这种攻击方式简单却极具破坏性.
+在 CKB 智能合约场景下, 这一威胁尤为突出. 攻击者甚至无需构造复杂的 ROP 链, 仅需将返回地址指向 `exit` 系统调用并将退出码设为 0, 便可绕过合约的安全检查, 使验证逻辑完全失效. 此类攻击手段简单却极具破坏力.
 
-因此, 对栈的保护机制, 尤其是返回地址的完整性验证, 对于保障 CKB-VM 的安全性至关重要. 这也是引入 CFI(Control Flow Integrity) 扩展指令的根本动机.
+因此, 针对栈的保护机制, 尤其是返回地址完整性的验证, 对于保障 CKB-VM 的安全性至关重要, 这也是我们尝试引入 CFI(Control Flow Integrity, 控制流完整性) 扩展指令的根本动机.
+
+> 需要强调的是, CKB-VM 目前尚未正式支持 CFI 扩展指令集, 相关功能仍处于设计和开发阶段. 本文旨在通过示例说明 ROP 攻击的原理和危害, 以及 CFI 扩展指令集的基本概念和防护机制, 以期为未来 CFI 功能的实现和应用提供参考.
 
 ## 典型的 ROP 攻击链路
 
@@ -58,7 +60,7 @@ $ ckb-debugger --bin main
 
 ## 真实的 ROP 攻击示例
 
-接上面的演示例子, 我们改进下 fun_vulner 函数, 使其更贴近真实的 ROP 攻击场景. 具体来说, 我们让 fun_vulner 接收一个用户输入的缓冲区, 并将其复制到栈上的本地缓冲区中. 由于没有边界检查, 攻击者可以构造恶意输入来覆盖栈上的返回地址. 这是一个典型的缓冲区溢出漏洞利用场景.
+在上述示例的基础上, 对 `fun_vulner` 函数进行进一步改进, 使其更贴近真实的 ROP 攻击场景. 具体而言, `fun_vulner` 接收用户输入的缓冲区并将其复制到栈上的局部缓冲区, 但未作任何边界检查. 攻击者可借此构造恶意输入, 覆盖栈上保存的返回地址, 这是典型的缓冲区溢出漏洞利用场景.
 
 ```c
 #include <stdint.h>
@@ -128,26 +130,28 @@ $ ckb-debugger --bin main
 # Exit code: 0
 ```
 
+可以看到, 原始代码期望返回退出码 1 (表示验证失败), 但由于攻击者通过恶意输入覆盖了返回地址, 程序实际跳转到了 `fun_rop_gadget_return_zero` 函数, 导致调用 `ckb_exit(0)`, 最终返回 0(表示验证成功), 完全绕过了验证逻辑.
+
 ## 尝试对 ROP 攻击进行防护
 
-看了上面的 ROP 攻击示例, 我们可以总结出攻击的关键点在于: 攻击者能够覆盖栈上保存的返回地址. 因此, 保护栈上返回地址的完整性是防御该攻击的核心.
+通过上述 ROP 攻击示例可以归纳出: 此类攻击的核心在于攻击者能够覆盖栈上保存的返回地址. 因此, 保护栈上返回地址的完整性, 是防御此类攻击的关键所在.
 
 我们可以尝试通过在函数入口和出口添加栈保护代码来防护该攻击. 具体来说, 在函数入口保存栈指针, 在函数返回前验证栈指针是否被篡改. 如果发现栈指针异常, 则强行终止程序.
 
-**这就是 CFI 扩展指令集的核心思想.** 两点:
+**这正是 CFI 扩展指令集的核心思想, 体现在以下两个维度:**
 
 - 前向保护: 程序不能随意跳转到别的位置, 必须跳转到合法的目标.
 - 后向保护: 函数返回时, 必须确保返回地址没有被篡改.
 
-> 在上面的例子里, 程序从 fun_vulner 函数跳转到 fun_rop_gadget_return_zero 就是不合法的跳转. 我们希望通过一些机制来阻止这种非法跳转. 同时在执行 fun_vulner 函数开始和返回之前, 我们需要有机制确保其函数返回地址未被修改.
+> 在上述示例中, 程序从 `fun_vulner` 函数跳转到 `fun_rop_gadget_return_zero` 即属非法跳转. 我们希望通过相应机制阻止这种非法跳转. 同时, 在 `fun_vulner` 函数执行开始和返回之前, 需要有机制确保其返回地址未被修改.
 
 ## CFI 扩展简介
 
-[RISC-V CFI specification](https://github.com/riscv/riscv-cfi) 已经正式合并至 [RISC-V Instruction Set Manual](https://github.com/riscv/riscv-isa-manual), 规范内容分为以下两个部分:
+[RISC-V CFI specification](https://github.com/riscv/riscv-cfi) 已正式纳入 [RISC-V Instruction Set Manual](https://github.com/riscv/riscv-isa-manual), 规范内容分为以下两个部分:
 - [Privileged ISA](https://github.com/riscv/riscv-isa-manual/blob/main/src/priv-cfi.adoc): 特权级指令集架构, 定义了操作系统和虚拟机监控器层面的 CFI 支持
 - [Unprivileged ISA](https://github.com/riscv/riscv-isa-manual/blob/main/src/unpriv-cfi.adoc): 非特权级指令集架构, 定义了应用程序层面的 CFI 指令.
 
-从 Specification 的成熟度来看, CFI 扩展规范已经进入稳定阶段. 对于 CKB-VM 而言, 核心关注点在 Unprivileged ISA 部分, 该部分引入了以下5条新指令:
+从规范的成熟度来看, CFI 扩展规范已经进入稳定阶段. 对于 CKB-VM 而言, 核心关注点在 Unprivileged ISA 部分, 该部分引入了以下 5 条新指令:
 
 - `LPAD`(Landing Pad): 标记合法的间接跳转目标位置, 用于 forward-edge 保护
 - `SSPUSH`(Shadow Stack Push): 将返回地址压入 shadow stack
@@ -186,7 +190,7 @@ int main() {
 }
 ```
 
-前向保护只在间接跳转时生效, 对于直接跳转(如普通的函数调用和返回)不进行限制. 这是因为直接跳转的目标地址在编译时已经确定, 不易被攻击者篡改.
+前向保护仅在间接调用与间接跳转时生效. 对于直接函数调用(目标地址在编译期已固定), 其跳转目标在运行时不可被篡改, 无需 LPAD 验证. 函数返回(`ret`)虽本质上属于间接跳转, 但其控制流完整性由后向保护机制, 即影子栈, 负责, 同样无需 LPAD 介入.
 
 ## CFI 扩展: 后向保护
 
@@ -194,15 +198,15 @@ int main() {
 
 **函数调用时**
 
-1. 在函数调用时(执行 `call` 或 `jalr` 指令后), 编译器会插入 `SSPUSH` 指令.
-2. 该指令将返回地址写入 Shadow Stack 的栈顶, 并自动递增 Shadow Stack 指针.
-3. 返回地址同时存储在常规栈和 Shadow Stack 中.
+1. 在被调函数的入口处(函数序言阶段), 编译器会插入 `SSPUSH` 指令.
+2. 该指令将 `ra` 寄存器中的返回地址压入 Shadow Stack 栈顶, Shadow Stack 指针随之递减(Shadow Stack 与常规栈同向, 向低地址增长).
+3. 至此, 返回地址同时存储在常规栈和 Shadow Stack 中.
 
 **函数返回时**
 
-1. 在函数返回时(执行 `ret` 或 `jr ra` 指令前), 编译器会插入 `SSPOPCHK` 指令.
-2. 该指令从 Shadow Stack 栈顶弹出预期的返回地址, 并自动递减 Shadow Stack 指针.
-3. 硬件比较 Shadow Stack 中的返回地址与常规栈中的返回地址.
+1. 在函数返回时(执行 `ret` 或 `jalr x0, 0(ra)` 指令前), 编译器会插入 `SSPOPCHK` 指令.
+2. 该指令从 Shadow Stack 栈顶弹出预期的返回地址, Shadow Stack 指针随之递增.
+3. 硬件将 Shadow Stack 中弹出的返回地址与 `ra` 寄存器当前值(由函数尾声从常规栈恢复)进行比较.
 4. 如果两者不匹配, 则触发控制流异常, 终止程序执行.
 5. 若一致, 允许函数正常返回.
 
@@ -226,9 +230,9 @@ int main() {
 
 ## 工具链的现状
 
-截至 2025/12/15 日, LLVM 对 RISC-V CFI 扩展指令的支持, 目前正处于开发阶段. 考虑到 CFI 规范已正式纳入 RISC-V 指令集手册, 预计工具链的支持将在不久的将来完善.
+截至 2025 年 12 月, LLVM 对 RISC-V CFI 扩展指令的支持已进入试验阶段, 并通过 LLVM 21 正式提供相关编译选项. CFI 规范已正式纳入 RISC-V 指令集手册, 工具链的完整支持正在持续推进中.
 
-在 LLVM 21 中，通过以下命令行可以开启试验性质的开关：
+在 LLVM 21 中, 通过以下命令行可以开启试验性质的开关:
 
 ```sh
 --target=riscv64
@@ -238,10 +242,10 @@ int main() {
 -mcf-branch-label-scheme=func-sig
 ```
 
-在 Rust 最新的 nightly 版本中, 由于 rustc 基于 LLVM 21 构建, 因此也可以通过类似的方式启用 CFI 支持. 具体来说, 可以使用如下的环境变量配置:
+在 Rust 的 nightly 版本中, 由于 rustc 基于 LLVM 21 构建, 同样可以通过类似的方式启用 CFI 支持. 具体而言, 可使用如下环境变量配置:
 
 ```sh
 RUSTFLAGS=-C target-feature=+experimental-zicfiss,+experimental-zicfilp
 ```
 
-但是需要注意, 目前 Rust 对 CFI 的支持还不完善, 编译结果会生成 LPAD 指令, 但尚未在函数调用和返回处插入 SSPUSH 和 SSPOPCHK 指令.
+需要注意的是, 截至 LLVM 21 发布时, Rust 对 CFI 后向保护的支持尚不完整, 编译结果可生成 LPAD 指令, 但函数调用与返回处的 SSPUSH 和 SSPOPCHK 指令插入尚未实现. 后续版本或有改善, 使用前建议核实当前工具链的实际支持状态.
