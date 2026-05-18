@@ -232,8 +232,6 @@ nav:
     - CKB/CKB-VM 扩展指令集 CFI: content/ckb/vm_cfi.md
     - CKB/CKB-VM 宏指令融合 MOP: content/ckb/vm_mop.md
     - CKB/CKB-VM Spawn 系统调用: content/ckb/vm_spawn.md
-    - CKB/CKB-VM TypeScript 静态编译器: content/ckb/vm_minits.md
-    - CKB/CKB-VM 在云原生中的应用机遇与挑战: content/ckb/vm_cloud_native.md
     - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(中文): content/ckb/wasc_cn.md
     - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(英文): content/ckb/wasc_en.md
 - Go:
