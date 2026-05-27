@@ -210,6 +210,7 @@ nav:
     - 圣杯/耐心策略与心态: content/sangreal/mindset.md
     - 圣杯/永久投资组合: content/sangreal/permanent_portfolio.md
     - 圣杯/Polymarket 微观噪声套利: content/sangreal/polymarket_c5m.md
+    - 圣杯/Polymarket 时间价值衰减策略: content/sangreal/polymarket_theta.md
 - 独立游戏开发:
     - 独立游戏开发/个人开发者如何发布第一款微信小游戏: content/gamedev/wechat_game.md
     - 独立游戏开发/Cocos Creator 微信小游戏广告接入: content/gamedev/wechat_game_ad.md
