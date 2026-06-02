@@ -233,6 +233,7 @@ nav:
     - CKB/CKB-VM 扩展指令集 CFI: content/ckb/vm_cfi.md
     - CKB/CKB-VM 宏指令融合 MOP: content/ckb/vm_mop.md
     - CKB/CKB-VM Snapshot V1: content/ckb/vm_snapshot_v1.md
+    - CKB/CKB-VM Snapshot V2: content/ckb/vm_snapshot_v2.md
     - CKB/CKB-VM Spawn 系统调用: content/ckb/vm_spawn.md
     - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(中文): content/ckb/wasc_cn.md
     - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(英文): content/ckb/wasc_en.md
