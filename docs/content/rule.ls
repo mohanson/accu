@@ -6,6 +6,8 @@ R *.bnbstatic.com
 R   discord.com
 R *.discord.com
 
+R   google.com
+R *.google.com
 R   googleapis.cn
 R *.googleapis.cn
 R   googleapis.com
