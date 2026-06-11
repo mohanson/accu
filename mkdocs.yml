@@ -235,6 +235,7 @@ nav:
     - CKB/CKB-VM Snapshot V1: content/ckb/vm_snapshot_v1.md
     - CKB/CKB-VM Snapshot V2: content/ckb/vm_snapshot_v2.md
     - CKB/CKB-VM 内存模型 W^X 的设计与演进: content/ckb/vm_wxorx.md
+    - CKB/CKB-VM 深入了解汇编执行器的实现: content/ckb/vm_asm.md
     - CKB/CKB-VM Spawn 系统调用: content/ckb/vm_spawn.md
     - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(中文): content/ckb/wasc_cn.md
     - CKB/WASC WebAssembly 到 RISC-V 的 AOT 编译器(英文): content/ckb/wasc_en.md
