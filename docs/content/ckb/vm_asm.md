@@ -116,7 +116,7 @@ Dynamic Trace 是一个使用 [flexible array member](https://en.wikipedia.org/w
 
 > 这个统一性的关键设计在于: DynamicTrace 的前三个字段与 FixedTrace 有着完全相同的内存布局, 汇编代码通过同样的 offset 宏(`CKB_VM_ASM_TRACE_OFFSET_ADDRESS`, `CKB_VM_ASM_TRACE_OFFSET_LENGTH`, `CKB_VM_ASM_TRACE_OFFSET_CYCLES`) 访问它们. 源码中有专门的单元测试验证这一不变性.
 
-## Trace: 如何从 Rust 传入汇编代码
+## Trace: 如何从 Rust 传入到汇编代码
 
 ASM 执行器入口只有两个参数:
 
@@ -250,7 +250,7 @@ CKB-VM 的内存模型既要保证越界访问会被拒绝, 又要维护 W^X 权
 
 历史上, CKB-VM 只有过三个 ASM 执行器: x64, aarch64 和 riscv64. 这三条路都走下来之后, 我觉得它们的实现套路已经很清晰了. 下面是我总结的一个大致步骤.
 
-**第一步: 理解 Rust-ASM 协议**
+**第一步: 理解数据结构和协议**
 
 先通读三个结构体:
 
@@ -261,6 +261,8 @@ CKB-VM 的内存模型既要保证越界访问会被拒绝, 又要维护 W^X 权
 这些 offset 宏不是手写的, 是由 [`definitions/src/generate_asm_constants.rs`](https://github.com/nervosnetwork/ckb-vm/blob/develop/definitions/src/generate_asm_constants.rs) 在构建时自动生成到 `cdefinitions_generated.h`. **永远不要手工维护这些 offset**, 否则 struct 布局一变就会全线崩溃.
 
 **第二步: 写最小骨架**
+
+我们首先在汇编代码里编写下面这样子的最小骨架:
 
 ```asm
 ckb_vm_asm_execute:
@@ -312,10 +314,9 @@ pub fn label_from_fastpath_opcode(opcode: InstructionOpcode) -> u64 {
 
 **第五步: 按指令族推进**
 
-- **第一梯队**: I/R/U/S 基础算术, load/store, branch/jump. 这些是程序的主体, 也是性能的主要来源.
-- **第二梯队**: M(乘除)和 A(原子). 重点盯乘除法边界(`INT64_MIN / -1`, 除以零), LR/SC reservation 的地址对齐, 跨页写.
-- **第三梯队**: B(位操作)和 MOP(宏融合). 重点盯多寄存器写回和 `x0` 清零时机.
-- **不适合快路径的指令**: 走 slowpath, 返回 `RET_SLOWPATH` 给 Rust. 不要为了"全汇编"牺牲正确性.
+- 第一梯队: I/R/U/S 基础算术, load/store, branch/jump. 这些是程序的主体, 也是性能的主要来源.
+- 第二梯队: M(乘除). 重点盯乘除法边界(`INT64_MIN / -1`, 除以零).
+- 第三梯队: B(位操作)和 MOP(宏融合). 重点盯多寄存器写回和 `x0` 清零时机.
 
 **第六步: 测试**
 
