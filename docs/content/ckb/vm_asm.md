@@ -116,7 +116,7 @@ Dynamic Trace 是一个使用 [flexible array member](https://en.wikipedia.org/w
 
 > 这个统一性的关键设计在于: DynamicTrace 的前三个字段与 FixedTrace 有着完全相同的内存布局, 汇编代码通过同样的 offset 宏(`CKB_VM_ASM_TRACE_OFFSET_ADDRESS`, `CKB_VM_ASM_TRACE_OFFSET_LENGTH`, `CKB_VM_ASM_TRACE_OFFSET_CYCLES`) 访问它们. 源码中有专门的单元测试验证这一不变性.
 
-## 汇编代码入口
+## Trace: 如何从 Rust 传入汇编代码
 
 ASM 执行器入口只有两个参数:
 
@@ -155,7 +155,7 @@ x64 的难点也在这里. `%rcx` 要留给移位指令使用 `%cl`, `%rax/%rdx`
 
 其实 aarch64 和 riscv64 也有类似的入口, 只是风格不同: aarch64 寄存器更宽裕, 因此我们会把 `REGISTER_BASE`, `MEMORY_PTR` 这类次要但常用的地址也长期放在 `x28`, `x29`. riscv64 则更像在照镜子: host 和 guest 都是 RISC-V, 很多 guest 指令可以直接映射成 host 指令, 但它仍然要遵守 host ABI, 保护 `s0..s6`, 并用 `a0` 返回汇编执行结果.
 
-## Trace: 执行结束后的处理过程
+## Trace: 入口即出口, 出口即入口
 
 进入汇编主循环后, 会先执行 `.CKB_VM_ASM_LABEL_OP_CUSTOM_TRACE_END`. 这是一段稍显复杂的代码块:
 
