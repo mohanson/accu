@@ -31,7 +31,7 @@ pub struct FlatMemory<R> {
 }
 ```
 
-`FlatMemory` 在构造时就 `vec![0; memory_size]`, 一次性分配全部 4 MB. 它提供最基础的读写接口, 写操作自动置位 `FLAG_DIRTY`, 除此之外没有做任何权限检查. 它存在的意义是作为一个正确且简单的参考后端, 供解释器模式使用, 也为后续的更复杂实现提供对照基准.
+`FlatMemory` 在构造时就使用了 `vec![0; memory_size]`, 一次性分配全部 4 MB. 它提供最基础的读写接口, 写操作自动置位 `FLAG_DIRTY`, 除此之外没有做任何权限检查. 它存在的意义是作为一个正确且简单的参考后端, 供解释器模式使用, 也为后续的更复杂实现提供对照基准.
 
 > 在早期的 CKB-VM 版本中, 解释器模式就运行在 FlatMemory 上. 后来为了统一权限模型, 所有后端都切换到了 WXorXMemory 包裹 SparseMemory 的组合.
 
@@ -203,43 +203,6 @@ pub fn convert_flags(p_flags: u32, allow_freeze_writable: bool, vaddr: u64) -> R
 快照需要保存 dirty 页及其 flag, 恢复时需要完整复原. 快照 V1 的方法是直接保存 dirty 页的 flag 字节, 恢复时 `set_flag` 写回. 快照 V2 在此基础上引入了 DataSource 抽象, 但 flag 的保存和恢复逻辑不变.
 
 W^X 在快照恢复时并不需要额外处理, 因为恢复后的页面 flag 应当与挂起前完全一致. 唯一需要注意的是, `resume` 恢复 dirty 页时调用的是 `memory_mut().store_bytes(...)`, 而这个路径在 WXorXMemory 中会触发 `check_permission`. 如果某页在挂起前是可执行的, 那么这个 store 调用就会因为 W^X 检查而失败. 但实际上快照恢复发生在新的虚拟机刚加载完 ELF 之后(此时代码段已经被正确标记为 executable), V1 恢复的 dirty 页应该全是数据页(标记为 writable), 因此不会触发冲突.
-
-## 设计演进回顾
-
-现在让我们站在时间线上, 回顾在设计阶段时整个 CKB-VM 内存子系统的演进:
-
-```text
-阶段一: FlatMemory
-    |
-    | 4MB 全分配太浪费, 改为按需分配
-    |
-    v
-阶段二: SparseMemory
-    |
-    | 缺乏安全保护, 任何代码都可以改写代码段
-    |
-    v
-阶段三: WXorXMemory<SparseMemory>
-```
-
-这个演进路径反映了一个更普遍的工程规律: 先保证正确, 再优化性能, 最后加固安全. 三步的目的各不相同, 却恰好构成了一个完整的内存子系统.
-
-你可能会问: 为什么不一开始就把 W^X 做进 SparseMemory 里? 答案在于关注点分离. `SparseMemory` 的职责是"以较低的物理内存占用提供线性地址空间", `WXorXMemory` 的职责是"在此之上实施安全策略". 两者正交. 如果我们把权限检查塞进 SparseMemory, 那么将来即便想实现一个不需要权限检查的测试工具, 也会被这些检查代码所拖累. 分离后, 测试可以用裸的 SparseMemory, 生产环境用套上 WXorXMemory 的版本.
-
-实际上, 这正是 CKB-VM 的做法. 在模糊测试(fuzz)中, 为了对比 CKB-VM 和 Spike 的执行结果, 需要绕过权限检查. 此时直接使用裸的 `SparseMemory` 就可以了.
-
-## 与其他区块链 VM 的比较
-
-W^X 并非 CKB-VM 独有. 几乎所有现代区块链虚拟机都采用了类似的保护机制:
-
-|       虚拟机        |                 内存模型                 |                  W^X 实现                  |
-| ------------------- | ---------------------------------------- | ------------------------------------------ |
-| EVM                 | 256-bit word-addressed, 栈+内存+存储分离 | 代码与数据存储天然隔离, 无法修改已部署代码 |
-| Wasm(Substrate/EOS) | 32-bit 线性内存                          | 代码段与线性内存分离, 运行时不可修改代码   |
-| Solana BPF          | 64-bit 线性内存                          | 代码段只读, 字节码通过 verifier 静态分析   |
-| CKB-VM              | 64-bit 线性内存, 页式管理                | W^X bit 级编码 + FREEZED 双保险            |
-
-EVM 的隔离是最彻底的, 代价是模型不通用(无法用现有编译器直接生成 EVM 代码). CKB-VM 选择了通用 RISC-V 路线, 因此必须在内存模型上自己补上安全拼图. W^X + FREEZED 的组合, 在安全强度上不输于 EVM 的天然隔离, 在通用性上则远胜之.
 
 ## 总结
 
