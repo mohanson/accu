@@ -1,3 +1,4 @@
+import argparse
 import glob
 import os
 import shutil
@@ -66,7 +67,16 @@ def exam_link(name: str):
 
 
 def main():
+    args = argparse.ArgumentParser()
+    args.add_argument('--sync', action='store_true')
+    args = args.parse_args()
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    if args.sync:
+        env = os.environ.copy()
+        if os.path.exists(os.path.expanduser('~/res/script/ssh_askpass.sh')):
+            env['SSH_ASKPASS_REQUIRE'] = 'force'
+            env['SSH_ASKPASS'] = os.path.expanduser('~/res/script/ssh_askpass.sh')
+        subprocess.run(f'haze git pull', shell=True, env=env)
     exam_imgs_unused()
     exam_imgs_format()
     exam_imgs_size()
