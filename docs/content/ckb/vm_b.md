@@ -122,3 +122,10 @@ $ llvm-objdump -d main.o
 ```
 
 这意味着: 只要在编译 CKB 合约时指定正确的 `-march` 参数, 代码中所有符合条件的位操作都会被自动替换为 B 扩展指令, **无需修改任何源代码**.
+
+对于 Rust 来说, 也可以通过类似的方式自动启用 B 扩展. 只需在编译时设置 `RUSTFLAGS` 环境变量, 就能让编译器自动将符合条件的位操作映射为 B 扩展指令:
+
+```sh
+RUSTFLAGS="-C target-feature=+zba,+zbb,+zbc,+zbs"
+	cargo build --target=riscv64imac-unknown-none-elf
+```
