@@ -214,7 +214,7 @@ cart[0x014F/SEGSIZE][0x014F%SEGSIZE] = chk&0xFF;
 
 ## 示例代码
 
-本节将会编写一段简单的程序, 用来解析 Cartridge Header 的部分信息. 用作测试的游戏 ROM 是《Boxes》游戏, 读者可以在 [https://github.com/mohanson/gameboy/tree/master/res](https://github.com/mohanson/gameboy/tree/master/res) 下载到该游戏 ROM. 程序的目的是读取游戏的标题, 并确认其标题校验和正确.
+本节将会编写一段简单的程序, 用来解析 Cartridge Header 的部分信息. 用作测试的游戏 ROM 是《Boxes》游戏, 读者可以在 [https://github.com/libraries/gameboy/tree/master/res](https://github.com/libraries/gameboy/tree/master/res) 下载到该游戏 ROM. 程序的目的是读取游戏的标题, 并确认其标题校验和正确.
 
 ```rs
 use std::io::Read;

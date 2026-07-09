@@ -29,7 +29,7 @@
 
 ## 源码
 
-源码已托管在 Github: [https://github.com/mohanson/gameboy](https://github.com/mohanson/gameboy).
+源码已托管在 Github: [https://github.com/libraries/gameboy](https://github.com/libraries/gameboy).
 
 ## 建议阅读方式
 
