@@ -2,13 +2,11 @@
 
 在 CKB 脚本里, 一条指令不是免费执行的.
 
-脚本每做一次算数加法, 每做一次内存读写, 每加载一段链上数据, 都会消耗 cycles. 当 cycles 累积值超过上限, 虚拟机立刻停下并返回错误.
-
-这件事听起来非常朴素, 但它其实是 CKB-VM 最重要的安全机制之一: 如果没有这道闸门, 一段死循环就足够把验证线程拖死. 但是与以太坊等虚拟机不同, CKB-VM 的 cycles 并非用作计费, 而是用作资源消耗的共识度量. 也就是说, 它不是用来向用户收手续费的, 而是用来判断脚本是否过度消耗资源的.
+脚本每做一次算数加法, 每做一次内存读写, 每加载一段链上数据, 都会消耗 cycles. 当 cycles 累积值超过上限, 虚拟机立刻停下并返回错误. 这件事听起来非常朴素, 但它却是 CKB-VM 以及其他各类区块链虚拟机最重要的安全机制之一: 如果没有这道闸门, 一段死循环就足够把验证线程拖死. 但是与 EVM 不同, CKB-VM 的 cycles 并非用作计费, 而是用作资源消耗的共识度量. 也就是说, 它不是用来向用户收手续费的, 而是用来判断脚本是否过度消耗资源的.
 
 ## 计费的执行流程
 
-在 CKB-VM 的执行过程中, 始终遵循"先计数, 再执行"的原则. 也就是说, 每条指令在执行前都会先计算它的 cycles 成本, 并检查是否超过上限. 如果超过, 就直接返回错误, 不会执行该指令的语义. 这么设计的好处是, 即便脚本里有死循环, 也不会因为无限执行而拖垮验证线程. 只要在循环里每轮都消耗 cycles, 最终都会触发超限错误.
+在 CKB-VM 的执行过程中, 始终遵循"先计数, 再执行"的原则. 也就是说, 每条指令在执行前都会先计算它的 cycles 成本, 并检查是否超过上限. 如果超过, 就直接返回错误, 不会执行该指令的语义. 这种设计的好处是防止恶意死循环攻击以及确保资源计费的强一致性.
 
 上面这段描述翻到源码里, 就是 [src/machine/mod.rs](https://github.com/nervosnetwork/ckb-vm/blob/develop/src/machine/mod.rs) 里的 `step` 函数:
 
@@ -25,9 +23,7 @@ pub fn step<D: InstDecoder>(&mut self, decoder: &mut D) -> Result<(), Error> {
 }
 ```
 
-流程是: 指令解码 -> 计算成本 -> 累加成本 -> 执行指令. 其中第二步用的 `instruction_cycle_func` 是一个可替换的函数指针, 后面会细讲; 第三步的 `add_cycles` 则是计费系统的核心闸门.
-
-`add_cycles` 同样在 `mod.rs` 里, 逻辑很直白:
+你可以看到 CKB-VM 的标准执行流程是: 指令解码 -> 计算成本 -> 累加成本 -> 执行指令. 其中第二步用的 `instruction_cycle_func` 是一个可替换的函数指针, 后面会细讲; 第三步的 `add_cycles` 则是计数系统的核心. `add_cycles` 同样在这个文件里, 逻辑很直白:
 
 ```rs
 fn add_cycles(&mut self, cycles: u64) -> Result<(), Error> {
@@ -84,16 +80,17 @@ ASM 后端与 Rust 解释器这两条路径的计费代码写在不同地方, �
 
 Rust 解释器路径在 `step()` 里逐条扣费, 前面已经看过.
 
-ASM 路径的扣费发生在 trace 构建阶段. [src/machine/asm/traces.rs](https://github.com/nervosnetwork/ckb-vm/blob/develop/src/machine/asm/traces.rs) 里, 解码一条指令后:
+ASM 路径的扣费发生在 trace 构建阶段. [src/machine/asm/traces.rs](https://github.com/nervosnetwork/ckb-vm/blob/develop/src/machine/asm/traces.rs) 里, 解码一条指令后, 在 trace 里累加这条指令的 cycles.
 
 ```rs
 trace.cycles += machine.instruction_cycle_func()(instruction);
 ```
 
-然后这段 trace 被写进汇编执行器, 在装载时一次性加到机器总 cycles 上. 一条 trace 最多包含 16 条指令. ASM 端相当于把最多 16 次的"累加 cycles + 检查溢出 + 检查上限"合并成了一次.
+然后这段 trace 被写进汇编执行器, 在装载时一次性加到机器总 cycles 上. 一条 trace 最多包含 16 条指令. ASM 端相当于把最多 16 次的"累加 cycles + 检查溢出 + 检查上限"合并成了一次, 以减少执行器的分支跳转开销. 但无论是 Rust 解释器还是 ASM 后端, 都遵循"先计数, 再执行"的原则.
 
 ## 小结
 
 CKB-VM 的 cycles 系统做了几件很简单但很对的事情.
 
-它把计费和执行分开, 用先计数再执行堵死了死循环拖垮节点的路径. 它把成本函数做成可替换的, 允许不同场景用不同的计费策略而不用改执行逻辑. 这些设计背后的思路其实是一样的: 在必须达成共识的地方做硬约束, 在可以灵活的地方留余地.
+1. 确保了脚本执行的资源消耗是可控的, 防止恶意死循环攻击.
+2. 让脚本执行的资源消耗在共识层面上是可复现的, 并且宏观上和物理 CPU 的资源消耗有一定的对应关系.
