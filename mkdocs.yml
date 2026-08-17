@@ -96,7 +96,8 @@ nav:
     - GB/其它/定时器: content/gameboy/other/timer.md
     - GB/其它/硬件初始化工作: content/gameboy/other/init.md
     - GB/其它/测试: content/gameboy/other/test.md
-    - GB/后记: content/gameboy/foot.md
+    - GB/后记之一: content/gameboy/foot_1.md
+    - GB/后记之二: content/gameboy/foot_2.md
 - Solana:
     - Solana/Learn Me A Solana: content/solana/foreword.md
     - Solana/私钥, 公钥与地址/导言: content/solana/prikey_introduction.md
