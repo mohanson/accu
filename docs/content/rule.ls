@@ -17,6 +17,8 @@ R *.gstatic.com
 R   xn--ngstr-lra8j.com
 R *.xn--ngstr-lra8j.com
 
+R *.nervos.org
+
 R   polymarket.com
 R *.polymarket.com
 
