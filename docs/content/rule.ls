@@ -24,3 +24,6 @@ R *.polymarket.com
 
 R   tradingview.com
 R *.tradingview.com
+
+R   v2ex.com
+R *.v2ex.com
