@@ -19,6 +19,9 @@ R *.xn--ngstr-lra8j.com
 
 R *.nervos.org
 
+R   okx.com
+R *.okx.com
+
 R   polymarket.com
 R *.polymarket.com
 
